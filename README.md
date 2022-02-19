@@ -1,4 +1,4 @@
-# Our Awesome Research Paper in Cryptography
+# Ad Hoc Broadcast Encryption, Revisited
 
 Literature survey is collected in [Literature.md](Literature.md).
 

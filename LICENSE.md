@@ -1,4 +1,8 @@
-# The MIT License (MIT)
+# Ad Hoc Broadcast Encryption, Revisited
+
+Copyright (c) 2022 by Ji Luo, all rights reserved.
+
+## The MIT License (MIT)
 
 Copyright (c) 2021 Ji Luo
 
