@@ -1,0 +1,14 @@
+\ifLaomianLinkColors@
+\definecolor{LaomianCiteColor}{rgb}{0,0,0.6}
+\definecolor{LaomianLinkColor}{rgb}{0.8,0,0}
+\definecolor{LaomianURLColor}{rgb}{0,0.3,0.8}
+\usepackage[colorlinks=true,citecolor=LaomianCiteColor,linkcolor=LaomianLinkColor,filecolor=LaomianURLColor,urlcolor=LaomianURLColor]{hyperref}
+\else
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\fi
+
+% Implement ORCID icon.
+\ifLaomianORCIDIcon@
+\usepackage{orcidlink}
+\def\orcidID#1{\unskip\,\orcidlink{#1}}
+\fi

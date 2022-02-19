@@ -1,0 +1,111 @@
+\def\thmhead@plain#1#2#3{%
+  \thmname{#1}\thmnumber{\@ifnotempty{#1}{ }\relax{#2}}%
+  \thmnote{ {\the\thm@notefont(#3)}}%
+}
+\let\thmhead\thmhead@plain
+
+% Undefine these theorem environments as well as the counters.
+% They are redefined later.
+\def\Laomian@undefine@theorem#1{%
+  \expandafter\let\csname #1\endcsname\Laomian@undefined%
+  \expandafter\let\csname end#1\endcsname\Laomian@undefined%
+  \expandafter\let\csname c@#1\endcsname\Laomian@undefined%
+}
+
+\Laomian@undefine@theorem{assumption}
+\Laomian@undefine@theorem{claim}
+\Laomian@undefine@theorem{conjecture}
+\Laomian@undefine@theorem{construction}
+\Laomian@undefine@theorem{corollary}
+\Laomian@undefine@theorem{definition}
+\Laomian@undefine@theorem{lemma}
+\Laomian@undefine@theorem{proof}
+\Laomian@undefine@theorem{proposition}
+\Laomian@undefine@theorem{question}
+\Laomian@undefine@theorem{remark}
+\Laomian@undefine@theorem{theorem}
+
+% Undefine these theorem environments but keep the counters.
+% They are not redefined later.
+% Their counters are reset by LNCS and must not be undefined.
+\def\Laomian@undefine@theorem#1{%
+  \expandafter\let\csname #1\endcsname\Laomian@undefined%
+  \expandafter\let\csname end#1\endcsname\Laomian@undefined%
+}
+
+\Laomian@undefine@theorem{case}
+\Laomian@undefine@theorem{example}
+\Laomian@undefine@theorem{exercise}
+\Laomian@undefine@theorem{note}
+\Laomian@undefine@theorem{problem}
+\Laomian@undefine@theorem{property}
+\Laomian@undefine@theorem{solution}
+
+\let\Laomian@undefine@theorem\Laomian@undefined
+
+% Modified from amsthm.sty:
+\def\th@remark{%
+  \thm@headfont{\itshape}%
+  \normalfont % body font
+  % Use normal spacing.
+  % \thm@preskip\topsep \divide\thm@preskip\tw@
+  % \thm@postskip\thm@preskip
+}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem*{remarks}{Remarks}
+
+\newtheorem*{Laomian@proof}{Proof}
+\def\proof{\@ifnextchar[\Laomian@proof@with@name\Laomian@proof@without@name}
+\def\Laomian@proof@with@name[#1]{%
+  \begingroup%
+  \pushQED{\qed}%
+  \begin{Laomian@proof}[#1]%
+}
+\def\Laomian@proof@without@name{%
+  \begingroup%
+  \pushQED{\qed}%
+  \begin{Laomian@proof}%
+}
+\def\endproof{%
+  \popQED%
+  \end{Laomian@proof}%
+  \endgroup%
+}
+
+\ifLaomianLNCS@
+\theoremstyle{plain}
+\else
+\theoremstyle{definition}
+\fi
+\newtheorem{definition}{Definition}
+\newtheorem{question}{Question}
+
+\theoremstyle{plain}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem{claim}{Claim}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+
+\let\c@corollary\c@theorem
+\let\c@claim\c@theorem
+\let\c@lemma\c@theorem
+\let\c@proposition\c@theorem
+
+\newtheorem*{Laomian@restated}{\Laomian@restated@name}
+\def\restated#1{%
+  \begingroup%
+  \def\Laomian@restated@name{#1}%
+  \begin{Laomian@restated}%
+}
+\def\endrestated{%
+  \end{Laomian@restated}%
+  \endgroup%
+}
+
+\theoremstyle{definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{construction}{Construction}

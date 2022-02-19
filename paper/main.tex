@@ -1,0 +1,39 @@
+\input{preamble}
+
+\begin{document}
+
+% -------- title / abstract / table of contents --------
+
+\input{title}
+
+\input{abstract}
+
+% To hide the table of contents, use \HideTOC in preamble.tex.
+% Do NOT comment out or remove \TypesetTableOfContents
+% EVEN IF it is NOT shown, because this command also handles
+% the title-abstract page and the proper maintenance of counters.
+\TypesetTableOfContents
+
+% ------------------------ body ------------------------
+
+\input{.laomian/.example/body}
+
+% Either empty acknowledgement.tex or
+% comment out or remove \TypesetAcknowledgement
+% if there is no acknowledgement to be made.
+\TypesetAcknowledgement
+
+% -------------------- bibliography --------------------
+
+\TypesetBibliography{.laomian/.example/refs,refs}
+
+% --------- appendix / supplementary materials ---------
+
+% If there is no appendix (supplementary materials),
+% \TypesetAppendix should be commented out or removed,
+% otherwise the table of contents might be incorrect.
+\TypesetAppendix
+
+\input{.laomian/.example/appendix}
+
+\end{document}

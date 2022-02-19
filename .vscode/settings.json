@@ -1,0 +1,32 @@
+{
+  "breadcrumbs.enabled": false,
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 80,
+  "editor.wrappingIndent": "none",
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "[markdown]": { "editor.wordWrap": "bounded" },
+  "terminal.integrated.shell.osx": "/bin/bash",
+  "terminal.integrated.shellArgs.osx":
+  [
+    "--noprofile",
+    "--norc",
+    "-c",
+    "cd ./paper >/dev/null 2>&1; PWSHFN=$(which pwsh); if [ $? -eq 0 ]; then exec /bin/bash -l -c \"$(printf \"exec %q -NoLogo\" \"$PWSHFN\")\"; else exec bash -l; fi"
+  ],
+  "terminal.integrated.shell.windows": "powershell.exe",
+  "terminal.integrated.shellArgs.windows":
+  [
+    "-NoLogo",
+    "-NoExit",
+    "-Command",
+    "Set-Location -LiteralPath ./paper -ErrorAction Ignore"
+  ],
+  "files.eol": "\n",
+  "cSpell.words":
+  [
+    "IACR",
+    "homomorphic",
+    "indistinguishability"
+  ]
+}

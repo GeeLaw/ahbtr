@@ -1,0 +1,360 @@
+\section{Section}
+\subsection{Subsection}
+
+This template is used to prepare manuscripts for works in cryptography.%
+\footnote{This is a footnote.}
+
+\subsubsection{Subsubsection.}
+This is a run-in heading in bold face.
+
+\paragraph{Paragraph.}
+This is an italicized run-in heading.
+\texttt{\textbackslash subparagraph} is undefined.
+
+\begin{table}[h]
+\centering
+\caption{Styles.}
+\label{tab:table1}
+\begin{tabular}{ll}
+\toprule
+Style Name & Purpose \\
+\midrule
+\texttt{\textbackslash SubmissionInProgress} &
+preparing submission \\
+\texttt{\textbackslash Submission} &
+submission PDF \\
+\texttt{\textbackslash CameraReadyInProgress} &
+preparing camera-ready \\
+\texttt{\textbackslash CameraReadyIACR} &
+PDF archived by IACR \\
+\texttt{\textbackslash CameraReadySpringer} &
+reference PDF sent to Springer \\
+\texttt{\textbackslash CameraReady} &
+source sent to Springer \\
+\texttt{\textbackslash ePrintWorkInProgress} &
+preparing ePrint \\
+\texttt{\textbackslash ePrint} &
+ePrint PDF \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Per LNCS,
+table (resp.~figure) captions must be above (resp.~below) the table (resp.~figure).
+
+Avoid using \texttt{\textbackslash begin\{equation\}},
+\texttt{\textbackslash begin\{gather\}},
+\texttt{\textbackslash begin\{split\}},
+and \texttt{\$\$}.
+Always prefer \texttt{\textbackslash begin\{align\}}.
+(One of) Euler's formula says
+\begin{align*}
+e^{i\pi}+1=0.
+\end{align*}
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{ll}
+\toprule
+Customization Name & Purpose \\
+\midrule
+\texttt{\textbackslash MakeNonAnonymous} &
+make submission non-anonymous (required for TCC) \\
+\texttt{\textbackslash UseColorfulLinks} &
+use link with kind-dependent colors \\
+\texttt{\textbackslash UseBlueLinks} &
+use blue links (required by Springer) \\
+\texttt{\textbackslash NoPageLimits} &
+indicate that there is no maximum number of pages \\
+& \quad and do not say ``Supplementary Materials'' \\
+\texttt{\textbackslash DoNotUseFancyFonts} &
+use Computer Modern (instead of Source) for ePrint \\
+\texttt{\textbackslash UseNumericBib} &
+use \texttt{splncs04.bst} \\
+\texttt{\textbackslash UseAlphaBib} &
+use \texttt{alpha.bst} \\
+\texttt{\textbackslash HideTOC} &
+hide the table of contents for ePrint \\
+\texttt{\textbackslash NoSeparateTitlePage} &
+do not use a separate title page for ePrint \\
+& \quad (applicable only if the table of contents is hidden) \\
+\bottomrule
+\end{tabular}
+\caption{Commands for customizing the styles.
+Nam suscipit sem eu nisi vestibulum cursus.
+Duis id tellus quis risus efficitur maximus.
+Suspendisse volutpat augue aliquam magna vulputate.}
+\label{fig:figure1}
+\end{figure}
+
+\section{Utilities}
+
+\subsection{Call-Out Boxes}
+
+Use
+\texttt{\textbackslash defcallout\textbackslash luoji\{Ji\}}
+\emph{in the preamble}
+to make
+\luoji{This is a note from Ji.
+\luoji{Nested call-out commands are converted to text inside the same box.}}
+command \texttt{\textbackslash luoji} typeset a call-out box for Ji,
+which is only shown if the style is work-in-progress.
+To make the command
+\texttt{\textbackslash long} (accept \texttt{\textbackslash par}),
+use
+\texttt{\textbackslash long\textbackslash defcallout\textbackslash luoji\{Ji\}}.
+
+\luoji{Note can go on empty paragraph, but it looks weird.}
+
+\luoji{Note can start a paragraph.}
+The colors of the boxes rotate so that it is easy to track which is where.
+
+\subsection{Style-Dependent Commands}
+
+\texttt{\textbackslash Figure},
+\texttt{\textbackslash Equation},
+\texttt{\textbackslash Section},
+\texttt{\textbackslash Figures},
+\texttt{\textbackslash Equations}, and
+\texttt{\textbackslash Sections}
+provide the correct form of references:
+\begin{itemize}
+\item
+In LNCS, they are Fig., Eq., Sect., Figs., Eqs., Sects., respectively.
+\item
+In ePrint, they are Figure, Equation, Section, Figures, Equations, Sections, respectively.
+\item
+In the current format, they are
+\Figure, \Equation, \Section, \Figures, \Equations, \Sections, respectively.
+\end{itemize}
+Use \texttt{\textbackslash widenarrow},
+\texttt{\textbackslash WideNarrow},
+\texttt{\textbackslash pagelimitsnolimits},
+\texttt{\textbackslash PageLimitsNoLimits},
+\texttt{\textbackslash bibalphanumeric},
+\texttt{\textbackslash BibAlphaNumeric},
+to choose one from the two candidates depending on the current style.
+The lowercase versions are short and
+the capitalized versions are \texttt{\textbackslash long}
+(i.e., the arguments might contain \texttt{\textbackslash par}).
+The text is \widenarrow{wide}{narrow},
+there \pagelimitsnolimits{is a}{are no} page limit\pagelimitsnolimits{}{s},
+and the bibliography is \bibalphanumeric{alphanumeric}{numeric}.
+
+\subsection{Misc}
+
+\subsubsection{Math Symbols.}
+There are a lot of math symbols:
+\begin{align*}
+\kappa,\alpha,\beta,\mu,\omicron,&&
+\epsilon,\varepsilon,\phi,\varphi,\Omicron,&\\
+\llbracket\Delta\rrbracket,\Omega,\Sigma,\Xi,&&
+\scriptA,\scriptC,\doubleZ,\doubleR,\fraktura,\frakturA,\cbrt\Upsilon,&\\
+\1,\cursiveA,1^\cursiveF_\cursiveZ,\emptyset,\varnothing,\nothing,\varemptyset,&&
+\pk,\sk,\ct,\mpk,\msk,\vk,\\
+\Setup,\Gen,\KeyGen,\Enc,\Dec,&&
+\Verify,\Sign,\Commit,\\
+\left\llbracket\sum_{i=1}^{n}{x_i}\right\rrbracket,
+\ExpCPA,a\concat b,\poly(\lambda),1\iseq 2,&&
+\negl(\lambda),\vec{\chi}^\transpose\defeq\vec{x}\draws Z,\\
+\Pr_{x\draws X}[f(x)],
+\esssup_{x\in[0,1]}{f(x)},
+\liminf_{n\to\infty}{A_n},&&
+\EX_{x\draws X}[f(x)],2^{\Var({\EX_{(x,y)\draws Z}[g(y)|x]})},\supp_1 Z,\\
+\boxed{1},&&
+\dashboxed{2},\grayboxed{3}.
+\end{align*}
+All Greek letters have their lowercase and uppercase commands,
+including \texttt{\textbackslash omicron} and \texttt{\textbackslash Omicron},
+and the uppercase letters are upright.
+Commands for font variants similar to Office Equation Editor are provided:
+\texttt{\textbackslash doubleA}
+for blackboard bold,
+\texttt{\textbackslash scriptA}
+for usual handwritten,
+\texttt{\textbackslash cursiveA}
+for cursive handwritten,
+\texttt{\textbackslash frakturA} and \texttt{\textbackslash fraktura}
+for fraktur.
+All these letter commands
+can be used as superscripts and subscripts
+without being wrapped inside braces, i.e.,
+it is correct to write $1^\cursiveA_\lambda$.
+
+\texttt{\textbackslash 1} creates a blackboard bold $\1$,
+which can be used as the indicator symbol.
+\texttt{\textbackslash vec} works with Greek letters (lowercase Greek letters are not upright).
+For more, consult \texttt{maths.tex}.
+
+\subsubsection{Underlines.}
+A descender-\ul{skipping} underline is used for ePrint.
+
+\subsection{Theorem Environments}
+
+No theorem environment uses a nested counter.
+
+\begin{definition}
+This is \texttt{\textbackslash begin\{definition\}}.
+\end{definition}
+
+\begin{definition}[name]
+This is \texttt{\textbackslash begin\{definition\}[name]}.
+For LNCS, the definitions are italicized,
+making it tiring to read a security experiment.
+
+Use \texttt{\textbackslash begin\{security\}\textbackslash phase\{Phase Name\}}
+to write security experiments:
+\begin{security}
+\phase{Setup} Blah.
+\phase{Challenge} Bruh.
+\phase{Guess} Bleh.
+\end{security}
+\end{definition}
+
+\begin{question}
+This is \texttt{\textbackslash begin\{question\}}.
+\end{question}
+
+\begin{question}[name]
+This is \texttt{\textbackslash begin\{question\}[name]}.
+\end{question}
+
+\noindent
+The style of definitions and questions depends on
+whether the layout is LNCS or ePrint.
+
+\begin{conjecture}
+This is \texttt{\textbackslash begin\{conjecture\}}.
+\end{conjecture}
+
+\begin{conjecture}[name]
+This is \texttt{\textbackslash begin\{conjecture\}[name]}.
+\end{conjecture}
+
+\noindent
+Corollaries, claims, lemmata, propositions, and theorems
+share the same counter.
+
+\begin{corollary}
+This is \texttt{\textbackslash begin\{corollary\}}.
+\end{corollary}
+
+\begin{corollary}[name]
+This is \texttt{\textbackslash begin\{corollary\}[name]}.
+\end{corollary}
+
+\begin{claim}
+This is \texttt{\textbackslash begin\{claim\}}.
+\end{claim}
+
+\begin{claim}[name]
+This is \texttt{\textbackslash begin\{claim\}[name]}.
+\end{claim}
+
+\begin{lemma}\label{lem:lemma5}
+This is \texttt{\textbackslash begin\{lemma\}}.
+\end{lemma}
+
+\begin{lemma}[name]
+This is \texttt{\textbackslash begin\{lemma\}[name]}.
+\end{lemma}
+
+\begin{proposition}
+This is \texttt{\textbackslash begin\{proposition\}}.
+\end{proposition}
+
+\begin{proposition}[name]
+This is \texttt{\textbackslash begin\{proposition\}[name]}.
+\end{proposition}
+
+\begin{theorem}
+This is \texttt{\textbackslash begin\{theorem\}}.
+\end{theorem}
+
+\begin{theorem}[name]\label{thm:theorem10}
+This is \texttt{\textbackslash begin\{theorem\}[name]}.
+\end{theorem}
+
+\begin{assumption}
+This is \texttt{\textbackslash begin\{assumption\}}.
+\end{assumption}
+
+\begin{assumption}[name]
+This is \texttt{\textbackslash begin\{assumption\}[name]}.
+\end{assumption}
+
+\begin{construction}
+This is \texttt{\textbackslash begin\{construction\}}.
+\end{construction}
+
+\begin{construction}[name]
+This is \texttt{\textbackslash begin\{construction\}[name]}.
+\end{construction}
+
+\noindent
+Use \texttt{\textbackslash begin\{restated\}{\textbackslash ref\{label\}}} to restate a theorem or typeset an unnumbered theorem.
+
+\begin{restated}{Theorem~\ref{thm:theorem10}}
+This is a restatement.
+\end{restated}
+
+\begin{restated}{Theorem~\ref{thm:theorem10}}[name]
+This is a restatement with name.
+\end{restated}
+
+\noindent
+Proofs and remarks are unnumbered.
+
+\begin{proof}
+This is \texttt{\textbackslash begin\{proof\}}.
+\end{proof}
+
+\begin{proof}[Lemma~\ref{lem:lemma5}]
+This is \texttt{\textbackslash begin\{proof\}[Lemma\textasciitilde\textbackslash ref\{lem:lemma5\}]}.
+
+Use \texttt{\textbackslash qedhere} to place the tombstone symbol
+on the last line of a displayed equation,
+for which an alignment tab is required.
+\begin{align*}
+a+b&{}=c.
+\qedhere
+\end{align*}
+\end{proof}
+
+\begin{remarks}
+This is \texttt{\textbackslash begin\{remarks\}}.
+\end{remarks}
+
+\begin{remarks}[name]
+This is \texttt{\textbackslash begin\{remarks\}[name]}.
+\end{remarks}
+
+\noindent
+However, \texttt{\textbackslash begin\{remark\}} (singular form) is numbered.
+
+\begin{remark}
+This is \texttt{\textbackslash begin\{remark\}}.
+\end{remark}
+
+\begin{remark}[name]
+This is \texttt{\textbackslash begin\{remark\}[name]}.
+\end{remark}
+
+\subsection{Citations}
+
+For citations of references, we prefer the use of square brackets
+and consecutive numbers. Citations using labels or the author/year
+convention are also acceptable. The following bibliography provides
+a sample reference list with entries for journal
+articles~\cite{ref_article1}, an LNCS chapter~\cite{ref_lncs1}, a
+book~\cite{ref_book1}, proceedings without editors~\cite{ref_proc1},
+and a homepage~\cite{ref_url1}. Multiple citations are grouped
+\cite{ref_article1,ref_lncs1,ref_book1},
+\cite{ref_article1,ref_book1,ref_proc1,ref_url1},
+if the numeric style is used.
+
+Use \href{https://github.com/cryptobib/export}{\texttt{cryptobib}} to make citing cryptography literature easier.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam a magna quis ex vulputate vehicula nec at erat. Phasellus laoreet nisl vel nunc efficitur, quis varius sem malesuada. Phasellus gravida risus vitae lorem convallis, vitae volutpat justo commodo. Sed gravida tincidunt dui sit amet iaculis. Curabitur tempus cursus lectus vulputate rutrum. Nullam tincidunt imperdiet risus eu tristique. Phasellus elit tortor, cursus sed dolor eu, faucibus ornare justo. Donec ex sem, bibendum et condimentum vel, mattis et metus. Integer scelerisque finibus pharetra.
+
+Nullam turpis sem, tincidunt eu pharetra nec, interdum vel nisi. Ut neque enim, venenatis eget interdum non, semper in tortor. Quisque fringilla ligula in vulputate lacinia. Cras fermentum purus at velit pulvinar ornare. Phasellus hendrerit, massa at tristique ultricies, quam ligula bibendum erat, eu vulputate libero massa id quam. Nunc nec elit neque. Mauris rutrum nisi a porttitor pretium.

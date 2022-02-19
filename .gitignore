@@ -1,0 +1,50 @@
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.lof
+*.log
+*.lot
+*.maf
+*.mtc
+*.mtc0
+*.out
+*.pdf
+*.synctex.gz
+*.toc
+
+# ansi2html.sh is LGPLv2-licensed on which I am not an expert.
+# Also, it is just a developer tool, not needed to typeset the document.
+# Therefore, it should be excluded from version control.
+# In contrast, llncs.cls and splncs04.bst are necessary to typeset the document,
+# and the inclusion of them makes the repository usable on Overleaf.
+/ansi2html.sh
+/*.html
+
+# Windows
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+![iI]con[_a-zA-Z0-9]
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
