@@ -1,4 +1,4 @@
-# Ad Hoc Broadcast Encryption, Revisited
+# Ad Hoc Decentralized Broadcast and Trace
 
 Copyright (c) 2022 by Ji Luo, all rights reserved.
 

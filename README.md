@@ -1,4 +1,4 @@
-# Ad Hoc Broadcast Encryption, Revisited
+# Ad Hoc Decentralized Broadcast and Trace
 
 Literature survey is collected in [Literature.md](Literature.md).
 
