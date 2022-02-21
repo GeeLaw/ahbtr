@@ -49,3 +49,13 @@ ${j\in[N]}$,
 where $\{(\pk_i^\ast,\sk_i^\ast)\}_{i\in[N]}$ is
 the lexicographically sorted $\{(\pk_i,\sk_i)\}_{i\in[N]}$.
 \end{definition}
+
+\noindent
+The above definition of correctness does not take into account
+% Since an adversarially generated key could be ``well-formed'',
+% the correct phrasing is ``adversarially generated'', but it is a mouthful.
+adversarially generated (malformed) public keys.
+It is easy though tedious
+% It is left as an exercise for the reader
+to define \emph{robustness} so that normally generated key pairs enjoy correctness even if the list contains malformed public keys
+and show that a tweaked version of Construction~\ref{con:ahplbe} achieves robustness.
