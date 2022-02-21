@@ -7,9 +7,12 @@ consists of 3 efficient algorithms:
 \item $\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},i_\bot\in[0..N],m\in\bit^\lambda)$
 takes as input
 \luoji{Should motivate this requirement in the technical overview.
-Emphasize \textbf{lexicographically sorted, distinct} for security.
-In contrast, it is not necessary to say this for $\Dec$ as it has nothing to do with security.}
-a \textbf{lexicographically sorted} list of \textbf{distinct} public keys,
+Emphasize \textbf{distinct} for security.
+In contrast, it is not necessary to say this for $\Dec$ as it has nothing to do with security.
+Maybe a remark on AH-BT scheme about a decoder that can decrypt ciphertexts under a random permutation of those keys?
+(Reducible to fixed order at constant-factor loss of advantage, by sampling random orders and picking the order with the highest estimated advantage.)
+Note that it is \emph{not} possible to sort inside AH-BT encryption, as it kills efficiency.}
+a list of \textbf{distinct} public keys,
 an index,
 and a message.
 It outputs a ciphertext~$\ct$.
@@ -38,15 +41,13 @@ ${j\in[N]}$,
 \textup{ for }i\in[N]\\
 \ct
 \WideNarrow{}{\hspace*{2em}}&\WideNarrow{}{\hspace*{-2em}}
-{}\draws\Enc(1^\lambda,\{\pk_i^\ast\}_{i\in[N]},0,m)
+{}\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},0,m)
 \end{aligned}
 \::\:
 \begin{aligned}
-&\Dec^{\{\pk_i^\ast\}_{i\in[N]}}(1^\lambda,N,j,\sk_j^\ast,\ct)=m
+&\Dec^{\{\pk_i\}_{i\in[N]}}(1^\lambda,N,j,\sk_j,\ct)=m
 \\\textup{or }&\exists\, i,i'\in[N]:(i\neq i')\wedge(\pk_i=\pk_{i'})
 \end{aligned}
-\right]=1,
+\right]=1.
 \end{align*}
-where $\{(\pk_i^\ast,\sk_i^\ast)\}_{i\in[N]}$ is
-the lexicographically sorted $\{(\pk_i,\sk_i)\}_{i\in[N]}$.
 \end{definition}
