@@ -6,8 +6,8 @@ This is draft content.
 Exclude \texttt{draft/notes} from \texttt{main.tex}.
 \endgroup
 
-\subsubsection{Literature.}
-To be cited:
+\subsubsection{Ideas.}
+To be written:
 \begin{itemize}
 \item (None at this time.)
 \end{itemize}
@@ -15,6 +15,7 @@ To be investigated:
 \begin{itemize}
 \item \cite{CCS:WQZD10} introduces the notion of \ad hoc broadcast encryption.\\
 See OneNote notes for its downsides and proposed improvements.
+\item We must philosophically reject the notion of public parameters shared by keys, because we want a user to not have to trust anyone.
 \item Adaptive security: It should be possible to choose whether or not to see $\mathsf{sk}$ depending on $\mathsf{pk}$ (in reality, the adversary could see everyone's public key and decide whose secret key to steal). This requires a ``Creation-Revelation'' type formulation of the game.
 Has \cite{CCS:WQZD10} considered such case?
 \item Can we do \ad hoc broadcast \textbf{and trace}?
@@ -27,6 +28,10 @@ Should we define non-malleability of~$\mathsf{pk}$?
 \item What about tracing with embedded identity?
 What does the notion mean in real life?
 What are possible attacks and what do the attacks mean in real life?
-\item Investigate works in \texttt{crypto.bib} with ``\ad hoc'' in title.\\
-Use \texttt{sls 'ad[ -]?hoc' crypto.bib} to obtain such works.
+\item Investigate works in \texttt{crypto.bib} (as well as elsewhere) with ``\ad hoc'' or ``decentralized'' in title. Use
+\begin{center}\texttt{
+% sls 'ad[ -]?hoc|de-?central' crypto.bib | ogv
+sls {\textquotesingle}ad[ -]?hoc|de-?central{\textquotesingle} crypto.bib | ogv
+}\end{center}
+to obtain such works in \texttt{crypto.bib}.
 \end{itemize}
