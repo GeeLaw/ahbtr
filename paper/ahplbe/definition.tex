@@ -1,0 +1,43 @@
+\begin{definition}[AH-PLBE]\label{def:ahplbe}
+An \emph{\ad hoc private linear broadcast encryption (AH-PLBE) scheme}
+(with message space~$\bit^\lambda$)
+consists of 3 efficient algorithms:
+\begin{itemize}
+\item $\Gen(1^\lambda)$ outputs a pair~$(\pk,\sk)$ of public and private keys.
+\item $\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},i_\bot\in[0..N],m\in\bit^\lambda)$
+takes as input
+a list of public keys,
+an index,
+and a message.
+It outputs a ciphertext~$\ct$.
+\item $\Dec^{\{\pk_i\}_{i\in[N]}}(1^\lambda,N,j\in[N],\sk,\ct)$
+is given random access to a list of public keys and
+takes as input
+the length of the list,
+an index,
+a secret key, and
+a ciphertext.
+It outputs a message.
+\end{itemize}
+The scheme must be \emph{correct}, i.e., for all
+${\lambda\in\doubleN}$,
+${N\in\doubleN}$,
+${m\in\bit^\lambda}$,
+${j\in[N]}$,
+\begin{align*}
+\Pr\left[
+\begin{aligned}
+(\pk_i,\sk_i)&{}\draws\Gen(1^\lambda)
+\textup{ for }i\in[N]\\
+\ct&{}\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},0,m)
+\end{aligned}
+\::\:
+% In narrow mode, the equation is broken into two lines.
+\WideNarrow{}{\aligned}
+\Dec^{\{\pk_i\}_{i\in[N]}}(1^\lambda,N,j,\sk_j,\ct)
+\WideNarrow{}{&\\{}}
+=m
+\WideNarrow{}{\ \endaligned}
+\right]=1.
+\end{align*}
+\end{definition}

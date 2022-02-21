@@ -29,6 +29,7 @@
     "ciphertexts",
     "homomorphic",
     "IACR",
-    "indistinguishability"
+    "indistinguishability",
+    "PLBE"
   ]
 }
