@@ -6,7 +6,10 @@ consists of 3 efficient algorithms:
 \item $\Gen(1^\lambda)$ outputs a pair~$(\pk,\sk)$ of public and private keys.
 \item $\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},i_\bot\in[0..N],m\in\bit^\lambda)$
 takes as input
-a list of public keys,
+\luoji{Should motivate this requirement in the technical overview.
+Emphasize \textbf{lexicographically sorted, distinct} for security.
+In contrast, it is not necessary to say this for $\Dec$ as it has nothing to do with security.}
+a \textbf{lexicographically sorted} list of \textbf{distinct} public keys,
 an index,
 and a message.
 It outputs a ciphertext~$\ct$.
@@ -19,25 +22,30 @@ a secret key, and
 a ciphertext.
 It outputs a message.
 \end{itemize}
+\luoji{There is no guarantee that the public keys collide with only negligible probability.
+Since we do not really care about PLBE, we should prove a theorem that a secure \ad hoc broadcast and trace have negligible collision probability.}
 The scheme must be \emph{correct}, i.e., for all
 ${\lambda\in\doubleN}$,
 ${N\in\doubleN}$,
 ${m\in\bit^\lambda}$,
 ${j\in[N]}$,
 \begin{align*}
+\WideNarrow{}{\small}
 \Pr\left[
 \begin{aligned}
 (\pk_i,\sk_i)&{}\draws\Gen(1^\lambda)
 \textup{ for }i\in[N]\\
-\ct&{}\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},0,m)
+\ct
+\WideNarrow{}{\hspace*{2em}}&\WideNarrow{}{\hspace*{-2em}}
+{}\draws\Enc(1^\lambda,\{\pk_i^\ast\}_{i\in[N]},0,m)
 \end{aligned}
 \::\:
-% In narrow mode, the equation is broken into two lines.
-\WideNarrow{}{\aligned}
-\Dec^{\{\pk_i\}_{i\in[N]}}(1^\lambda,N,j,\sk_j,\ct)
-\WideNarrow{}{&\\{}}
-=m
-\WideNarrow{}{\ \endaligned}
-\right]=1.
+\begin{aligned}
+&\Dec^{\{\pk_i^\ast\}_{i\in[N]}}(1^\lambda,N,j,\sk_j^\ast,\ct)=m
+\\\textup{or }&\exists\, i,i'\in[N]:(i\neq i')\wedge(\pk_i=\pk_{i'})
+\end{aligned}
+\right]=1,
 \end{align*}
+where $\{(\pk_i^\ast,\sk_i^\ast)\}_{i\in[N]}$ is
+the lexicographically sorted $\{(\pk_i,\sk_i)\}_{i\in[N]}$.
 \end{definition}
