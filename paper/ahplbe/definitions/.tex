@@ -1,0 +1,20 @@
+\input{ahplbe/definitions/syntax-correctness}
+
+\noindent
+The above definition of correctness does not take into account
+% Since an adversarially generated key could be ``well-formed'',
+% the correct phrasing is ``adversarially generated'', but it is a mouthful.
+adversarially generated (malformed) public keys.
+It is easy though tedious
+% It is left as an exercise for the reader
+to define \emph{robustness} so that normally generated key pairs enjoy correctness even if the list contains malformed public keys
+and show that a tweaked version of Construction~\ref{con:ahplbe} achieves robustness.
+
+\subsubsection{Security.}
+\luoji{Tracing is naturally (do not claim ``inherently'') public as nobody is a central authority.
+Maybe note the difference to the original PLBE as the tracing key is non-existent and there isn't a ``mode indistinguishability''?}
+We define security notions of AH-PLBE analogously to those in~\cite{EC:BonSahWat06}.
+
+\input{ahplbe/definitions/message-hiding}
+
+\input{ahplbe/definitions/index-hiding}
