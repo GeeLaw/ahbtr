@@ -1,3 +1,13 @@
+% [BSW06] defines PLBE with the mode for tracing using a separate tracing key.
+% A question is thus what ``private'' refers to in the name, is it
+% - the privacy of the cut-off index, or
+% - the fact that tracing-mode encryption uses non-public key?
+% The answer should be the former, as in the introduction, [BSW06] says
+% > The main security requirement is that the system should be *private* [1].
+% and [1] refers to ``private broadcast encryption'', and the surrounding
+% text gives a feeling that ``private'' refers to the former.
 \section{\Ad Hoc Private Linear Broadcast Encryption}\label{sec:ahplbe}
 
 \input{ahplbe/syntax-correctness}
+
+\input{ahplbe/security}
