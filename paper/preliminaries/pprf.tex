@@ -1,0 +1,62 @@
+\subsubsection{Puncturable Pseudorandom Function.}
+We rely on PPRF in this work.
+
+\begin{definition}[PPRF]\label{def:pprf}
+A \emph{puncturable pseudorandom function (PPRF)} (with key space, domain, and codomain~$\bit^\lambda$) consists of 2 efficient algorithms:
+\begin{itemize}
+\item $\Puncture(1^\lambda,k\in\bit^\lambda,x)$
+takes as input a non-punctured key~${k\in\bit^\lambda}$ and a point~${x\in\bit^\lambda}$.
+It outputs a punctured key~$\mathring{k}_x$.
+\item $\Eval(1^\lambda,k,x\in\bit^\lambda)$
+takes as input a key~$k$ and a point~${x\in\bit^\lambda}$.
+It is deterministic and outputs a $\lambda$-bit string.
+\end{itemize}
+The scheme must be \emph{correct}, i.e., for all
+${\lambda\in\doubleN}$,
+${x,x'\in\bit^\lambda}$ such that ${x\neq x'}$,
+\begin{align*}
+\Pr\left[
+\begin{aligned}
+k&{}\draws\bit^\lambda\\
+\mathring{k}_x&{}\draws\Puncture(1^\lambda,k,x)
+\end{aligned}
+\::\:
+\Eval(1^\lambda,k,x')
+=
+\Eval(1^\lambda,\mathring{k}_x,x')
+\right]=1.
+\end{align*}
+\end{definition}
+
+\begin{definition}[PPRF security]\label{def:pprf-security}
+A PPRF $(\Puncture,\Eval)$ per Definition~\ref{def:pprf} is \emph{pseudorandom at the punctured point} (or \emph{secure} for the purpose of this work)
+if ${\ExpPPRF{0}\approx\ExpPPRF{1}}$,
+where $\ExpPPRF{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
+\begin{security}
+\phase{Challenge}
+Launch $\scriptA(1^\lambda)$ and receive from it a point~${x\in\bit^\lambda}$.
+Run
+\begin{align*}
+\WideNarrow{}{\hspace*{-1.2em}}
+k\draws\bit^\lambda,\quad
+\mathring{k}_x\draws\Puncture(1^\lambda,k,x),\quad
+r_0\gets\Eval(1^\lambda,k,x),\quad
+r_1\draws\bit^\lambda,
+\end{align*}
+and send $(\mathring{k}_x,r_b)$ to $\scriptA$.
+\phase{Guess}
+$\scriptA$ outputs a bit~$b'$, which is the output of the experiment.
+\end{security}
+\end{definition}
+
+\paragraph{Extension of Punctured Key.}
+We introduce a convenient notation for PPRF.
+Let $\mathring{k}_x$ be a key punctured at~$x$.
+Given ${r\in\bit^\lambda}$, we write $\mathring{k}_{x\mapsto r}$
+for the tuple $(\mathring{k}_x,x,r)$ and extend $\Eval$ by
+\begin{align*}
+\Eval(1^\lambda,\mathring{k}_{x\mapsto r},x')=\begin{cases}
+\Eval(1^\lambda,\mathring{k}_x,x'),&\textup{if }x'\neq x;\\
+r,&\textup{if }x'=x.
+\end{cases}
+\end{align*}

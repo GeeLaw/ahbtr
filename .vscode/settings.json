@@ -27,9 +27,12 @@
   [
     "ciphertext",
     "ciphertexts",
+    "codomain",
     "homomorphic",
     "IACR",
     "indistinguishability",
-    "PLBE"
+    "PLBE",
+    "PPRF",
+    "puncturable"
   ]
 }
