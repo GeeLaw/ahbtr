@@ -1,4 +1,4 @@
-# Ad Hoc (Decentralized) Broadcast and Trace
+# Ad Hoc (Decentralized) Broadcast, Trace, and Revoke
 
 Literature survey is collected in [Literature.md](Literature.md).
 

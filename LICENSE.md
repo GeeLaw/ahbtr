@@ -1,4 +1,4 @@
-# Ad Hoc (Decentralized) Broadcast and Trace
+# Ad Hoc (Decentralized) Broadcast, Trace, and Revoke
 
 Copyright (c) 2022 by Ji Luo, all rights reserved.
 
