@@ -2,7 +2,7 @@
 
 Copyright (c) 2022 by Ji Luo, all rights reserved.
 
-## The MIT License (MIT)
+## [Laomian](https://github.com/GeeLaw/laomian)
 
 Copyright (c) 2021 Ji Luo
 
