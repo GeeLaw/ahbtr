@@ -16,13 +16,12 @@ a list of \textbf{distinct} public keys,
 an index,
 and a message.
 It outputs a ciphertext~$\ct$.
-\item $\Dec^{\{\pk_i\}_{i\in[N]}}(1^\lambda,N,j\in[N],\sk,\ct)$
-is given random access to a list of public keys and
+\item $\Dec^{\{\pk_i\}_{i\in[N]},\ct}(1^\lambda,N,j\in[N],\sk)$
+is given random access to a list of public keys and a ciphertext, and
 takes as input
 the length of the list,
-an index,
-a secret key, and
-a ciphertext.
+an index, and
+a secret key.
 It outputs a message.
 \end{itemize}
 \luoji{There is no guarantee that the public keys collide with only negligible probability.
@@ -45,7 +44,7 @@ ${j\in[N]}$,
 \end{aligned}
 \::\:
 \begin{aligned}
-&\Dec^{\{\pk_i\}_{i\in[N]}}(1^\lambda,N,j,\sk_j,\ct)=m
+&\Dec^{\{\pk_i\}_{i\in[N]},\ct}(1^\lambda,N,j,\sk_j)=m
 \\\textup{or }&\exists\, i,i'\in[N]:(i\neq i')\wedge(\pk_i=\pk_{i'})
 \end{aligned}
 \right]=1.
