@@ -33,6 +33,7 @@
     "indistinguishability",
     "PLBE",
     "PPRF",
-    "puncturable"
+    "puncturable",
+    "Yao's"
   ]
 }
