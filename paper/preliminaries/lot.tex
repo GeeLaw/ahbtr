@@ -58,7 +58,9 @@ two labels (messages) ${L_0,L_1\in\bit^\lambda}$.
 Run
 \begin{align*}
 \ct\draws\begin{cases}
-\Send(1^\lambda,\hk,h,m,L_0,L_1),&\textup{if }b=0;\\
+\Send(1^\lambda,\hk,h,m,
+L_{\mathrlap{0}\phantom{D[m]}},L_{\mathrlap{1}\phantom{D[m]}}),&
+\textup{if }b=0;\\
 \Send(1^\lambda,\hk,h,m,L_{D[m]},L_{D[m]}),&\textup{if }b=1;
 \end{cases}
 \end{align*}
