@@ -24,29 +24,38 @@ an index, and
 a secret key.
 It outputs a message.
 \end{itemize}
-\luoji{There is no guarantee that the public keys collide with only negligible probability.
+\luoji{Add definition for efficiency!
+There is no guarantee that the public keys collide with only negligible probability.
 Since we do not really care about PLBE, we should prove a theorem that a secure AH-BTR have negligible collision probability.
 Also consider proving the analogue of Remark~3 in~\cite{C:Zhandry20}.}
-The scheme must be \emph{correct}, i.e., for all
+The scheme must be \emph{robustly correct}, i.e., for all
 ${\lambda\in\doubleN}$,
 ${N\in\doubleN}$,
+${j\in[N]}$,\WideNarrow{}{\linebreak[4]}
+$\{\pk_i\}_{i\in[N]\setminus\{j\}}$
+(not necessarily produced by~$\Gen$),
 ${m\in\bit^\lambda}$,
-${j\in[N]}$,
 \begin{align*}
-\WideNarrow{}{\small}
-\Pr\left[
+\Pr\WideNarrow{}{\!}\left[
 \begin{aligned}
-(\pk_i,\sk_i)&{}\draws\Gen(1^\lambda)
-\textup{ for }i\in[N]\\
+(
+\WideNarrow{}{{}&}
+\pk_j,\sk_j)
+\WideNarrow{&{}}{}
+\draws\Gen(1^\lambda)\\
+\WideNarrow{}{&}
 \ct
-\WideNarrow{}{\hspace*{2em}}&\WideNarrow{}{\hspace*{-2em}}
-{}\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},0,m)
+\WideNarrow{&{}}{}
+\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},0,m)
 \end{aligned}
-\::\:
+\WideNarrow{\::\:}{:}
 \begin{aligned}
-&\Dec^{\{\pk_i\}_{i\in[N]},\ct}(1^\lambda,N,j,\sk_j)=m
-\\\textup{or }&\exists\, i,i'\in[N]:(i\neq i')\wedge(\pk_i=\pk_{i'})
+\Dec^{\{\pk_i\}_{i\in[N]},\ct}(1^\lambda,N,j,\sk_j)&{}=m
+\\\textup{or }\exists\, i,i'\in[N]:\WideNarrow{\,\ }{}
+(i\neq i')\wedge(\pk_i&{}=\pk_{i'})
 \end{aligned}
-\right]=1.
+\right]
+\WideNarrow{=}{\!=}
+1.
 \end{align*}
 \end{definition}
