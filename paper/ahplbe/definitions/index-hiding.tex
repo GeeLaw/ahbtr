@@ -3,44 +3,25 @@ An AH-PLBE scheme $(\Gen,\Enc,\Dec)$ (Definition~\ref{def:ahplbe})
 is \emph{index-hiding} if ${\ExpIH{0}\approx\ExpIH{1}}$,
 where $\ExpIH{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
 \begin{security}
-\phase{Setup}
-Launch $\scriptA(1^\lambda)$.
-Let (set) ${S\gets\varnothing}$ and (counter) ${Q\gets 0}$.
-\phase{Query}
-Repeat the following for arbitrarily many rounds determined by~$\scriptA$.
-In each round, $\scriptA$ has two choices:
-\begin{itemize}
-\item $\scriptA$ can request to generate a new key pair.
-Upon this query, run
-\begin{align*}
-Q\gets Q+1,\quad
-S\gets S\cup\{Q\},\quad
-(\pk_Q,\sk_Q)\draws\Gen(1^\lambda),
-\end{align*}
-and send $(Q,\pk_Q)$ to~$\scriptA$.
-\item $\scriptA$ can query an existing secret key by sending~${q\in[Q]}$.
-Upon this query, let
-${
-S\gets S\setminus\{q\}
-}$
-and send $\sk_q$ to~$\scriptA$.
-\end{itemize}
 \phase{Challenge}
-$\scriptA$ chooses
-a list~$\{\pk_i^\ast\}_{i\in[N]}$ of public keys,
-an index~${i_\bot^\ast\in[N]}$, and
-an index~${q^\ast\in[Q]}$.
-Upon the challenge, run
+Run
+${(\pk,\sk)\draws\Gen(1^\lambda)}$,
+launch $\scriptA(1^\lambda,\pk)$, and
+receive from it
+some~${N\in\doubleN}$,
+a cut-off index~${i_\bot\in[N]}$, and
+a list~$\{\pk_i\}_{i\in[N]\setminus\{i_\bot\}}$ of public keys.
+Let ${\pk_{i_\bot}\gets\pk}$,
+run
 \begin{align*}
-m^\ast\gets\bit^\lambda,\quad
-\ct^\ast\gets\Enc(1^\lambda,\{\pk_i^\ast\}_{i\in[N]},i_\bot^\ast-b,m^\ast),
+m\draws\bit^\lambda,\qquad
+\ct\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},i_\bot-b,m),
 \end{align*}
-and send $(m^\ast,\ct^\ast)$ to~$\scriptA$.
+and send $(m,\ct)$ to $\scriptA$.
 \phase{Guess}
 $\scriptA$ outputs a bit~$b'$.
 The output of the experiment is~$b'$ if
-the keys in $\{\pk_i^\ast\}$ are \emph{distinct} and
-${\pk_{i_\bot^\ast}^\ast=\pk_{q^\ast}}$ and ${q^\ast\in S}$.
+the keys in $\{\pk_i\}_{i\in[N]}$ are \emph{distinct}.
 Otherwise, the output is set to~$0$.
 \end{security}
 \end{definition}
