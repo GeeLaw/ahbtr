@@ -5,10 +5,10 @@ We rely on PPRF~\cite{AC:BonWat13,CCS:KPTZ13,PKC:BoyGolIva14,STOC:SahWat14}.
 A \emph{puncturable pseudorandom function (PPRF) family} (with key space, domain, and codomain~$\bit^\lambda$) consists of 2 efficient algorithms:
 \begin{itemize}
 \item $\Puncture(1^\lambda,k\in\bit^\lambda,x)$
-takes as input a non-punctured key~${k\in\bit^\lambda}$ and a point~${x\in\bit^\lambda}$.
+takes as input a non-punctured key and a point.
 It outputs a punctured key~$\mathring{k}_x$.
 \item $\Eval(1^\lambda,k,x\in\bit^\lambda)$
-takes as input a key~$k$ and a point~${x\in\bit^\lambda}$.
+takes as input a (punctured or non-punctured) key and a point.
 It is deterministic and outputs a $\lambda$-bit string.
 \end{itemize}
 The scheme must be \emph{correct}, i.e., for all
