@@ -31,3 +31,36 @@ ${x\in\bit^{M_0}}$,
 \right]=1.
 \end{align*}
 \end{definition}
+
+\begin{definition}[garbled circuit security~\cite{CCS:BelHoaRog12}]\label{def:gc-security}
+Let $(\Garble,\Eval)$ be a circuit garbling scheme (Definition~\ref{def:gc}).
+A \emph{simulator} is an efficient algorithm
+\begin{align*}
+\SimGarble(1^\lambda,C:\bit^{n+M_0}\to\bit^{n'},n,y\in\bit^{n'})
+\to
+(\widehat{C},\{L_{m_0}\}_{m_0\in[M_0]})
+\end{align*}
+taking as input a circuit, the length of the hardwired input, and a circuit output,
+and producing a simulated garbled circuit and $M_0$~simulated labels.
+The scheme is \emph{secure} if there exists a simulator $\SimGarble$ such that ${\ExpGC{0}\approx\ExpGC{1}}$, where $\ExpGC{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
+\begin{security}
+\phase{Challenge}
+Launch $\scriptA(1^\lambda)$ and receive
+a circuit ${C:\bit^{n+M_0}\to\bit^{n'}}$,
+a~hardwired input~${w\in\bit^n}$, and
+a non-hardwired input~${x\in\bit^{M_0}}$
+from it.
+Run
+\begin{align*}
+\textup{if }b=0,\quad
+(\widehat{C},\{L_{m_0,\mathrlap{b}\phantom{x[m_0]}}\}_{m_0\in[M_0],b\in\bit})
+&{}\draws\Garble(1^\lambda,C[w]);\\
+\textup{if }b=1,\quad
+(\widehat{C},\{L_{m_0,x[m_0]}\}_{m_0\in[M_0]\phantom{,b\in\bit}})
+&{}\draws\SimGarble(1^\lambda,C,n,C[w](x));
+\end{align*}
+and send $(\widehat{C},\{L_{m_0,x[m_0]}\}_{m_0\in[M_0]})$ to $\scriptA$.
+\phase{Guess}
+$\scriptA$ outputs a bit~$b'$, which is the output of the experiment.
+\end{security}
+\end{definition}
