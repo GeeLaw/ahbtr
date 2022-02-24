@@ -1,0 +1,33 @@
+\subsubsection{Garbled Circuits.}
+We rely on Yao's garbled circuits~\cite{FOCS:Yao86}.
+
+\begin{definition}[garbled circuit~\cite{CCS:BelHoaRog12}]
+A \emph{circuit garbling scheme} consists of 2 efficient algorithms:
+\begin{itemize}
+\item $\Garble(1^\lambda,C[w])$
+takes a circuit ${C:\bit^{n+M_0}\to\bit^{n'}}$ (with ${w\in\bit^n}$ hardwired as its first portion of input) as input.
+It outputs a garbled circuit~$\widehat{C}$
+and $M_0$~pairs of labels ${L_{m_0,b}\in\bit^\lambda}$
+for ${m_0\in[M_0]}$, ${b\in\bit}$.
+\item $\Eval(1^\lambda,\widehat{C},\{L_{m_0}\}_{m_0\in[M_0]})$
+takes as input a garbled circuit and $M_0$~labels.
+It outputs an $n'$-bit string.
+\end{itemize}
+The scheme must be \emph{correct}, i.e., for all
+${\lambda\in\doubleN}$,
+${n,M_0,n'\in\doubleN}$,%
+\WideNarrow{}{ ${w\in\bit^n}$,}
+${C:\bit^{n+M_0}\to\bit^{n'}}$,%
+\WideNarrow{ ${w\in\bit^n}$,}{}
+${x\in\bit^{M_0}}$,
+\begin{align*}
+\Pr\left[
+\begin{aligned}
+(\widehat{C},\{L_{m_0,b}\}_{m_0\in[M_0],b\in\bit})\draws\Garble(1^\lambda,C[w])
+&\\\::\:
+\Eval(1^\lambda,\widehat{C},\{L_{m_0,x[m_0]}\}_{m_0\in[M_0]})=C[w](x)
+\ &
+\end{aligned}
+\right]=1.
+\end{align*}
+\end{definition}
