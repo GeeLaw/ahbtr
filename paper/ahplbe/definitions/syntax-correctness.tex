@@ -4,7 +4,7 @@ An \emph{\ad hoc private linear broadcast encryption (AH-PLBE) scheme}
 consists of 3 efficient algorithms:
 \begin{itemize}
 \item $\Gen(1^\lambda)$ outputs a pair~$(\pk,\sk)$ of public and secret keys.
-\item $\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},i_\bot\in[0..N],m\in\bit^\lambda)$
+\item $\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},i_\bot\in[0..N],\mu\in\bit^\lambda)$
 takes as input
 \luoji{Should motivate this requirement in the technical overview.
 Emphasize \textit{\textbf{distinct}} for security.
@@ -34,7 +34,7 @@ ${N\in\doubleN}$,
 ${j\in[N]}$,\WideNarrow{}{\linebreak[4]}
 $\{\pk_i\}_{i\in[N]\setminus\{j\}}$
 (not necessarily produced by~$\Gen$),
-${m\in\bit^\lambda}$,
+${\mu\in\bit^\lambda}$,
 \begin{align*}
 \Pr\WideNarrow{}{\!}\left[
 \begin{aligned}
@@ -46,11 +46,11 @@ ${m\in\bit^\lambda}$,
 \WideNarrow{}{&}
 \ct
 \WideNarrow{&{}}{}
-\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},0,m)
+\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},0,\mu)
 \end{aligned}
 \WideNarrow{\::\:}{:}
 \begin{aligned}
-\Dec^{\{\pk_i\}_{i\in[N]},\ct}(1^\lambda,N,j,\sk_j)&{}=m
+\Dec^{\{\pk_i\}_{i\in[N]},\ct}(1^\lambda,N,j,\sk_j)&{}=\mu
 \\\textup{or }\exists\, i,i'\in[N]:\WideNarrow{\,\ }{}
 (i\neq i')\wedge(\pk_i&{}=\pk_{i'})
 \end{aligned}

@@ -6,22 +6,22 @@ A \emph{public-key encryption (PKE) scheme} (with message space~$\bit^\lambda$)
 consists of 3 efficient algorithms:
 \begin{itemize}
 \item $\Gen(1^\lambda)$ outputs a pair $(\pk,\sk)$ of public and secret keys.
-\item $\Enc(1^\lambda,\pk,m\in\bit^\lambda)$ takes as input the public key and a message.
+\item $\Enc(1^\lambda,\pk,\mu\in\bit^\lambda)$ takes as input the public key and a message.
 It outputs a ciphertext~$\ct$.
 \item $\Dec(1^\lambda,\sk,\ct)$ takes as input the secret key and a ciphertext.
 It outputs a message.
 \end{itemize}
 The scheme must be \emph{correct}, i.e., for all
 ${\lambda\in\doubleN}$,
-${m\in\bit^\lambda}$,
+${\mu\in\bit^\lambda}$,
 \begin{align*}
 \Pr\left[
 \begin{aligned}
 (\pk,\sk)&{}\draws\Gen(1^\lambda)\\
-\ct&{}\draws\Enc(1^\lambda,\pk,m)
+\ct&{}\draws\Enc(1^\lambda,\pk,\mu)
 \end{aligned}
 \::\:
-\Dec(1^\lambda,\sk,\ct)=m
+\Dec(1^\lambda,\sk,\ct)=\mu
 \right]=1.
 \end{align*}
 \end{definition}
@@ -29,8 +29,8 @@ ${m\in\bit^\lambda}$,
 \begin{definition}[PKE security]\label{def:pke-security}
 A PKE scheme $(\Gen,\Enc,\Dec)$ per Definition~\ref{def:pke} is \emph{semantically secure for random messages} (or \emph{secure} for the purpose of this work) if
 \begin{align*}
-\{(m_0,m_1,\pk,\ct_0)\}\approx\{(m_0,m_1,\pk,\ct_1)\},
+\{(\mu_0,\mu_1,\pk,\ct_0)\}\approx\{(\mu_0,\mu_1,\pk,\ct_1)\},
 \end{align*}
 where $(\pk,\sk)\draws\Gen(1^\lambda)$ and
-${m_b\draws\bit^\lambda}$, ${\ct_b\draws\Enc(1^\lambda,\pk,m_b)}$ for~${b\in\bit}$.
+${\mu_b\draws\bit^\lambda}$, ${\ct_b\draws\Enc(1^\lambda,\pk,\mu_b)}$ for~${b\in\bit}$.
 \end{definition}

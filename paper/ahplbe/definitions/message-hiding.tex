@@ -8,11 +8,11 @@ Launch $\scriptA(1^\lambda)$ and
 receive from it a list~$\{\pk_i\}_{i\in[N]}$ of public keys.
 Run
 \begin{align*}
-m_0\draws\bit^\lambda,\quad
-m_1\draws\bit^\lambda,\qquad
-\ct\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},N,m_b),
+\mu_0\draws\bit^\lambda,\quad
+\mu_1\draws\bit^\lambda,\qquad
+\ct\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},N,\mu_b),
 \end{align*}
-and send $(m_0,m_1,\ct)$ to~$\scriptA$.
+and send $(\mu_0,\mu_1,\ct)$ to~$\scriptA$.
 \phase{Guess}
 $\scriptA$ outputs a bit~$b'$.
 The output of the experiment is~$b'$

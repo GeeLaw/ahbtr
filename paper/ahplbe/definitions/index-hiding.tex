@@ -14,10 +14,10 @@ a list~$\{\pk_i\}_{i\in[N]\setminus\{i_\bot\}}$ of public keys.
 Let ${\pk_{i_\bot}\gets\pk}$,
 run
 \begin{align*}
-m\draws\bit^\lambda,\qquad
-\ct\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},i_\bot-1+b,m),
+\mu\draws\bit^\lambda,\qquad
+\ct\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},i_\bot-1+b,\mu),
 \end{align*}
-and send $(m,\ct)$ to $\scriptA$.
+and send $(\mu,\ct)$ to $\scriptA$.
 \phase{Guess}
 $\scriptA$ outputs a bit~$b'$.
 The output of the experiment is~$b'$ if
