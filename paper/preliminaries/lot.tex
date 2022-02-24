@@ -35,3 +35,35 @@ ${L_0,L_1\in\bit^\lambda}$,
 \right]=1.
 \end{align*}
 \end{definition}
+
+\noindent
+We only need database-selective security~\cite{TCC:AnaLom18}.
+The following indistinguishability-based definition is equivalent to the usual simulation-based formulation.
+
+\begin{definition}[LOT security]\label{def:lot-security}
+An LOT scheme $(\Gen,\Hash,\Send,\Recv)$ per Definition~\ref{def:lot} is \emph{database-selectively secure} (or \emph{secure} for the purpose of this work) if ${\ExpLOT{0}\approx\ExpLOT{1}}$, where $\ExpLOT{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
+\begin{security}
+\phase{Setup}
+Launch $\scriptA(1^\lambda)$ and
+receive from it some~${M\in\doubleN}$ and a database ${D\in\bit^M}$.
+Run
+\begin{align*}
+\hk\draws\Gen(1^\lambda,M),\qquad
+(h,\widehat{D})\gets\Hash(1^\lambda,\hk,D),
+\end{align*}
+and send $\hk$ to $\scriptA$.
+\phase{Challenge}
+$\scriptA$ chooses an index~${m\in[M]}$\WideNarrow{}{ into~$D$} and
+two labels (messages) ${L_0,L_1\in\bit^\lambda}$.
+Run
+\begin{align*}
+\ct\draws\begin{cases}
+\Send(1^\lambda,\hk,h,m,L_0,L_1),&\textup{if }b=0;\\
+\Send(1^\lambda,\hk,h,m,L_{D[m]},L_{D[m]}),&\textup{if }b=1;
+\end{cases}
+\end{align*}
+and send $\ct$ to $\scriptA$.
+\phase{Guess}
+$\scriptA$ outputs a bit~$b'$, which is the output of the experiment.
+\end{security}
+\end{definition}
