@@ -7,12 +7,12 @@ consists of 3 efficient algorithms:
 \item $\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},i_\bot\in[0..N],m\in\bit^\lambda)$
 takes as input
 \luoji{Should motivate this requirement in the technical overview.
-Emphasize \textbf{distinct} for security.
+Emphasize \textit{\textbf{distinct}} for security.
 In contrast, it is not necessary to say this for $\Dec$ as it has nothing to do with security.
 Maybe a remark on AH-BT scheme about a decoder that can decrypt ciphertexts under a random permutation of those keys?
 (Reducible to fixed order at constant-factor loss of advantage, by sampling random orders and picking the order with the highest estimated advantage.)
 Note that it is \emph{not} possible to sort inside AH-BT encryption, as it kills efficiency.}
-a list of \textbf{distinct} public keys,
+a list of \textit{\textbf{distinct}} public keys,
 an cut-off index,
 and a message.
 It outputs a ciphertext~$\ct$.
