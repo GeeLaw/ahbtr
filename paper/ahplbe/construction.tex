@@ -1,4 +1,79 @@
 \subsection{Construction}\label{sec:ahplbe-construction}
 
+\subsubsection{Ingredients of Construction~\ref{con:ahplbe}.}
+Let
+\begin{itemize}
+\item $(\GC.\Garble,\GC.\Eval)$ be a circuit garbling scheme
+such that $\GC.\Garble$ uses $\lambda$-bit randomness,
+\item $(\PPRF.\Puncture,\PPRF.\Eval)$ a PPRF,
+\item $(\PKE.\Gen,\PKE.\Enc,\PKE.\Dec)$ a PKE scheme
+such that $\PKE.\Enc$ uses $\lambda$-bit randomness and
+whose public keys are (exactly) of polynomial length~$M_0$,
+\item $(\LOT.\Gen,\LOT.\Hash,\LOT.\Send,\LOT.\Recv)$ a laconic OT scheme,
+\item $\Obf$ an obfuscation scheme.
+\end{itemize}
+
 \begin{construction}[AH-PLBE]\label{con:ahplbe}
+Our AH-PLBE works as follows.
+\begin{itemize}
+\item $\Gen$ is the same as $\PKE.\Gen$.
+\item $\Enc(\{\pk_i\}_{i\in[N]},i_\bot,\mu)$
+first hashes down the public keys using the laconic OT scheme by running
+\begin{align*}
+M&\mathrlap{{}\gets NM_0,}
+\hspace*{14em}
+\mathllap{D}{}\gets\pk_1\concat\cdots\concat\pk_N,\\
+\hk&\mathrlap{{}\draws\LOT.\Gen(M),}
+\hspace*{14em}
+\mathllap{(h,\widehat{D})}{}\gets\LOT.\Hash(\hk,D).
+\end{align*}
+It samples PPRF keys
+\begin{align*}
+k_\GC\draws\bit^\lambda,\qquad
+k_\PKE\draws\bit^\lambda,\qquad
+k_{\LOT,m_0}\draws\bit^\lambda\textup{ for }m_0\in[M_0],
+\end{align*}
+and obfuscates $C_\GC$ shown in \Figure~\ref{fig:circuit-create-gc} by running
+\begin{align*}
+\widetilde{C}_\GC\draws\Obf(C_\GC[N,\hk,h]).
+\end{align*}
+The algorithm outputs ${\ct=(\hk,\widetilde{C}_\GC)}$ as the ciphertext.
+\item $\Dec^{\{\pk_i\}_{i\in[N]},\ct}(N,j,\sk)$
+first parses ${\ct=(\hk,\widetilde{C}_\GC)}$ and recomputes
+\begin{align*}
+M\gets NM_0,\qquad
+D\gets\pk_1\concat\cdots\concat\pk_N,\qquad
+(h,\widehat{D})\gets\LOT.\Hash(\hk,D).
+\end{align*}
+The algorithm next runs the obfuscated circuit,
+\begin{align*}
+(\widehat{C}_{\ct,j},\{\LOT.\ct_{j,m_0}\}_{m_0\in[M_0]})
+\gets\widetilde{C}_\GC(j),
+\end{align*}
+to obtain the garbled circuit and laconic OT ciphertexts of its labels for the decryptor.
+It then receives the labels,
+\begin{align*}
+\WideNarrow{}{\hspace*{-1.5em}}
+L_{j,m_0,\pk_j[m_0]}
+\gets\LOT.\Recv^{\widehat{D}}(\hk,h,(j-1)M_0+m_0,\LOT.\ct_{j,m_0})
+\WideNarrow{\quad\textup{for }}{\textup{ for }}
+m_0\in[M_0],
+\end{align*}
+and evaluates the garbled circuit,
+\begin{align*}
+\PKE.\ct_j\gets\GC.\Eval(
+\widehat{C}_{\ct,j},
+\{L_{j,m_0,\pk_j[m_0]}\}_{m_0\in[M_0]}
+),
+\end{align*}
+to obtain the PKE ciphertext under the decryptor's public key.
+Lastly, the algorithm runs and outputs (as the decrypted message)
+\begin{align*}
+\mu\gets\PKE.\Dec(\sk,\PKE.\ct_j).
+\end{align*}
+\end{itemize}
 \end{construction}
+
+\subsubsection{Correctness.}
+\luoji{{\color{red}To be done.}}
+Blah.

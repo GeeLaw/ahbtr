@@ -6,10 +6,12 @@ Efficient adversaries (in interactive experiments) can be either circuits of (to
 We use $\approx,\approxS,\equiv$ for computational indistinguishability, statistical indistinguishability, and identity.
 
 Under the standard assumption that a pseudorandom generator (with polynomial security) exists,
-we can assume, whenever convenient, that a randomized algorithm uses a uniformly random $\lambda$-bit string as its randomness (without losing polynomial security considered in this work).
+we can assume, whenever convenient, that a randomized algorithm uses a uniformly random $\lambda$-bit string as its randomness (without losing polynomial security considered in this work or degrading its efficiency).
 
 For~${n,n'\in\doubleN}$, we write $[n..n']$ for the set~$\{n,\dots,n'\}$,
 and $[n]$ for~$[1..n]$.
-For~${D\in\bit^M}$ and~${m\in[M]}$, we denote by~$D[m]$ the $m$\textsuperscript{th} bit of~$D$.
+For a bit-string~$D$, we denote by $|D|$ its bit-length,
+and given an index~${m\in[|D|]}$, we denote by~$D[m]$ the $m$\textsuperscript{th} bit of~$D$.
+For two bit-strings~$D,D'$, their concatenation is~${D\concat D'}$.
 Given a circuit ${C:\bit^{n+M_0}\to\bit^{n'}}$ and ${w\in\bit^n}$, we define $C[w]$ to be $C$ with $w$ hardwired as its first portion of input,
-so~${C[w](x)=C(w,x)}$.
+so~${C[w](x)=C(w\concat x)}$.
