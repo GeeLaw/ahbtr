@@ -34,7 +34,9 @@ ${x\in\bit^{M_0}}$,
 
 \begin{definition}[garbled circuit security~\cite{FOCS:Yao86,JC:LinPin09,CCS:BelHoaRog12}]\label{def:gc-security}
 Let $(\Garble,\Eval)$ be a circuit garbling scheme (Definition~\ref{def:gc}).
-A \emph{simulator} is an efficient algorithm
+A \emph{simulator} is an efficient algorithm%
+\footnote{This definition protects both $w$ and $x$.
+In this work we only need privacy for~$w$.}
 \begin{align*}
 \SimGarble(1^\lambda,C:\bit^{n+M_0}\to\bit^{n'},n,y\in\bit^{n'})
 \to
