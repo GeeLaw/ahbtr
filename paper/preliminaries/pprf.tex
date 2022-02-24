@@ -1,7 +1,7 @@
 \subsubsection{Puncturable Pseudorandom Function.}
-We rely on PPRF in this work.
+We rely on PPRF~\cite{AC:BonWat13,CCS:KPTZ13,PKC:BoyGolIva14,STOC:SahWat14}.
 
-\begin{definition}[PPRF]\label{def:pprf}
+\begin{definition}[PPRF~\cite{AC:BonWat13,CCS:KPTZ13,PKC:BoyGolIva14,STOC:SahWat14}]\label{def:pprf}
 A \emph{puncturable pseudorandom function (PPRF) family} (with key space, domain, and codomain~$\bit^\lambda$) consists of 2 efficient algorithms:
 \begin{itemize}
 \item $\Puncture(1^\lambda,k\in\bit^\lambda,x)$
@@ -28,7 +28,7 @@ k&{}\draws\bit^\lambda\\
 \end{align*}
 \end{definition}
 
-\begin{definition}[PPRF security]\label{def:pprf-security}
+\begin{definition}[PPRF security~\cite{AC:BonWat13,CCS:KPTZ13,PKC:BoyGolIva14,STOC:SahWat14}]\label{def:pprf-security}
 % The definition is made interactive to accommodate uniform security.
 A PPRF $(\Puncture,\Eval)$ per Definition~\ref{def:pprf} is \emph{pseudorandom at the punctured point} (or \emph{secure} for the purpose of this work)
 if ${\ExpPPRF{0}\approx\ExpPPRF{1}}$,

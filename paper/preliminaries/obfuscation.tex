@@ -1,8 +1,8 @@
 \subsubsection{Obfuscation.}
-We rely on indistinguishability obfuscation for polynomial-sized domain.
+We rely on indistinguishability obfuscator for polynomial-sized domain.
 
-\begin{definition}[(circuit) obfuscation]\label{def:obfuscation}
-A \emph{(circuit) obfuscation scheme} is an efficient algorithm
+\begin{definition}[(circuit) obfuscator~\cite{C:BGIRSVY01}]\label{def:obfuscation}
+A \emph{(circuit) obfuscator} is an efficient algorithm
 $\Obf(1^\lambda,C)$
 taking a circuit ${C:\bit^n\to\bit^{n'}}$ as input
 and producing a circuit ${\widetilde{C}:\bit^n\to\bit^{n'}}$ as output.
@@ -18,11 +18,11 @@ ${x\in\bit^n}$,
 \end{align*}
 \end{definition}
 
-\begin{definition}[{\iO} for $\poly(\lambda)$-sized domain]
+\begin{definition}[{\iO}~\cite{C:BGIRSVY01} for $\poly(\lambda)$-sized domain]
 \label{def:obfuscation-security}
 % The definition is made interactive to accommodate uniform security.
-An obfuscation scheme $\Obf$ per Definition~\ref{def:obfuscation} is
-an \emph{indistinguishability obfuscation for polynomial-sized domain
+An obfuscator $\Obf$ per Definition~\ref{def:obfuscation} is
+an \emph{indistinguishability obfuscator for polynomial-sized domain
 ({\iO} for $\poly(\lambda)$-sized domain)}
 if ${\ExpIO{0}\approx\ExpIO{1}}$,
 where $\ExpIO{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
