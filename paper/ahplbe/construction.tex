@@ -13,12 +13,17 @@ whose public keys are (exactly) of polynomial length~$M_0$,
 \item $\Obf$ an obfuscation scheme.
 \end{itemize}
 
+\begin{figure}[p]
+\input{ahplbe/figures/circuit-create-gc}
+\label{fig:circuit-create-gc}
+\end{figure}
+
 \begin{construction}[AH-PLBE]\label{con:ahplbe}
 Our AH-PLBE works as follows.
 \begin{itemize}
 \item $\Gen$ is the same as $\PKE.\Gen$.
 \item $\Enc(\{\pk_i\}_{i\in[N]},i_\bot,\mu)$
-first hashes down the public keys using the laconic OT scheme by running
+first hashes down the public keys by running
 \begin{align*}
 M&\mathrlap{{}\gets NM_0,}
 \hspace*{14em}
@@ -27,15 +32,17 @@ M&\mathrlap{{}\gets NM_0,}
 \hspace*{14em}
 \mathllap{(h,\widehat{D})}{}\gets\LOT.\Hash(\hk,D).
 \end{align*}
-It samples PPRF keys
+It samples the cut-off message ${\mu_\bot\draws\bit^\lambda}$ and PPRF keys
 \begin{align*}
-k_\GC\draws\bit^\lambda,\qquad
-k_\PKE\draws\bit^\lambda,\qquad
-k_{\LOT,m_0}\draws\bit^\lambda\textup{ for }m_0\in[M_0],
+k^\GC\draws\bit^\lambda,\qquad
+k^\LOT_{m_0}\draws\bit^\lambda\textup{ for }m_0\in[M_0],\qquad
+k^\PKE\draws\bit^\lambda,
 \end{align*}
-and obfuscates $C_\GC$ shown in \Figure~\ref{fig:circuit-create-gc} by running
+and obfuscates $C_\GC$ (\Figure~\ref{fig:circuit-create-gc}) by running
 \begin{align*}
-\widetilde{C}_\GC\draws\Obf(C_\GC[N,\hk,h]).
+\widetilde{C}_\GC\draws\Obf(C_\GC[
+N,\hk,h,i_\bot,\mu_\bot,\mu,
+k^\GC,\{k^\LOT_{m_0}\}_{m_0\in[M_0]},k^\PKE]).
 \end{align*}
 The algorithm outputs ${\ct=(\hk,\widetilde{C}_\GC)}$ as the ciphertext.
 \item $\Dec^{\{\pk_i\}_{i\in[N]},\ct}(N,j,\sk)$
@@ -50,7 +57,7 @@ The algorithm next runs the obfuscated circuit,
 (\widehat{C}_{\ct,j},\{\LOT.\ct_{j,m_0}\}_{m_0\in[M_0]})
 \gets\widetilde{C}_\GC(j),
 \end{align*}
-to obtain the garbled circuit and laconic OT ciphertexts of its labels for the decryptor.
+to obtain the garbled $C_\ct$ (\Figure~\ref{fig:circuit-create-gc}) for the decryptor and the laconic OT ciphertexts sending its labels.
 It then receives the labels,
 \begin{align*}
 \WideNarrow{}{\hspace*{-1.5em}}
