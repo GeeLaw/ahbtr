@@ -1,0 +1,30 @@
+\subsubsection{Assumption.}
+All of the primitives defined in this section are implied by the existence of
+weakly selectively secure, single key, and sublinearly succinct
+public-key functional encryption for general circuits
+(so-called \emph{obfuscation-minimum PKFE}),
+of which we refer the reader to~\cite{C:KNTY19} for the precise definition.
+
+\begin{lemma}
+Suppose there exists an \emph{obfuscation-minimum PKFE} with polynomial security, then there exist
+\begingroup
+\WideNarrow{
+\def\MyCite#1{\leavevmode\unskip\rlap{\textup{#1}}\hspace*{13.6em}\ignorespaces}
+}{
+\def\MyCite#1{\leavevmode\unskip\rlap{\textup{#1}}\hspace*{5em}\ignorespaces}
+}
+\begin{itemize}
+\item \MyCite{\cite{FOCS:Yao86,JC:LinPin09,CCS:BelHoaRog12}}
+a secure circuit garbling scheme (Definitions~\ref{def:gc} and~\ref{def:gc-security}),
+\item \MyCite{\cite{FOCS:GolGolMic84,AC:BonWat13,CCS:KPTZ13,PKC:BoyGolIva14}}
+a secure PPRF (Definitions~\ref{def:pprf} and~\ref{def:pprf-security}),
+\item \MyCite{\citeleft folklore\citeright}
+a secure PKE scheme (Definitions~\ref{def:pke} and~\ref{def:pke-security}),
+\item \MyCite{\cite{C:CDGGMP17,TCC:LiuZha17,TCC:AnaLom18,C:KNTY19}}
+a secure laconic OT scheme (Definitions~\ref{def:lot} and~\ref{def:lot-security}), and
+\item \MyCite{\cite{C:LinTes17,TCC:LiuZha17}}
+an {\iO} for $\poly(\lambda)$-sized domain (Definitions~\ref{def:obfuscation} and~\ref{def:obfuscation-security}),
+\end{itemize}
+with polynomial security.
+\endgroup
+\end{lemma}

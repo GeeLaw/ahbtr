@@ -32,9 +32,11 @@
     "homomorphic",
     "IACR",
     "indistinguishability",
+    "PKFE",
     "PLBE",
     "PPRF",
     "puncturable",
+    "sublinearly",
     "Yao's"
   ]
 }
