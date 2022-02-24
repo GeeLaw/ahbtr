@@ -5,18 +5,18 @@ where $\ExpMH{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
 \begin{security}
 \phase{Challenge}
 Launch $\scriptA(1^\lambda)$ and
-receive from it a list~$\{\pk_i^\ast\}_{i\in[N]}$ of public keys.
+receive $\{\pk_i\}_{i\in[N]}$ from it.
 Run
 \begin{align*}
 m_0\draws\bit^\lambda,\quad
 m_1\draws\bit^\lambda,\qquad
-\ct\draws\Enc(1^\lambda,\{\pk_i^\ast\}_{i\in[N]},N,m_b),
+\ct\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},N,m_b),
 \end{align*}
 and send $(m_0,m_1,\ct)$ to~$\scriptA$.
 \phase{Guess}
 $\scriptA$ outputs a bit~$b'$.
 The output of the experiment is~$b'$
-if the public keys in $\{\pk_i^\ast\}_{i\in[N]}$ are \emph{distinct}.
+if the public keys in $\{\pk_i\}_{i\in[N]}$ are \emph{distinct}.
 Otherwise, the output is set to~$0$.
 \end{security}
 \end{definition}
