@@ -7,7 +7,7 @@
 The only difference between $\ExpIH{0}$ and $\ExpIH{1}$ is whether the $C_\GC$ being obfuscated hardwires $\mu$ (in~$\ExpIH{0}$) or $\mu_\bot$ (in~$\ExpIH{1}$) into $C_{\ct,i_\bot^\ast}$, which only affects the output of $C_\GC$ at~${j=i_\bot^\ast}$.
 We consider the following hybrids:
 \begin{itemize}
-\item $\Hyb_0$ is identical to $\ExpIH{0}$, where
+\item $\Hyb_0^b$ is identical to $\ExpIH{b}$, where
 \begin{align*}
 \hk&{}\draws\LOT.\Gen(NM_0),\qquad
 (h,\widehat{D})\draws\LOT.\Hash(\hk,\pk_1\concat\cdots\concat\pk_N),\\
@@ -15,11 +15,11 @@ k^\GC&{}\draws\bit^\lambda,\qquad
 k^\PKE\draws\bit^\lambda,\qquad
 k^\LOT_{m_0}\draws\bit^\lambda\textup{ for }m_0\in[M_0],\\
 \widetilde{C}_\GC&{}\draws\Obf(C_\GC[
-N,\hk,h,{\color{red}i_\bot^\ast-1},\mu_\bot,\mu,k^\GC,k^\PKE,\{k^\LOT_{m_0}\}_{m_0\in[M_0]}
+N,\hk,h,{\color{red}i_\bot^\ast-1+b},\mu_\bot,\mu,k^\GC,k^\PKE,\{k^\LOT_{m_0}\}_{m_0\in[M_0]}
 ]),\\
 \ct&{}=(\hk,\widetilde{C}_\GC).
 \end{align*}
-\item $\Hyb_1$ alters the obfuscation into
+\item $\Hyb_1^b$ alters the obfuscation into
 \begin{align*}
 \WideNarrow{}{\hspace*{-1.5em}}
 \widetilde{C}_\GC\draws\Obf({\color{red}C_\GC'}[
@@ -49,28 +49,54 @@ $(\widehat{C}_{\ct,i_\bot^\ast},\{\LOT.\ct_{i_\bot^\ast,m_0}\}_{m_0\in[M_0]})$
 of $C_\GC'$ at~${j=i_\bot^\ast}$
 is computed as
 \begin{align*}
-r^\GC\gets\PPRF.\Eval(k^\GC,i_\bot^\ast),\ &\qquad
+r^\GC&{}\gets\PPRF.\Eval(k^\GC,i_\bot^\ast),\qquad
 r^\PKE\gets\PPRF.\Eval(k^\PKE,i_\bot^\ast),\\
-\mathllap{\textup{for }m_0\in[M_0],}\hspace*{7em}
-\mathllap{r^\LOT_{i_\bot^\ast,m_0}}
-&{}\gets\PPRF.\Eval(k^\LOT_{m_0},i_\bot^\ast),\displaybreak[3]\\
-\WideNarrow{}{\hspace*{-1.4em}}
-(\widehat{C}_{\ct,i_\bot^\ast},\{L_{i_\bot,m_0,b}\}_{m_0\in[M_0],b\in\bit})
-&{}\gets\GC.\Garble(C_\ct,(\mu,r^\PKE_{i_\bot^\ast});r^\GC_{i_\bot^\ast}),\\
-\mathllap{\textup{for }m_0\in[M_0],}\hspace*{7em}
-\mathllap{\LOT.\ct_{i_\bot^\ast,m_0}}
+r^\LOT_{i_\bot^\ast,m_0}
+&{}\gets\PPRF.\Eval(k^\LOT_{m_0},i_\bot^\ast)
+\qquad\textup{for }m_0\in[M_0],\displaybreak[3]\\
+(\widehat{C}_{\ct,i_\bot^\ast},{}&\{L_{i_\bot,m_0,b}\}_{m_0\in[M_0],b\in\bit})\\
+&{}\gets\begin{cases}
+\GC.\Garble(C_\ct,({\color{red}\mu_{\phantom{\bot}}},r^\PKE_{i_\bot^\ast});r^\GC_{i_\bot^\ast}),&
+\textup{if }b=0;\\
+\GC.\Garble(C_\ct,({\color{red}\mu_\bot},r^\PKE_{i_\bot^\ast});r^\GC_{i_\bot^\ast}),&
+\textup{if }b=1;
+\end{cases}\\
+\LOT.\ct_{i_\bot^\ast,m_0}
 &{}\gets\LOT.\Send(\hk,h,(i_\bot^\ast-1)M_0+m_0,\\
 &\hphantom{{}\gets\LOT.\Send({}}
 L_{i_\bot^\ast,m_0,0},
 L_{i_\bot^\ast,m_0,1};
-r^\LOT_{i_\bot^\ast,m_0}).
+r^\LOT_{i_\bot^\ast,m_0})
+\qquad\text{for }m_0\in[M_0].
 \end{align*}
 \end{itemize}
-\item $\Hyb_2$ changes $r^\GC_{i_\bot^\ast}$, $r^\PKE_{i_\bot^\ast}$, and $r^\LOT_{i_\bot^\ast,m_0}$'s into true randomness, i.e.,
+\item $\Hyb_2^b$ changes $r^\GC_{i_\bot^\ast}$, $r^\PKE_{i_\bot^\ast}$, and $r^\LOT_{i_\bot^\ast,m_0}$'s into true randomness, i.e.,
 \begin{align*}
 r^\GC\draws\bit^\lambda,\qquad
 r^\PKE\draws\bit^\lambda,\qquad
 r^\LOT_{i_\bot^\ast,m_0}\draws\bit^\lambda\textup{ for }m_0\in[M_0].
+\end{align*}
+\item $\Hyb_3^b$ removes the unused labels from $\LOT.\ct_{i_\bot^\ast,m_0}$'s by setting
+\begin{align*}
+\LOT.\ct_{i_\bot^\ast,m_0}
+&{}\gets\LOT.\Send(\hk,h,(i_\bot^\ast-1)M_0+m_0,\\
+&\hphantom{{}\gets\LOT.\Send({}}
+\WideNarrow{}{\hspace*{-4em}}
+L_{i_\bot^\ast,m_0,{\color{red}\pk_{i_\bot^\ast}[m_0]}},
+L_{i_\bot^\ast,m_0,{\color{red}\pk_{i_\bot^\ast}[m_0]}};
+r^\LOT_{i_\bot^\ast,m_0})
+\qquad\textup{for }m_0\in[M_0].
+\end{align*}
+\item $\Hyb_4^b$ changes $\widehat{C}_{\ct,i_\bot^\ast}$ into simulation, i.e.,
+\begin{align*}
+\PKE.\ct_{i_\bot^\ast}&{}\gets\begin{cases}
+\PKE.\Enc(\pk_{i_\bot^\ast},{\color{red}\mu_{\phantom{\bot}}};r^\PKE),
+&\textup{if }b=0;\\
+\PKE.\Enc(\pk_{i_\bot^\ast},{\color{red}\mu_\bot};r^\PKE),
+&\textup{if }b=1;
+\end{cases}\\
+(\widehat{C}_{\ct,i_\bot^\ast},\{L_{i_\bot,m_0}\}_{m_0\in[M_0]})
+&{}\draws\GC.\SimGarble(C_\ct,\pk_{i_\bot^\ast},\PKE.\ct_{i_\bot^\ast}).
 \end{align*}
 \end{itemize}
 \end{proof}
