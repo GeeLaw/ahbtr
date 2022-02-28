@@ -56,9 +56,9 @@ r^\LOT_{j,m_0}&{}\gets\PPRF.\Eval(\mathring{k}^\LOT_{m_0,i_\bot^\ast},j)\quad\te
 r^\PKE_j&{}\gets\PPRF.\Eval(\mathring{k}^\PKE_{i_\bot^\ast},j)\\
 (\widehat{C}_{\ct,j},{}&\{L_{j,m_0,b}\}_{m_0\in[M_0],b\in\bit})\\
 &{}\gets\begin{cases}
-\GC.\Garble(\widehat{C}_\ct[\mu_\bot,r^\PKE_j];r^\GC_j),&
+\GC.\Garble(\widehat{C}_\ct,(\mu_\bot,r^\PKE_j);r^\GC_j),&
 \textup{if }{\color{red}\boxed{\smash{j<i_\bot^\ast}\vphantom{.^.}}}\,;\\
-\GC.\Garble(\widehat{C}_\ct[\mu_{\phantom{\bot}},r^\PKE_j];r^\GC_j),&
+\GC.\Garble(\widehat{C}_\ct,(\mu_{\phantom{\bot}},r^\PKE_j);r^\GC_j),&
 \textup{if }{\color{red}\boxed{\smash{j>i_\bot^\ast}\vphantom{.^.}}}\,;
 \end{cases}\\
 \mathllap{\LOT.\ct_{j,m_0}}&{}\gets
