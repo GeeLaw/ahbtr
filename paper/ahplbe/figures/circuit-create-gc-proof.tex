@@ -19,8 +19,8 @@ N,\hk,h,
 \mu_\bot,\mu,
 i_\bot^\ast,
 \mathring{k}^\GC_{i_\bot^\ast},
-\{\mathring{k}^\LOT_{m_0,i_\bot^\ast}\}_{m_0\in[M_0]},
 \mathring{k}^\PKE_{i_\bot^\ast},
+\{\mathring{k}^\LOT_{m_0,i_\bot^\ast}\}_{m_0\in[M_0]},
 \widehat{C}_{\ct,i_\bot^\ast},
 \{\LOT.\ct_{i_\bot^\ast,m_0}\}_{m_0\in[M_0]}
 ](j)
@@ -52,8 +52,8 @@ Computed as follows.
 &\textbf{else}\textup{:}\\
 &\qquad\begin{aligned}
 r^\GC_j&{}\gets\PPRF.\Eval(\mathring{k}^\GC_{i_\bot^\ast},j)\\
-r^\LOT_{j,m_0}&{}\gets\PPRF.\Eval(\mathring{k}^\LOT_{m_0,i_\bot^\ast},j)\quad\textup{for }m_0\in[M_0]\\
 r^\PKE_j&{}\gets\PPRF.\Eval(\mathring{k}^\PKE_{i_\bot^\ast},j)\\
+r^\LOT_{j,m_0}&{}\gets\PPRF.\Eval(\mathring{k}^\LOT_{m_0,i_\bot^\ast},j)\quad\textup{for }m_0\in[M_0]\\
 (\widehat{C}_{\ct,j},{}&\{L_{j,m_0,b}\}_{m_0\in[M_0],b\in\bit})\\
 &{}\gets\begin{cases}
 \GC.\Garble(\widehat{C}_\ct,(\mu_\bot,r^\PKE_j);r^\GC_j),&

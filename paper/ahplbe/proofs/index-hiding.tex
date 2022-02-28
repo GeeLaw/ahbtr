@@ -12,10 +12,10 @@ We consider the following hybrids:
 \hk&{}\draws\LOT.\Gen(NM_0),\qquad
 (h,\widehat{D})\draws\LOT.\Hash(\hk,\pk_1\concat\cdots\concat\pk_N),\\
 k^\GC&{}\draws\bit^\lambda,\qquad
-k^\LOT_{m_0}\draws\bit^\lambda\textup{ for }m_0\in[M_0],\qquad
-k^\PKE\draws\bit^\lambda,\\
+k^\PKE\draws\bit^\lambda,\qquad
+k^\LOT_{m_0}\draws\bit^\lambda\textup{ for }m_0\in[M_0],\\
 \widetilde{C}_\GC&{}\draws\Obf(C_\GC[
-N,\hk,h,{\color{red}i_\bot^\ast-1},\mu_\bot,\mu,k^\GC,\{k^\LOT_{m_0}\}_{m_0\in[M_0]},k^\PKE
+N,\hk,h,{\color{red}i_\bot^\ast-1},\mu_\bot,\mu,k^\GC,k^\PKE,\{k^\LOT_{m_0}\}_{m_0\in[M_0]}
 ]),\\
 \ct&{}=(\hk,\widetilde{C}_\GC).
 \end{align*}
@@ -28,8 +28,8 @@ N,\hk,h,\mu_\bot,\mu,
 \\ &
 i_\bot^\ast,
 \mathring{k}^\GC_{i_\bot^\ast},
-\{\mathring{k}^\LOT_{m_0,i_\bot^\ast}\}_{m_0\in[M_0]},
 \mathring{k}^\PKE_{i_\bot^\ast},
+\{\mathring{k}^\LOT_{m_0,i_\bot^\ast}\}_{m_0\in[M_0]},
 \widehat{C}_{\ct,i_\bot^\ast},
 \{\LOT.\ct_{i_\bot^\ast,m_0}\}_{m_0\in[M_0]}
 ]),
@@ -40,9 +40,9 @@ where
 \item the PPRF keys are punctured at $i_\bot^\ast$ by running
 \begin{align*}
 \mathring{k}^\GC_{i_\bot^\ast}&{}\draws\PPRF.\Puncture(k^\GC,i_\bot^\ast),\\
+\mathring{k}^\PKE_{i_\bot^\ast}&{}\draws\PPRF.\Puncture(k^\PKE,i_\bot^\ast),\\
 \mathring{k}^\LOT_{m_0,i_\bot^\ast}&{}\draws\PPRF.\Puncture(k^\LOT_{m_0},i_\bot^\ast)
-\qquad\textup{for }m_0\in[M_0],\\
-\mathring{k}^\PKE_{i_\bot^\ast}&{}\draws\PPRF.\Puncture(k^\PKE,i_\bot^\ast),
+\qquad\textup{for }m_0\in[M_0],
 \end{align*}
 \item and the \WideNarrow{output}{hardwired output}
 $(\widehat{C}_{\ct,i_\bot^\ast},\{\LOT.\ct_{i_\bot^\ast,m_0}\}_{m_0\in[M_0]})$
@@ -51,12 +51,15 @@ is computed as
 \begin{align*}
 r^\GC\gets\PPRF.\Eval(k^\GC,i_\bot^\ast),\ &\qquad
 r^\PKE\gets\PPRF.\Eval(k^\PKE,i_\bot^\ast),\\
+\mathllap{\textup{for }m_0\in[M_0],}\hspace*{7em}
+\mathllap{r^\LOT_{i_\bot^\ast,m_0}}
+&{}\gets\PPRF.\Eval(k^\LOT_{m_0},i_\bot^\ast),\displaybreak[3]\\
 \WideNarrow{}{\hspace*{-1.4em}}
 (\widehat{C}_{\ct,i_\bot^\ast},\{L_{i_\bot,m_0,b}\}_{m_0\in[M_0],b\in\bit})
 &{}\gets\GC.\Garble(C_\ct,(\mu,r^\PKE_{i_\bot^\ast});r^\GC_{i_\bot^\ast}),\\
-\mathllap{\textup{for }m_0\in[M_0],\qquad\qquad}
-r^\LOT_{i_\bot^\ast,m_0}&{}\gets\PPRF.\Eval(k^\LOT_{m_0},i_\bot^\ast),\\
-\LOT.\ct_{i_\bot^\ast,m_0}&{}\gets\LOT.\Send(\hk,h,(i_\bot^\ast-1)M_0+m_0,\\
+\mathllap{\textup{for }m_0\in[M_0],}\hspace*{7em}
+\mathllap{\LOT.\ct_{i_\bot^\ast,m_0}}
+&{}\gets\LOT.\Send(\hk,h,(i_\bot^\ast-1)M_0+m_0,\\
 &\hphantom{{}\gets\LOT.\Send({}}
 L_{i_\bot^\ast,m_0,0},
 L_{i_\bot^\ast,m_0,1};
