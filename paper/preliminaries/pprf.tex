@@ -49,16 +49,3 @@ and send $(\mathring{k}_x,r_b)$ to $\scriptA$.
 $\scriptA$ outputs a bit~$b'$, which is the output of the experiment.
 \end{security}
 \end{definition}
-
-\paragraph{Extension of Punctured Key.}
-We introduce a convenient notation for PPRF.
-Let $\mathring{k}_x$ be a key punctured at~$x$.
-Given ${r\in\bit^\lambda}$, we write $\mathring{k}_{x\mapsto r}$
-for the tuple $(\mathring{k}_x,x,r)$ and extend $\Eval$ by
-\begin{align*}
-\Eval(\mathring{k}_{x\mapsto r},x')=\begin{cases}
-\Eval(\mathring{k}_x,x'),&\textup{if }x'\neq x;\\
-r,&\textup{if }x'=x.
-\end{cases}
-\end{align*}
-For example, $\mathring{k}_{x\mapsto\Eval(k,x)}$ is functionally equivalent to~$k$, and is indistinguishable from $\mathring{k}_{x\mapsto r}$ for~${r\draws\bit^\lambda}$.
