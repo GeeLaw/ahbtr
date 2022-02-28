@@ -1,16 +1,16 @@
 \subsubsection{Garbled Circuits.}
-We rely on Yao's garbled circuits~\cite{FOCS:Yao86}.
+The following version of partially hiding garbling~\cite{ICALP:IshWee14} suffices for the purpose of this work.
 
-\begin{definition}[garbled circuit~\cite{FOCS:Yao86,JC:LinPin09,CCS:BelHoaRog12}]\label{def:gc}
+\begin{definition}[garbled circuit~\cite{FOCS:Yao86,JC:LinPin09,CCS:BelHoaRog12,ICALP:IshWee14}]\label{def:gc}
 A \emph{circuit garbling scheme} consists of 2 efficient algorithms:
 \begin{itemize}
-\item $\Garble(1^\lambda,C[w])$
-takes a circuit ${C:\bit^{n+M_0}\to\bit^{n'}}$ (with ${w\in\bit^n}$ hardwired as its first portion of input) as input.
+\item $\Garble(1^\lambda,C,w)$
+takes as input a circuit ${C:\bit^{n+M_0}\to\bit^{n'}}$ and some hardwired input ${w\in\bit^n}$.
 It outputs a garbled circuit~$\widehat{C}$
 and $M_0$~pairs of labels ${L_{m_0,b}\in\bit^\lambda}$
 for ${m_0\in[M_0]}$, ${b\in\bit}$.
-\item $\Eval(1^\lambda,\widehat{C},\{L_{m_0}\}_{m_0\in[M_0]})$
-takes as input a garbled circuit and $M_0$~labels.
+\item $\Eval(1^\lambda,\widehat{C},x,\{L_{m_0}\}_{m_0\in[M_0]})$
+takes as input a garbled circuit, a non-hardwired input, and $M_0$~labels.
 It outputs an $n'$-bit string.
 \end{itemize}
 The scheme must be \emph{correct}, i.e., for all
@@ -23,28 +23,25 @@ ${x\in\bit^{M_0}}$,
 \begin{align*}
 \Pr\left[
 \begin{aligned}
-(\widehat{C},\{L_{m_0,b}\}_{m_0\in[M_0],b\in\bit})\draws\Garble(1^\lambda,C[w])
-&\\\::\:
-\Eval(1^\lambda,\widehat{C},\{L_{m_0,x[m_0]}\}_{m_0\in[M_0]})=C[w](x)
-\ &
+(\widehat{C},\{L_{m_0,b}\}_{m_0\in[M_0],b\in\bit})\draws\Garble(1^\lambda,{}&C,w)
+\\\::\:
+\Eval(1^\lambda,\widehat{C},x,\{L_{m_0,x[m_0]}\}_{m_0\in[M_0]})={}&C[w](x)
 \end{aligned}
 \right]=1.
 \end{align*}
 \end{definition}
 
-\begin{definition}[garbled circuit security~\cite{FOCS:Yao86,JC:LinPin09,CCS:BelHoaRog12}]\label{def:gc-security}
+\begin{definition}[garbled circuit security~\cite{FOCS:Yao86,JC:LinPin09,CCS:BelHoaRog12,ICALP:IshWee14}]\label{def:gc-security}
 Let $(\Garble,\Eval)$ be a circuit garbling scheme (Definition~\ref{def:gc}).
-A \emph{simulator} is an efficient algorithm%
-\footnote{This definition protects both $w$ and $x$.
-In this work we only need privacy for~$w$.}
+A \emph{simulator} is an efficient algorithm
 \begin{align*}
-\SimGarble(1^\lambda,C:\bit^{n+M_0}\to\bit^{n'},n,y\in\bit^{n'})
-\to
+\SimGarble&(1^\lambda,C:\bit^{n+M_0}\to\bit^{n'},x\in\bit^{M_0},y\in\bit^{n'})
+\WideNarrow{\to}{\\{}\to{}&}
 (\widehat{C},\{L_{m_0}\}_{m_0\in[M_0]})
 \end{align*}
-taking as input a circuit, the length of the hardwired input, and a circuit output,
+taking as input a circuit, a non-hardwired input, and a circuit output,
 and producing a simulated garbled circuit and $M_0$~simulated labels.
-The scheme is \emph{secure} if there exists a simulator $\SimGarble$ such that ${\ExpGC{0}\approx\ExpGC{1}}$, where $\ExpGC{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
+The scheme is \emph{$w$-hiding} (or \emph{secure} for the purpose of this work) if there exists a simulator $\SimGarble$ such that ${\ExpGC{0}\approx\ExpGC{1}}$, where $\ExpGC{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
 \begin{security}
 \phase{Challenge}
 Launch $\scriptA(1^\lambda)$ and receive
@@ -56,10 +53,10 @@ Run
 \begin{align*}
 \textup{if }b=0,\quad
 (\widehat{C},\{L_{m_0,\mathrlap{b}\phantom{x[m_0]}}\}_{m_0\in[M_0],b\in\bit})
-&{}\draws\phantom{\SimGarble}\mathllap{\Garble}(1^\lambda,C[w]);\\
+&{}\draws\phantom{\SimGarble}\mathllap{\Garble}(1^\lambda,C,w);\\
 \textup{if }b=1,\quad
 (\widehat{C},\{L_{m_0,x[m_0]}\}_{m_0\in[M_0]\phantom{,b\in\bit}})
-&{}\draws\SimGarble(1^\lambda,C,n,C[w](x));
+&{}\draws\SimGarble(1^\lambda,C,x,C[w](x));
 \end{align*}
 and send $(\widehat{C},\{L_{m_0,x[m_0]}\}_{m_0\in[M_0]})$ to $\scriptA$.
 \phase{Guess}
