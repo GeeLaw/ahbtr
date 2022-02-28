@@ -99,25 +99,33 @@ r^\LOT_{i_\bot^\ast,m_0})
 &{}\draws\GC.\SimGarble(C_\ct,\pk_{i_\bot^\ast},\PKE.\ct_{i_\bot^\ast}).
 \end{align*}
 \end{itemize}
-The following claims hold:
+The following claims hold, which are proved below:
+
 \begin{claim}\label{clm:index-hiding-hyb01}
 ${\Hyb_0^b\approx\Hyb_1^b}$ for ${b\in\bit}$
 if $\Obf$ is an {\iO} for $\poly(\lambda)$-sized domain.
 \end{claim}
+
 \begin{claim}\label{clm:index-hiding-hyb12}
 ${\Hyb_1^b\approx\Hyb_2^b}$ for ${b\in\bit}$
 if $\PPRF$ is pseudorandom at the punctured point.
 \end{claim}
+
 \begin{claim}\label{clm:index-hiding-hyb23}
 ${\Hyb_2^b\approx\Hyb_3^b}$ for ${b\in\bit}$
 if $\LOT$ is database-selectively sender-private.
 \end{claim}
+
 \begin{claim}\label{clm:index-hiding-hyb34}
 ${\Hyb_3^b\approx\Hyb_4^b}$ for ${b\in\bit}$
 if $\GC$ is $w$-hiding.
 \end{claim}
+
 \begin{claim}\label{clm:index-hiding-hyb4}
 ${\Hyb_4^0\approx\Hyb_4^1}$ for ${b\in\bit}$
 if $\PKE$ is semantically secure for random messages.
 \end{claim}
+
+\noindent
+${\ExpIH{0}\approx\ExpIH{1}}$ follows from a hybrid argument.
 \end{proof}
