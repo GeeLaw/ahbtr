@@ -9,13 +9,13 @@ ${(\pk,\sk)\draws\Gen(1^\lambda)}$,
 launch $\scriptA(1^\lambda,\pk)$, and
 receive from it
 some~${N\in\doubleN}$,
-a cut-off index~${i_\bot\in[N]}$, and
-a list~$\{\pk_i\}_{i\in[N]\setminus\{i_\bot\}}$ of public keys.
-Let ${\pk_{i_\bot}\gets\pk}$,
+a cut-off index~${i_\bot^\ast\in[N]}$, and
+a list~$\{\pk_i\}_{i\in[N]\setminus\{i_\bot^\ast\}}$ of public keys.
+Let ${\pk_{i_\bot^\ast}\gets\pk}$,
 run
 \begin{align*}
 \mu\draws\bit^\lambda,\qquad
-\ct\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},i_\bot-1+b,\mu),
+\ct\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},i_\bot^\ast-1+b,\mu),
 \end{align*}
 and send $(\mu,\ct)$ to $\scriptA$.
 \phase{Guess}
