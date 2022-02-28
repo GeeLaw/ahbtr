@@ -5,7 +5,7 @@ public-key functional encryption for general circuits
 (so-called \emph{obfuscation-minimum PKFE}),
 of which we refer the reader to~\cite{C:KNTY19} for the precise definition.
 
-\begin{lemma}
+\begin{lemma}\label{lem:poly-assumption}
 Suppose there exists an \emph{obfuscation-minimum PKFE} with polynomial security, then there exist
 \begingroup
 \WideNarrow{
@@ -28,3 +28,9 @@ an {\iO} for $\poly(\lambda)$-sized domain (Definitions~\ref{def:obfuscation} an
 with polynomial security.
 \endgroup
 \end{lemma}
+
+\noindent
+Alternatively, those primitives can be based on the existence of {\iO} and one-way function.
+However, {\iO} security is not known to be \emph{somewhat falsifiable}~\cite{C:Naor03} and it is hard to conceive~\cite{STOC:GGSW13} a reduction of {\iO} security to \emph{complexity assumptions}~\cite{TCC:GolKal16}.
+In contrast, obfuscation-minimum PKFE security is somewhat falsifiable and there are constructions from well-studied complexity assumptions~\cite{STOC:JaiLinSah21,EPRINT:JaiLinSah21corrected}.
+The point of Lemma~\ref{lem:poly-assumption} is to base our constructions solely on somewhat falsifiable assumptions, or even complexity assumptions.
