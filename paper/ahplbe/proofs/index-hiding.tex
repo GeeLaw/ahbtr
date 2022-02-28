@@ -5,9 +5,9 @@
 
 \begin{proof}[\hyperanchor{pf:index-hiding}{Theorem~\ref{thm:index-hiding}}]
 The only difference between $\ExpIH{0}$ and $\ExpIH{1}$ is whether the $C_\GC$ being obfuscated hardwires $\mu$ (in~$\ExpIH{0}$) or $\mu_\bot$ (in~$\ExpIH{1}$) into $C_{\ct,i_\bot^\ast}$, which only affects the output of $C_\GC$ at~${j=i_\bot^\ast}$.
-We consider the following hybrids:
+We consider the following hybrids, each (except the first) described by the changes from the previous one:
 \begin{itemize}
-\item $\Hyb_0^b$ is identical to $\ExpIH{b}$, where
+\item $\Hyb_0^b$ (${b\in\bit}$) is $\ExpIH{b}$, where
 \begin{align*}
 \hk&{}\draws\LOT.\Gen(NM_0),\qquad
 (h,\widehat{D})\draws\LOT.\Hash(\hk,\pk_1\concat\cdots\concat\pk_N),\\
@@ -99,4 +99,25 @@ r^\LOT_{i_\bot^\ast,m_0})
 &{}\draws\GC.\SimGarble(C_\ct,\pk_{i_\bot^\ast},\PKE.\ct_{i_\bot^\ast}).
 \end{align*}
 \end{itemize}
+The following claims hold:
+\begin{claim}\label{clm:index-hiding-hyb01}
+${\Hyb_0^b\approx\Hyb_1^b}$ for ${b\in\bit}$
+if $\Obf$ is an {\iO} for $\poly(\lambda)$-sized domain.
+\end{claim}
+\begin{claim}\label{clm:index-hiding-hyb12}
+${\Hyb_1^b\approx\Hyb_2^b}$ for ${b\in\bit}$
+if $\PPRF$ is pseudorandom at the punctured point.
+\end{claim}
+\begin{claim}\label{clm:index-hiding-hyb23}
+${\Hyb_2^b\approx\Hyb_3^b}$ for ${b\in\bit}$
+if $\LOT$ is database-selectively sender-private.
+\end{claim}
+\begin{claim}\label{clm:index-hiding-hyb34}
+${\Hyb_3^b\approx\Hyb_4^b}$ for ${b\in\bit}$
+if $\GC$ is $w$-hiding.
+\end{claim}
+\begin{claim}\label{clm:index-hiding-hyb4}
+${\Hyb_4^0\approx\Hyb_4^1}$ for ${b\in\bit}$
+if $\PKE$ is semantically secure for random messages.
+\end{claim}
 \end{proof}
