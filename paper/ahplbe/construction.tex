@@ -35,14 +35,14 @@ M&\mathrlap{{}\gets NM_0,}
 It samples the cut-off message ${\mu_\bot\draws\bit^\lambda}$ and PPRF keys
 \begin{align*}
 k^\GC\draws\bit^\lambda,\qquad
-k^\LOT_{m_0}\draws\bit^\lambda\textup{ for }m_0\in[M_0],\qquad
-k^\PKE\draws\bit^\lambda,
+k^\PKE\draws\bit^\lambda,\qquad
+k^\LOT_{m_0}\draws\bit^\lambda\textup{ for }m_0\in[M_0],
 \end{align*}
 and obfuscates $C_\GC$ (\Figure~\ref{fig:circuit-create-gc}) by running
 \begin{align*}
 \widetilde{C}_\GC\draws\Obf(C_\GC[
 N,\hk,h,i_\bot,\mu_\bot,\mu,
-k^\GC,\{k^\LOT_{m_0}\}_{m_0\in[M_0]},k^\PKE]).
+k^\GC,k^\PKE,\{k^\LOT_{m_0}\}_{m_0\in[M_0]}]).
 \end{align*}
 The algorithm outputs ${\ct=(\hk,\widetilde{C}_\GC)}$ as the ciphertext.
 \item $\Dec^{\{\pk_i\}_{i\in[N]},\ct}(N,j,\sk)$

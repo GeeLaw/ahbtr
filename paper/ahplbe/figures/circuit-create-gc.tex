@@ -18,7 +18,7 @@ $\displaystyle
 C_\GC[
 N,\hk,h,
 i_\bot,\mu_\bot,\mu,
-k^\GC,\{k^\LOT_{m_0}\}_{m_0\in[M_0]},k^\PKE
+k^\GC,k^\PKE,\{k^\LOT_{m_0}\}_{m_0\in[M_0]}
 ](j)
 \MyHeaderHeight$%
 }\hspace*{0.45\textwidth}}&%
@@ -31,9 +31,9 @@ k^\GC,\{k^\LOT_{m_0}\}_{m_0\in[M_0]},k^\PKE
 \MyAlignedGC{$\mu_\bot$,} cut-off message; & \\ &&
 \MyAlignedGC{$\mu$,} message; & \\ &&
 \MyAlignedGC{$k^{\GC^{\vphantom{|}}}$,} PPRF key for circuit garbling; & \\ &&
+\MyAlignedGC{$k^{\PKE^{\vphantom{|}}}$,} PPRF key for public-key encryption; & \\ &&
 \MyAlignedGC{$k^{\LOT^{\vphantom{|}}}_{m_0}$,}
-PPRF key for sending the $m_0^{\textup{th}}$ label \rlap{using laconic OT;} & \\ &&
-\MyAlignedGC{$k^{\PKE^{\vphantom{|}}}$,} PPRF key for public-key encryption.
+PPRF key for sending the $m_0^{\textup{th}}$ label \rlap{using laconic OT.}
 & \MyMiniSectionSkip \\ &
 \textbf{Input. }&
 \MyAlignedGC{$j\in[N]$,} index of recipient.
@@ -43,8 +43,8 @@ Computed as follows.
 & \MyMiniSectionSkip \\ &
 & $\displaystyle\MyCodeDedent\begin{aligned}
 r^\GC_j&{}\gets\PPRF.\Eval(k^\GC,j)\\
-r^\LOT_{j,m_0}&{}\gets\PPRF.\Eval(k^\LOT_{m_0},j)\quad\textup{for }m_0\in[M_0]\\
 r^\PKE_j&{}\gets\PPRF.\Eval(k^\PKE,j)\\
+r^\LOT_{j,m_0}&{}\gets\PPRF.\Eval(k^\LOT_{m_0},j)\quad\textup{for }m_0\in[M_0]\\
 (\widehat{C}_{\ct,j},{}&\{L_{j,m_0,b}\}_{m_0\in[M_0],b\in\bit})\\
 &{}\gets\begin{cases}
 \GC.\Garble(\widehat{C}_\ct,(\mu_\bot,r^\PKE_j);r^\GC_j),&
