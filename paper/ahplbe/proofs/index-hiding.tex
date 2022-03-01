@@ -106,26 +106,50 @@ The following claims hold, all of which are immediate by inspection:
 \begin{claim}\label{clm:index-hiding-hyb01}
 ${\Hyb_0^b\approx\Hyb_1^b}$ for ${b\in\bit}$
 if $\Obf$ is an {\iO} for $\poly(\lambda)$-sized domain.
+% Proof can be done by verifying equivalence.
 \end{claim}
 
 \begin{claim}\label{clm:index-hiding-hyb12}
 ${\Hyb_1^b\approx\Hyb_2^b}$ for ${b\in\bit}$
 if $\PPRF$ is pseudorandom at the punctured point.
+% Key points to the reduction:
+%     Reduction submits the challenge punctured point
+%     only after the underlying adversary chooses the
+%     challenge index, at which point the punctured
+%     key is needed and can be obtained from the PPRF
+%     security experiment.
 \end{claim}
 
 \begin{claim}\label{clm:index-hiding-hyb23}
 ${\Hyb_2^b\approx\Hyb_3^b}$ for ${b\in\bit}$
 if $\LOT$ is database-selectively sender-private.
+% Key points to the reduction:
+%     Reduction submits the challenge database only
+%     after the underlying adversary chooses the list
+%     of public keys, at which point the laconic OT
+%     hash key (CRS) is needed and can be obtained
+%     from the laconic OT security experiment.
 \end{claim}
 
 \begin{claim}\label{clm:index-hiding-hyb34}
 ${\Hyb_3^b\approx\Hyb_4^b}$ for ${b\in\bit}$
 if $\GC$ is $w$-hiding.
+% Key points to the reduction:
+%     Reduction submits
+%         C = C_ct,
+%         w = (mu or mu_bot, r^PKE),
+%         x = pk = pk_(i_bot^*)
+%     only after the underlying adversary commits to
+%     the challenge.
 \end{claim}
 
 \begin{claim}\label{clm:index-hiding-hyb4}
 ${\Hyb_4^0\approx\Hyb_4^1}$
 if $\PKE$ is semantically secure for random messages.
+% Key points to the reduction:
+%     To map (mu_0, mu_1, pk, ct_b) to Hyb_4^b,
+%     the reduction sets
+%         mu = mu_0,    mu_bot = mu_1.
 \end{claim}
 
 \noindent
