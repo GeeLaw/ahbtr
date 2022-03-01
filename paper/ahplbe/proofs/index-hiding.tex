@@ -129,6 +129,8 @@ if $\LOT$ is database-selectively sender-private.
 %     of public keys, at which point the laconic OT
 %     hash key (CRS) is needed and can be obtained
 %     from the laconic OT security experiment.
+%     Note that at this point, the randomness of
+%     LOT.Send is truly random.
 \end{claim}
 
 \begin{claim}\label{clm:index-hiding-hyb34}
@@ -141,6 +143,8 @@ if $\GC$ is $w$-hiding.
 %         x = pk = pk_(i_bot^*)
 %     only after the underlying adversary commits to
 %     the challenge.
+%     Note that at this point, the randomness of
+%     GC.Garble is truly random.
 \end{claim}
 
 \begin{claim}\label{clm:index-hiding-hyb4}
@@ -150,6 +154,8 @@ if $\PKE$ is semantically secure for random messages.
 %     To map (mu_0, mu_1, pk, ct_b) to Hyb_4^b,
 %     the reduction sets
 %         mu = mu_0,    mu_bot = mu_1.
+%     Note that at this point, the randomness of
+%     PKE.Enc is truly random.
 \end{claim}
 
 \noindent
