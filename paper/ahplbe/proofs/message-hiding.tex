@@ -4,9 +4,9 @@ the only difference between $\ExpMH{0}$ and $\ExpMH{1}$ is
 whether $C_\GC$ used to create ${\ct=(\hk,\widetilde{C}_\GC)}$
 has $\mu_0$ or $\mu_1$ hardwired as~$\mu$.
 In $C_\GC$ (\Figure~\ref{fig:circuit-create-gc}),
-$\mu$ is used only in the branch~${j>i_\bot}$,
+$\mu$ is used only in the branch~${i>i_\bot}$,
 which is never taken in $\ExpMH{0}$ or $\ExpMH{1}$
-because $i_\bot$ is hardwired to be~$N$ and the domain of~$j$ is~$[N]$.
+because $i_\bot$ is hardwired to be~$N$ and the domain of~$i$ is~$[N]$.
 Therefore, the two $C_\GC$'s in $\ExpMH{0}$ and $\ExpMH{1}$ being obfuscated are functionally equivalent and have the same size.
 Moreover, their domain size is~$N$ (polynomially large).
 Therefore, ${\ExpMH{0}\approx\ExpMH{1}}$ reduces to the {\iO} security for $\poly(\lambda)$-sized domain of~$\Obf$.
