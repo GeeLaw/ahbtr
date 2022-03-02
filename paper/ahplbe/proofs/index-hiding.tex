@@ -4,7 +4,7 @@
 \end{figure}
 
 \begin{proof}[\hyperanchor{pf:index-hiding}{Theorem~\ref{thm:index-hiding}}]
-The only difference between $\ExpIH{0}$ and $\ExpIH{1}$ is whether the $C_\GC$ being obfuscated hardwires $\mu$ (in~$\ExpIH{0}$) or $\mu_\bot$ (in~$\ExpIH{1}$) into $C_{\ct,i_\bot^\ast}$, which only affects the output of $C_\GC$ at~${j=i_\bot^\ast}$.
+The only difference between $\ExpIH{0}$ and $\ExpIH{1}$ is whether the $C_\GC$ being obfuscated hardwires $\mu$ (in~$\ExpIH{0}$) or $\mu_\bot$ (in~$\ExpIH{1}$) into $C_{\ct,i_\bot^\ast}$, which only affects the output of $C_\GC$ at~${i=i_\bot^\ast}$.
 We consider the following hybrids, each (except the first) described by the changes from the previous one:
 \begin{itemize}
 \item $\Hyb_0^b$ (for ${b\in\bit}$) is $\ExpIH{b}$, where
@@ -46,7 +46,7 @@ where
 \end{align*}
 \item and the \WideNarrow{output}{hardwired output}
 $(\widehat{C}_{\ct,i_\bot^\ast},\{\LOT.\ct_{i_\bot^\ast,m_0}\}_{m_0\in[M_0]})$
-of $C_\GC'$ at~${j=i_\bot^\ast}$
+of $C_\GC'$ at~${i=i_\bot^\ast}$
 is computed as
 \begin{align*}
 r^\GC&{}\gets\PPRF.\Eval(k^\GC,i_\bot^\ast),\qquad
