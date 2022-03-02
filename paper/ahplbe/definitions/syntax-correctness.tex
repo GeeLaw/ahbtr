@@ -4,7 +4,7 @@ An \emph{\ad hoc private linear broadcast encryption (AH-PLBE) scheme}
 consists of 3 efficient algorithms:
 \begin{itemize}
 \item $\Gen(1^\lambda)$ outputs a pair~$(\pk,\sk)$ of public and secret keys.
-\item $\Enc(1^\lambda,\{\pk_j\}_{j\in[N]},i_\bot\in[0..N],\mu\in\bit^\lambda)$
+\item $\Enc(1^\lambda,\{\pk_j\}_{j\in[N]},{i_\bot\in[0..N]},{\mu\in\bit^\lambda})$
 takes as input
 \luoji{Should motivate this requirement in the technical overview.
 Emphasize \textit{\textbf{distinct}} for security.
@@ -16,7 +16,7 @@ a list of \textit{\textbf{distinct}} public keys,
 a cut-off index,
 and a message.
 It outputs a ciphertext~$\ct$.
-\item $\Dec^{\{\pk_j\}_{j\in[N]},\ct}(1^\lambda,N,i\in[N],\sk_i)$
+\item $\Dec^{\{\pk_j\}_{j\in[N]},\ct}(1^\lambda,N,{i\in[N]},\sk_i)$
 is given random access to a list of public keys and a ciphertext, and
 takes as input
 the length of the list,
