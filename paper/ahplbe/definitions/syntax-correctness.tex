@@ -4,7 +4,7 @@ An \emph{\ad hoc private linear broadcast encryption (AH-PLBE) scheme}
 consists of 3 efficient algorithms:
 \begin{itemize}
 \item $\Gen(1^\lambda)$ outputs a pair~$(\pk,\sk)$ of public and secret keys.
-\item $\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},i_\bot\in[0..N],\mu\in\bit^\lambda)$
+\item $\Enc(1^\lambda,\{\pk_j\}_{j\in[N]},i_\bot\in[0..N],\mu\in\bit^\lambda)$
 takes as input
 \luoji{Should motivate this requirement in the technical overview.
 Emphasize \textit{\textbf{distinct}} for security.
@@ -16,7 +16,7 @@ a list of \textit{\textbf{distinct}} public keys,
 a cut-off index,
 and a message.
 It outputs a ciphertext~$\ct$.
-\item $\Dec^{\{\pk_i\}_{i\in[N]},\ct}(1^\lambda,N,j\in[N],\sk)$
+\item $\Dec^{\{\pk_j\}_{j\in[N]},\ct}(1^\lambda,N,i\in[N],\sk)$
 is given random access to a list of public keys and a ciphertext, and
 takes as input
 the length of the list,
@@ -31,8 +31,8 @@ Also consider proving the analogue of Remark~3 in~\cite{C:Zhandry20}.}
 The scheme must be \emph{robustly correct}, i.e., for all
 ${\lambda\in\doubleN}$,
 ${N\in\doubleN}$,
-${j\in[N]}$,\WideNarrow{}{\linebreak[4]}
-$\{\pk_i\}_{i\in[N]\setminus\{j\}}$
+${i\in[N]}$,\WideNarrow{}{\linebreak[4]}
+$\{\pk_j\}_{j\in[N]\setminus\{i\}}$
 (not necessarily produced by~$\Gen$),
 ${\mu\in\bit^\lambda}$,
 \begin{align*}
@@ -40,19 +40,19 @@ ${\mu\in\bit^\lambda}$,
 \begin{aligned}
 (
 \WideNarrow{}{{}&}
-\pk_j,\sk_j)
+\pk_i,\sk_i)
 \WideNarrow{&{}}{}
 \draws\Gen(1^\lambda)\\
 \WideNarrow{}{&}
 \ct
 \WideNarrow{&{}}{}
-\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},0,\mu)
+\draws\Enc(1^\lambda,\{\pk_j\}_{j\in[N]},0,\mu)
 \end{aligned}
 \WideNarrow{\::\:}{:}
 \begin{aligned}
-\Dec^{\{\pk_i\}_{i\in[N]},\ct}(1^\lambda,N,j,\sk_j)&{}=\mu
-\\\textup{or }\exists\, i,i'\in[N]:\WideNarrow{\,\ }{}
-(i\neq i')\wedge(\pk_i&{}=\pk_{i'})
+\Dec^{\{\pk_j\}_{j\in[N]},\ct}(1^\lambda,N,i,\sk_i)&{}=\mu
+\\\textup{or }\exists\, j,j'\in[N]:\WideNarrow{\,\ }{}
+(j\neq j')\wedge(\pk_j&{}=\pk_{j'})
 \end{aligned}
 \right]=1.
 \end{align*}
