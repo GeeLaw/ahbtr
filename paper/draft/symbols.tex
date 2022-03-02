@@ -2,15 +2,27 @@
 
 Table~\ref{tab:symbols} lists non-descriptive symbols used in this work.
 
-\begin{table}
+\begin{table}[h]
 \capstart
 \centering
 \caption{Non-descriptive symbols.}
 \label{tab:symbols}
-\begin{tabular}{rcl}
+\begingroup
+\let\MyColumn=&
+\catcode`\&=\catcode`\~
+\let\oldtabular\tabular
+% This hack of \begingroup \endgroup is devilish.
+\def\SetMyRow{\begingroup\def\\{\unskip\hspace*{0.5em}\endgroup\\}}
+\WideNarrow{
+  \def&&{\MyColumn\SetMyRow}
+  \def\tabular#1#2{\oldtabular{#1}}
+}{
+  \def&&{\MyColumn\MyColumn\SetMyRow}
+  \def\tabular#1#2{\oldtabular{#2}}
+}
+\begin{tabular}{rl}{rcl}
 \toprule
-\hspace*{0.5em}\textbf{Symbol} &\WideNarrow{}{\hspace*{0.5em}}&
-\textbf{Meaning}\hspace*{0.5em} \\
+\hspace*{0.5em}\textbf{Symbol} && \textbf{Meaning} \\
 \midrule
 $\lambda$ && security parameter \\
 $\scriptA,\scriptB,\scriptD$ && adversary, adversary, decoder \\
@@ -25,4 +37,5 @@ $M,m$ && length of database ($NM_0$), index \\
 $k,\mathring{k}_x$ && PPRF key, punctured at~$x$ \\
 \bottomrule
 \end{tabular}
+\endgroup
 \end{table}
