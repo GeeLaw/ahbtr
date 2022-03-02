@@ -23,7 +23,7 @@ i_\bot^\ast,
 \{\mathring{k}^\LOT_{m_0,i_\bot^\ast}\}_{m_0\in[M_0]},
 \widehat{C}_{\ct,i_\bot^\ast},
 \{\LOT.\ct_{i_\bot^\ast,m_0}\}_{m_0\in[M_0]}
-](j)
+](i)
 \MyHeaderHeight$%
 }\hspace*{0.45\textwidth}}&%
 \WideNarrow{}{\hspace*{0.03\textwidth}}\\ &
@@ -36,37 +36,37 @@ challenge cut-off index; & \\ &&
 PPRF keys punctured at $i_\bot^\ast$; & \\ &&
 \MyAlignedGC{$\widehat{C}_{\ct,i_\bot^\ast}^{\vphantom{|}},
 \LOT.\ct_{i_\bot^\ast,{\cdots}}$,}
-hardwired output of $C_\GC'$ at ${j=i_\bot^\ast}$;
+hardwired output of $C_\GC'$ at ${i=i_\bot^\ast}$;
 & \MyMiniSectionSkip \\ &
 \textbf{Input. }&
-\MyAlignedGC{$j\in[N]$,} index of recipient.
+\MyAlignedGC{$i\in[N]$,} index of recipient.
 & \MyMiniSectionSkip \\ &
 \textbf{Output. }&
 Computed as follows.
 & \MyMiniSectionSkip \\ &
 & $\displaystyle\MyCodeDedent\begin{aligned}
-&\textbf{if }{\color{red}\boxed{\smash{j=i_\bot^\ast}\vphantom{.^.}}}\,\textup{:}\\
+&\textbf{if }{\color{red}\boxed{\smash{i=i_\bot^\ast}\vphantom{.^.}}}\,\textup{:}\\
 &\qquad\textbf{output }
 (\widehat{C}_{\ct,i_\bot^\ast},\{\LOT.\ct_{i_\bot^\ast,m_0}\}_{m_0\in[M_0]})
 \textup{ as hardwired}\\
 &\textbf{else}\textup{:}\\
 &\qquad\begin{aligned}
-r^\GC_j&{}\gets\PPRF.\Eval(\mathring{k}^\GC_{i_\bot^\ast},j)\\
-r^\PKE_j&{}\gets\PPRF.\Eval(\mathring{k}^\PKE_{i_\bot^\ast},j)\\
-r^\LOT_{j,m_0}&{}\gets\PPRF.\Eval(\mathring{k}^\LOT_{m_0,i_\bot^\ast},j)\quad\textup{for }m_0\in[M_0]\\
-(\widehat{C}_{\ct,j},{}&\{L_{j,m_0,b}\}_{m_0\in[M_0],b\in\bit})\\
+r^\GC_i&{}\gets\PPRF.\Eval(\mathring{k}^\GC_{i_\bot^\ast},i)\\
+r^\PKE_i&{}\gets\PPRF.\Eval(\mathring{k}^\PKE_{i_\bot^\ast},i)\\
+r^\LOT_{i,m_0}&{}\gets\PPRF.\Eval(\mathring{k}^\LOT_{m_0,i_\bot^\ast},i)\quad\textup{for }m_0\in[M_0]\\
+(\widehat{C}_{\ct,i},{}&\{L_{i,m_0,b}\}_{m_0\in[M_0],b\in\bit})\\
 &{}\gets\begin{cases}
-\GC.\Garble(\widehat{C}_\ct,(\mu_\bot,r^\PKE_j);r^\GC_j),&
-\textup{if }{\color{red}\boxed{\smash{j<i_\bot^\ast}\vphantom{.^.}}}\,;\\
-\GC.\Garble(\widehat{C}_\ct,(\mu_{\phantom{\bot}},r^\PKE_j);r^\GC_j),&
-\textup{if }{\color{red}\boxed{\smash{j>i_\bot^\ast}\vphantom{.^.}}}\,;
+\GC.\Garble(\widehat{C}_\ct,(\mu_\bot,r^\PKE_i);r^\GC_i),&
+\textup{if }{\color{red}\boxed{\smash{i<i_\bot^\ast}\vphantom{.^.}}}\,;\\
+\GC.\Garble(\widehat{C}_\ct,(\mu_{\phantom{\bot}},r^\PKE_i);r^\GC_i),&
+\textup{if }{\color{red}\boxed{\smash{i>i_\bot^\ast}\vphantom{.^.}}}\,;
 \end{cases}\\
-\mathllap{\LOT.\ct_{j,m_0}}&{}\gets
-\LOT.\Send(\hk,h,(j-1)M_0+m_0,\\
+\mathllap{\LOT.\ct_{i,m_0}}&{}\gets
+\LOT.\Send(\hk,h,(i-1)M_0+m_0,\\
 &\phantom{{}\gets\LOT.\Send({}}
-L_{j,m_0,0},L_{j,m_0,1};r^\LOT_{j,m_0})
+L_{i,m_0,0},L_{i,m_0,1};r^\LOT_{i,m_0})
 \quad\textup{for }m_0\in[M_0]\\
-\textbf{output}&\ (\widehat{C}_{\ct,j},\{\LOT.\ct_{j,m_0}\}_{m_0\in[M_0]})
+\textbf{output}&\ (\widehat{C}_{\ct,i},\{\LOT.\ct_{i,m_0}\}_{m_0\in[M_0]})
 \MyMiniSectionSkip
 \end{aligned}
 \end{aligned}$ & \\
