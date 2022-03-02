@@ -9,10 +9,10 @@ Consider the following efficient adversary~$\scriptA$ against the message-hiding
 the adversary~$\scriptA$ checks whether the public keys in $\{\pk^\ast_j\}_{j\in[N]}$ are distinct, and aborts if not.
 \item If not aborting,\WideNarrow{}{\rule[0.9em]{0pt}{0pt}}
 $\scriptA$ runs $\scriptE_N$ and
-notes down ${\beta\in\bit}$ indicating whether $E_N$ happened,
-i.e., ${\beta=1}$ if and only if $\scriptD$ guessed correctly in the trial.
+notes down ${\alpha\in\bit}$ indicating whether $E_N$ happened,
+i.e., ${\alpha=1}$ if and only if $\scriptD$ guessed correctly in the trial.
 \item $\scriptA$ submits $\{\pk^\ast_j\}_{j\in[N]}$ to the message-hiding experiment, receives $(\mu_0,\mu_1,\ct)$ back, and
-runs and outputs ${b'\draws\scriptD(\mu_0,\mu_1,\ct)\oplus\beta}$.
+runs and outputs ${b'\draws\scriptD(\mu_0,\mu_1,\ct)\oplus\alpha}$.
 % This ``sign correction'', producing ``the wrong guess'',
 % is sadly correct (making the advantage non-negative).
 % This is because the advantage is
