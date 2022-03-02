@@ -30,11 +30,15 @@ By Markov's inequality,
 \Pr[\DistinctPKs\wedge\BadEnd]
 &{}=
 \Pr[\1_\DistinctPKs\cdot 4\epsilon_N^2>(\epsilon^\ast)^2]
-\displaybreak[2]\\&{}\leq
+% \displaybreak[2]
+\\&{}\leq
 \Pr[\1_\DistinctPKs\cdot 4\epsilon_N^2>B^{-2}]
-\displaybreak[2]\\&{}\leq
+% \displaybreak[2]
+\\&{}\leq
 B^2\E[\1_\DistinctPKs\cdot 4\epsilon_N^2]
-\WideNarrow{}{\displaybreak[2]\\&{}}
+\WideNarrow{}{
+% \displaybreak[2]
+\\&{}}
 =
 (\poly(\lambda))^2\negl(\lambda)
 =
