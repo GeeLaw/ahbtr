@@ -10,7 +10,7 @@ We consider the following hybrids, each (except the first) described by the chan
 \item $\Hyb_0^b$ (for ${b\in\bit}$) is $\ExpIH{b}$, where
 \begin{align*}
 \hk&{}\draws\LOT.\Gen(NM_0),\qquad
-(h,\widehat{D})\draws\LOT.\Hash(\hk,\pk_1\concat\cdots\concat\pk_N),\\
+(h,\widehat{D})\draws\LOT.\Hash(\hk,\pk^\ast_1\concat\cdots\concat\pk^\ast_N),\\
 k^\GC&{}\draws\bit^\lambda,\qquad
 k^\PKE\draws\bit^\lambda,\qquad
 k^\LOT_{m_0}\draws\bit^\lambda\quad\textup{for }m_0\in[M_0],\\
@@ -82,23 +82,23 @@ r^\LOT_{i_\bot^\ast,m_0}\draws\bit^\lambda\quad\textup{for }m_0\in[M_0].
 &{}\gets\LOT.\Send(\hk,h,(i_\bot^\ast-1)M_0+m_0,\\
 &\hphantom{{}\gets\LOT.\Send({}}
 \WideNarrow{}{\hspace*{-4em}}
-L_{i_\bot^\ast,m_0,{\color{red}\pk_{i_\bot^\ast}[m_0]}},
-L_{i_\bot^\ast,m_0,{\color{red}\pk_{i_\bot^\ast}[m_0]}};
+L_{i_\bot^\ast,m_0,{\color{red}\pk^\ast_{i_\bot^\ast}[m_0]}},
+L_{i_\bot^\ast,m_0,{\color{red}\pk^\ast_{i_\bot^\ast}[m_0]}};
 r^\LOT_{i_\bot^\ast,m_0})
 \qquad\textup{for }m_0\in[M_0].
 \end{align*}
 \item $\Hyb_4^b$ changes $\widehat{C}_{\ct,i_\bot^\ast}$ into simulation, i.e.,
 \begin{align*}
 \PKE.\ct_{i_\bot^\ast}&{}\gets\begin{cases}
-\PKE.\Enc(\pk_{i_\bot^\ast},{\color{red}\mu_{\phantom{\bot}}};r^\PKE),
+\PKE.\Enc(\pk^\ast_{i_\bot^\ast},{\color{red}\mu_{\phantom{\bot}}};r^\PKE),
 &\textup{if }b=0;\\
-\PKE.\Enc(\pk_{i_\bot^\ast},{\color{red}\mu_\bot};r^\PKE),
+\PKE.\Enc(\pk^\ast_{i_\bot^\ast},{\color{red}\mu_\bot};r^\PKE),
 &\textup{if }b=1;
 \end{cases}\\
-(\widehat{C}_{\ct,i_\bot^\ast},\{L_{i_\bot,m_0,\pk_{i_\bot^\ast}[m_0]}\}_{m_0\in[M_0]})
-&{}\draws\GC.\SimGarble(C_\ct,\pk_{i_\bot^\ast},\PKE.\ct_{i_\bot^\ast}),
+(\widehat{C}_{\ct,i_\bot^\ast},\{L_{i_\bot,m_0,\pk^\ast_{i_\bot^\ast}[m_0]}\}_{m_0\in[M_0]})
+&{}\draws\GC.\SimGarble(C_\ct,\pk^\ast_{i_\bot^\ast},\PKE.\ct_{i_\bot^\ast}),
 \end{align*}
-where ${\pk_{i_\bot^\ast}=\pk}$ is sampled by the experiment
+where ${\pk^\ast_{i_\bot^\ast}=\pk}$ is sampled by the experiment
 (not adversarially controlled).
 \end{itemize}
 The following claims hold, all of which are immediate by inspection:
