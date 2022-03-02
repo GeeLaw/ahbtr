@@ -13,22 +13,16 @@ Table~\ref{tab:symbols} lists non-descriptive symbols used in this work.
 \textbf{Meaning}\hspace*{0.5em} \\
 \midrule
 $\lambda$ && security parameter \\
-$M_0$ && length of non-hardwired input ($\pk$) \\
-$m_0$ && index into non-hardwired input ($\pk$) \\
-$\widehat{C}$ && garbled circuit \\
-$L$ && label of garbled circuit \\
-$k$ && PPRF key \\
-$\mathring{k}_x$ && punctured PPRF key \\
+$\scriptA,\scriptB,\scriptD$ && adversary, adversary, decoder \\
 $\mu$ && message \\
-$M$ && length of database ($NM_0$) \\
-$D$ && database \\
-$\widehat{D}$ && processed database \\
-$m$ && index into database \\
-$\widetilde{C}$ && obfuscated circuit \\
-$N$ && number of recipients \\
-$i_\bot$ && cut-off index in AH-PLBE \\
-&& \quad ($\sk_{j\leq i_\bot}$ cannot decrypt) \\
-$j$ && index of recipient \\
+$N,j$ && number of recipients, index \\
+$i_\bot,i^\ast$ && cut-off index, traitor index \\
+$C,\widehat{C},\widetilde{C}$ && circuit, garbled, obfuscated \\
+$M_0,m_0$ && length of non-hardwired input ($\pk$), index \\
+$L$ && label of garbled circuit \\
+$D,\widehat{D}$ && database ($\pk$'s), processed \\
+$M,m$ && length of database ($NM_0$), index \\
+$k,\mathring{k}_x$ && PPRF key, punctured at~$x$ \\
 \bottomrule
 \end{tabular}
 \end{table}
