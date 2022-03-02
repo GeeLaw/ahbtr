@@ -45,7 +45,7 @@ N,\hk,h,i_\bot,\mu_\bot,\mu,
 k^\GC,k^\PKE,\{k^\LOT_{m_0}\}_{m_0\in[M_0]}]).
 \end{align*}
 The algorithm outputs ${\ct=(\hk,\widetilde{C}_\GC)}$ as the ciphertext.
-\item $\Dec^{\{\pk_j\}_{j\in[N]},\ct}(N,i,\sk)$
+\item $\Dec^{\{\pk_j\}_{j\in[N]},\ct}(N,i,\sk_i)$
 first parses ${\ct=(\hk,\widetilde{C}_\GC)}$ and recomputes
 \begin{align*}
 M\gets NM_0,\qquad
@@ -77,7 +77,7 @@ and evaluates the garbled circuit,
 to obtain the PKE ciphertext under the decryptor's public key.
 Lastly, the algorithm runs and outputs (as the decrypted message)
 \begin{align*}
-\mu\gets\PKE.\Dec(\sk,\PKE.\ct_i).
+\mu\gets\PKE.\Dec(\sk_i,\PKE.\ct_i).
 \end{align*}
 \end{itemize}
 \end{construction}
