@@ -1,0 +1,52 @@
+\begin{definition}[AH-BTR]\label{def:ahbtr}
+An \emph{\ad hoc broadcast, trace, and revoke (AH-BTR) scheme}
+(with message space~$\bit^\lambda$)
+consists of 4 efficient algorithms:
+\begin{itemize}
+\item $\Gen(1^\lambda)$ outputs a pair $(\pk,\sk)$ of public and secret keys.
+\item $\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},{\mu\in\bit^\lambda})$
+takes as input
+\luoji{See Definition~\ref{def:ahplbe} for \textit{\textbf{distinct}}.}
+a list of \textit{\textbf{distinct}} public keys and a message.
+It outputs a ciphertext~$\ct$.
+\item $\Dec^{\{\pk_i\}_{i\in[N]},\ct}(1^\lambda,N,j\in[N],\sk)$
+is given random access to a list of public keys and a ciphertext, and
+takes as input
+the length of the list,
+an index, and
+a secret key.
+It outputs a message.
+\item $\Trace^\scriptD(1^\lambda,\{\pk_i\}_{i\in[N]},1^{1/\epsilon})$
+is given oracle access to a decoder~$\scriptD$ and takes as input
+a list of \textit{\textbf{distinct}} public keys and an error bound.
+It outputs an index~${i^\ast\in\{\bot\}\cup[N]}$.
+\end{itemize}
+The scheme must be \emph{robustly correct}, i.e., for all
+${\lambda\in\doubleN}$,
+${N\in\doubleN}$,
+${j\in[N]}$,\WideNarrow{}{\linebreak[4]}
+$\{\pk_i\}_{i\in[N]\setminus\{j\}}$
+(not necessarily produced by~$\Gen$),
+${\mu\in\bit^\lambda}$,
+\begin{align*}
+\Pr\left[
+\begin{aligned}
+(
+\WideNarrow{}{{}&}
+\pk_j,\sk_j)
+\WideNarrow{&{}}{}
+\draws\Gen(1^\lambda)\\
+\WideNarrow{}{&}
+\ct
+\WideNarrow{&{}}{}
+\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},\mu)
+\end{aligned}
+\::\:
+\begin{aligned}
+\Dec^{\{\pk_i\}_{i\in[N]},\ct}(1^\lambda,N,j,\sk_j)&{}=\mu
+\\\textup{or }\exists\, i,i'\in[N]:\WideNarrow{\,\ }{}
+(i\neq i')\wedge(\pk_i&{}=\pk_{i'})
+\end{aligned}
+\right]=1.
+\end{align*}
+\end{definition}
