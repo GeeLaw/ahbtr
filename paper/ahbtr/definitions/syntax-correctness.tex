@@ -16,8 +16,8 @@ the length of the list,
 an index, and
 a secret key.
 It outputs a message.
-\item $\Trace^\scriptD(1^\lambda,\{\pk_i\}_{i\in[N]},1^{1/\epsilon})$
-is given oracle access to a decoder~$\scriptD$ and takes as input
+\item $\Trace^\scriptD(1^\lambda,\{\pk_i^\ast\}_{i\in[N]},1^{1/\epsilon})$
+is given oracle access to a (stateless randomized) distinguisher~$\scriptD$ and takes as input
 a list of \textit{\textbf{distinct}} public keys and an error bound.
 It outputs an index~${i^\ast\in\{\bot\}\cup[N]}$.
 \end{itemize}

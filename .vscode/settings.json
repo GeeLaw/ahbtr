@@ -29,6 +29,7 @@
     "ciphertexts",
     "codomain",
     "decryptor",
+    "distinguisher",
     "hardwires",
     "homomorphic",
     "IACR",
