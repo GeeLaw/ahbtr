@@ -16,15 +16,15 @@ In each round, $\scriptB$ submits ${t\in[Q]}$ for~$\sk_t$.
 Upon the query, let ${S\gets S\setminus\{t\}}$ and send $\sk_t$ to~$\scriptB$.
 \phase{Challenge}
 $\scriptB$ outputs a (probabilistic) circuit~$\scriptD$,
-a list $\{\pk_i^\ast\}_{i\in[N]}$ of public keys, and
+a list $\{\pk_j^\ast\}_{j\in[N]}$ of public keys, and
 an error bound~$1^{1/\epsilon}$.
 Run
 \begin{align*}
-i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk_i^\ast\}_{i\in[N]},1^{1/\epsilon}).
+i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk_j^\ast\}_{j\in[N]},1^{1/\epsilon}).
 \end{align*}
 Let
 \begin{itemize}
-\item $\DistinctPKs$ be the event that the public keys in $\{\pk_i^\ast\}_{i\in[N]}$ are \emph{distinct},
+\item $\DistinctPKs$ be the event that the public keys in $\{\pk_j^\ast\}_{j\in[N]}$ are \emph{distinct},
 \item $\FalsePos$ the event that ${i^\ast\in[N]}$ and ${\pk_{i^\ast}^\ast=\pk_s}$ for some ${s\in S}$,
 \item $\GoodDist$ the event that
 \begin{align*}
@@ -34,7 +34,7 @@ Let
 \mu_0&{}\draws\bit^\lambda,\qquad
 \mu_1\draws\bit^\lambda\\
 b&{}\draws\bit\\
-\ct&{}\draws\Enc(1^\lambda,\{\pk_i^\ast\}_{i\in[N]},\mu_b)
+\ct&{}\draws\Enc(1^\lambda,\{\pk_j^\ast\}_{j\in[N]},\mu_b)
 \end{aligned}
 \::\:
 \scriptD(\mu_0,\mu_1,\ct)=b
