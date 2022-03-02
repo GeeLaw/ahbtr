@@ -16,6 +16,7 @@ defines
 % hence need not be efficiently computable.
 for ${i\in[0..N]}$,
 \begin{align*}
+\WideNarrow{}{\hspace*{-1em}}
 \epsilon_i=\Pr\Biggl[\smash{\underbrace{
 \begin{aligned}
 \mu_0&{}\draws\bit^\lambda,\quad
@@ -26,14 +27,15 @@ b\draws\bit\\
 \::\:
 \scriptD(\mu_0,\mu_1,\ct)=b
 }_{\textup{experiment }\scriptE_i\textup{ (sampling and testing) and event }E_i\textup{ (correct guessing)}}}
-\Biggr].
+\Biggr]-\frac12.
 \vphantom{\underbrace{\begin{aligned}0\\0\end{aligned}}_{0}}
 \end{align*}
 Setting ${\delta\gets\frac{\epsilon^\ast}{10N}}$
 and~${\eta\gets\frac{\lambda+\log({2N+2})}{2\delta^2}}$,
 for each~${i\in[0..N]}$,
-the algorithm runs~$\scriptE_i$ for $\eta$~times independently and
-computes the relative frequency~$\widehat{\epsilon}_i^{\vphantom{|}}$ of~$E_i$.
+the algorithm runs~$\scriptE_i$ for $\eta$~times independently,
+counts the absolute frequency~${\xi_i\in[0..\eta]}$ of~$E_i$, and
+computes ${\widehat{\epsilon}_i=\frac{\xi_i}{\eta}-\frac12}$.
 It outputs
 \begin{align*}
 i^\ast=\begin{cases}

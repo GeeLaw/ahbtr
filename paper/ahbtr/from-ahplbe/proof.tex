@@ -17,7 +17,7 @@ By the Chernoff bound, the union bound, and the law of total probability,
 \leq\E[2({N+1})\exp({-2\delta^2\eta})]
 \leq 2^{-\lambda}.
 \end{align*}
-Let $\BadEnd$ be the event that ${\left|\epsilon_N-\frac12\right|>\frac{\epsilon^\ast}{2}}$,
+Let $\BadEnd$ be the event that ${|\epsilon_N|>\frac{\epsilon^\ast}{2}}$,
 then ${\GoodDist\wedge\neg\BadEnd}$ implies
 % Here, ``implies'' means ``is a superset of'' (relation between events).
 \begin{align*}
@@ -29,10 +29,12 @@ then ${\GoodDist\wedge\neg\BadEnd}$ implies
 =
 \frac1N|\epsilon_0-\epsilon_N|
 \\&{}\geq
-\frac1N\biggl(
-\underbrace{\biggl|\epsilon_0-\frac12\biggr|}_{\GoodDist}
--\underbrace{\biggl|\epsilon_N-\frac12\biggr|}_{\neg\BadEnd}
-\biggr)
+\frac1N(
+% \GoodDist is \smash'ed and needs \vphantom to restore height.
+\underset{\mathclap{\substack{\uparrow\\{\GoodDist}\quad\vphantom{G}}}}{|\epsilon_0|}
+-
+\underset{\mathclap{\substack{\uparrow\\\quad{\neg\BadEnd}\vphantom{G}}}}{|\epsilon_N|}
+)
 \geq
 \frac1N\left(
 \epsilon^\ast
@@ -48,11 +50,11 @@ Therefore, ${\GoodDist\wedge\neg\BadEnd\wedge\GoodEst}$ implies
 \max_{i\in[N]}{|\widehat{\epsilon}_{i-1}-\widehat{\epsilon}_i|}
 \underset{\mathclap{\substack{
 % \GoodEst is \smash'ed and needs \vphantom to restore height.
-\big\uparrow\\\GoodEst\vphantom{\wedge\neg}
+\big\uparrow\\\GoodEst\vphantom{G}
 }}}{\geq}
 \max_{i\in[N]}{(|\epsilon_{i-1}-\epsilon_i|-2\delta)}
 \underset{\mathclap{\substack{
-\big\uparrow\\\GoodDist\wedge\neg\BadEnd
+\big\uparrow\\\GoodDist\wedge\neg\BadEnd\vphantom{G}
 }}}{\geq}
 5\delta-2\delta
 =
