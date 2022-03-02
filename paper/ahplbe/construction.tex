@@ -22,7 +22,7 @@ whose public keys are (exactly) of polynomial length~$M_0$,
 Our AH-PLBE works as follows:
 \begin{itemize}
 \item $\Gen$ is the same as $\PKE.\Gen$.
-\item $\Enc(\{\pk_i\}_{i\in[N]},i_\bot,\mu)$
+\item $\Enc(\{\pk_j\}_{j\in[N]},i_\bot,\mu)$
 first hashes down the public keys by running
 \begin{align*}
 M&\mathrlap{{}\gets NM_0,}
@@ -45,7 +45,7 @@ N,\hk,h,i_\bot,\mu_\bot,\mu,
 k^\GC,k^\PKE,\{k^\LOT_{m_0}\}_{m_0\in[M_0]}]).
 \end{align*}
 The algorithm outputs ${\ct=(\hk,\widetilde{C}_\GC)}$ as the ciphertext.
-\item $\Dec^{\{\pk_i\}_{i\in[N]},\ct}(N,j,\sk)$
+\item $\Dec^{\{\pk_j\}_{j\in[N]},\ct}(N,i,\sk)$
 first parses ${\ct=(\hk,\widetilde{C}_\GC)}$ and recomputes
 \begin{align*}
 M\gets NM_0,\qquad
@@ -54,30 +54,30 @@ D\gets\pk_1\concat\cdots\concat\pk_N,\qquad
 \end{align*}
 The algorithm next runs the obfuscated circuit,
 \begin{align*}
-(\widehat{C}_{\ct,j},\{\LOT.\ct_{j,m_0}\}_{m_0\in[M_0]})
-\gets\widetilde{C}_\GC(j),
+(\widehat{C}_{\ct,i},\{\LOT.\ct_{i,m_0}\}_{m_0\in[M_0]})
+\gets\widetilde{C}_\GC(i),
 \end{align*}
 to obtain the garbled $C_\ct$ (\Figure~\ref{fig:circuit-create-gc}) for the decryptor and the laconic OT ciphertexts sending its labels.
 It then receives the labels,
 \begin{align*}
 \WideNarrow{}{\hspace*{-1.5em}}
-L_{j,m_0,\pk_j[m_0]}
-\gets\LOT.\Recv^{\widehat{D}}(\hk,h,(j-1)M_0+m_0,\LOT.\ct_{j,m_0})
+L_{i,m_0,\pk_i[m_0]}
+\gets\LOT.\Recv^{\widehat{D}}(\hk,h,(i-1)M_0+m_0,\LOT.\ct_{i,m_0})
 \WideNarrow{\quad\textup{for }}{\textup{ for }}
 m_0\in[M_0],
 \end{align*}
 and evaluates the garbled circuit,
 \begin{align*}
-\PKE.\ct_j\gets\GC.\Eval(
-\widehat{C}_{\ct,j},
-\pk_j,
-\{L_{j,m_0,\pk_j[m_0]}\}_{m_0\in[M_0]}
+\PKE.\ct_i\gets\GC.\Eval(
+\widehat{C}_{\ct,i},
+\pk_i,
+\{L_{i,m_0,\pk_i[m_0]}\}_{m_0\in[M_0]}
 ),
 \end{align*}
 to obtain the PKE ciphertext under the decryptor's public key.
 Lastly, the algorithm runs and outputs (as the decrypted message)
 \begin{align*}
-\mu\gets\PKE.\Dec(\sk,\PKE.\ct_j).
+\mu\gets\PKE.\Dec(\sk,\PKE.\ct_i).
 \end{align*}
 \end{itemize}
 \end{construction}
