@@ -17,10 +17,10 @@ Upon the query, let ${S\gets S\setminus\{t\}}$ and send $\sk_t$ to~$\scriptB$.
 \phase{Challenge}
 $\scriptB$ outputs a (probabilistic) circuit~$\scriptD$,
 a list $\{\pk^\ast_j\}_{j\in[N]}$ of public keys, and
-an error bound~$1^{1/\epsilon}$.
+an error bound~$1^{1/\epsilon^\ast}$.
 Run
 \begin{align*}
-i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon}).
+i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast}).
 \end{align*}
 Let
 \begin{itemize}
@@ -40,7 +40,7 @@ b&{}\draws\bit\\
 \scriptD(\mu_0,\mu_1,\ct)=b
 \right]-\frac12
 \right|
-\geq\epsilon
+\geq\epsilon^\ast
 \textup{,\WideNarrow{\qquad}{\quad}and}
 \end{align*}
 \item
