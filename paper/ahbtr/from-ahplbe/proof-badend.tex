@@ -12,7 +12,15 @@ $\scriptA$ runs $\scriptE_N$ and
 notes down ${\beta\in\bit}$ indicating whether $E_N$ happened,
 i.e., ${\beta=1}$ if and only if $\scriptD$ guessed correctly in the trial.
 \item $\scriptA$ submits $\{\pk^\ast_j\}_{j\in[N]}$ to the message-hiding experiment, receives $(\mu_0,\mu_1,\ct)$ back, and
-runs and outputs ${b'\draws\scriptD(\mu_0,\mu_1,\ct)\oplus\neg\beta}$.
+runs and outputs ${b'\draws\scriptD(\mu_0,\mu_1,\ct)\oplus\beta}$.
+% This ``sign correction'', producing ``the wrong guess'',
+% is sadly correct (making the advantage non-negative).
+% This is because the advantage is
+% \begin{align*}
+%     \Pr[\Exp_0^\scriptA = 1] - \Pr[\Exp_1^\scriptA = 1],
+% \end{align*}
+% i.e., an adversary with positive advantage
+% should say $1$ more often in~$\Exp_0$.
 \end{itemize}
 Routine calculation shows that the advantage of $\scriptA$ is
 ${\E[\1_\DistinctPKs\cdot 4\epsilon_N^2]}$,
