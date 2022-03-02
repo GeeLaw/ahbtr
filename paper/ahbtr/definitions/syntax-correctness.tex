@@ -4,19 +4,19 @@ An \emph{\ad hoc broadcast, trace, and revoke (AH-BTR) scheme}
 consists of 4 efficient algorithms:
 \begin{itemize}
 \item $\Gen(1^\lambda)$ outputs a pair $(\pk,\sk)$ of public and secret keys.
-\item $\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},{\mu\in\bit^\lambda})$
+\item $\Enc(1^\lambda,\{\pk_j\}_{j\in[N]},{\mu\in\bit^\lambda})$
 takes as input
 \luoji{See Definition~\ref{def:ahplbe} for \textit{\textbf{distinct}}.}
 a list of \textit{\textbf{distinct}} public keys and a message.
 It outputs a ciphertext~$\ct$.
-\item $\Dec^{\{\pk_i\}_{i\in[N]},\ct}(1^\lambda,N,j\in[N],\sk)$
+\item $\Dec^{\{\pk_j\}_{j\in[N]},\ct}(1^\lambda,N,i\in[N],\sk_i)$
 is given random access to a list of public keys and a ciphertext, and
 takes as input
 the length of the list,
 an index, and
 a secret key.
 It outputs a message.
-\item $\Trace^\scriptD(1^\lambda,\{\pk_i^\ast\}_{i\in[N]},1^{1/\epsilon})$
+\item $\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast})$
 is given oracle access to a (stateless randomized) distinguisher~$\scriptD$ and takes as input
 a list of \textit{\textbf{distinct}} public keys and an error bound.
 It outputs an index~${i^\ast\in\{\bot\}\cup[N]}$.
@@ -24,8 +24,8 @@ It outputs an index~${i^\ast\in\{\bot\}\cup[N]}$.
 The scheme must be \emph{robustly correct}, i.e., for all
 ${\lambda\in\doubleN}$,
 ${N\in\doubleN}$,
-${j\in[N]}$,\WideNarrow{}{\linebreak[4]}
-$\{\pk_i\}_{i\in[N]\setminus\{j\}}$
+${i\in[N]}$,\WideNarrow{}{\linebreak[4]}
+$\{\pk_j\}_{j\in[N]\setminus\{i\}}$
 (not necessarily produced by~$\Gen$),
 ${\mu\in\bit^\lambda}$,
 \begin{align*}
@@ -33,19 +33,19 @@ ${\mu\in\bit^\lambda}$,
 \begin{aligned}
 (
 \WideNarrow{}{{}&}
-\pk_j,\sk_j)
+\pk_i,\sk_i)
 \WideNarrow{&{}}{}
 \draws\Gen(1^\lambda)\\
 \WideNarrow{}{&}
 \ct
 \WideNarrow{&{}}{}
-\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},\mu)
+\draws\Enc(1^\lambda,\{\pk_j\}_{j\in[N]},\mu)
 \end{aligned}
 \::\:
 \begin{aligned}
-\Dec^{\{\pk_i\}_{i\in[N]},\ct}(1^\lambda,N,j,\sk_j)&{}=\mu
-\\\textup{or }\exists\, i,i'\in[N]:\WideNarrow{\,\ }{}
-(i\neq i')\wedge(\pk_i&{}=\pk_{i'})
+\Dec^{\{\pk_j\}_{j\in[N]},\ct}(1^\lambda,N,i,\sk_i)&{}=\mu
+\\\textup{or }\exists\, j,j'\in[N]:\WideNarrow{\,\ }{}
+(j\neq j')\wedge(\pk_j&{}=\pk_{j'})
 \end{aligned}
 \right]=1.
 \end{align*}

@@ -16,34 +16,32 @@ In each round, $\scriptB$ submits ${t\in[Q]}$ for~$\sk_t$.
 Upon the query, let ${S\gets S\setminus\{t\}}$ and send $\sk_t$ to~$\scriptB$.
 \phase{Challenge}
 $\scriptB$ outputs a (probabilistic) circuit~$\scriptD$,
-a list $\{\pk_i^\ast\}_{i\in[N]}$ of public keys, and
-an error bound~$1^{1/\epsilon}$.
+a list $\{\pk^\ast_j\}_{j\in[N]}$ of public keys, and
+an error bound~$1^{1/\epsilon^\ast}$.
 Run
 \begin{align*}
-i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk_i^\ast\}_{i\in[N]},1^{1/\epsilon}).
+i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast}).
 \end{align*}
 Let
 \begin{itemize}
-\item $\DistinctPKs$ be the event that the public keys in $\{\pk_i^\ast\}_{i\in[N]}$ are \emph{distinct},
-\item $\FalsePos$ the event that ${i^\ast\in[N]}$ and ${\pk_{i^\ast}^\ast=\pk_s}$ for some ${s\in S}$,
+\item $\DistinctPKs$ be the event that the public keys in $\{\pk^\ast_j\}_{j\in[N]}$ are \emph{distinct},
+\item $\FalsePos$ the event that ${i^\ast\in[N]}$ and ${\pk^\ast_{i^\ast}=\pk_s}$ for some ${s\in S}$,
 \item $\GoodDist$ the event that
 \begin{align*}
-\WideNarrow{}{\hspace*{-1.1em}}
 \left|\Pr\left[
 \begin{aligned}
 \mu_0&{}\draws\bit^\lambda,\qquad
 \mu_1\draws\bit^\lambda\\
 b&{}\draws\bit\\
-\ct&{}\draws\Enc(1^\lambda,\{\pk_i^\ast\}_{i\in[N]},\mu_b)
+\ct&{}\draws\Enc(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},\mu_b)
 \end{aligned}
 \::\:
 \scriptD(\mu_0,\mu_1,\ct)=b
 \right]-\frac12
 \right|
-\geq\epsilon
-\textup{,\WideNarrow{\qquad}{\quad}and}
+\geq\epsilon^\ast,
 \end{align*}
-\item
+\item and
 \luoji{Need motivation in introduction!
 There're two kinds of adversarial public keys.
 One is correctly sampled but secret key is leaked.

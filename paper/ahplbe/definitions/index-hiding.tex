@@ -10,18 +10,18 @@ launch $\scriptA(1^\lambda,\pk)$, and
 receive from it
 some~${N\in\doubleN}$,
 a cut-off index~${i_\bot^\ast\in[N]}$, and
-a list~$\{\pk_i\}_{i\in[N]\setminus\{i_\bot^\ast\}}$ of public keys.
-Let ${\pk_{i_\bot^\ast}\gets\pk}$,
+a list~$\{\pk^\ast_j\}_{j\in[N]\setminus\{i_\bot^\ast\}}$ of public keys.
+Let ${\pk^\ast_{i_\bot^\ast}\gets\pk}$,
 run
 \begin{align*}
 \mu\draws\bit^\lambda,\qquad
-\ct\draws\Enc(1^\lambda,\{\pk_i\}_{i\in[N]},i_\bot^\ast-1+b,\mu),
+\ct\draws\Enc(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},i_\bot^\ast-1+b,\mu),
 \end{align*}
 and send $(\mu,\ct)$ to $\scriptA$.
 \phase{Guess}
 $\scriptA$ outputs a bit~$b'$.
 The output of the experiment is~$b'$ if
-the keys in $\{\pk_i\}_{i\in[N]}$ are \emph{distinct}.
+the public keys in $\{\pk^\ast_j\}_{j\in[N]}$ are \emph{distinct}.
 Otherwise, the output is set to~$0$.
 \end{security}
 \end{definition}
