@@ -2,14 +2,14 @@
 Given an efficient adversary~$\scriptB$ against the traceability of Construction~\ref{con:ahbtr-from-ahplbe},
 let
 \begin{itemize}
-\item $\alpha$ be a random variable in the traceability experiment,
+\item $\alpha$ be a random element in the traceability experiment,
 \begin{align*}
 \alpha=\begin{cases}
-0,&\textup{if }
+0,&\textup{if }i^\ast\neq\bot\textup{ and }
 \widehat{\epsilon}_{i^\ast-1}-\widehat{\epsilon}_{i^\ast}\geq 3\delta;\\
-1,&\textup{if }
+1,&\textup{if }i^\ast\neq\bot\textup{ and }
 \widehat{\epsilon}_{i^\ast-1}-\widehat{\epsilon}_{i^\ast}\leq -3\delta;\\
-\textup{(does not matter)},&\textup{otherwise};
+\bot,&\textup{if }i^\ast=\bot;
 \end{cases}
 \end{align*}
 \item $B_1=\poly(\lambda)>1$ an upper bound of $Q$,
@@ -36,14 +36,15 @@ the adversary~$\scriptA$ runs
 \begin{align*}
 i^\ast\draws\Trace^\scriptD(\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast}),
 \end{align*}
-and notes down $\alpha$ from the above simulation.
-\item $\scriptA$ aborts
+and aborts
 \begin{itemize}
 \item if the public keys in $\{\pk^\ast_j\}_{j\in[N]}$ are not distinct,
 \item if $i^\ast=\bot$, or
 \item if ${i^\ast\in[N]}$ and ${q^\ast\neq\min{\{\,s\in S\::\:\pk^\ast_{i^\ast}=\pk_s\,\}}}$.
 \end{itemize}
-If not aborting,\WideNarrow{}{\rule[1.1em]{0pt}{0pt}}
+If not aborting,
+$\scriptA$ notes down ${\alpha\in\bit}$ from the above simulation.
+\item
 $\scriptA$ submits $N,{i_\bot^\ast=i^\ast},\{\pk^\ast_j\}_{j\in[N]\setminus\{i_\bot^\ast\}}$ to the index-hiding experiment,
 gets $(\mu,\ct)$ back,
 samples and sets
