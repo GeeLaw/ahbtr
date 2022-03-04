@@ -1,8 +1,8 @@
 \begin{proof}[\hyperanchor{pf:ahbtr-from-ahplbe-falsepos}{Claim~\ref{clm:ahbtr-from-ahplbe-falsepos}}]
-Given an efficient adversary~$\scriptB$ against the tracing security of Construction~\ref{con:ahbtr-from-ahplbe},
+Given an efficient adversary~$\scriptB$ against the traceability of Construction~\ref{con:ahbtr-from-ahplbe},
 let
 \begin{itemize}
-\item $\alpha$ be a random variable in the tracing security experiment,
+\item $\alpha$ be a random variable in the traceability experiment,
 \begin{align*}
 \alpha=\begin{cases}
 0,&\textup{if }
@@ -66,7 +66,7 @@ B_1^{-1}\E_\scriptB[\1_\DistinctPKs\cdot\1_\FalsePos\cdot(-1)^\alpha(\epsilon_{i
 which must be negligible by the index-hiding property of~$\AHPLBE$.
 % This is terrible.
 % An implicit coupling is going on.
-Here, $\E_\scriptA$ (similarly $\Pr_\scriptA$, resp.~$\E_\scriptB$ and $\Pr_\scriptB$) signifies that the probability space is defined for the index-hiding (resp.~tracing security) experiment.
+Here, $\E_\scriptA$ (similarly $\Pr_\scriptA$, resp.~$\E_\scriptB$ and $\Pr_\scriptB$) signifies that the probability space is defined for the index-hiding (resp.~traceability) experiment.
 
 ${\FalsePos\wedge\GoodEst}$ implies
 % $\FalsePos$ is to ensure ${i^\ast\neq\bot}$ so that
