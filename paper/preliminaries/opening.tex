@@ -1,11 +1,13 @@
 We denote by~${\lambda\in\doubleN}$ the security parameter,
-by~$\poly({\cdot})$ a polynomial function, and
-by~$\negl(\lambda)$ a negligible function of~$\lambda$.
+by $\poly({\cdot})$ a polynomial function, and
+by $\negl(\lambda)$ a negligible function of~$\lambda$.
 Efficient algorithms are probabilistic random-access machines $M^w(x)$ of running time~$\poly(|x|,|w|)$.
-Efficient adversaries (in interactive experiments) can be either circuits of (total) size~$\poly(\lambda)$ or probabilistic Turing machines of (total) running time~$\poly(\lambda)$.
+Efficient adversaries (in interactive experiments) are probabilistic Turing machines of (total) running time~$\poly(\lambda)$,
+with or without $\poly(\lambda)$-long advices.
+(All of the proofs in this work are uniform.)
 The advantage of~$\scriptA$ in distinguishing $\Exp_0$ and~$\Exp_1$ is
 ${\Pr[\Exp_0^\scriptA(1^\lambda)=1]-\Pr[\Exp_1^\scriptA(1^\lambda)=1]}$.
-We use $\approx,\approxS,\equiv$ for computational indistinguishability, statistical indistinguishability, and identity.
+We write $\approx,\approxS,\equiv$ for computational indistinguishability, statistical indistinguishability, and identity.
 
 Under the standard assumption that a pseudorandom generator (with polynomial security) exists,
 we can assume, whenever convenient, that a randomized algorithm uses a uniformly random $\lambda$-bit string as its randomness (without losing polynomial security considered in this work or degrading its efficiency).
