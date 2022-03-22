@@ -1,4 +1,81 @@
-\begin{construction}[AH-BTR transformation]\label{con:ahbtr-trade-off}
-\luoji{Describe the transformation.}
-Blah.
+\subsubsection{Ingredients of Construction~\ref{con:ahbtr-trade-off}.}
+Let $(\OLD.\Gen,\OLD.\Enc,\OLD.\Dec,\OLD.\Trace)$ be an AH-BTR scheme and
+% To be completely formal, it must be easy to compute
+% $\lceil N^\gamma\rceil$ from $N$, but meh!
+$\gamma$ some constant (${0<\gamma<1}$).
+
+\begin{construction}[AH-BTR transformation~{\cite[user expansion]{C:Zhandry20}}]\label{con:ahbtr-trade-off}
+Our new AH-BTR works as follows:
+\begin{itemize}
+\item $\Gen$ is the same as $\OLD.\Gen$.
+\item $\Enc(\{\pk_j\}_{j\in[N]},\mu)$ sets
+${N_1=\lceil N^\gamma\rceil}$ and
+${N_2=\lceil N/N_1\rceil}$.
+It runs
+\begin{align*}
+\OLD.\ct_{j_1}\draws\OLD.\Enc(\{\pk_j\}_{(j_1-1)N_2<j\leq j_1N_2},\mu)
+\qquad\textup{for }j_1\in[N_1].
+\end{align*}
+The algorithm outputs ${\ct=\{\OLD.\ct_{j_1}\}_{j_1\in[N_1]}}$.
+\item $\Dec^{\{\pk_j\}_{j\in[N]},\ct}(N,i,\sk_i)$ sets
+${N_1=\lceil N^\gamma\rceil}$ and
+${N_2=\lceil N/N_1\rceil}$.
+It parses $\ct$ as $\{\OLD.\ct_{j_1}\}_{j_1\in[N_1]}$,
+finds ${i_1\in[N_1]}$ such that ${(i_1-1)N_2<i\leq i_1N_2}$, and
+sets ${N_2'=\min{\{N_2,N-(i_1-1)N_2\}}}$.
+The algorithm runs and outputs
+\begin{align*}
+\OLD.\Dec^{\{\pk_j\}_{(i_1-1)N_2<j\leq i_1N_2},\OLD.\ct_{i_1}}
+(N_2',i-(i_1-1)N_2,\sk_i).
+\end{align*}
+\item $\Trace^\scriptD(\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast})$ sets
+${N_1=\lceil N^\gamma\rceil}$ and
+${N_2=\lceil N/N_1\rceil}$.
+It runs
+\begin{align*}
+i^\ast_{j_1}\draws\OLD.\Trace^{\scriptD_{j_1}}(\{\pk^\ast_j\}_{(i_1-1)N_2<j\leq i_1N_2},1^{N_1/\epsilon^\ast})
+\qquad\textup{for }j_1\in[N_1],
+\end{align*}
+where
+$\scriptD_{j_1}(\mu_0,\mu_1,\OLD.\ct^\ast)$
+runs and outputs
+$\scriptD(\mu_0,\mu_1,\{\OLD.\ct_{j_1'}\}_{j_1'\in[N_1]})$
+with
+\begin{align*}
+\OLD.\ct_{j_1'}\draws\begin{cases}
+\OLD.\Enc(\{\pk^\ast_j\}_{(j_1'-1)N_2<j\leq j_1'N_2},\mu_0),&
+\textup{if }j_1'<j_1;\\
+\OLD.\ct^\ast,&\textup{if }j_1'=j_1;\\
+\OLD.\Enc(\{\pk^\ast_j\}_{(j_1'-1)N_2<j\leq j_1'N_2},\mu_1),&
+\textup{if }j_1'>j_1.
+\end{cases}
+\end{align*}
+\end{itemize}
 \end{construction}
+
+\subsubsection{Robustness Correctness and Compatibility.}
+These are inherited from the underlying AH-BTR.
+When based on Construction~\ref{con:ahbtr-from-ahplbe},
+the resultant AH-BTR is compatible with the existing public-key infrastructure.
+
+\subsubsection{Efficiency.}
+Let $\gamma_1,\gamma_2,\gamma_3$ be constants such that the AH-BTR efficiency is
+\begin{align*}
+T_\Enc=\bigO(N^{\gamma_1})\poly(\lambda),\qquad
+|\ct|=\bigO(N^{\gamma_2})\poly(\lambda),\qquad
+T_\Dec=\bigO(N^{\gamma_3})\poly(\lambda),
+\end{align*}
+then the underlying efficiency is mapped to the resultant efficiency by
+\begin{align*}
+(\gamma_1,\gamma_2,\gamma_3)\mapsto
+(1-\gamma+\gamma\gamma_1,1-\gamma+\gamma\gamma_2,\gamma\gamma_3).
+\end{align*}
+When based on Construction~\ref{con:ahbtr-from-ahplbe},
+the resultant AH-BTR enjoys
+\begin{align*}
+T_\Enc=({N+1})\poly(\lambda),\quad
+|\ct|=\bigO(N^{1-\gamma})\poly(\lambda),\quad
+T_\Dec=\bigO(N^\gamma)\poly(\lambda).
+\end{align*}
+\luoji{Maybe introduce ``balanced'' somewhere in the introduction?}
+Setting ${\gamma=\frac12}$ yields the balanced scheme.
