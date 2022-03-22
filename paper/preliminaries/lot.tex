@@ -9,10 +9,10 @@ A \emph{laconic oblivious transfer (OT) scheme} (with message space~$\bit^\lambd
 It is deterministic,
 runs in time~$\bigO(M)\poly(\lambda,\log M)$, and
 outputs a hash $h$ of length~$\poly(\lambda,\log M)$ and a processed database~$\widehat{D}$.
-\item $\Send(1^\lambda,\hk,h,m\in[M],L_0\in\bit^\lambda,L_1\in\bit^\lambda)$
+\item $\Send(1^\lambda,\hk,h,{m\in[M]},{L_0\in\bit^\lambda},{L_1\in\bit^\lambda})$
 takes as input a hash key, a hash, an index, and two labels (messages).
 It outputs a ciphertext~$\ct$.
-\item $\Recv^{\widehat{D}}(1^\lambda,\hk,h,m\in[M],\ct)$
+\item $\Recv^{\widehat{D}}(1^\lambda,\hk,h,{m\in[M]},\ct)$
 is given random access to a processed database, and
 takes as input a hash key, a hash, an index, and a ciphertext.
 It runs in time~$\poly(\lambda,\log M)$ and outputs a label (message).
