@@ -1,4 +1,159 @@
 \begin{proof}[\hyperanchor{pf:ahbtr-trade-off}{Theorem~\ref{thm:ahbtr-trade-off}}]
-\luoji{Prove tracing security.}
-Blah.
+Given an efficient adversary~$\scriptB$ against the traceability of the resultant scheme,
+let ${B=\poly(\lambda)>1}$ be an upper bound of~$\lceil N^\gamma\rceil$.
+Since
+\begin{align*}
+\WideNarrow{}{&}
+\Pr[\scriptB\textup{ wins}]
+\WideNarrow{}{\\{}}
+={}&
+\Pr_\scriptB[\DistinctPKs\wedge(\FalsePos\vee(\GoodDist\wedge\NotFound))]
+\\{}\leq{}&
+\Pr_\scriptB[\DistinctPKs\wedge\FalsePos]
++
+\Pr_\scriptB[\DistinctPKs\wedge\GoodDist\wedge\NotFound],
+\end{align*}
+it suffices bound the two terms on the right-hand side.
+
+Consider the following efficient adversary $\scriptB'$ against the traceability of~$\OLD$:
+\begin{itemize}
+\item $\scriptB'$ samples ${j_1^\ast\draws[B]}$, launches~$\scriptB$, and starts simulating $\ExpTrace$ of the resultant scheme for it by forwarding messages back and forth, until $\scriptB$ submits the challenge consisting of $\scriptD$, $\{\pk^\ast_j\}_{j\in[N]}$, and~$1^{1/\epsilon^\ast}$.
+It aborts if $\pk^\ast_j$'s are not distinct.
+\item $\scriptB'$ sets
+${N_1=\lceil N^\gamma\rceil}$ and ${N_2=\lceil N/N_1\rceil}$,
+checks whether ${j_1^\ast\in[N_1]}$, and
+aborts if not.
+\item $\scriptB'$ runs (or pretends to have run)
+\begin{align*}
+i^\ast_{j_1}\draws\OLD.\Trace^{\scriptD_{j_1}}(
+\{\pk^\ast_j\}_{(j_1-1)N_2<j\leq j_1N_2},
+1^{N_1/\epsilon^\ast}
+)\qquad\textup{for }j_1\in{[N_1]\setminus{\{j_1^\ast\}}}.
+\end{align*}
+\item $\scriptB'$ submits
+$\scriptD_{j_1^\ast}$,
+$\{\pk^\ast_j\}_{(j_1^\ast-1)N_2<j\leq j_1^\ast N_2}$, and
+$1^{N_1/\epsilon^\ast}$
+as the challenge to $\ExpTrace$ of~$\OLD$.
+\end{itemize}
+Let $S$ be the set maintained by $\ExpTrace$ of~$\OLD$ at the end, and
+$i^\ast_{j_1^\ast}$ the output of $\OLD.\Trace$ run by $\ExpTrace$ of~$\OLD$ at the end.
+Define
+\begin{align*}
+\epsilon&{}=\Pr\left[\begin{aligned}
+\mu_0&{}\draws\bit^\lambda,\quad
+\mu_1\draws\bit^\lambda,\quad
+\beta\draws\bit\\
+\ct&{}\draws\Enc(\{\pk^\ast_j\}_{j\in[N]},\mu_\beta)
+\end{aligned}
+\::\:
+\scriptD(\mu_0,\mu_1,\ct)=\beta
+\right]
+-\frac12,\\
+\epsilon_{j_1}&{}=
+\WideNarrow{}{-\frac12\\&\hspace*{-1em}{}+}
+\Pr\left[\begin{aligned}
+\mu_0&\draws\bit^\lambda,\WideNarrow{\quad}{\ }
+\mu_1\draws\bit^\lambda,\WideNarrow{\quad}{\ }
+\beta\draws\bit\\
+\OLD.\ct^\ast&{}\draws\OLD.\Enc(\{\pk^\ast_j\}_{(j_1-1)N_2<j\leq j_1N_2},\mu_\beta)
+\end{aligned}
+\::\:
+\scriptD_{j_1}(\mu_0,\mu_1,\OLD.\ct^\ast)=\beta
+\right]
+\WideNarrow{-\frac12}{\!}.
+\end{align*}
+Imagine $\ExpTrace$ of the resultant scheme for~$\scriptB$ is completed by inspecting the values of $S$, $i^\ast_{j_1^\ast}$, and~$\epsilon_{j_1^\ast}$,
+% Now $\ExpTrace$ of the resultant scheme is coupled with $\ExpTrace$ of~$\OLD$,
+% so we can talk about the events for $\scriptB$ and $\scriptB'$ defined over
+% the same probability space.
+and write the events in $\ExpTrace$ of~$\OLD$ for~$\scriptB'$ with primes
+so that, e.g.,
+\begin{align*}
+\Pr_{\scriptB'}[E]=\Pr[E'],\quad
+\Pr_{\scriptB}[E]=\Pr[E]
+\qquad\textup{for }E\in{\WideNarrow{
+\{\DistinctPKs,\FalsePos,\GoodDist,\NotFound\}
+}{
+\left\{\begin{aligned}
+\DistinctPKs,\,&\FalsePos,\\
+\GoodDist,\,&\NotFound
+\end{aligned}\right\}
+}},
+\end{align*}
+where the probabilities on the right-hand side is over running $\ExpTrace$ of the resultant scheme with~$\scriptB'$.
+
+(First term, ``$\FalsePos$''.)
+Let
+\begin{align*}
+J={\{\,
+j_1\in[N_1]
+\::\:
+i^\ast_{j_1}\neq\bot\textup{ and }
+\pk_{(j_1-1)N_2+i^\ast_{j_1}}=\pk_s\textup{ for some }s\in S
+\}},
+\end{align*}
+and $\Lucky_1$ the event that ${j_1^\ast\in J}$,
+then ${\Lucky_1=\FalsePos'}$.
+A routine guessing argument shows that
+\begin{align*}
+\Pr_\scriptB[\DistinctPKs\wedge\FalsePos]
+&{}\leq
+\Pr[\DistinctPKs\wedge(J\neq\varnothing)]
+\WideNarrow{}{\\&{}}\leq
+B\Pr[\DistinctPKs\wedge\Lucky_1]
+\\&{}=
+B\Pr[\DistinctPKs'\wedge\FalsePos']
+\WideNarrow{}{\\&{}}=
+B\Pr_{\scriptB'}[\DistinctPKs\wedge\FalsePos]
+\\&{}\leq
+B\Pr[\scriptB'\textup{ wins}].
+\end{align*}
+
+(Second term, ``$\NotFound$''.)
+Let
+\begin{align*}
+J'={\{\,
+j_1\in[N_1]
+\::\:
+|\epsilon_{j_1}|\geq\epsilon^\ast/N_1
+\,\}},
+\end{align*}
+and $\Lucky_2$ the event that ${j_1^\ast\in J'}$,
+then ${\Lucky_2=\GoodDist'}$.
+Routine calculation shows that
+\begin{align*}
+\sum_{j_1\in[N_1]}{\epsilon_{j_1}}=\epsilon,
+\end{align*}
+so $\GoodDist$ implies ${J'\neq\varnothing}$.
+Again, a standard guessing argument provides that
+\begin{align*}
+&\Pr_\scriptB[\DistinctPKs\wedge\GoodDist\wedge\NotFound]
+\\{}={}&
+\Pr[\DistinctPKs\wedge\GoodDist\wedge(i^\ast_{j_1}=\bot\textup{ for all }j_1\in[N_1])]
+\\{}\leq{}&
+\Pr[\DistinctPKs\wedge(J'\neq\varnothing)\wedge(i^\ast_{j_1}=\bot\textup{ for all }j_1\in[N_1])]
+\\{}\leq{}&
+B\Pr[\DistinctPKs\wedge\Lucky_2\wedge(i^\ast_{j_1}=\bot\textup{ for all }j_1\in[N_1])]
+\\{}\leq{}&
+B\Pr[\DistinctPKs\wedge\Lucky_2\wedge(i^\ast_{j_1^\ast}=\bot)]
+\\{}={}&
+B\Pr[\DistinctPKs'\wedge\GoodDist'\wedge\NotFound']
+\\{}={}&
+B\Pr_{\scriptB'}[\DistinctPKs\wedge\GoodDist\wedge\NotFound]
+=
+B\Pr[\scriptB'\textup{ wins}].
+\end{align*}
+
+Since $\scriptB'$ is efficient,
+${\Pr[\scriptB'\textup{ wins}]}$ must be negligible.
+Combining the above,
+\begin{align*}
+\Pr[\scriptB\textup{ wins}]
+&{}\leq
+2B\Pr[\scriptB'\textup{ wins}]
+=
+\poly(\lambda)\negl(\lambda)=\negl(\lambda).
+\qedhere
+\end{align*}
 \end{proof}
