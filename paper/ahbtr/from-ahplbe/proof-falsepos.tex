@@ -62,7 +62,7 @@ Routine calculation shows that the advantage of~$\scriptA$ is
 &
 \E_\scriptA[\1_\NoAbort\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})]
 \WideNarrow{=}{\\&\qquad{}={}}
-B_1^{-1}\E_\scriptB[\1_\DistinctPKs\cdot\1_\FalsePos\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})],
+B_1^{-1}\E_\scriptB[\1_\GoodPKs\cdot\1_\FalsePos\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})],
 \end{align*}
 which must be negligible by the index-hiding property of~$\AHPLBE$.
 % This is terrible.
@@ -96,45 +96,45 @@ Moreover, ${(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})\geq -1}$ always h
 These together show that
 \begin{align*}
 &
-\Pr_\scriptB[\DistinctPKs\wedge\FalsePos\wedge\GoodEst]
+\Pr_\scriptB[\GoodPKs\wedge\FalsePos\wedge\GoodEst]
 \\{}={}&
 10B_2B_3\E_\scriptB\left[
-\1_\DistinctPKs\cdot\1_\FalsePos\cdot\1_\GoodEst\cdot\frac{1}{10B_2B_3}
+\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_\GoodEst\cdot\frac{1}{10B_2B_3}
 \right]
 % \displaybreak[3]
 \\{}\leq{}&
 10B_2B_3\E_\scriptB\left[
-\1_\DistinctPKs\cdot\1_\FalsePos\cdot\1_\GoodEst
+\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_\GoodEst
 \cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 \right]
 % \displaybreak[3]
 \\{}\leq{}&
 10B_2B_3\Bigl(
 \E_\scriptB[
-\1_\DistinctPKs\cdot\1_\FalsePos\cdot\1_\GoodEst
+\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_\GoodEst
 \cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 ]
 \\&
 \hphantom{10B_2B_3\Bigl({}}{}
 +
 \E_\scriptB[
-\1_\DistinctPKs\cdot\1_\FalsePos\cdot\1_{\neg\GoodEst}
+\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_{\neg\GoodEst}
 \cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 ]
 \\&
 \hphantom{10B_2B_3\Bigl({}}{}
 +
-\E_\scriptB[\1_\DistinctPKs\cdot\1_\FalsePos\cdot\1_{\neg\GoodEst}]
+\E_\scriptB[\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_{\neg\GoodEst}]
 \Bigr)
 % \displaybreak[3]
 \\{}={}&
 10B_2B_3\Bigl(
 \E_\scriptB[
-\1_\DistinctPKs\cdot\1_\FalsePos
+\1_\GoodPKs\cdot\1_\FalsePos
 \cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 ]
 \\&\hphantom{10B_2B_3\Bigl({}}{}
-+\Pr_\scriptB[\DistinctPKs\wedge\FalsePos\wedge\neg\GoodEst]
++\Pr_\scriptB[\GoodPKs\wedge\FalsePos\wedge\neg\GoodEst]
 \Bigr)
 % \displaybreak[3]
 \\{}\leq{}&

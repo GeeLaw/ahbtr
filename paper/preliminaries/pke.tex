@@ -2,10 +2,11 @@
 Our \ad hoc broadcast, trace, and revoke scheme can be based on any public-key encryption scheme.
 
 \begin{definition}[PKE]\label{def:pke}
-A \emph{public-key encryption (PKE) scheme} (with message space~$\bit^\lambda$)
+A \emph{public-key encryption (PKE) scheme} (with message space~$\bit^\lambda$ and public key length~$\ell(\lambda)$)
 consists of 3 efficient algorithms:
 \begin{itemize}
-\item $\Gen(1^\lambda)$ outputs a pair $(\pk,\sk)$ of public and secret keys.
+\item $\Gen(1^\lambda)$ outputs a pair $(\pk,\sk)$ of public and secret keys
+with ${|\pk|=\ell(\lambda)}$.
 \item $\Enc(1^\lambda,\pk,\mu\in\bit^\lambda)$ takes as input the public key and a message.
 It outputs a ciphertext~$\ct$.
 \item $\Dec(1^\lambda,\sk,\ct)$ takes as input the secret key and a ciphertext.

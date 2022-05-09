@@ -71,11 +71,11 @@ By contraposition,
 The following claims hold:
 
 \begin{claim}[\hyperlink{pf:ahbtr-from-ahplbe-badend}{\P}]\label{clm:ahbtr-from-ahplbe-badend}
-$\Pr[\DistinctPKs\wedge\BadEnd]=\negl(\lambda)$.
+$\Pr[\GoodPKs\wedge\BadEnd]=\negl(\lambda)$.
 \end{claim}
 
 \begin{claim}[\hyperlink{pf:ahbtr-from-ahplbe-falsepos}{\P}]\label{clm:ahbtr-from-ahplbe-falsepos}
-$\Pr[\DistinctPKs\wedge\FalsePos\wedge\GoodEst]=\negl(\lambda)$.
+$\Pr[\GoodPKs\wedge\FalsePos\wedge\GoodEst]=\negl(\lambda)$.
 \end{claim}
 
 \noindent
@@ -91,20 +91,20 @@ it follows that
 \WideNarrow{}{\displaybreak[3]}\\{}\leq{}&
 2^{-\lambda}
 +
-\Pr[\DistinctPKs\wedge(\FalsePos\vee(\GoodDist\wedge\NotFound))\wedge\GoodEst]
+\Pr[\GoodPKs\wedge(\FalsePos\vee(\GoodDist\wedge\NotFound))\wedge\GoodEst]
 \displaybreak[3]\\{}\leq{}&
 2^{-\lambda}
 +
-\Pr[\DistinctPKs\wedge\FalsePos\wedge\GoodEst]
+\Pr[\GoodPKs\wedge\FalsePos\wedge\GoodEst]
 \\&\hphantom{2^{-\lambda}}
 +
-\Pr[\DistinctPKs\wedge\GoodDist\wedge\NotFound\wedge\GoodEst]
+\Pr[\GoodPKs\wedge\GoodDist\wedge\NotFound\wedge\GoodEst]
 \displaybreak[3]\\{}\leq{}&
 2^{-\lambda}
 +
-\Pr[\DistinctPKs\wedge\FalsePos\wedge\GoodEst]
+\Pr[\GoodPKs\wedge\FalsePos\wedge\GoodEst]
 +
-\Pr[\DistinctPKs\wedge\BadEnd]
+\Pr[\GoodPKs\wedge\BadEnd]
 \\{}={}&
 2^{-\lambda}+\negl(\lambda)+\negl(\lambda)
 =
