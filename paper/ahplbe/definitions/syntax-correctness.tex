@@ -1,9 +1,10 @@
 \begin{definition}[AH-PLBE]\label{def:ahplbe}
 An \emph{\ad hoc private linear broadcast encryption (AH-PLBE) scheme}
-(with message space~$\bit^\lambda$)
+(with message space~$\bit^\lambda$ and public key length~$\ell(\lambda)$)
 consists of 3 efficient algorithms:
 \begin{itemize}
-\item $\Gen(1^\lambda)$ outputs a pair~$(\pk,\sk)$ of public and secret keys.
+\item $\Gen(1^\lambda)$ outputs a pair~$(\pk,\sk)$ of public and secret keys
+with ${|\pk|=\ell(\lambda)}$.
 \item $\Enc(1^\lambda,\{\pk_j\}_{j\in[N]},{i_\bot\in[0..N]},{\mu\in\bit^\lambda})$
 takes as input
 \luoji{Should motivate this requirement in the technical overview.
@@ -32,8 +33,10 @@ The scheme must be \emph{robustly correct}, i.e., for all
 ${\lambda\in\doubleN}$,
 ${N\in\doubleN}$,
 ${i\in[N]}$,\WideNarrow{}{\linebreak[4]}
-$\{\pk_j\}_{j\in[N]\setminus\{i\}}$
-(not necessarily produced by~$\Gen$),
+$\{\pk_j\}_{j\in[N]\setminus\{i\}}$%
+\footnote{These public keys could be out of the support of~$\Gen$,
+i.e., malformed.}
+such that ${|\pk_j|=\ell(\lambda)}$ for all ${j\in[N]\setminus\{i\}}$, and
 ${\mu\in\bit^\lambda}$,
 \begin{align*}
 \Pr\WideNarrow{}{\!}\left[
