@@ -1,3 +1,39 @@
 \begin{definition}[completeness]\label{def:completeness}
 \luoji{Comparison with confirmation property?}
+An AH-BTR scheme $(\Gen,\Enc,\Dec,\Trace)$ per Definition~\ref{def:ahbtr} is \emph{complete}
+if all efficient adversary wins $\ExpComplete$ only with negligible probability,
+where $\ExpComplete(1^\lambda)$ with adversary~$\scriptC$ proceeds as follows:
+\begin{security}
+\phase{Challenge}
+Launch $\scriptC(1^\lambda)$,
+which outputs a (probabilistic) circuit~$\scriptD$,
+a list $\{\pk_j^\ast\}_{j\in[N]}$ of public keys, and
+an error bound~$1^{1/\epsilon^\ast}$.
+Run
+\begin{align*}
+i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast}).
+\end{align*}
+Let
+\begin{itemize}
+\item $\DistinctPKs$ be the event that the public keys in $\{\pk^\ast_j\}_{j\in[N]}$ are \emph{distinct},
+\item $\GoodDist$ the event that
+\begin{align*}
+\left|\Pr\left[
+\begin{aligned}
+\mu_0&{}\draws\bit^\lambda,\qquad
+\mu_1\draws\bit^\lambda\\
+\beta&{}\draws\bit\\
+\ct&{}\draws\Enc(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},\mu_\beta)
+\end{aligned}
+\::\:
+\scriptD(\mu_0,\mu_1,\ct)=\beta
+\right]-\frac12
+\right|
+\geq\epsilon^\ast,
+\end{align*}
+\item and
+$\NotFound$ the event that ${i^\ast\notin[N]}$ (i.e., ${i^\ast=\bot}$).
+\end{itemize}
+$\scriptC$ \emph{wins} if and only if ${\DistinctPKs\wedge\GoodDist\wedge\NotFound}$.
+\end{security}
 \end{definition}
