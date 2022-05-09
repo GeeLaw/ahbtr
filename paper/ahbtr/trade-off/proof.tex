@@ -7,11 +7,11 @@ Since
 \Pr[\scriptB\textup{ wins}]
 \WideNarrow{}{\\{}}
 ={}&
-\Pr_\scriptB[\DistinctPKs\wedge(\FalsePos\vee(\GoodDist\wedge\NotFound))]
+\Pr_\scriptB[\GoodPKs\wedge(\FalsePos\vee(\GoodDist\wedge\NotFound))]
 \\{}\leq{}&
-\Pr_\scriptB[\DistinctPKs\wedge\FalsePos]
+\Pr_\scriptB[\GoodPKs\wedge\FalsePos]
 +
-\Pr_\scriptB[\DistinctPKs\wedge\GoodDist\wedge\NotFound],
+\Pr_\scriptB[\GoodPKs\wedge\GoodDist\wedge\NotFound],
 \end{align*}
 it suffices bound the two terms on the right-hand side.
 
@@ -73,10 +73,10 @@ so that, e.g.,
 \Pr_{\scriptB'}[E]=\Pr[E'],\quad
 \Pr_{\scriptB}[E]=\Pr[E]
 \qquad\textup{for }E\in{\WideNarrow{
-\{\DistinctPKs,\FalsePos,\GoodDist,\NotFound\}
+\{\GoodPKs,\FalsePos,\GoodDist,\NotFound\}
 }{
 \left\{\begin{aligned}
-\DistinctPKs,\,&\FalsePos,\\
+\GoodPKs,\,&\FalsePos,\\
 \GoodDist,\,&\NotFound
 \end{aligned}\right\}
 }},
@@ -97,15 +97,15 @@ and $\Lucky_1$ the event that ${j_1^\ast\in J}$,
 then ${\Lucky_1=\FalsePos'}$.
 A routine guessing argument shows that
 \begin{align*}
-\Pr_\scriptB[\DistinctPKs\wedge\FalsePos]
+\Pr_\scriptB[\GoodPKs\wedge\FalsePos]
 &{}\leq
-\Pr[\DistinctPKs\wedge(J\neq\varnothing)]
+\Pr[\GoodPKs\wedge(J\neq\varnothing)]
 \WideNarrow{}{\\&{}}\leq
-B\Pr[\DistinctPKs\wedge\Lucky_1]
+B\Pr[\GoodPKs\wedge\Lucky_1]
 \\&{}=
-B\Pr[\DistinctPKs'\wedge\FalsePos']
+B\Pr[\GoodPKs'\wedge\FalsePos']
 \WideNarrow{}{\\&{}}=
-B\Pr_{\scriptB'}[\DistinctPKs\wedge\FalsePos]
+B\Pr_{\scriptB'}[\GoodPKs\wedge\FalsePos]
 \\&{}\leq
 B\Pr[\scriptB'\textup{ wins}].
 \end{align*}
@@ -128,19 +128,19 @@ Routine calculation shows that
 so $\GoodDist$ implies ${J'\neq\varnothing}$.
 Again, a standard guessing argument provides that
 \begin{align*}
-&\Pr_\scriptB[\DistinctPKs\wedge\GoodDist\wedge\NotFound]
+&\Pr_\scriptB[\GoodPKs\wedge\GoodDist\wedge\NotFound]
 \\{}={}&
-\Pr[\DistinctPKs\wedge\GoodDist\wedge(i^\ast_{j_1}=\bot\textup{ for all }j_1\in[N_1])]
+\Pr[\GoodPKs\wedge\GoodDist\wedge(i^\ast_{j_1}=\bot\textup{ for all }j_1\in[N_1])]
 \\{}\leq{}&
-\Pr[\DistinctPKs\wedge(J'\neq\varnothing)\wedge(i^\ast_{j_1}=\bot\textup{ for all }j_1\in[N_1])]
+\Pr[\GoodPKs\wedge(J'\neq\varnothing)\wedge(i^\ast_{j_1}=\bot\textup{ for all }j_1\in[N_1])]
 \\{}\leq{}&
-B\Pr[\DistinctPKs\wedge\Lucky_2\wedge(i^\ast_{j_1}=\bot\textup{ for all }j_1\in[N_1])]
+B\Pr[\GoodPKs\wedge\Lucky_2\wedge(i^\ast_{j_1}=\bot\textup{ for all }j_1\in[N_1])]
 \\{}\leq{}&
-B\Pr[\DistinctPKs\wedge\Lucky_2\wedge(i^\ast_{j_1^\ast}=\bot)]
+B\Pr[\GoodPKs\wedge\Lucky_2\wedge(i^\ast_{j_1^\ast}=\bot)]
 \\{}={}&
-B\Pr[\DistinctPKs'\wedge\GoodDist'\wedge\NotFound']
+B\Pr[\GoodPKs'\wedge\GoodDist'\wedge\NotFound']
 \\{}={}&
-B\Pr_{\scriptB'}[\DistinctPKs\wedge\GoodDist\wedge\NotFound]
+B\Pr_{\scriptB'}[\GoodPKs\wedge\GoodDist\wedge\NotFound]
 =
 B\Pr[\scriptB'\textup{ wins}].
 \end{align*}

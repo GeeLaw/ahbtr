@@ -15,7 +15,7 @@ i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\as
 \end{align*}
 Let
 \begin{itemize}
-\item $\DistinctPKs$ be the event that the public keys in $\{\pk^\ast_j\}_{j\in[N]}$ are \emph{distinct} and each is $\ell(\lambda)$ bits long,
+\item $\GoodPKs$ be the event that the public keys in $\{\pk^\ast_j\}_{j\in[N]}$ are \emph{distinct} and each is $\ell(\lambda)$ bits long,
 \item $\GoodDist$ the event that
 \begin{align*}
 \left|\Pr\left[
@@ -34,6 +34,6 @@ Let
 \item and
 $\NotFound$ the event that ${i^\ast\notin[N]}$ (i.e., ${i^\ast=\bot}$).
 \end{itemize}
-$\scriptC$ \emph{wins} if and only if ${\DistinctPKs\wedge\GoodDist\wedge\NotFound}$.
+$\scriptC$ \emph{wins} if and only if ${\GoodPKs\wedge\GoodDist\wedge\NotFound}$.
 \end{security}
 \end{definition}
