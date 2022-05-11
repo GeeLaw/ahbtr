@@ -1,6 +1,98 @@
 \begin{proof}[\hyperanchor{pf:ahbtr-security-equivalence}{Theorem~\ref{thm:ahbtr-security-equivalence}}]
 The reductionist proof of necessity is straight-forward by setting ${Q=0}$ (resp.~${Q=1}$) for completeness (resp.~soundness).
 
-\luoji{To be done.}
-Blah.
+To show sufficiency, suppose the AH-BTR scheme $(\Gen,\Enc,\Dec,\Trace)$ is both complete and sound and let $\scriptB$ be an efficient adversary against its traceability.
+We consider two efficient adversaries.
+$\scriptC_1$ is against the completeness of the scheme.
+It works by internally simulating the traceability game for~$\scriptB$ and outputting (in the completeness experiment) whatever $\scriptB$ outputs.
+Denoting probabilities and events for adversary~$\scriptX$ in its security experiment with subscript~$\scriptX$,
+\begin{align*}
+\mathsf{Event}_{\scriptC_1}
+\quad\Longleftrightarrow\quad
+\mathsf{Event}_\scriptB
+\quad\qquad
+\textup{for }\mathsf{Event}\in{\{\GoodPKs,\GoodDist,\NotFound\}}.
+\end{align*}
+Therefore,
+\begin{align*}
+&\Pr_\scriptB[\GoodPKs_\scriptB\wedge\GoodDist_\scriptB\wedge\NotFound_\scriptB]
+\WideNarrow{}{\\&\qquad{}}=
+\Pr_{\scriptC_1}
+[\GoodPKs_{\scriptC_1}\wedge\GoodDist_{\scriptC_1}\wedge\NotFound_{\scriptC_1}].
+\end{align*}
+Let ${B=\poly(\lambda)>1}$ be a polynomial upper bound of~$Q$ that $\scriptB$ might ever output.
+The adversary~$\scriptC_2$ is against the soundness of the scheme:
+\begin{itemize}
+\item $\scriptC_2(\pk)$ launches~$\scriptB$, receives $1^Q$ from it,
+samples and sets
+\begin{align*}
+s^\ast&{}\draws[B],&
+\pk_{s^\ast}&{}\gets\pk,\\
+S&{}\gets[Q],&
+(\pk_q,\sk_q)&{}\draws\Gen()\quad\textup{for }q\in{[Q]\setminus{\{s^\ast\}}},
+\end{align*}
+and sends $\{\pk_q\}_{q\in[Q]}$ to~$\scriptB$.
+\item $\scriptC_2$ answers queries from $\scriptB$ and updates $S$ as stipulated by the query phase of the traceability experiment, except that it aborts if $\scriptB$ queries for~$\sk_{s^\ast}$.
+\item After the query phase,
+$\scriptC_2$ checks whether ${\pk_s=\pk}$ for some ${s\in S}$ with ${s<s^\ast}$,
+and aborts if so.
+% The check above ensures the probability relation below is a strict equality,
+% i.e.,
+%     Pr_B  = B * Pr_(C_2)
+% instead of
+%     Pr_B <= B * Pr_(C_2).
+% The idea is to ensure only one guess is "correct".
+% Here, C_2 is guessing the smallest s* in S (after all the queries)
+% such that pk*_(i*) = pk_(s*).
+% Without this check, s* is not constrained to be the smallest,
+% and there could be multiple "correct" s*'s.
+% Although we can still show what we want, I personally find it
+% aesthetically more pleasing to have precise equality relations.
+Otherwise, $\scriptB$ outputs
+\begin{align*}
+\scriptD,\quad
+\{\pk_j^\ast\}_{j\in[N]},\quad
+1^{1/\epsilon^\ast},
+\end{align*}
+and $\scriptC_2$ looks for an%
+\footnote{Such $i_\bot^\ast$, if it exists, is unique if $\GoodPKs_\scriptB$
+(the interesting case).}
+${i_\bot^\ast\in[N]}$ such that ${\pk_{i_\bot^\ast}^\ast=\pk}$.
+If no such $i_\bot^\ast$ exists, $\scriptC_2$~aborts.
+Otherwise, it outputs
+\begin{align*}
+\scriptD,\quad
+N,\quad
+i_\bot^\ast,\quad
+\{\pk_j^\ast\}_{j\in{[N]\setminus{\{i_\bot^\ast\}}}},\quad
+1^{1/\epsilon^\ast}.
+\end{align*}
+\end{itemize}
+% This is a coupling argument.
+Routine calculation yields
+\begin{align*}
+\Pr_\scriptB[\GoodPKs_\scriptB\wedge\FalsePos_\scriptB]
+=
+B\Pr_{\scriptC_2}[\GoodPKs_{\scriptC_2}\wedge\FalsePos_{\scriptC_2}].
+\end{align*}
+By a union bound,
+\begin{align*}
+&
+\Pr_\scriptB[\GoodPKs_\scriptB\wedge(\FalsePos_\scriptB\vee(\GoodDist_\scriptB\wedge\NotFound_\scriptB))]
+\\\WideNarrow{}{\mathllap}{{}\leq{}}&
+\Pr_\scriptB[\GoodPKs_\scriptB\wedge\FalsePos_\scriptB]
++
+\Pr_\scriptB[\GoodPKs_\scriptB\wedge\GoodDist_\scriptB\wedge\NotFound_\scriptB]
+\\\WideNarrow{}{\mathllap}{{}\leq{}}&
+B\Pr_{\scriptC_2}[\GoodPKs_{\scriptC_2}\wedge\FalsePos_{\scriptC_2}]
++
+\Pr_{\scriptC_1}
+[\GoodPKs_{\scriptC_1}\wedge\GoodDist_{\scriptC_1}\wedge\NotFound_{\scriptC_1}]
+\WideNarrow{}{\hspace*{-1em}}
+\\\WideNarrow{}{\mathllap}{{}={}}&
+B\negl(\lambda)+\negl(\lambda)
+=
+\negl(\lambda).
+\qedhere
+\end{align*}
 \end{proof}
