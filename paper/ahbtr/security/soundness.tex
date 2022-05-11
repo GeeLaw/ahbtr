@@ -1,2 +1,25 @@
 \begin{definition}[soundness]\label{def:soundness}
+An AH-BTR scheme $(\Gen,\Enc,\Dec,\Trace)$ per Definition~\ref{def:ahbtr} is \emph{sound}
+if all efficient adversary wins $\ExpSound$ only with negligible probability,
+where $\ExpSound(1^\lambda)$ with adversary~$\scriptC$ proceeds as follows:
+\begin{security}
+\phase{Challenge}
+Run ${(\pk,\sk)\draws\Gen(1^\lambda)}$,
+then run $\scriptC(1^\lambda,\pk)$, which outputs
+a (probabilistic) circuit~$\scriptD$,
+some~${N\in\doubleN}$,
+a challenge index~${i_\bot^\ast\in[N]}$,
+a list $\{\pk^\ast_j\}_{j\in[N]\setminus\{i_\bot^\ast\}}$ of public keys, and
+an error bound~$1^{1/\epsilon^\ast}$.
+Let ${\pk^\ast_{i_\bot^\ast}\gets\pk}$ and run
+\begin{align*}
+i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast}).
+\end{align*}
+Let
+\begin{itemize}
+\item $\GoodPKs$ be the event that the public keys in $\{\pk^\ast_j\}_{j\in[N]}$ are \emph{distinct} and each is $\ell(\lambda)$ bits long,
+\item and $\FalsePos_\bot$ the event that ${i^\ast=i_\bot^\ast}$.
+\end{itemize}
+$\scriptC$ \emph{wins} if and only if ${\GoodPKs\wedge\FalsePos_\bot}$.
+\end{security}
 \end{definition}
