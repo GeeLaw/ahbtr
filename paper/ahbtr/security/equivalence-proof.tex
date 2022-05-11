@@ -20,7 +20,7 @@ Therefore,
 \Pr_{\scriptC_1}
 [\GoodPKs_{\scriptC_1}\wedge\GoodDist_{\scriptC_1}\wedge\NotFound_{\scriptC_1}].
 \end{align*}
-Let ${B=\poly(\lambda)>1}$ be a polynomial upper bound of~$Q$ that $\scriptB$ might ever output.
+Let ${B=\poly(\lambda)>1}$ be an upper bound of~$Q$ that $\scriptB$ might ever output.
 The adversary~$\scriptC_2$ is against the soundness of the scheme:
 \begin{itemize}
 \item $\scriptC_2(\pk)$ launches~$\scriptB$, receives $1^Q$ from it,
@@ -90,7 +90,7 @@ B\Pr_{\scriptC_2}[\GoodPKs_{\scriptC_2}\wedge\FalsePos_{\scriptC_2}]
 [\GoodPKs_{\scriptC_1}\wedge\GoodDist_{\scriptC_1}\wedge\NotFound_{\scriptC_1}]
 \WideNarrow{}{\hspace*{-1em}}
 \\\WideNarrow{}{\mathllap}{{}={}}&
-B\negl(\lambda)+\negl(\lambda)
+\poly(\lambda)\negl(\lambda)+\negl(\lambda)
 =
 \negl(\lambda).
 \qedhere
