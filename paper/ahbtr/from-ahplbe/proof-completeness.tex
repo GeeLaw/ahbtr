@@ -112,3 +112,52 @@ it follows that
 \qedhere
 \end{align*}
 \end{proof}
+
+\begin{proof}[\hyperanchor{pf:ahbtr-from-ahplbe-badend}{Claim~\ref{clm:ahbtr-from-ahplbe-badend}}]
+Given an efficient adversary~$\scriptB$ against the traceability of Construction~\ref{con:ahbtr-from-ahplbe},
+let ${B=\poly(\lambda)}$ be an upper bound of~$1/\epsilon^\ast$
+($B$ exists since $1^{1/\epsilon^\ast}$ is output by~$\scriptB$ in polynomial time).
+Consider the following efficient adversary~$\scriptA$ against the message-hiding property of~$\AHPLBE$:
+\begin{itemize}
+\item $\scriptA$ launches $\scriptB$ and simulates $\ExpTrace$ for it.
+\item When $\scriptB$ outputs $\scriptD,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast}$,\WideNarrow{}{\rule[1.1em]{0pt}{0pt}}
+the adversary~$\scriptA$ checks whether the public keys in $\{\pk^\ast_j\}_{j\in[N]}$ are distinct, and aborts if not.
+\item If not aborting,\WideNarrow{}{\rule[0.9em]{0pt}{0pt}}
+$\scriptA$ runs $\scriptE_N$ and
+notes down ${\alpha\in\bit}$ indicating whether $E_N$ happened,
+i.e., ${\alpha=1}$ if and only if $\scriptD$ guessed correctly in the trial.
+\item $\scriptA$ submits $\{\pk^\ast_j\}_{j\in[N]}$ to the message-hiding experiment, receives $(\mu_0,\mu_1,\ct)$ back, and
+runs and outputs ${b'\draws\scriptD(\mu_0,\mu_1,\ct)\oplus\alpha}$.
+% This ``sign correction'', producing ``the wrong guess'',
+% is sadly correct (making the advantage non-negative).
+% This is because the advantage is
+% \begin{align*}
+%     \Pr[\Exp_0^\scriptA = 1] - \Pr[\Exp_1^\scriptA = 1],
+% \end{align*}
+% i.e., an adversary with positive advantage
+% should say $1$ more often in~$\Exp_0$.
+\end{itemize}
+Routine calculation shows that the advantage of $\scriptA$ is
+${\E[\1_\GoodPKs\cdot 4\epsilon_N^2]}$,
+which must be negligible by the message-hiding property of~$\AHPLBE$.
+By Markov's inequality,
+\begin{align*}
+\Pr[\GoodPKs\wedge\BadEnd]
+&{}=
+\Pr[\1_\GoodPKs\cdot 4\epsilon_N^2>(\epsilon^\ast)^2]
+% \displaybreak[2]
+\\&{}\leq
+\Pr[\1_\GoodPKs\cdot 4\epsilon_N^2>B^{-2}]
+% \displaybreak[2]
+\\&{}\leq
+B^2\E[\1_\GoodPKs\cdot 4\epsilon_N^2]
+\WideNarrow{}{
+% \displaybreak[2]
+\\&{}}
+=
+(\poly(\lambda))^2\negl(\lambda)
+=
+\negl(\lambda).
+\qedhere
+\end{align*}
+\end{proof}
