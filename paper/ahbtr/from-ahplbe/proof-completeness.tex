@@ -1,6 +1,5 @@
-\begin{proof}[\hyperanchor{pf:ahbtr-from-ahplbe}{Theorem~\ref{thm:ahbtr-from-ahplbe}}]
-Consider any efficient adversary~$\scriptB$ against the traceability of Construction~\ref{con:ahbtr-from-ahplbe}.
-
+\begin{proof}[\hyperanchor{pf:ahbtr-from-ahplbe-completeness}{Theorem~\ref{thm:ahbtr-from-ahplbe-completeness}}]
+Consider any efficient adversary~$\scriptC$ against the completeness of Construction~\ref{con:ahbtr-from-ahplbe}.
 \luoji{Consider acknowledging Hoeteck for the write-up style.}
 Let $\GoodEst$ be the event that ${|\widehat{\epsilon}_i-\epsilon_i|\leq\delta}$ for all~${i\in[0..N]}$.
 % $N$ is a random variable (and $\delta,\eta$ are functions of~$N$).
@@ -68,62 +67,34 @@ By contraposition,
 \quad\Longrightarrow\quad
 \BadEnd.
 \end{align*}
-The following claims hold:
-
-\begin{claim}[\hyperlink{pf:ahbtr-from-ahplbe-badend}{\P}]\label{clm:ahbtr-from-ahplbe-badend}
-$\Pr[\GoodPKs\wedge\BadEnd]=\negl(\lambda)$.
-\end{claim}
-
-\begin{claim}[\hyperlink{pf:ahbtr-from-ahplbe-falsepos}{\P}]\label{clm:ahbtr-from-ahplbe-falsepos}
-$\Pr[\GoodPKs\wedge\FalsePos\wedge\GoodEst]=\negl(\lambda)$.
-\end{claim}
-
-\noindent
-Once Claims~\ref{clm:ahbtr-from-ahplbe-badend} and~\ref{clm:ahbtr-from-ahplbe-falsepos} are proved,
-it follows that
+By the union bound,
 \begin{align*}
-\WideNarrow{}{&}
-\Pr[\scriptB\textup{ wins}]
-\WideNarrow{\leq{}&}{\\{}\leq{}&}
+\Pr[\scriptC\textup{ wins}]
+\leq{}&
 \Pr[\neg\GoodEst]
 +
-\Pr[(\scriptB\textup{ wins})\wedge\GoodEst]
-\WideNarrow{}{\displaybreak[3]}\\{}\leq{}&
-2^{-\lambda}
-+
-\Pr[\GoodPKs\wedge(\FalsePos\vee(\GoodDist\wedge\NotFound))\wedge\GoodEst]
-\displaybreak[3]\\{}\leq{}&
-2^{-\lambda}
-+
-\Pr[\GoodPKs\wedge\FalsePos\wedge\GoodEst]
-\\&\hphantom{2^{-\lambda}}
+\Pr[(\scriptC\textup{ wins})\wedge\GoodEst]
+\\{}={}&
+\Pr[\neg\GoodEst]
 +
 \Pr[\GoodPKs\wedge\GoodDist\wedge\NotFound\wedge\GoodEst]
-\displaybreak[3]\\{}\leq{}&
+\\{}\leq{}&
 2^{-\lambda}
 +
-\Pr[\GoodPKs\wedge\FalsePos\wedge\GoodEst]
-+
-\Pr[\GoodPKs\wedge\BadEnd]
-\\{}={}&
-2^{-\lambda}+\negl(\lambda)+\negl(\lambda)
-=
-\negl(\lambda).
-\qedhere
+\Pr[\GoodPKs\wedge\BadEnd],
 \end{align*}
-\end{proof}
+so it remains to show ${\Pr[\GoodPKs\wedge\BadEnd]=\negl(\lambda)}$.
 
-\begin{proof}[\hyperanchor{pf:ahbtr-from-ahplbe-badend}{Claim~\ref{clm:ahbtr-from-ahplbe-badend}}]
-Given an efficient adversary~$\scriptB$ against the traceability of Construction~\ref{con:ahbtr-from-ahplbe},
-let ${B=\poly(\lambda)}$ be an upper bound of~$1/\epsilon^\ast$
-($B$ exists since $1^{1/\epsilon^\ast}$ is output by~$\scriptB$ in polynomial time).
 Consider the following efficient adversary~$\scriptA$ against the message-hiding property of~$\AHPLBE$:
 \begin{itemize}
-\item $\scriptA$ launches $\scriptB$ and simulates $\ExpTrace$ for it.
-\item When $\scriptB$ outputs $\scriptD,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast}$,\WideNarrow{}{\rule[1.1em]{0pt}{0pt}}
-the adversary~$\scriptA$ checks whether the public keys in $\{\pk^\ast_j\}_{j\in[N]}$ are distinct, and aborts if not.
-\item If not aborting,\WideNarrow{}{\rule[0.9em]{0pt}{0pt}}
-$\scriptA$ runs $\scriptE_N$ and
+\item $\scriptA$ runs $\scriptC$ to obtain
+\begin{align*}
+\scriptD,\quad
+\{\pk^\ast_j\}_{j\in[N]},\quad
+1^{1/\epsilon^\ast},
+\end{align*}
+and aborts if the public keys in $\{\pk^\ast_j\}_{j\in[N]}$ are not distinct.
+\item $\scriptA$ runs $\scriptE_N$ and
 notes down ${\alpha\in\bit}$ indicating whether $E_N$ happened,
 i.e., ${\alpha=1}$ if and only if $\scriptD$ guessed correctly in the trial.
 \item $\scriptA$ submits $\{\pk^\ast_j\}_{j\in[N]}$ to the message-hiding experiment, receives $(\mu_0,\mu_1,\ct)$ back, and
@@ -140,6 +111,8 @@ runs and outputs ${b'\draws\scriptD(\mu_0,\mu_1,\ct)\oplus\alpha}$.
 Routine calculation shows that the advantage of $\scriptA$ is
 ${\E[\1_\GoodPKs\cdot 4\epsilon_N^2]}$,
 which must be negligible by the message-hiding property of~$\AHPLBE$.
+Let ${B=\poly(\lambda)}$ be an upper bound of~$1/\epsilon^\ast$
+($B$ exists since $1^{1/\epsilon^\ast}$ is output by~$\scriptC$ in polynomial time).
 By Markov's inequality,
 \begin{align*}
 \Pr[\GoodPKs\wedge\BadEnd]
