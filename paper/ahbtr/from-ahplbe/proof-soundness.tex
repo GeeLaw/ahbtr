@@ -112,3 +112,157 @@ it follows that
 \qedhere
 \end{align*}
 \end{proof}
+
+\begin{proof}[\hyperanchor{pf:ahbtr-from-ahplbe-falsepos}{Claim~\ref{clm:ahbtr-from-ahplbe-falsepos}}]
+Given an efficient adversary~$\scriptB$ against the traceability of Construction~\ref{con:ahbtr-from-ahplbe},
+let
+\begin{itemize}
+\item $\alpha$ be a random element in the traceability experiment,
+\begin{align*}
+\alpha=\begin{cases}
+0,&\textup{if }i^\ast\in[N]\textup{ and }
+\widehat{\epsilon}_{i^\ast-1}-\widehat{\epsilon}_{i^\ast}\geq 3\delta;\\
+1,&\textup{if }i^\ast\in[N]\textup{ and }
+\widehat{\epsilon}_{i^\ast-1}-\widehat{\epsilon}_{i^\ast}\leq -3\delta;\\
+\bot,&\textup{if }i^\ast=\bot;
+\end{cases}
+\end{align*}
+\item $B_1=\poly(\lambda)>1$ an upper bound of $Q$,
+\item $B_2=\poly(\lambda)>1$ an upper bound of $N$, and
+\item $B_3=\poly(\lambda)$ an upper bound of $1/\epsilon^\ast$.
+\end{itemize}
+Consider the following efficient adversary~$\scriptA$ against the index-hiding property of~$\AHPLBE$:
+\begin{itemize}
+\item Taking $\pk$ as input, $\scriptA$ samples and sets
+\begin{align*}
+q^\ast\draws[B_1],\quad
+\pk_{q^\ast}\gets\pk,\WideNarrow{\qquad}{\quad}
+(\pk_q,\sk_q)\draws\AHPLBE.\Gen()
+\WideNarrow{\quad\textup{for }}{\textup{ for }}q\in[B_1]\setminus\{q^\ast\}.
+\end{align*}
+It launches $\scriptB$ and starts simulating $\ExpTrace$ for it.
+\item When $\scriptB$ submits $1^Q$,
+the adversary~$\scriptA$ sets ${S\gets[Q]}$ and sends back $\{\pk_q\}_{q\in[Q]}$.
+\item When $\scriptB$ submits ${t\in[Q]}$ for~$\sk_t$,
+the adversary~$\scriptA$ sets ${S\gets S\setminus\{t\}}$ and sends back~$\sk_t$,
+except if ${t=q^\ast}$, in which case $\scriptA$ aborts.
+\item When $\scriptB$ outputs $\scriptD,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast}$,
+the adversary~$\scriptA$ runs
+\begin{align*}
+i^\ast\draws\Trace^\scriptD(\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast}),
+\end{align*}
+and aborts
+\begin{itemize}
+\item if the public keys in $\{\pk^\ast_j\}_{j\in[N]}$ are not distinct,
+\item if $i^\ast=\bot$, or
+\item if ${i^\ast\in[N]}$ and ${q^\ast\neq\min{\{\,s\in S\::\:\pk^\ast_{i^\ast}=\pk_s\,\}}}$.
+\end{itemize}
+If not aborting,
+$\scriptA$ notes down ${\alpha\in\bit}$ from the above simulation.
+\item
+$\scriptA$ submits $N,{i_\bot^\ast=i^\ast},\{\pk^\ast_j\}_{j\in[N]\setminus\{i_\bot^\ast\}}$ to the index-hiding experiment,
+gets $(\mu,\ct)$ back,
+samples and sets
+\begin{align*}
+\beta\draws\bit,\qquad
+\mu_\beta\gets\mu,\quad
+\mu_{\neg\beta}\draws\bit^\lambda,
+\end{align*}
+and runs and outputs
+${b'\draws\scriptD(\mu_0,\mu_1,\ct)\oplus\neg\beta\oplus\alpha}$.
+\end{itemize}
+Let $\NoAbort$ be the event that $\scriptA$ does not abort.
+Routine calculation shows that the advantage of~$\scriptA$ is
+\begin{align*}
+&
+\E_\scriptA[\1_\NoAbort\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})]
+\WideNarrow{=}{\\&\qquad{}={}}
+B_1^{-1}\E_\scriptB[\1_\GoodPKs\cdot\1_\FalsePos\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})],
+\end{align*}
+which must be negligible by the index-hiding property of~$\AHPLBE$.
+% This is terrible.
+% An implicit coupling is going on.
+Here, $\E_\scriptA$ (similarly $\Pr_\scriptA$, resp.~$\E_\scriptB$ and $\Pr_\scriptB$) signifies that the probability space is defined for the index-hiding (resp.~traceability) experiment.
+
+${\FalsePos\wedge\GoodEst}$ implies
+% $\FalsePos$ is to ensure ${i^\ast\neq\bot}$ so that
+% it makes sense to talk about $\epsilon_{i^\ast}$, etc.
+\begin{align*}
+&
+|
+(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
+-
+(\widehat{\epsilon}_{i^\ast-1}-\widehat{\epsilon}_{i^\ast})
+|
+\leq
+2\delta
+<
+3\delta
+\leq
+|\widehat{\epsilon}_{i^\ast-1}-\widehat{\epsilon}_{i^\ast}|
+\\{}\Longrightarrow{}\quad&
+(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
+=|\epsilon_{i^\ast-1}-\epsilon_{i^\ast}|
+\geq 3\delta-2\delta
+=\frac{\epsilon^\ast}{10N}
+\geq\frac{1}{10B_2B_3}.
+\end{align*}
+Moreover, ${(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})\geq -1}$ always holds.
+These together show that
+\begin{align*}
+&
+\Pr_\scriptB[\GoodPKs\wedge\FalsePos\wedge\GoodEst]
+\\{}={}&
+10B_2B_3\E_\scriptB\left[
+\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_\GoodEst\cdot\frac{1}{10B_2B_3}
+\right]
+% \displaybreak[3]
+\\{}\leq{}&
+10B_2B_3\E_\scriptB\left[
+\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_\GoodEst
+\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
+\right]
+% \displaybreak[3]
+\\{}\leq{}&
+10B_2B_3\Bigl(
+\E_\scriptB[
+\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_\GoodEst
+\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
+]
+\\&
+\hphantom{10B_2B_3\Bigl({}}{}
++
+\E_\scriptB[
+\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_{\neg\GoodEst}
+\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
+]
+\\&
+\hphantom{10B_2B_3\Bigl({}}{}
++
+\E_\scriptB[\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_{\neg\GoodEst}]
+\Bigr)
+% \displaybreak[3]
+\\{}={}&
+10B_2B_3\Bigl(
+\E_\scriptB[
+\1_\GoodPKs\cdot\1_\FalsePos
+\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
+]
+\\&\hphantom{10B_2B_3\Bigl({}}{}
++\Pr_\scriptB[\GoodPKs\wedge\FalsePos\wedge\neg\GoodEst]
+\Bigr)
+% \displaybreak[3]
+\\{}\leq{}&
+10B_2B_3\left(
+B_1\E_\scriptA[
+\1_\NoAbort\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
+]
++2^{-\lambda}
+\right)
+\\{}={}&
+10\poly(\lambda)\poly(\lambda)
+\bigl(\poly(\lambda)\negl(\lambda)+\negl(\lambda)\bigr)
+=\negl(\lambda).
+\qedhere
+\end{align*}
+\end{proof}
