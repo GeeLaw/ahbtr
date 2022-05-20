@@ -1,4 +1,42 @@
 \begin{proof}[\hyperanchor{pf:ahbtr-trade-off-soundness}{Theorem~\ref{thm:ahbtr-trade-off-soundness}}]
-\luoji{To be done.}
-Blah.
+Let $\scriptC$ be an efficient adversary against the soundness of the resultant scheme.
+Consider the following efficient adversary $\scriptC_\OLD$ against the soundness of~$\OLD$:
+\begin{itemize}
+\item $\scriptC_\OLD(\pk)$ launches $\scriptC(\pk)$ to obtain
+\begin{align*}
+\scriptD,\quad
+N,\quad
+i^\ast_\bot,\quad
+\{\pk^\ast_j\}_{j\in{[N]\setminus\{i^\ast_\bot\}}},\quad
+1^{1/\epsilon^\ast}.
+\end{align*}
+It computes $N_1,N_2$ as specified by the resultant scheme.
+\item $\scriptC_\OLD$ computes ${j^\ast_1=\lceil i^\ast_\bot/N_2\rceil}$, runs
+\begin{align*}
+i^\ast_{j_1}\draws\OLD.\Trace^{\scriptD_{j_1}}(\{\pk^\ast_j\}_{(j_1-1)N_2<j\leq j_1N_2},1^{N_1/\epsilon^\ast})
+\qquad\textup{for }j_1\in[j^\ast_1-1],
+\end{align*}
+and aborts if ${i^\ast_{j_1}\neq\bot}$ for some ${j_1\in[j^\ast_1-1]}$.
+Otherwise, it outputs
+\begin{align*}
+\WideNarrow{\hspace*{-1em}}{}
+\scriptD_{j^\ast_1},\quad
+&{}\min{\{N_2,N-(j^\ast_1-1)N_2\}},\quad
+i^\ast_\bot-(j^\ast_1-1)N_2,
+\WideNarrow{\quad}{\\&}
+\{\pk^\ast_j\}_{(j^\ast_1-1)N_2<j\leq j^\ast_1N_2,\,j\neq i^\ast_\bot},\quad
+1^{N_1/\epsilon^\ast}.
+\end{align*}
+\end{itemize}
+% Note that this is NOT an equality, because
+% the reduction did not check for public key distinctness.
+Routine calculation and the soundness of~$\OLD$ yield
+\begin{align*}
+\Pr[\scriptC\textup{ wins}]
+&{}\leq
+\Pr[\scriptC_\OLD\textup{ wins}]
+=
+\negl(\lambda).
+\qedhere
+\end{align*}
 \end{proof}
