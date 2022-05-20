@@ -9,13 +9,11 @@ Consider the following efficient adversary $\scriptC_\OLD$ against the completen
 \{\pk^\ast_j\}_{j\in[N]},\quad
 1^{1/\epsilon^\ast}.
 \end{align*}
-It aborts if $\pk^\ast_j$'s are not distinct.
-Otherwise, it computes $N_1,N_2$ as specified by the resultant scheme.
-\item $\scriptC_\OLD$ samples ${j^\ast_1\draws[B]}$.
-It aborts if ${j^\ast_1\notin[N_1]}$.
+It computes $N_1,N_2$ as specified by the resultant scheme.
+\item $\scriptC_\OLD$ samples ${j^\ast_1\draws[N_1]}$,
 % It is instrumental for analysis to pretend to run
 %     old.Trace    for j_1 in [N_1] \ {j*_1}.
-Otherwise, it prepares $\scriptD_{j^\ast_1}$ (as specified by the resultant scheme using~$\scriptD$) and outputs
+prepares $\scriptD_{j^\ast_1}$ (using~$\scriptD$, as specified by the resultant scheme), and outputs
 \begin{align*}
 \scriptD_{j^\ast_1},\quad
 \{\pk^\ast_j\}_{(j^\ast_1-1)N_2<j\leq j^\ast_1N_2},\quad
