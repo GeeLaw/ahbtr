@@ -1,4 +1,39 @@
 \begin{proof}[\hyperanchor{pf:ahbtr-trade-off-completeness}{Theorem~\ref{thm:ahbtr-trade-off-completeness}}]
-\luoji{To be done.}
-Blah.
+Let $\scriptC$ be an efficient adversary against the completeness of the resultant scheme and
+${B=\poly(\lambda)}$ an upper bound of~$N_1$.
+Consider the following efficient adversary $\scriptC_\OLD$ against the completeness of~$\OLD$:
+\begin{itemize}
+\item $\scriptC_\OLD$ launches $\scriptC$ to obtain
+\begin{align*}
+\scriptD,\quad
+\{\pk^\ast_j\}_{j\in[N]},\quad
+1^{1/\epsilon^\ast}.
+\end{align*}
+It computes $N_1,N_2$ as specified by the resultant scheme.
+\item $\scriptC_\OLD$ samples ${j^\ast_1\draws[B]}$.
+It aborts if ${j^\ast_1\notin[N_1]}$.
+Otherwise, it prepares $\scriptD_{j^\ast_1}$ (as specified by the resultant scheme using~$\scriptD$) and outputs
+\begin{align*}
+\scriptD_{j^\ast_1},\quad
+\{\pk^\ast_j\}_{(j^\ast_1-1)N_2<j\leq j^\ast_1N_2},\quad
+1^{N_1/\epsilon^\ast}.
+\end{align*}
+\end{itemize}
+Routine calculation shows
+\begin{align*}
+\Pr[\scriptC_\OLD\textup{ wins}]
+\geq
+\frac{1}{B}\Pr[\scriptC\textup{ wins}],
+\end{align*}
+hence by the completeness of~$\OLD$,
+\begin{align*}
+\Pr[\scriptC\textup{ wins}]
+&{}\leq
+B\Pr[\scriptC_\OLD\textup{ wins}]
+=
+\poly(\lambda)\negl(\lambda)
+=
+\negl(\lambda).
+\qedhere
+\end{align*}
 \end{proof}
