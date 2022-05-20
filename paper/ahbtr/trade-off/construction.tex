@@ -77,7 +77,11 @@ T_\Enc=\bigO(N^{\gamma_1})\poly(\lambda),\qquad
 |\ct|=\bigO(N^{\gamma_2})\poly(\lambda),\qquad
 T_\Dec=\bigO(N^{\gamma_3})\poly(\lambda),
 \end{align*}
-then the underlying efficiency is mapped to the resultant efficiency by
+then the underlying efficiency is mapped to the resultant efficiency%
+\footnote{We assume that $\OLD.\ct$'s are of deterministic length
+so $\Dec$ knows the location of each particular~$\OLD.\ct$.
+Alternatively, $\Enc$ can store a look-up table of their locations in~$\ct$.}
+by
 \begin{align*}
 (\gamma_1,\gamma_2,\gamma_3)\mapsto
 (1-\gamma+\gamma\gamma_1,1-\gamma+\gamma\gamma_2,\gamma\gamma_3).
