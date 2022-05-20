@@ -12,6 +12,8 @@ Consider the following efficient adversary $\scriptC_\OLD$ against the completen
 It computes $N_1,N_2$ as specified by the resultant scheme.
 \item $\scriptC_\OLD$ samples ${j^\ast_1\draws[B]}$.
 It aborts if ${j^\ast_1\notin[N_1]}$.
+% It is instrumental for analysis to pretend to run
+%     old.Trace    for j_1 in [N_1] \ {j*_1}.
 Otherwise, it prepares $\scriptD_{j^\ast_1}$ (as specified by the resultant scheme using~$\scriptD$) and outputs
 \begin{align*}
 \scriptD_{j^\ast_1},\quad
