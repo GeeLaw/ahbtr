@@ -12,7 +12,7 @@ Let $\GoodEst$ be the event that ${|\widehat{\epsilon}_i-\epsilon_i|\leq\delta}$
 By the Chernoff bound, the union bound, and the law of total probability,
 \begin{align*}
 \Pr[\neg\GoodEst]
-=\E\bigl[\Pr[\neg\GoodEst\mid N]\bigr]
+=\E\bigl[\Pr[\neg\GoodEst\mid\epsilon^\ast,N]\bigr]
 \leq\E[2({N+1})\exp({-2\delta^2\eta})]
 \leq 2^{-\lambda}.
 \end{align*}
