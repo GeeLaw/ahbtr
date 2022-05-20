@@ -7,13 +7,7 @@ consists of 3 efficient algorithms:
 with ${|\pk|=M_0(\lambda)}$.
 \item $\Enc(1^\lambda,\{\pk_j\}_{j\in[N]},{i_\bot\in[0..N]},{\mu\in\bit^\lambda})$
 takes as input
-\luoji{Should motivate this requirement in the technical overview.
-Emphasize \textit{\textbf{distinct}} for security.
-In contrast, it is not necessary to say this for $\Dec$ as it has nothing to do with security.
-Maybe a remark on AH-BT scheme about a decoder that can decrypt ciphertexts under a random permutation of those keys?
-(Reducible to fixed order at constant-factor loss of advantage, by sampling random orders and picking the order with the highest estimated advantage.)
-Note that it is \emph{not} possible to sort inside AH-BT encryption, as it kills efficiency.}
-a list of \textit{\textbf{distinct}} public keys,
+a list of public keys,
 a cut-off index,
 and a message.
 It outputs a ciphertext~$\ct$.
@@ -39,24 +33,13 @@ i.e., malformed.}
 such that ${|\pk_j|=M_0(\lambda)}$ for all ${j\in[N]\setminus\{i\}}$, and
 ${\mu\in\bit^\lambda}$,
 \begin{align*}
-\Pr\WideNarrow{}{\!}\left[
+\Pr\left[
 \begin{aligned}
-(
-\WideNarrow{}{{}&}
-\pk_i,\sk_i)
-\WideNarrow{&{}}{}
-\draws\Gen(1^\lambda)\\
-\WideNarrow{}{&}
-\ct
-\WideNarrow{&{}}{}
-\draws\Enc(1^\lambda,\{\pk_j\}_{j\in[N]},0,\mu)
+(\pk_i,\sk_i)&{}\draws\Gen(1^\lambda)\\
+\ct&{}\draws\Enc(1^\lambda,\{\pk_j\}_{j\in[N]},0,\mu)
 \end{aligned}
 \WideNarrow{\::\:}{\:{:}\:}
-\begin{aligned}
-\Dec^{\{\pk_j\}_{j\in[N]},\ct}(1^\lambda,N,i,\sk_i)&{}=\mu
-\\\textup{or }\exists\, j,j'\in[N]:\WideNarrow{\,\ }{}
-(j\neq j')\wedge(\pk_j&{}=\pk_{j'})
-\end{aligned}
-\right]\WideNarrow{}{\!}=1.
+\Dec^{\{\pk_j\}_{j\in[N]},\ct}(1^\lambda,N,i,\sk_i)=\mu
+\right]=1.
 \end{align*}
 \end{definition}
