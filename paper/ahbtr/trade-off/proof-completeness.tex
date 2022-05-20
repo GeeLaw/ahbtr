@@ -20,6 +20,14 @@ prepares $\scriptD_{j^\ast_1}$ (using~$\scriptD$, as specified by the resultant 
 \end{align*}
 \end{itemize}
 Let ${B=\poly(\lambda)}$ be an upper bound of~$N_1$.
+% This is NOT an equality for multiple reasons:
+% (1) N_1 is a variable and B is an upper bound of it.
+% (2) Even if we sample j*_1 from [B] and abort if j*_1 is not in [N_1],
+%     this is NOT an equality because there is no way to precisely abort
+%     when the underlying adversary fails GoodDist.
+% (3) There might be multiple groups satisfying GoodDist, i.e.,
+%     there are multiple "correct" j*_1's to use, so loss <= N_1.
+% (4) There is no way of knowing the smallest index of GoodDist-group.
 Routine calculation shows
 \begin{align*}
 \Pr[\scriptC_\OLD\textup{ wins}]

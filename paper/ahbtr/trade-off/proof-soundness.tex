@@ -11,13 +11,10 @@ i^\ast_\bot,\quad
 1^{1/\epsilon^\ast}.
 \end{align*}
 It computes $N_1,N_2$ as specified by the resultant scheme.
-\item $\scriptC_\OLD$ computes ${j^\ast_1=\lceil i^\ast_\bot/N_2\rceil}$, runs
-\begin{align*}
-i^\ast_{j_1}\draws\OLD.\Trace^{\scriptD_{j_1}}(\{\pk^\ast_j\}_{(j_1-1)N_2<j\leq j_1N_2},1^{N_1/\epsilon^\ast})
-\qquad\textup{for }j_1\in[j^\ast_1-1],
-\end{align*}
-and aborts if ${i^\ast_{j_1}\neq\bot}$ for some ${j_1\in[j^\ast_1-1]}$.
-Otherwise, it outputs
+\item $\scriptC_\OLD$ computes ${j^\ast_1=\lceil i^\ast_\bot/N_2\rceil}$
+% It is instrumental for analysis to pretend to run
+%     old.Trace    for j_1 < j*_1.
+and outputs
 \begin{align*}
 \WideNarrow{\hspace*{-1em}}{}
 \scriptD_{j^\ast_1},\quad
@@ -28,10 +25,16 @@ i^\ast_\bot-(j^\ast_1-1)N_2,
 1^{N_1/\epsilon^\ast}.
 \end{align*}
 \end{itemize}
+% This is NOT an equality even if the reduction did the pretended operations
+% (see comments above) and aborted in case some old.Trace output non-bot
+% (in this case, we "couple" with an execution of the resultant scheme's
+% Exp_sound that did not get to use i*_bot, even if it is a candidate, thus
+% not causing a winning condition for the underlying adversary),
+% because the reduction did not check GoodPKs.
 Routine calculation and the soundness of~$\OLD$ yield
 \begin{align*}
 \Pr[\scriptC\textup{ wins}]
-&{}=
+&{}\leq
 \Pr[\scriptC_\OLD\textup{ wins}]
 =
 \negl(\lambda).
