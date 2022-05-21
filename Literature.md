@@ -1,6 +1,41 @@
 # Literature Survey
 
-## Development of Notions
+## Development of Notions and Techniques
+
+| Citation | Notion |
+| :------- | :---- |
+| `C:FiaNao93` | BE |
+| `C:ChoFiaNao94,C:NaoPin98` | (threshold) TT (cf. journal) |
+| `JC:FiaTas01` | dynamic TT (cf. conference) |
+| `INDOCRYPT:MuSusLin03` | IB-BE |
+| `EC:ChaPhaPoi05` | public tracing |
+| `EC:BonSahWat06` | PLBE |
+| `PKC:ADMNPS07` | IB-TT (exponentially many groups, each group polynomial, tracing targets group) |
+| `EC:NisWicZha16` | embedded identity (exponential identity space; oracle jump) |
+| `TCC:Chase07` | MA-ABE |
+| `ESORICS:JinLot07` | renewable tracing |
+| `DHMR08` | AH-TBE |
+| `ACNS:KiaPeh09` | rebroadcast attacks |
+| `CCS:WQZD10` | AH-BE |
+| `SCN:PhaPoiStr12` | decentralized dynamic BE |
+| `RSA:LDZW13` | MA-AB-TT |
+| `CCS:LiuCaoWon13` | AB-TT |
+| `EC:Nishimaki13` | (not the proposer) watermarking |
+| `EPRINT:GGJS13,EPRINT:GKLSZ13` | MI-FE |
+| `PKC:LYJP14` | GE-TT (what's group encryption?) |
+| `EPRINT:MaZha17` | encryptor combiner |
+| `AC:CDGPP18` | (proposer?) MC-FE |
+| `C:GKRW18` | risky TT |
+| `TCC:CVWWW18` | mixed FE |
+| `TCC:Zhandry20` | quantum tracing |
+| `ITCS:ACFGOT20` | AH-MI-FE |
+| `EPRINT:GKWW20` | TT-PRF |
+| `MalTraTri20` | decentralized BE |
+| `C:CDGPP20` | dynamic decentralized FE |
+| `C:Zhandry20` | user expansion compiler (naive PLBE), TBE, MTB |
+| `RSA:DoPhaPoi20` | (proposer?) FE-TT |
+| `EPRINT:AmbGay21` | revisited of MA-ABE |
+| `C:GoySonSri21` | TT-SS |
 
 ## Broadcast/Revocation Efficiency
 
