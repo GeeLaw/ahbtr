@@ -41,12 +41,20 @@
 
 ## Traitor Tracing Efficiency and Security
 
+Some reuse my survey of literature in `GonLuoWee`.
+
 - `poly(k)` is ignored, where `k` is the security parameter.
 - `N` is the number of users.
 - Special: P (public tracing), A (adaptive security), G (exponentially many groups), I (exponentially many users in each group), assumption.
 
 | Citation | `mpk` | `sk` | `ct` | `T_Dec` | Special |
 | :------- | :---: | :--: | :--: | :-----: | :------ |
+| `C:Zhandry20` | `1` | `1` | `N` | `1` | PA, naive PLBE with IBE |
+| `CCS:BonNao08` | `1` | `N^2` | `1` | ??? | (?A), fingerprinting with IBE and threshold elimination |
+| `ICITS:BilPha08` | `1` | `N^2` | `1` | ??? | (?A), ??? with IBE |
+| `EC:BonSahWat06` | `N^(1/2)` | `1` | `N^(1/2)` | ??? | (?A), composite-order group |
+| `CCS:BonWat06` | `N^(1/2)` | `N^(1/2)` | `N^(1/2)` | ??? | P(?A), composite-order group |
+| `TCC:Wee20` | `N^(1/2)` | `1` | `N^(1/2)` | ??? | P(?A), PLBE from QFE from bi-k-Lin |
 | `C:Zhandry20` | `N^(1/3)` | `N^(1/3)` | `N^(1/3)` | ??? | A, GGM |
 | `GonLuoWee` | `N^(1/3)` | `1` | `N^(1/3)` | ??? | A, bi-k-Lin |
 
