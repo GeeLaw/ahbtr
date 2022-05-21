@@ -55,7 +55,7 @@ Some reuse my survey of literature in `GonLuoWee`.
 | `EC:BonSahWat06` | `N^(1/2)` | `1` | `N^(1/2)` | ??? | (?A), composite-order group |
 | `CCS:BonWat06` | `N^(1/2)` | `N^(1/2)` | `N^(1/2)` | ??? | P(?A), composite-order group |
 | `TCC:Wee20` | `N^(1/2)` | `1` | `N^(1/2)` | ??? | P(?A), PLBE from QFE from bi-k-Lin |
-| `C:Zhandry20` | `N^(1/3)` | `N^(1/3)` | `N^(1/3)` | ??? | A, GGM |
+| `C:Zhandry20` | `N^(1/3)` | `N^(1/3)` | `N^(1/3)` | ??? | (?A), GGM |
 | `GonLuoWee` | `N^(1/3)` | `1` | `N^(1/3)` | ??? | A, bi-k-Lin |
 
 ## BTR Efficiency
