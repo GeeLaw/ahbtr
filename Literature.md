@@ -45,7 +45,7 @@
 - `N` is the number of users.
 - Special: P (public tracing), A (adaptive security), G (exponentially many groups), I (exponentially many users in each group), assumption.
 
-| Citation | $\mathsf{mpk}$ | $\mathsf{sk}$ | $\mathsf{ct}$ | $T_{\textup{Dec}}$ | Special |
+| Citation | `|mpk|` | `|sk|` | `|ct|` | `T_Dec` | Special |
 | :------- | :------------: | :-----------: | :-----------: | :----------------: | :-----: |
 | `C:Zhandry20` | `N^(1/3)` | `N^(1/3)` | `N^(1/3)` | ??? | A, GGM |
 | `GonLuoWee` | `N^(1/3)` | `1` | `N^(1/3)` | ??? | A, bi-k-Lin |
