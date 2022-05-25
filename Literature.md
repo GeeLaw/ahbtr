@@ -41,7 +41,7 @@
 
 ## Traitor Tracing Efficiency and Security
 
-Some reuse my survey of literature in `GonLuoWee`.
+Some reuse my survey of literature in `GonLuoWee`. (Insufficient survey as of this commit.)
 
 - `poly(k)` is ignored, where `k` is the security parameter.
 - `N` is the number of users.
