@@ -39,6 +39,19 @@
 
 ## Broadcast/Revocation Efficiency
 
+- `poly(k)` is ignored, where `k` is the security parameter.
+- `N` is the total number of users, which is absorbed in identity-based schemes.
+- `S,R` are number of recipients, non-recipients (S = set, R = revoked).
+- Special: I (identity-based), assumption.
+
+| Citation | `mpk` | `sk` | `ct` | `T_Dec` | Special |
+| :------- | :---: | :--: | :--: | :-----: | :------ |
+| ??? | ?? | ?? | ?? | ?? | ?? |
+
+Notes:
+
+- `C:FiaNao93` is worse than naive if full collusion resistance is required.
+
 ## Traitor Tracing Efficiency and Security
 
 Some reuse my survey of literature in `GonLuoWee`. (Insufficient survey as of this commit.)
