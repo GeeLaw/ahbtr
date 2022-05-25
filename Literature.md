@@ -40,7 +40,7 @@
 ## Broadcast/Revocation Efficiency
 
 - `poly(k)` is ignored, where `k` is the security parameter.
-- `N` is the total number of users, which is absorbed in identity-based schemes.
+- `N` is the total number of users, which, only appearing as `poly(logN)`, is absorbed by `poly(k)` thus ignored in identity-based schemes.
 - `S,R` are number of recipients, non-recipients (S = set, R = revoked).
 - Special: I (identity-based), assumption.
 
