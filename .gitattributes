@@ -1,0 +1,22 @@
+# The user is responsible for checking in binary-correct files.
+# It is incorrect to assume that text files should have
+# CRLF or LF or CR as its line-ending sequence,
+# as each kind of file has a different requirement.
+# Bash scripts are required to be LF and batch files must use CRLF.
+
+*      -text
+
+*.sh   -text diff=bash
+*.bib  -text diff=bibtex
+*.c    -text diff=cpp
+*.h    -text diff=cpp
+*.cc   -text diff=cpp
+*.hh   -text diff=cpp
+*.cpp  -text diff=cpp
+*.hpp  -text diff=cpp
+*.cs   -text diff=csharp
+*.css  -text diff=css
+*.htm  -text diff=html
+*.html -text diff=html
+*.md   -text diff=markdown
+*.tex  -text diff=tex
