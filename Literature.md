@@ -48,7 +48,7 @@ Citations are from `EC:AgrYam20`. Missing citations for recovcation schemes.
 
 | Citation | `mpk` | `sk` | `ct` | `T_Dec` | Special |
 | :------- | :---: | :--: | :--: | :-----: | :------ |
-| `EPRINT:BonSil02` | `1` | `1` | `1` | `N` | B, `N`-linear map |
+| `EPRINT:BonSil02` | `1` | `1` | `1` | `N` | B/R, `N`-linear map |
 | `C:BonGenWat05` | `N^a` | `1` | `N^b` | `min{S,R}` | `a+b=1`, B/R, `l`-BDHE |
 | `EC:GenWat09` | `S^a` | `1` | `S^b` | `S^a` | `a+b=1`, B, I, pairing |
 | `PAIRING:DelPaiPoi07` | `N` | `1` | `R` | `R` | R, pairing |
@@ -56,7 +56,7 @@ Citations are from `EC:AgrYam20`. Missing citations for recovcation schemes.
 | `AC:Delerablee07` | `S` | `1` | `1` | `S` | B, I, pairing |
 | `EPRINT:SakFur07` | `S` | `1` | `1` | `S` | B, I, pairing |
 | `PKC:AttLib10` | `R` | `R^a` | `R^b` | `R^a` | R, I, pairing |
-| `C:BonZha14` | ?? | ?? | ?? | ?? | ?? |
+| `C:BonZha14` | `N` | `1` | `1` | `N` | B/R, obfuscation |
 | `C:BonWatZha14` | ?? | ?? | ?? | ?? | ?? |
 | `ASIACCS:HWLLLD16` | ?? | ?? | ?? | ?? | ?? |
 | `EC:AgrYam20,TCC:AgrWicYam20` | ?? | ?? | ?? | ?? | ?? |
@@ -68,6 +68,7 @@ Notes:
 - Public attributes (i.e., recipient set) are never counted in ciphertext size.
 - Are `EPRINT:SakFur07` and `AC:Delerablee07` concurrent? They read very similar.
 - `PKC:AttLib10` reduces the number of pairing to constant, but not the total time. (Constant number of pairings is kind of expected, sicne we usually pair across keys and ciphertext, so using associativity, i.e., pair(source group operations) = target group operations(pair), we must be able to make the number of pairings constant. See `LL20b` footnote.)
+- `C:BonZha14` considers some kind of *ad hoc* BE, but its definitions are not on par with us. Syntactically, there is global setup, maximum broadcast set size, and interactive joining (their construction do not use interaction). Correctness-wise, they do not consider adversarial recipients (some joiners use malformed keys). Security-wise, they do not consider adversarial global parameters.
 
 ## Traitor Tracing Efficiency and Security
 
