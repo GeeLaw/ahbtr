@@ -48,7 +48,7 @@ Citations are from `EC:AgrYam20`. Missing citations for recovcation schemes.
 
 | Citation | `mpk` | `sk` | `ct` | `T_Dec` | Special |
 | :------- | :---: | :--: | :--: | :-----: | :------ |
-| `C:BonGenWat05` | ?? | ?? | ?? | ?? | ?? |
+| `C:BonGenWat05` | `N^a` | `1` | `N^b` | `min{S,R}` | `a+b=1`, `l`-BDHE |
 | `EPRINT:BonSil02` |  ?? | ?? | ?? | ?? | ?? |
 | `EC:GenWat09` | ?? | ?? | ?? | ?? | ?? |
 | `PAIRING:DelPaiPoi07` | ?? | ?? | ?? | ?? | ?? |
