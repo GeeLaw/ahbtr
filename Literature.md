@@ -51,7 +51,8 @@ Citations are from `EC:AgrYam20`. Missing citations for recovcation schemes.
 | `EPRINT:BonSil02` | `1` | `1` | `1` | `N` | B, `N`-linear map |
 | `C:BonGenWat05` | `N^a` | `1` | `N^b` | `min{S,R}` | `a+b=1`, B/R, `l`-BDHE |
 | `EC:GenWat09` | `S^a` | `1` | `S^b` | `S^a` | `a+b=1`, B, I, pairing |
-| `PAIRING:DelPaiPoi07` | ?? | ?? | ?? | ?? | ?? |
+| `PAIRING:DelPaiPoi07` | `N` | `1` | `R` | `R` | R, pairing |
+| `PAIRING:DelPaiPoi07` | `N` | `1` | `1` | `R^2` | R, pairing |
 | `AC:Delerablee07` | ?? | ?? | ?? | ?? | ?? |
 | `EPRINT:SakFur07` | ?? | ?? | ?? | ?? | ?? |
 | `PKC:AttLib10` | ?? | ?? | ?? | ?? | ?? |
