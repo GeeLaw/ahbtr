@@ -48,16 +48,16 @@ Citations are from `EC:AgrYam20`. Missing citations for recovcation schemes.
 
 | Citation | `mpk` | `sk` | `ct` | `T_Dec` | Special |
 | :------- | :---: | :--: | :--: | :-----: | :------ |
-| `EPRINT:BonSil02` | `1` | `1` | `1` | `N` | B/R, `N`-linear map |
+| `EPRINT:BonSil02` | `1` | `1` | `1` | `N` | B/R, `N`-linear map, **not public-key** |
 | `C:BonGenWat05` | `N^a` | `1` | `N^b` | `min{S,R}` | `a+b=1`, B/R, `l`-BDHE |
 | `EC:GenWat09` | `S^a` | `1` | `S^b` | `S^a` | `a+b=1`, B, I, pairing |
 | `PAIRING:DelPaiPoi07` | `N` | `1` | `R` | `R` | R, pairing |
-| `PAIRING:DelPaiPoi07` | `N` | `1` | `1` | `R^2` | R, pairing |
+| `PAIRING:DelPaiPoi07` | `N` | `N` | `1` | `R^2` | R, pairing |
 | `AC:Delerablee07` | `S` | `1` | `1` | `S` | B, I, pairing |
 | `EPRINT:SakFur07` | `S` | `1` | `1` | `S` | B, I, pairing |
 | `PKC:AttLib10` | `R` | `R^a` | `R^b` | `R^a` | R, I, pairing |
 | `C:BonZha14` | `N` | `1` | `1` | `N` | B/R, obfuscation |
-| `C:BonWatZha14` | ?? | ?? | ?? | ?? | ?? |
+| `C:BonWatZha14` | `1` | `1` | `1` | `S` | B, I, `log(N)`-linear map |
 | `ASIACCS:HWLLLD16` | ?? | ?? | ?? | ?? | ?? |
 | `EC:AgrYam20,TCC:AgrWicYam20` | ?? | ?? | ?? | ?? | ?? |
 | `EPRINT:BraVai20` | ?? | ?? | ?? | ?? | ?? |
