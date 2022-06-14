@@ -39,7 +39,7 @@
 
 ## Broadcast/Revocation Efficiency
 
-Citations are from `EC:AgrYam20`.
+Citations are from `EC:AgrYam20`. Missing citations for recovcation schemes.
 
 - `poly(k)` is ignored, where `k` is the security parameter.
 - `N` is the total number of users, which, only appearing as `poly(logN)`, is absorbed by `poly(k)` thus ignored in identity-based schemes.
@@ -58,6 +58,7 @@ Citations are from `EC:AgrYam20`.
 | `C:BonZha14` | ?? | ?? | ?? | ?? | ?? |
 | `EC:AgrYam20,TCC:AgrWicYam20` | ?? | ?? | ?? | ?? | ?? |
 | `C:BonWatZha14` | ?? | ?? | ?? | ?? | ?? |
+| `EPRINT:BraVai20` | ?? | ?? | ?? | ?? | ?? |
 
 Notes:
 
