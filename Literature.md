@@ -39,7 +39,7 @@
 
 ## Broadcast/Revocation Efficiency
 
-Citations are from `EC:AgrYam20`. Missing citations for recovcation schemes.
+Citations are from `EC:AgrYam20`. The point of these citations is to show the difficulty in improving `|ct| * T_Dec` for AH-BTR, since it naturally implements a broadcast encryption scheme.
 
 - `poly(k)` is ignored, where `k` is the security parameter.
 - `N` is the total number of users, which, only appearing as `poly(logN)`, is absorbed by `poly(k)` thus ignored in identity-based schemes.
@@ -67,26 +67,3 @@ Notes:
 - Are `EPRINT:SakFur07` and `AC:Delerablee07` concurrent? They read very similar.
 - `PKC:AttLib10` reduces the number of pairing to constant, but not the total time. (Constant number of pairings is kind of expected, sicne we usually pair across keys and ciphertext, so using associativity, i.e., pair(source group operations) = target group operations(pair), we must be able to make the number of pairings constant. See `LL20b` footnote.)
 - `C:BonZha14` considers some kind of *ad hoc* BE, but its definitions are not on par with us. Syntactically, there is global setup, maximum broadcast set size, and interactive joining (their construction do not use interaction). Correctness-wise, they do not consider adversarial recipients (some joiners use malformed keys). Security-wise, they do not consider adversarial global parameters.
-
-## Traitor Tracing Efficiency and Security
-
-Some reuse my survey of literature in `GonLuoWee`. (Insufficient survey as of this commit.)
-
-- `poly(k)` is ignored, where `k` is the security parameter.
-- `N` is the number of users.
-- Special: P (public tracing), A (adaptive security), G (exponentially many groups), I (exponentially many users in each group), assumption.
-
-| Citation | `mpk` | `sk` | `ct` | `T_Dec` | Special |
-| :------- | :---: | :--: | :--: | :-----: | :------ |
-| `C:Zhandry20` | `1` | `1` | `N` | `1` | PA, naive PLBE with IBE |
-| `CCS:BonNao08` | `1` | `N^2` | `1` | ??? | (?A), fingerprinting with IBE and threshold elimination |
-| `ICITS:BilPha08` | `1` | `N^2` | `1` | ??? | (?A), ??? with IBE |
-| `EC:BonSahWat06` | `N^(1/2)` | `1` | `N^(1/2)` | ??? | (?A), composite-order group |
-| `CCS:BonWat06` | `N^(1/2)` | `N^(1/2)` | `N^(1/2)` | ??? | P(?A), composite-order group |
-| `TCC:Wee20` | `N^(1/2)` | `1` | `N^(1/2)` | ??? | P(?A), PLBE from QFE from bi-k-Lin |
-| `C:Zhandry20` | `N^(1/3)` | `N^(1/3)` | `N^(1/3)` | ??? | (?A), GGM |
-| `GonLuoWee` | `N^(1/3)` | `1` | `N^(1/3)` | ??? | A, bi-k-Lin |
-
-## BTR Efficiency
-
-## Specialties
