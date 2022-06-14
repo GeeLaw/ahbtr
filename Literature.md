@@ -55,7 +55,7 @@ Citations are from `EC:AgrYam20`. Missing citations for recovcation schemes.
 | `PAIRING:DelPaiPoi07` | `N` | `1` | `1` | `R^2` | R, pairing |
 | `AC:Delerablee07` | `S` | `1` | `1` | `S` | B, I, pairing |
 | `EPRINT:SakFur07` | `S` | `1` | `1` | `S` | B, I, pairing |
-| `PKC:AttLib10` | ?? | ?? | ?? | ?? | ?? |
+| `PKC:AttLib10` | `R` | `R^a` | `R^b` | `R^a` | R, I, pairing |
 | `C:BonZha14` | ?? | ?? | ?? | ?? | ?? |
 | `C:BonWatZha14` | ?? | ?? | ?? | ?? | ?? |
 | `ASIACCS:HWLLLD16` | ?? | ?? | ?? | ?? | ?? |
@@ -67,6 +67,7 @@ Notes:
 - `C:FiaNao93` is worse than naive if full collusion resistance is required.
 - Public attributes (i.e., recipient set) are never counted in ciphertext size.
 - Are `EPRINT:SakFur07` and `AC:Delerablee07` concurrent? They read very similar.
+- `PKC:AttLib10` reduces the number of pairing to constant, but not the total time. (Constant number of pairings is kind of expected, sicne we usually pair across keys and ciphertext, so using associativity, i.e., pair(source group operations) = target group operations(pair), we must be able to make the number of pairings constant. See `LL20b` footnote.)
 
 ## Traitor Tracing Efficiency and Security
 
