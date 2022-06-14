@@ -65,6 +65,7 @@ Citations are from `EC:AgrYam20`. Missing citations for recovcation schemes.
 Notes:
 
 - `C:FiaNao93` is worse than naive if full collusion resistance is required.
+- Public attributes (i.e., recipient set) are never counted in ciphertext size.
 
 ## Traitor Tracing Efficiency and Security
 
