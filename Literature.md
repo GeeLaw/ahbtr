@@ -53,7 +53,7 @@ Citations are from `EC:AgrYam20`. Missing citations for recovcation schemes.
 | `EC:GenWat09` | `S^a` | `1` | `S^b` | `S^a` | `a+b=1`, B, I, pairing |
 | `PAIRING:DelPaiPoi07` | `N` | `1` | `R` | `R` | R, pairing |
 | `PAIRING:DelPaiPoi07` | `N` | `1` | `1` | `R^2` | R, pairing |
-| `AC:Delerablee07` | ?? | ?? | ?? | ?? | ?? |
+| `AC:Delerablee07` | `S` | `1` | `1` | `S` | B, I, pairing |
 | `EPRINT:SakFur07` | ?? | ?? | ?? | ?? | ?? |
 | `PKC:AttLib10` | ?? | ?? | ?? | ?? | ?? |
 | `C:BonZha14` | ?? | ?? | ?? | ?? | ?? |
