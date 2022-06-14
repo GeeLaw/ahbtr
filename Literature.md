@@ -57,8 +57,8 @@ Citations are from `EC:AgrYam20`. Missing citations for recovcation schemes.
 | `PKC:AttLib10` | `R` | `R^a` | `R^b` | `R^a` | R, I, pairing |
 | `C:BonZha14` | `N` | `1` | `1` | `N` | B/R, obfuscation |
 | `C:BonWatZha14` | `1` | `1` | `1` | `S` | B, I, `log(N)`-linear map |
-| `EC:AgrYam20,TCC:AgrWicYam20` | ?? | ?? | ?? | ?? | ?? |
-| `EPRINT:BraVai20` | ?? | ?? | ?? | ?? | ?? |
+| `EC:AgrYam20,TCC:AgrWicYam20` | `1` | `1` | `1` | `S` | B, pairing+LWE |
+| `EPRINT:BraVai20` | `1` | `1` | `1` | `S` | B, lattice-inspired, no reductionist proof |
 
 Notes:
 
