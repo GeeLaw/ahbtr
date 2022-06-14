@@ -1,0 +1,16 @@
+Traitor tracing schemes~\cite{C:ChoFiaNao94} enable content distributors to fight against piracy.
+A content distributor such as a media streaming service can generate a public key and many different secret keys for individual subscribers,
+all of which can decrypt the ciphertexts created using the public key.
+Given a pirate decoder capable of decrypting,
+which could have been created from the secret keys of multiple subscribers,
+the tracing algorithm can find at least one subscriber (a traitor) whose key was used to create the said decoder.
+
+While the traditional model caters well to the needs of content distributors,
+its centralized nature makes it unsuitable for many scenarios,
+e.g., when a group of individuals want to communicate amongst themselves and trace traitors who provide decoders to outsiders.%
+\footnote{For a concrete scenario, see~\cite{C:Zhandry21}.}
+
+Can we instead allow each party to generate its own public and secret key pair?
+The encryption algorithm is given a set of public keys, and the ciphertext can be decrypted by any of the corresponding secret keys.
+The tracing algorithm is given a set~$S$ of public keys and a decoder that is capable of decrypting ciphertexts encrypted to~$S$, and it must identify at least one public key whose secret key has been used to construct the decoder.
+It turns out that there are many subtle issues in defining such a scheme to accurately capture the desired security goal.
