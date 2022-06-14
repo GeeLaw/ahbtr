@@ -48,7 +48,6 @@ Citations are from `EC:AgrYam20`. Missing citations for recovcation schemes.
 
 | Citation | `mpk` | `sk` | `ct` | `T_Dec` | Special |
 | :------- | :---: | :--: | :--: | :-----: | :------ |
-| `EPRINT:BonSil02` | `1` | `1` | `1` | `N` | B/R, `N`-linear map, **not public-key** |
 | `C:BonGenWat05` | `N^a` | `1` | `N^b` | `min{S,R}` | `a+b=1`, B/R, `l`-BDHE |
 | `EC:GenWat09` | `S^a` | `1` | `S^b` | `S^a` | `a+b=1`, B, I, pairing |
 | `PAIRING:DelPaiPoi07` | `N` | `1` | `R` | `R` | R, pairing |
