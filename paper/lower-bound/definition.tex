@@ -1,1 +1,63 @@
-Blah.
+The scheme is \emph{restricted} in the sense that the users are paired and encryption only broadcasts to those sets for which there is precisely one recipient from each pair.
+\luoji{There is no effective weakening in the choice of broadcast set, because one can apply one-time pad to the broadcast set to equate a random choice vs a selective choice.
+There is no weakening in the choice of non-recipient key (still confining to the case of 1-key security), because the choice is guessable.}
+The required security notion is also weaker --- it does not consider collusion among multiple non-recipients and nor adaptive attacks.
+
+\begin{definition}[restricted broadcast encryption and its security]
+A \emph{restricted broadcast encryption (BE) scheme} (for the purpose of this work) consists of 3 efficient algorithms:
+\begin{itemize}
+\item $\Gen(1^\lambda,1^N)$ takes a length parameter as input.
+It outputs a master public key~$\mpk$ and
+a list~$\{\sk_{i,b}\}_{i\in[N],b\in\bit}$ of secret keys.
+\item $\Enc(1^\lambda,\mpk,R,\mu)$ takes as input
+the master public key~$\mpk$,
+an $N$-bit string ${R\in\bit^N}$, and
+a message ${\mu\in\bit^\lambda}$.
+It outputs a ciphertext~$\ct_R$.
+\item $\Dec^{\mpk,i,b,\sk_{i,b},R,\ct_R}(1^\lambda)$
+is given random access to
+the master public key~$\mpk$,
+a secret key with its description $(i,b,\sk_{i,b})$,
+a ciphertext with its attribute $(R,\ct_R)$.
+It is supposed to recover $\mu$ if and only if ${R[i]=b}$.
+\end{itemize}
+The scheme must be \emph{correct}, i.e., for all
+${\lambda,N\in\doubleN}$,
+${R\in\bit^N}$,
+${i\in[N]}$,
+${\mu\in\bit^\lambda}$,
+\begin{align*}
+\Pr\left[\begin{aligned}
+(\mpk,\{\sk_{i,b}\}_{i\in[N],b\in\bit})
+&{}
+\draws\Gen(1^\lambda,1^N)
+\\
+\ct_R
+&{}
+\draws\Enc(1^\lambda,\mpk,R,\mu)
+\\
+:\quad
+\Dec^{\mpk,i,R[i],\sk_{i,R[i]},R,\ct_R}
+(1^\lambda)=\mu
+\hspace*{-8em}
+&
+\end{aligned}
+\right]
+=1.
+\end{align*}
+The scheme is \emph{1-key secure for random challenge} (or \emph{secure} for the purpose of this work) if
+\begin{align*}
+\bigl\{(1^\lambda,\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\ct_0)\bigr\}
+&{}\approx
+\bigl\{({\cdots},\ct_1)\bigr\}
+\textup{, where}\\
+R\draws\bit^N,\quad
+i^\ast&{}\draws[N],\\
+(\mpk,\{\sk_{i,b}\}_{i\in[N],b\in\bit})
+&{}\draws\Gen(1^\lambda,1^N),\\
+\mu_b\draws\bit^\lambda,\quad
+\ct_b&{}\draws\Enc(1^\lambda,\mpk,R,\mu_b)
+\quad\textup{for }b\in\bit.
+\end{align*}
+for all polynomial ${N=N(\lambda)}$.
+\end{definition}
