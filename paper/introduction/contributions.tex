@@ -1,7 +1,27 @@
 \subsubsection{Our Contributions.}
-In this work, we define \ad hoc traitor tracing and construct a secure scheme based on functional encryption for general circuits.
+The contributions in this work are three-fold:
+\begin{itemize}
+\item \emph{Conceptually}, we pose the question of \ad hoc traitor tracing,
+develop from the ideas thereof, and
+eventually reach the definitions for \ad hoc broadcast, trace, and revoke (AH-BTR).
+We prove the relation among the security notions considered in this work.
+\item \emph{Construction-wise},
+we present a secure AH-BTR based on functional encryption for general circuits.
 Ignoring polynomial factors in the security parameter,
-our scheme achieves public and secret keys of length~$\bigO(1)$, ciphertexts of length~$\bigO(N^{1-\gamma})$, encryption time~$\bigO(N)$, and decryption time~$\bigO(N^\gamma)$, for any constant ${0\leq\gamma\leq 1}$.
-In addition, the scheme is \emph{compatible} with the existing public-key infrastructure,
+our scheme achieves
+\begin{align*}
+\textup{ciphertext size}\qquad\qquad\mathllap{|\ct|}&{}=\bigO(N^{1-\gamma}),\\
+\textup{encryption time}\qquad\qquad\mathllap{T_\Enc}&{}=\bigO(N),\\
+\textup{decryption time}\qquad\qquad\mathllap{T_\Dec}&{}=\bigO(N^\gamma),
+\end{align*}
+for any constant ${0\leq\gamma\leq 1}$.
+\item \emph{Questing for the ultimate efficiency},
+we prove that for all secure AH-BTR,
+\begin{align*}
+|\ct|\cdot\TDec=\Omega(N),
+\end{align*}
+so our scheme offers all possible optimal trade-offs between $|\ct|$ and~$\TDec$.
+\end{itemize}
+A final addition is that our scheme is \emph{compatible} with the existing public-key infrastructure,
 i.e., the keys of such a scheme can be those of any secure public-key encryption, and
 there is no need to regenerate keys to take advantage of our scheme.
