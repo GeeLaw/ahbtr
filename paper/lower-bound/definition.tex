@@ -45,7 +45,7 @@ ${\mu\in\bit^\lambda}$,
 \right]
 =1.
 \end{align*}
-The scheme is \emph{1-key secure for random challenge} (or \emph{secure} for the purpose of this work) if
+The scheme is \emph{1-key secure for random challenge against uniform adversaries} (or \emph{secure} for the purpose of this work) if
 \begin{align*}
 \bigl\{(1^\lambda,\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\ct_0)\bigr\}
 &{}\approx
@@ -57,7 +57,12 @@ i^\ast&{}\draws[N],\\
 &{}\draws\Gen(1^\lambda,1^N),\\
 \mu_b\draws\bit^\lambda,\quad
 \ct_b&{}\draws\Enc(1^\lambda,\mpk,R,\mu_b)
-\quad\textup{for }b\in\bit.
+\quad\textup{for }b\in\bit,
 \end{align*}
-for all polynomial ${N=N(\lambda)}$.
+for all polynomially bounded ${N=N(\lambda)}$,
+where the computational indistinguishability only has to hold against \emph{uniform} adversaries.%
+\footnote{$N$ need not be a computable function of~$\lambda$.
+This does not make the security definition ``non-uniformy'',
+as a standard guessing argument applies to an interactive formulation
+in which the uniform and efficient $\scriptA$ chooses~$N$.}
 \end{definition}

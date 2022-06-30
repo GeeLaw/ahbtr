@@ -1,21 +1,21 @@
 \noindent
 To prove Theorem~\ref{thm:lower-bound}, we need the following lemma:
 
-\begin{lemma}[adapted from Theorem 2 in~\cite{C:Unruh07}]
+\begin{lemma}[adapted from Theorem 2 in~\cite{C:Unruh07}]\label{lem:ai-rom}
 For all ${N,P\in\doubleN}$ with ${1\leq P\leq N}$,
 distribution $D$ supported over~$Z$,
-function ${f:Z\times\bit^N\to\bit^S}$,
-there exists a function ${g:Z\times\bit^N\to{\{0,1,\bot\}}^N}$ such that
+function ${F:Z\times\bit^N\to\bit^S}$,
+there exists a function ${G:Z\times\bit^N\to{\{0,1,\bot\}}^N}$ such that
 \begin{align*}
-|\{{i\in[N]}:{g(z,i)\neq\bot}\}|\leq P
+|\{{i\in[N]}:{G(z,i)\neq\bot}\}|\leq P
 \qquad\textup{for all }z\in Z
 \end{align*}
-and for all (non-efficient) oracle algorithm $A$ making at most $T$ queries,
+and for all (non-efficient) oracle (randomized) algorithm $\scriptB^Y$ making at most $T$ queries to~$Y$,
 \begin{align*}
 \left|
-\Pr\left[A^R(z,f(z,R))=1\right]
+\Pr\left[\scriptB^R(z,F(z,R))\to 1\right]
 -
-\Pr\left[A^H(z,f(z,R))=1\right]
+\Pr\left[\scriptB^H(z,F(z,R))\to 1\right]
 \right|
 \leq
 \sqrt{\frac{ST}{2P}},
@@ -25,12 +25,155 @@ where
 R\draws\bit^N,\qquad
 z\draws D,\qquad
 H[i]\begin{cases}
-=g(z,R)[i],&\textup{if }g(z,R)[i]\neq\bot;\\
-\draws\bit,&\textup{if }g(z,R)[i]=\bot.
+=G(z,R)[i],&\textup{if }G(z,R)[i]\neq\bot;\\
+\draws\bit,&\textup{if }G(z,R)[i]=\bot.
 \end{cases}
 \end{align*}
 \end{lemma}
 
 \begin{proof}[\hyperanchor{pf:lower-bound}{Theorem~\ref{thm:lower-bound}}]
 \luoji{Consider using the phrase ``blatantly insecure'' to indicate that the adversary algorithm is just decryption.}
+Define
+\begin{align*}
+S=1+\max{|\ct|},\qquad
+T=1+\max{\{\textup{number of bits in $R$ probed by $\Dec$}\}}.
+\end{align*}
+For ${\lambda\geq 1}$, it is necessary
+that ${|\ct|\geq 1}$ because $\ct$ can encode any string $\mu$ of length~$\lambda$, and
+that ${\TDec\geq T}$ because $\Dec$ performs all the probes and, in addition, produces at least $1$~bit of output.
+Therefore,
+\begin{align*}
+\max{|\ct|}\cdot\max{\TDec}
+\geq\frac{\max{|\ct|}+1}{2}\cdot\max{\TDec}
+\geq\frac{ST}{2}.
+\end{align*}
+It remains to prove ${ST\geq\frac{2N}{1000}}$ for sufficiently large~$\lambda$.
+It suffices to consider the case when ${N\geq 2}$ and ${ST\leq 2N}$.
+
+We prepare for Lemma~\ref{lem:ai-rom}.
+Let $P$ be determined later, and
+\begin{align*}
+z&{}=\left(\begin{aligned}
+&\mu,z_\Enc,\mpk,\\
+&\{\sk_{i,b}\}_{i\in[N],b\in\bit}
+\end{aligned}\right)\sim D=
+\left\{\begin{aligned}
+\mu\draws\bit^\lambda,\qquad
+i^\ast\draws{}&[N]\\
+z_\Enc:\textup{randomness for }&\Enc\\
+(\mpk,\{\sk_{i,b}\}_{i\in[N],b\in\bit})\draws{}&\Gen(1^N)
+\end{aligned}\right\},\\
+\rule[1.5em]{0pt}{0pt}
+F(z,R)
+\hspace*{-5em}&\hspace*{5em}
+{}=0^{S-|\ct|-1}\concat 1\concat\ct\textup{,\quad where }
+\ct\gets\Enc(\mpk,R,\mu;z_\Gen).
+\end{align*}
+Let $G$ be the function guaranteed by Lemma~\ref{lem:ai-rom} and make
+$\scriptB^Y(z,f)$ do the following:
+\begin{itemize}
+\item Sample ${i^\ast\draws[N]}$ and query ${b^\ast\gets Y[i^\ast]}$.
+\item Read $\mu,\mpk,\sk_{i^\ast,b^\ast},\ct$ from $z,f$.
+\item Run ${\mu'\draws\Dec^{\mpk,i^\ast,b^\ast,\sk_{i^\ast,b^\ast},Y,\ct}()}$.
+\item Output $1$ if and only if ${\mu=\mu'}$.
+\end{itemize}
+Note that $\scriptB$ indeed makes at most $T$ queries to~$Y$,
+the first to obtain~$b^\ast$ and the rest to run~$\Dec$.
+
+For ${w\in\{1,2,3,4,5\}}$,
+write $p_w$ for ${\Pr[\scriptB^{Y_w}(z,f;i^\ast)\to 1]}$, where
+\begin{align*}
+i^\ast&{}\draws[N],
+\qquad\qquad\qquad\qquad\qquad\qquad
+Y_1=R,\\
+Y_2[i]&\begin{cases}
+=G(z,F(z,R))[i],&\textup{if }G(z,F(z,R))[i]\neq\bot;\\
+\draws\bit,&\textup{if }G(z,F(z,R))[i]=\bot;
+\end{cases}\\
+Y_3[i]&\begin{cases}
+=G(z,F(z,R))[i],&\textup{if }i\neq i^\ast\textup{ and }G(z,F(z,R))[i]\neq\bot;\\
+\draws\bit,&\textup{if }i\neq i^\ast\textup{ and }G(z,F(z,R))[i]=\bot;\\
+\draws\bit,&\textup{if }i=i^\ast;
+\end{cases}\\
+Y_4[i]&\begin{cases}
+=R[i],&\textup{if }i\neq i^\ast;\\
+\draws\bit,&\textup{if }i=i^\ast;
+\end{cases}
+\qquad\qquad
+Y_5[i]\begin{cases}
+=R[i],&\textup{if }i\neq i^\ast;\\
+=\neg R[i^\ast],&\textup{if }i=i^\ast.
+\end{cases}
+\end{align*}
+By the correctness of the restricted broadcast encryption scheme,
+${p_1=1}$.
+
+From Lemma~\ref{lem:ai-rom},
+\begin{align*}
+|p_1-p_2|\leq\sqrt{\frac{ST}{2P}},\qquad
+|p_4-p_3|\leq\sqrt{\frac{ST}{2P}}.
+\end{align*}
+Here, the second inequality is obtained by applying the lemma to
+\begin{align*}
+\scriptC^Y(z,f)=\scriptB^{Y'}(z,f;i^\ast)\textup{,\qquad where }
+i^\ast\draws[N],\quad
+Y'[i]\begin{cases}
+=Y[i],&\textup{if }i\neq i^\ast;\\
+\draws\bit,&\textup{if }i=i^\ast.
+\end{cases}
+\end{align*}
+Clearly, ${|p_2-p_3|\leq\frac{P}{N}}$.
+Setting ${P=\left\lceil\cbrt{\frac{STN^2}{2}}\right\rceil}$, we have
+\begin{align*}
+|p_1-p_4|
+&{}\leq
+|p_1-p_2|+|p_2-p_3|+|p_3-p_4|
+\\&{}\leq
+\sqrt{\frac{ST}{2P}}+\frac{P}{N}+\sqrt{\frac{ST}{2P}}
+\leq
+3\cbrt{\frac{ST}{2N}}+\frac1N
+<
+4\cbrt{\frac{ST}{2N}},
+\end{align*}
+where the last inequality follows from ${N\geq 2}$.
+By how $Y[i^\ast]$ is set,
+\begin{align*}
+p_4=\frac{p_1+p_5}{2}
+\WideNarrow{}{\!\!}
+\qquad\Longrightarrow\qquad
+\WideNarrow{}{\!\!}
+p_5
+=p_1-2(p_1-p_4)
+\geq p_1-2|p_1-p_4|
+>1-8\cbrt{\frac{ST}{2N}}.
+\end{align*}
+Consider the following adversary~$\scriptA(\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\ct)$ against the security of the restricted broadcast encryption scheme:
+\begin{itemize}
+\item Construct $Y_5$ from $R$ and
+let ${b^\ast\gets Y_5[i^\ast]=\neg R[i^\ast]}$.
+\item Run ${\mu'\draws\Dec^{\mpk,i^\ast,b^\ast,\sk_{i^\ast,b^\ast},Y_5,\ct}()}$,
+i.e., pretend $R[i^\ast]$ were $\neg R[i^\ast]$ and try decrypting using the key given to~$\scriptA$.
+\item Output $1$ if and only if ${\mu'=\mu}$.
+\end{itemize}
+If ${\ct=\ct_1}$ is an encryption of~$\mu_1$, then $\mu_0$ is uniformly random and independent of everything else, hence
+\begin{align*}
+\Pr[\scriptA({\cdots})\to 1\textup{ with }\ct=\ct_1]\leq 2^{-\lambda}.
+\end{align*}
+Note that $\scriptA$ is a uniform adversary.
+By the security of the restricted broadcast encryption scheme,
+\begin{align*}
+p_5
+=\Pr[\scriptB^{Y_5}(z,f;i^\ast)\to 1]
+=\Pr[\scriptA({\cdots})\to 1\textup{ with }\ct=\ct_0]
+\leq 2^{-\lambda}+\negl(\lambda)
+<\frac15
+\end{align*}
+for sufficiently large~$\lambda$, which gives
+\begin{align*}
+1-8\cbrt{\frac{ST}{2N}}<p_5<\frac15
+&
+\qquad\Longrightarrow\qquad
+ST>\frac{2N}{1000}.
+\qedhere
+\end{align*}
 \end{proof}

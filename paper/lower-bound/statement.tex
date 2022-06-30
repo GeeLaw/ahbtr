@@ -1,9 +1,12 @@
 \begin{theorem}[\hyperlink{pf:lower-bound}{\P}]\label{thm:lower-bound}
 For all secure restricted broadcast encryption scheme,
 \begin{align*}
-|\ct|\cdot\TDec\geq\frac{N}{128}
+\max{|\ct|}\cdot\max{\TDec}\geq\frac{N}{1000}
 \end{align*}
-for sufficiently large~$\lambda$,
-where $|\ct|$ is the maximum length of~$\ct$ and
-$\TDec$ is the maximum running time of~$\Dec$.
+\luoji{Here, the starting value~$\Lambda$ of~$\lambda$ for which this bound holds depends on how fast $N$ concretely grows (i.e., an upper bound of~$N$, not necessarily the exact function~${N=N(\lambda)}$ thanks to the guessing reduction).
+For example, ${\Lambda=\Lambda(c)}$ will work for all ${N\leq\lambda^c}$.
+This is indeed necessary as the scheme can simply give up security for small values of~$\lambda$ and set ${\ct=\mu}$, which could be shorter than $N$ bits.}
+for all polynomially bounded~${N=N(\lambda)}$ and sufficiently large~$\lambda$,
+where $\ct$ runs through all possible ciphertexts and
+$\TDec$ runs through all possible running time of~$\Dec$.
 \end{theorem}
