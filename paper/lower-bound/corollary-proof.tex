@@ -4,7 +4,7 @@ Let
 \AHBTR=(\AHBTR.\Gen,\AHBTR.\Enc,\AHBTR.\Dec,\AHBTR.\Trace)
 \end{align*}}
 be a secure AH-BTR and
-construct the following restricted broadcast encryption scheme:
+construct the following restricted BE scheme:
 \begin{itemize}
 \item $\Gen(1^N)$ runs
 \begin{align*}
@@ -24,7 +24,7 @@ we make $\Dec$ probe~$R[j]$ and answer~$\pk_{j,R[j]}[m]$.
 It is straight-forward to verify that the constructed scheme is secure.%
 \footnote{In fact, much more secure than required.}
 Since
-a restricted broadcast encryption ciphertext is precisely an AH-BTR ciphertext,
+a restricted BE ciphertext is precisely an AH-BTR ciphertext,
 each probe to~$\pk_j$'s by~$\AHBTR.\Dec$ translates to exactly one probe to~$R[j]$ by~$\Dec$ with no more additional probes by~$\Dec$ on its own, and
 $\Dec$ outputs whatever $\AHBTR.\Dec$ outputs,
 the conclusion follows by Theorem~\ref{thm:lower-bound}.

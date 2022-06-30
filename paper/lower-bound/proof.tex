@@ -105,7 +105,7 @@ Y_5[j]\begin{cases}
 =\neg R[i^\ast],&\textup{if }j=i^\ast.
 \end{cases}
 \end{align*}
-By the correctness of the restricted broadcast encryption scheme,
+By the correctness of the restricted BE scheme,
 ${p_1=1}$.
 
 From Lemma~\ref{lem:ai-rom},
@@ -147,7 +147,7 @@ p_5
 \geq p_1-2|p_1-p_4|
 >1-8\cbrt{\frac{ST}{2N}}.
 \end{align*}
-Consider the following adversary~$\scriptA(\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\ct)$ against the security of the restricted broadcast encryption scheme:
+Consider the following adversary~$\scriptA(\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\ct)$ against the security of the restricted BE scheme:
 \begin{itemize}
 \item Construct $Y_5$ from $R$ and
 let ${b^\ast\gets Y_5[i^\ast]=\neg R[i^\ast]}$.
@@ -160,7 +160,7 @@ If ${\ct=\ct_1}$ is an encryption of~$\mu_1$, then $\mu_0$ is uniformly random a
 \Pr[\scriptA({\cdots})\to 1\textup{ with }\ct=\ct_1]\leq 2^{-\lambda}.
 \end{align*}
 Note that $\scriptA$ is a uniform adversary.
-By the security of the restricted broadcast encryption scheme,
+By the security of the restricted BE scheme,
 \begin{align*}
 p_5
 =\Pr[\scriptB^{Y_5}(z,f;i^\ast)\to 1]
