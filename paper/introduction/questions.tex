@@ -9,7 +9,9 @@ Potential weakening include
 \begin{itemize}
 \item making the scheme bounded,%
 \footnote{A maximum of number of recipients per ciphertext is set when generating a key pair, and only ``compatible'' public keys can be used to form a recipient set.}
-\item settling for static or selective security,
+% Due to the simplified security notions,
+% there's no version between "very selective" (static) and "adaptive".
+\item settling for static security,
 \item considering security against bounded collusion, and
 \item only achieving threshold tracing.
 \end{itemize}
