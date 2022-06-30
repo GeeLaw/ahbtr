@@ -31,7 +31,7 @@ for ${i\in[0..N]}$,
 \vphantom{\underbrace{\begin{aligned}0\\0\end{aligned}}_{0}}
 \end{align*}
 Setting ${\delta\gets\frac{\epsilon^\ast}{10N}}$
-and~${\eta\gets\frac{\lambda+\log({2N+2})}{2\delta^2}}$,
+and~${\eta\gets\left\lceil\frac{\lambda+\log({2N+2})}{2\delta^2}\right\rceil}$,
 for each~${i\in[0..N]}$,
 the algorithm runs~$\scriptE_i$ for $\eta$~times independently,
 counts the absolute frequency~${\xi_i\in[0..\eta]}$ of~$E_i$, and
