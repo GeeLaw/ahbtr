@@ -1,2 +1,31 @@
 \begin{proof}[\hyperanchor{pf:lower-bound-corollary}{Corollary~\ref{cor:lower-bound}}]
+Let
+\WideNarrow{$\AHBTR=(\AHBTR.\Gen,\AHBTR.\Enc,\AHBTR.\Dec,\AHBTR.\Trace)$}{\begin{align*}
+\AHBTR=(\AHBTR.\Gen,\AHBTR.\Enc,\AHBTR.\Dec,\AHBTR.\Trace)
+\end{align*}}
+be a secure AH-BTR and
+construct the following restricted broadcast encryption scheme:
+\begin{itemize}
+\item $\Gen(1^N)$ runs
+\begin{align*}
+(\pk_{i,b},\sk_{i,b})\draws\AHBTR.\Gen()\qquad\textup{for }i\in[N],b\in\bit
+\end{align*}
+and outputs ${\mpk=\{\pk_{i,b}\}_{i\in[N],b\in\bit}}$ with $\{\sk_{i,b}\}_{i\in[N],b\in\bit}$.
+\item $\Enc(\mpk,R,\mu)$ runs and outputs
+\begin{align*}
+\ct\draws\AHBTR.\Enc(\{\pk_{i,R[i]}\}_{i\in[N]},\mu).
+\end{align*}
+\item $\Dec^{\mpk,i,b,\sk_{i,b},R,\ct}()$
+runs $\AHBTR.\Dec^{K,\ct}(N,i,\sk_{i,b})$,
+where $K$ is an oracle implemented by~$\Dec$ for~$\AHBTR.\Dec$ to probe~$\pk_i$'s.
+Whenever $\AHBTR.\Dec$ probes~$\pk_i[m]$,
+we make $\Dec$ probe~$R[i]$ and answer~$\pk_{i,R[i]}[m]$.
+\end{itemize}
+It is straight-forward to verify that the constructed scheme is secure.%
+\footnote{In fact, much more secure than required.}
+Since
+a restricted broadcast encryption ciphertext is precisely an AH-BTR ciphertext,
+each probe to~$\pk_i$'s by~$\AHBTR.\Dec$ translates to exactly one probe to~$R[i]$ by~$\Dec$ with no more additional probes by~$\Dec$ on its own, and
+$\Dec$ outputs whatever $\AHBTR.\Dec$ outputs,
+the conclusion follows by Theorem~\ref{thm:lower-bound}.
 \end{proof}
