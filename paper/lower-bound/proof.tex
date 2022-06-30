@@ -1,3 +1,36 @@
+\noindent
+To prove Theorem~\ref{thm:lower-bound}, we need the following lemma:
+
+\begin{lemma}[adapted from Theorem 2 in~\cite{C:Unruh07}]
+For all ${N,P\in\doubleN}$ with ${1\leq P\leq N}$,
+distribution $D$ supported over~$Z$,
+function ${f:Z\times\bit^N\to\bit^S}$,
+there exists a function ${g:Z\times\bit^N\to{\{0,1,\bot\}}^N}$ such that
+\begin{align*}
+|\{{i\in[N]}:{g(z,i)\neq\bot}\}|\leq P
+\qquad\textup{for all }z\in Z
+\end{align*}
+and for all (non-efficient) oracle algorithm $A$ making at most $T$ queries,
+\begin{align*}
+\left|
+\Pr\left[A^R(z,f(z,R))=1\right]
+-
+\Pr\left[A^H(z,f(z,R))=1\right]
+\right|
+\leq
+\sqrt{\frac{ST}{2P}},
+\end{align*}
+where
+\begin{align*}
+R\draws\bit^N,\qquad
+z\draws D,\qquad
+H[i]\begin{cases}
+=g(z,R)[i],&\textup{if }g(z,R)[i]\neq\bot;\\
+\draws\bit,&\textup{if }g(z,R)[i]=\bot.
+\end{cases}
+\end{align*}
+\end{lemma}
+
 \begin{proof}[\hyperanchor{pf:lower-bound}{Theorem~\ref{thm:lower-bound}}]
 \luoji{Consider using the phrase ``blatantly insecure'' to indicate that the adversary algorithm is just decryption.}
 \end{proof}
