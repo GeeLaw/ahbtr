@@ -4,9 +4,12 @@ Conceptually, it is interesting to understand the \ad hoc versions of those trac
 
 Another question for future investigation is whether
 (weakened versions of) AH-BTR can be constructed from more lightweight assumptions such as factoring-related, group-based, or lattice-based assumptions.
+\luoji{Interestingly, our lower bound still holds even if it is a bounded scheme statically secure against $1$-bounded collusion, again as a corollary of the ABE bound.}
 Potential weakening include
 \begin{itemize}
-\item making the scheme bounded (a maximum of number of recipients per ciphertext is set when generating a key pair, and only ``compatible'' public keys can be used to form a recipient set),
-\item settling for static or selective security, and
-\item settling for threshold tracing or bounded collusion.
+\item making the scheme bounded,%
+\footnote{A maximum of number of recipients per ciphertext is set when generating a key pair, and only ``compatible'' public keys can be used to form a recipient set.}
+\item settling for static or selective security,
+\item settling for security against bounded collusion,
+\item settling for threshold tracing.
 \end{itemize}
