@@ -10,7 +10,20 @@ its centralized nature makes it unsuitable for many scenarios,
 e.g., when a group of individuals want to communicate amongst themselves and trace traitors who provide decoders to outsiders.%
 \footnote{For a concrete scenario, see~\cite{C:Zhandry21}.}
 
-Can we instead allow each party to generate its own public and secret key pair?
-The encryption algorithm is given a set of public keys, and the ciphertext can be decrypted by any of the corresponding secret keys.
-The tracing algorithm is given a set~$S$ of public keys and a decoder that is capable of decrypting ciphertexts encrypted to~$S$, and it must identify at least one public key whose secret key has been used to construct the decoder.
-It turns out that there are many subtle issues in defining such a scheme to accurately capture the desired security goal.
+The first question is thus naturally the following:
+\begin{center}
+\itshape
+What is the right notion of secure ad hoc traitor tracing schemes?\\
+\end{center}
+Having formalized the syntax and security of such schemes,
+it is natural to study its construction:
+\begin{center}
+\itshape
+How can such a scheme be constructed, and with what efficiency?
+\end{center}
+Efficiency improvement never ends until we reach the optimum,
+for which it is necessary to understand where the limit stands:
+\begin{center}
+\itshape
+Are there lower bounds on the efficiency of such schemes, and what?
+\end{center}
