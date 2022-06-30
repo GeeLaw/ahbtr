@@ -8,27 +8,27 @@ A \emph{restricted broadcast encryption (BE) scheme} (for the purpose of this wo
 \begin{itemize}
 \item $\Gen(1^\lambda,1^N)$ takes a length parameter as input.
 It outputs a master public key~$\mpk$ and
-a list~$\{\sk_{i,b}\}_{i\in[N],b\in\bit}$ of secret keys.
+a list~$\{\sk_{j,b}\}_{j\in[N],b\in\bit}$ of secret keys.
 \item $\Enc(1^\lambda,\mpk,R,\mu)$ takes as input
 the master public key~$\mpk$,
 an $N$-bit string ${R\in\bit^N}$, and
 a message ${\mu\in\bit^\lambda}$.
 It outputs a ciphertext~$\ct_R$.
-\item $\Dec^{\mpk,i,b,\sk_{i,b},R,\ct_R}(1^\lambda)$
+\item $\Dec^{\mpk,j,b,\sk_{j,b},R,\ct_R}(1^\lambda)$
 is given random access to
 the master public key~$\mpk$,
-a secret key with its description $(i,b,\sk_{i,b})$,
+a secret key with its description $(j,b,\sk_{j,b})$,
 a ciphertext with its attribute $(R,\ct_R)$.
-It is supposed to recover $\mu$ if and only if ${R[i]=b}$.
+It is supposed to recover $\mu$ if and only if ${R[j]=b}$.
 \end{itemize}
 The scheme must be \emph{correct}, i.e., for all
 ${\lambda,N\in\doubleN}$,
 ${R\in\bit^N}$,
-${i\in[N]}$,
+${j\in[N]}$,
 ${\mu\in\bit^\lambda}$,
 \begin{align*}
 \Pr\left[\begin{aligned}
-(\mpk,\{\sk_{i,b}\}_{i\in[N],b\in\bit})
+(\mpk,\{\sk_{j,b}\}_{j\in[N],b\in\bit})
 &{}
 \draws\Gen(1^\lambda,1^N)
 \\
@@ -37,7 +37,7 @@ ${\mu\in\bit^\lambda}$,
 \draws\Enc(1^\lambda,\mpk,R,\mu)
 \\
 :\quad
-\Dec^{\mpk,i,R[i],\sk_{i,R[i]},R,\ct_R}
+\Dec^{\mpk,j,R[j],\sk_{j,R[j]},R,\ct_R}
 (1^\lambda)=\mu
 \hspace*{-8em}
 &
@@ -53,7 +53,7 @@ The scheme is \emph{1-key secure for random challenge against uniform adversarie
 \textup{, where}\\
 R\draws\bit^N,\quad
 i^\ast&{}\draws[N],\\
-(\mpk,\{\sk_{i,b}\}_{i\in[N],b\in\bit})
+(\mpk,\{\sk_{j,b}\}_{j\in[N],b\in\bit})
 &{}\draws\Gen(1^\lambda,1^N),\\
 \mu_b\draws\bit^\lambda,\quad
 \ct_b&{}\draws\Enc(1^\lambda,\mpk,R,\mu_b)
