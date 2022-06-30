@@ -1,0 +1,7 @@
+\subsubsection{Security.}
+\luoji{Tracing is naturally (do not claim ``inherently'') public as nobody is a central authority.
+Maybe note the difference to the original PLBE as the tracing key is non-existent and there isn't a ``mode indistinguishability''?}
+We define security notions of AH-PLBE analogously to those in~\cite{EC:BonSahWat06}, except ``mode indistinguishability'' (Game~1 in~\cite{EC:BonSahWat06}), which is not needed since tracing is public-key.
+The two security definitions have a one-to-one correspondence to the simplified security notions of AH-BTR in \Section~\ref{sec:ahbtr-simplified-security}.
+Namely, \emph{message-hiding} translates to \emph{completeness}, and
+\emph{index-hiding} translates to \emph{soundness}.
