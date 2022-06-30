@@ -3,7 +3,7 @@ For all secure restricted BE,
 \begin{align*}
 \max{|\ct|}\cdot\max{\TDec}\geq\frac{N}{1000}
 \end{align*}
-\luoji{Here, the starting value~$\Lambda$ of~$\lambda$ for which this bound holds depends on how fast $N$ concretely grows (i.e., an upper bound of~$N$, not necessarily the exact function~${N=N(\lambda)}$ thanks to the guessing reduction).
+\luoji{Here, the starting value~$\Lambda$ of~$\lambda$ for which this bound holds depends on how fast $N$ concretely grows (i.e., an upper bound of~$N$, not necessarily the exact function~${N=N(\lambda)}$ thanks to the guessing/averaging-with-sign-correction reduction).
 For example, ${\Lambda=\Lambda(c)}$ will work for all ${N\leq\lambda^c}$.
 ``For sufficiently large~$\lambda$'' is indeed necessary as the scheme can simply give up security for small values of~$\lambda$ and set ${\ct=\mu}$, which could be shorter than $N$ bits.
 Moreover, ``for polynomially bounded~$N$'' is also necessary, because the scheme can give up security for super-polynomially large~$N$ and set ${\ct=\mu}$ (e.g. for ${N=2^\lambda}$).}
