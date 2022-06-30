@@ -18,8 +18,8 @@ and outputs ${\mpk=\{\pk_{j,b}\}_{j\in[N],b\in\bit}}$ with $\{\sk_{j,b}\}_{j\in[
 \item $\Dec^{\mpk,j,b,\sk_{j,b},R,\ct}()$
 runs $\AHBTR.\Dec^{K,\ct}(N,j,\sk_{j,b})$,
 where $K$ is an oracle implemented by~$\Dec$ for~$\AHBTR.\Dec$ to probe~$\pk_j$'s.
-Whenever $\AHBTR.\Dec$ probes~$\pk_j[m]$,
-we make $\Dec$ probe~$R[j]$ and answer~$\pk_{j,R[j]}[m]$.
+Whenever $\AHBTR.\Dec$ probes~$\pk_j[m_0]$,
+we make $\Dec$ probe~$R[j]$ and answer~$\pk_{j,R[j]}[m_0]$.
 \end{itemize}
 It is straight-forward to verify that the constructed scheme is secure.
 Since
