@@ -1,2 +1,51 @@
 \subsubsection{You Can (Not) Optimize.}
-Blah.
+While our construction achieves constant-size ciphertext,
+its decryption algorithm runs in time~$\Omega(N)$.
+In contrast, the decryption time of the na{\"i}ve PLBE is constant in the RAM model, as it only looks at the relevant piece of the underlying PKE ciphertext.
+
+We can trade ciphertext size for decryption time by using the na{\"i}ve PLBE on top of our construction.
+By grouping the recipients into $N^{1-\gamma}$ sets of size~$N^\gamma$ and using our basic construction inside each set, we obtain a scheme with ciphertext size~$\Theta(N^{1-\gamma})$ and decryption time~$\Theta(N^\gamma)$.
+This transformation was formalized as the user expansion compiler~\cite{C:Zhandry20} in the context of traditional traitor tracing.
+
+All the constructions we now know have ${|\ct|\cdot\TDec=\Omega(N)}$,
+where $|\ct|$ is the ciphertext length and $\TDec$ is the decryption time.
+Concretely, for our basic construction, the LOT hash is a Merkle tree, and before performing LOT decryption, it is necessary to reconstruct the tree as it is not stored in the ciphertext.
+If it is stored, the decryption time goes down to constant at the cost of bumping up the ciphertext size to~$\Omega(N)$.
+
+It turns out that such bound necessarily holds for all secure AH-BTR, and
+it is due to the functionality of broadcast encryption (not traitor tracing).
+\luoji{Pending citations.}
+Indeed, existing broadcast encryption schemes all have such limitation, whereas
+\luoji{Pending citation.}
+it is possible to make both $|\ct|$ and $\TDec$ constant in a traditional traitor tracing scheme.
+
+We explain the intuition%
+\footnote{The intuition is highly informal and contains \href{https://twitter.com/booleananalysis/status/1219821061430300676}{street-fighting maths}.}
+for the special case of constant-size ciphertexts, for which we want to show ${\TDec=\Omega(N)}$.
+To begin, imagine there are $2N$ users in the system, associated with key pairs $(\pk_{j,b},\sk_{j,b})$ for ${j\in[N]}$ and ${b\in\bit}$.
+Consider a ciphertext encrypting a random plaintext to $\{\pk_{j,R[j]}\}_{j\in[N]}$ for a random string~$R$ and
+regard this ciphertext as a (randomized) hash of~$R$, as illustrated in \Figure~\ref{fig:lower-bound}.
+
+\begin{figure}
+\input{introduction/lower-bound-figure}
+\label{fig:lower-bound}
+\end{figure}
+
+Intuitively, the hash should be collision-resistant, i.e., it should computationally bind~$R$, as only $\sk_{j,R[j]}$'s and not $\sk_{j,\neg R[j]}$'s are supposed to decrypt the ciphertext.
+Furthermore, with an attempted decryption using~$\sk_{i,b}$,
+\luoji{This reminds me of the witness encryption / obfuscation perspective of laconic OT.}
+the decryptor implicitly verifies whether the hash is bound to some $R$ with ${R[i]=b}$, because decryption should succeed or fail depending on ${R[i]\overset{?}{=}b}$.
+Since the hash is short, it cannot perfectly bind~$R$, and essentially, the only way to verify this binding relation is to recompute the hash from~$R$ and compare, as argued below.
+
+By way of contradiction, suppose ${\TDec=\smallo(N)}$, then
+the decryption algorithm would probe at most $\smallo(N)$ keys among ${\{\pk_j=\pk_{j,R[j]}\}_{j\in[N]}}$.
+We say ${R'\in\bit^N}$ is a ``candidate'' if it agrees with $R$ on all indices~$j$ for which $\pk_j$ is probed during decryption.
+
+Given a ciphertext~$\ct$, we choose a random location~$i^\ast$,
+pretend that the $(i^\ast)$\textsuperscript{th} bit of~$R$ were ${\neg R[i^\ast]}$ (i.e., pretend $\pk_{i^\ast}$ were $\pk_{i^\ast,\neg R[i^\ast]}$), and try decrypting using $\sk_{i^\ast,\neg R[i^\ast]}$.
+Due to the security of the scheme, such attempt should (almost always) fail to recover the plaintext.
+
+On the other hand, by the correctness of the scheme, if $\ct$ is a possible ciphertext (i.e., produced by the encryption algorithm with positive probability) for any candidate~$R'$, the decryption must succeed.
+The ciphertext is of constant length, and there would be ${2^{(1-\smallo(1))N}\ggg 2^{|\ct|}}$ candidates, so it is quite likely that $\ct$ would indeed be possible for some candidate, leading to a contradiction.
+
+The formal and general proof uses a result~\cite{C:Unruh07} dealing with random oracles in the presence of non-uniform advice.

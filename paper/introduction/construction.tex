@@ -41,10 +41,14 @@ The time to encrypt is independent of the length of~$D$.
 The receiver will be able to obtain $L_{D[m]}$ by decrypting the LOT ciphertext.
 
 During AH-PLBE encryption, we use LOT to compress the list of public keys.
-The obfuscated program in our AH-PLBE ciphertext, when evaluated at~$j$, will output
+The obfuscated program in our AH-PLBE ciphertext, when evaluated at~${j\in[N]}$, will output
 \emph{i})~a garbled circuit whose input (resp.~output) is a PKE public key (resp.~ciphertext) and
 \emph{ii})~a bunch of LOT ciphertexts that decrypts to the labels so that the garbled circuit is evaluated at~$\pk_j$.
 Decryption proceeds in the obvious manner.
 
-The obfuscated program size, thus the ciphertext size, can be made independent of~$N$, the number of recipients, because
-neither the time to garble a PKE encryption circuit nor the time to perform LOT encryption depends on~$N$.
+The obfuscated program size, thus the ciphertext size, can be made constant,%
+\footnote{We ignore \emph{fixed} polynomial factors in the security parameter.
+The size is a \emph{fixed} polynomial of the security parameter.
+The point is that it does not grow with $N$ (the number of recipients).}
+because
+both the time to garble a PKE encryption circuit and the time to perform LOT encryptions are constant.
