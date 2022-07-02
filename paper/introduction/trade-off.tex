@@ -19,33 +19,27 @@ Indeed, existing broadcast encryption schemes all have such limitation, whereas
 \luoji{Pending citation.}
 it is possible to make both $|\ct|$ and $\TDec$ constant in a traditional traitor tracing scheme.
 
-We explain the intuition%
-\footnote{The intuition is highly informal and contains \href{https://twitter.com/booleananalysis/status/1219821061430300676}{street-fighting maths}.}
-for the special case of constant-size ciphertexts, for which we want to show ${\TDec=\Omega(N)}$.
-To begin, imagine there are $2N$ users in the system, associated with key pairs $(\pk_{j,b},\sk_{j,b})$ for ${j\in[N]}$ and ${b\in\bit}$.
-Consider a ciphertext encrypting a random plaintext to $\{\pk_{j,R[j]}\}_{j\in[N]}$ for a random string~$R$ and
-regard this ciphertext as a (randomized) hash of~$R$, as illustrated in \Figure~\ref{fig:lower-bound}.
+We explain the ideas of our proof based on a corollary of a result~\cite{C:Unruh07} dealing with random oracles in the presence of non-uniform advice.
+Let ${S,T\geq 0}$ be such that ${ST\ll N}$.
+The corollary says that
+for any adversary learning any $S$-bit function (advice) of a random string~${R\draws\bit^N}$ and additionally (adaptively) querying at most $T$ bits in~$R$,
+it is ``indistinguishable'' to flip a bit in~$R$ at a random location
+after the advice is computed (using the non-flipped~$R$) and
+before queries are answered,
+even if the index of the potentially flipped bit is known to the adversary.
 
-\begin{figure}
-\input{introduction/lower-bound-figure}
-\label{fig:lower-bound}
-\end{figure}
+Back to AH-BTR. Imagine that there are $2N$ users in the system, associated with key pairs $(\pk_{j,b},\sk_{j,b})$ for ${j\in[N]}$ and ${b\in\bit}$.
+Consider a ciphertext~$\ct$ encrypting a random plaintext to $\{\pk_{j,R[j]}\}_{j\in[N]}$ for a random string~$R$ and
+regard $\ct$ as the advice.
+Let's try decrypting~$\ct$ using $\sk_{j,R[j]}$ for a random ${j\draws[N]}$.
+Each time the AH-BTR decryption algorithm queries~$\pk_j$,
+we probe $R[j]$ and respond with~$\pk_{j,R[j]}$.
+For the sake of contradiction, suppose ${|\ct|\cdot\TDec\ll N}$,
+which would translate to the setting of the corollary as ${S=|\ct|}$, ${T\leq\TDec}$, and ${ST\ll N}$.
 
-Intuitively, the hash should be collision-resistant, i.e., it should computationally bind~$R$, as only $\sk_{j,R[j]}$'s and not $\sk_{j,\neg R[j]}$'s are supposed to decrypt the ciphertext.
-Furthermore, with an attempted decryption using~$\sk_{i,b}$,
-\luoji{This reminds me of the witness encryption / obfuscation perspective of laconic OT.}
-the decryptor implicitly verifies whether the hash is bound to some $R$ with ${R[i]=b}$, because decryption should succeed or fail depending on ${R[i]\overset{?}{=}b}$.
-Since the hash is short, it cannot perfectly bind~$R$, and essentially, the only way to verify this binding relation is to recompute the hash from~$R$ and compare, as argued below.
-
-By way of contradiction, suppose ${\TDec=\smallo(N)}$, then
-the decryption algorithm would probe at most $\smallo(N)$ keys among ${\{\pk_j=\pk_{j,R[j]}\}_{j\in[N]}}$.
-We say ${R'\in\bit^N}$ is a ``candidate'' if it agrees with $R$ on all indices~$j$ for which $\pk_j$ is probed during decryption.
-
-Given a ciphertext~$\ct$, we choose a random location~$i^\ast$,
-pretend that the $(i^\ast)$\textsuperscript{th} bit of~$R$ were ${\neg R[i^\ast]}$ (i.e., pretend $\pk_{i^\ast}$ were $\pk_{i^\ast,\neg R[i^\ast]}$), and try decrypting using $\sk_{i^\ast,\neg R[i^\ast]}$.
-Due to the security of the scheme, such attempt should (almost always) fail to recover the plaintext.
-
-On the other hand, by the correctness of the scheme, if $\ct$ is a possible ciphertext (i.e., produced by the encryption algorithm with positive probability) for any candidate~$R'$, the decryption must succeed.
-The ciphertext is of constant length, and there would be ${2^{(1-\smallo(1))N}\ggg 2^{|\ct|}}$ candidates, so it is quite likely that $\ct$ would indeed be possible for some candidate, leading to a contradiction.
-
-The formal and general proof uses a result~\cite{C:Unruh07} dealing with random oracles in the presence of non-uniform advice.
+By the correctness of AH-BTR,
+the attempted decryption should successfully recover the plaintext.
+From the corollary it follows that flipping $R[j]$ should also lead to successful recovery.
+But if $R[j]$ is flipped after $\ct$ is computed,
+by the security of AH-BTR,
+the attempted decryption should fail to recover the plaintext except for negligible probability, yielding a contradiction.
