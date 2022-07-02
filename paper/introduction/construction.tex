@@ -1,2 +1,50 @@
-\subsubsection{Constructions.}
-Blah.
+\subsubsection{Construction.}
+Our first construction of AH-BTR follows the existing blueprint of traitor tracing schemes from private linear broadcast encryption (PLBE) schemes introduced in~\cite{EC:BonSahWat06}.
+We first define an \ad hoc version of PLBE:
+\begin{itemize}
+\item Everyone generates their own public and secret key pair~$(\pk,\sk)$.
+\item Encryption uses a list $\{\pk_j\}_{j\in[N]}$ of $N$~public keys of the recipients as well as a cut-off index~${0\leq i_\bot\leq N}$.
+\item Decryption is possible with~$\sk_j$ if ${j>i_\bot}$.
+\end{itemize}
+There are two security requirements.
+Message-hiding requires that the plaintext is hidden if ${i_\bot=N}$.
+Index-hiding requires that an adversary without~$\sk_j$ for an \emph{honest}~$\pk_j$ cannot distinguish between cut-off index being ${(j-1)}$ versus~$j$.
+
+Colloquially, the cut-off index~$i_\bot$ disables $\sk_1,\dots,\sk_{i_\bot}$, and
+the only way to detect whether an index is disabled is to have control over the corresponding key pair (by knowing~$\sk$ or generating a malformed~$\pk$).
+When ${i_\bot=N}$, the plaintext should be hidden since all keys are disabled.
+
+Given an AH-PLBE scheme, an AH-BTR scheme can be constructed by adapting~\cite{EC:BonSahWat06}.
+The AH-BTR inherits key generation and decryption algorithms from AH-PLBE.
+To perform AH-BTR encryption, simply encrypt using AH-PLBE with ${i_\bot=0}$, disabling no key so that every recipient can decrypt.
+Given a pirate decoder~$\scriptD$ capable of decrypting with probability at least~$\epsilon$, the tracing algorithm tests the decoder's success probability with the cut-off index ${i_\bot=0,1,2,\dots,N}$, and identifies the recipient associated with~$\pk_{i^\ast}$ as a traitor if this probability changes by $\Omega(\epsilon/N)$ when $i_\bot$ increases from $({i^\ast-1})$ to $i^\ast$.
+
+We shall see that the message-hiding property translates to completeness and index-hiding soundness.
+It remains to construct an AH-PLBE.
+
+\paragraph{Constructing AH-PLBE.}
+\luoji{Maybe there's a citable source?}
+It is folklore that any public-key encryption (PKE) scheme can be used to construct a na{\"i}ve PLBE by encrypting individually to each recipient.
+The individual ciphertext that corresponds to a disabled key encrypts garbage instead of the actual plaintext.
+This scheme is also \ad hoc.
+The downside of it is that the ciphertext is of size~$\Omega(N)$.
+
+Our scheme uses obfuscation to compress the na{\"i}ve PLBE ciphertext.
+The ciphertext will contain an obfsucated program, which, when evaluated at~${j\in[N]}$, allows us to recover the PKE ciphertext under~$\pk_j$.
+However, the obfuscated program itself cannot simply compute each PKE ciphertext if we want AH-PLBE ciphertexts of size~$\smallo(N)$, as there is no space to remember all the public keys that have been independently generated.
+
+% LOT should really be called "laconic secure selection".
+Laconic oblivious transfer (LOT) comes to rescue.
+LOT allows compressing an arbitrarily long string~$D$ down to a fixed-length hash~$h$, with which one can efficiently perform oblivious transfer.
+The sender can encrypt messages $L_0,L_1$ to a hash~$h$ and an index~$m$ into~$D$.
+The time to encrypt is independent of the length of~$D$.
+The receiver will be able to obtain $L_{D[m]}$ by decrypting the LOT ciphertext.
+
+During AH-PLBE encryption, we use LOT to compress the list of public keys.
+The obfuscated program in our AH-PLBE ciphertext, when evaluated at~$j$, will output
+\emph{i})~a garbled circuit whose input (resp.~output) is a PKE public key (resp.~ciphertext) and
+\emph{ii})~a bunch of LOT ciphertexts that decrypts to the labels so that the garbled circuit is evaluated at~$\pk_j$.
+Decryption proceeds in the obvious manner.
+
+The obfuscated program size, thus the ciphertext size, can be made independent of~$N$, the number of recipients, because
+neither the time to garble a PKE encryption circuit nor the time to perform LOT encryption depends on~$N$.
