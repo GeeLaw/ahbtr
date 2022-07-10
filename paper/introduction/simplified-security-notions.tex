@@ -1,13 +1,22 @@
 \subsubsection{Simplifying Security Notions.}
-\luoji{Pending citations.}
-Traditionally, traceability has been defined using one comprehensive interactive experiment, which is complicated to work with.
+Traditionally~\cite{EC:BonSahWat06}, traceability has been defined using one comprehensive interactive experiment,%
+% The definition of TCC:CVWWW18 seems to have a problem...
+% In the first version of ePrint 2018/897, on p.19, the definition of
+% tracing security requires
+%     Pr[GoodDecoder && BadTrace] = negligible,
+% which does not (from a definitional point of view) prevent Trace
+% from accusing an innocent user if D has advantage 0.
+% The black-box confirmation model (where there is separate
+% confirmation/soundness notion) is not as related as I anticipated,
+% and mentioning here should be good enough.
+\footnote{While some previous works~\cite{C:BonFra99,STOC:GoyKopWat18,C:Zhandry20} separate traceability into multiple notions,
+those notions still share one single complicated security experiment.}
+which is complicated to work with.
 Intuitively, the notion requires that
 \emph{i})~a traitor should be found from a decoder with sufficient advantage and
 \emph{ii})~no honest user should be identified as a traitor, regardless of the decoder advantage.
 
 We thus define two security notions for AH-BTR capturing the requirements separately.
-\luoji{Compare with ``confirmation property''?
-Previous work also already has ``soundness''.}
 The former is called \emph{completeness} and the latter is called \emph{soundness}.
 Their conjunction is equivalent to \emph{traceability}.
 Since only one requirement is considered in each notion,
