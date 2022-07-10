@@ -1,23 +1,23 @@
 \subsubsection{You Can (Not) Optimize.}
-While our construction achieves constant-size ciphertext,
+While our basic construction enjoys constant-size ciphertext,
 its decryption algorithm runs in time~$\Omega(N)$.
+Concretely, the LOT hash is a Merkle tree, and before performing LOT decryption, it is necessary to reconstruct the tree as it is not stored in the ciphertext.
 In contrast, the decryption time of the na{\"i}ve PLBE is constant in the RAM model, as it only looks at the relevant piece of the underlying PKE ciphertext.
 
 We can trade ciphertext size for decryption time by using the na{\"i}ve PLBE on top of our construction.
-By grouping the recipients into $N^{1-\gamma}$ sets of size~$N^\gamma$ and using our basic construction inside each set, we obtain a scheme with ciphertext size~$\Theta(N^{1-\gamma})$ and decryption time~$\Theta(N^\gamma)$.
+By grouping the recipients into $\Theta(N^{1-\gamma})$ sets of size~$\Theta(N^\gamma)$ and using our basic construction over each set, we obtain a scheme with ciphertext size~$\Theta(N^{1-\gamma})$ and decryption time~$\Theta(N^\gamma)$.
 This transformation was formalized as the user expansion compiler~\cite{C:Zhandry20} in the context of traditional traitor tracing.
 
 All the constructions we now know have ${|\ct|\cdot\TDec=\Omega(N)}$,
 where $|\ct|$ is the ciphertext length and $\TDec$ is the decryption time.
-Concretely, for our basic construction, the LOT hash is a Merkle tree, and before performing LOT decryption, it is necessary to reconstruct the tree as it is not stored in the ciphertext.
-If it is stored, the decryption time goes down to constant at the cost of bumping up the ciphertext size to~$\Omega(N)$.
-
-It turns out that such bound necessarily holds for all secure AH-BTR, and
-it is due to the functionality of broadcast encryption (not traitor tracing).
+It turns out that this bound necessarily holds for all secure AH-BTR, and
+the blame is on the functionality of broadcast encryption (not traitor tracing).
 \luoji{Pending citations.}
 Indeed, existing broadcast encryption schemes all have such limitation, whereas
 \luoji{Pending citation.}
-it is possible to make both $|\ct|$ and $\TDec$ constant in a traditional traitor tracing scheme.
+% I haven't verified whether TT from LWE has short decryption time,
+% so no citation at this moment.
+it is possible to make both $|\ct|$ and $\TDec$ constant in a traditional traitor tracing scheme~\cite{C:BonZha14}.
 
 We explain the ideas of our proof based on a corollary of a result~\cite{C:Unruh07} dealing with random oracles in the presence of non-uniform advice.
 Let ${S,T\geq 0}$ be such that ${ST\ll N}$.
