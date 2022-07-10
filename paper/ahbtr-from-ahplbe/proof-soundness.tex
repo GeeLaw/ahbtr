@@ -12,13 +12,13 @@ We have
 \\{}={}&
 \Pr[\neg\GoodEst]
 +
-\Pr[\GoodPKs\wedge\FalsePos\wedge\GoodEst]
+\Pr[\FalsePos\wedge\GoodEst]
 \\{}\leq{}&
 2^{-\lambda}
 +
-\Pr[\GoodPKs\wedge\FalsePos\wedge\GoodEst],
+\Pr[\FalsePos\wedge\GoodEst],
 \end{align*}
-and it suffices to prove ${\Pr[\GoodPKs\wedge\FalsePos\wedge\GoodEst]=\negl(\lambda)}$.
+and it suffices to prove ${\Pr[\FalsePos\wedge\GoodEst]=\negl(\lambda)}$.
 
 Let $\alpha$ be a random element in an execution of~$\Trace$ with
 \begin{align*}
@@ -66,7 +66,7 @@ ${b'\draws\scriptD(\mu_0,\mu_1,\ct)\oplus\neg\beta\oplus\alpha}$.
 \end{itemize}
 Routine calculation shows that the advantage of~$\scriptA$ is
 \begin{align*}
-\E[\1_\GoodPKs\cdot\1_\FalsePos\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})],
+\E[\1_\FalsePos\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})],
 \end{align*}
 which must be negligible by the index-hiding property of~$\AHPLBE$.
 
@@ -99,51 +99,48 @@ Moreover, ${(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})\geq -1}$ always h
 These together show that
 \begin{align*}
 &
-\Pr[\GoodPKs\wedge\FalsePos\wedge\GoodEst]
+\Pr[\FalsePos\wedge\GoodEst]
 \\{}={}&
 B\E[
-\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_\GoodEst\cdot B^{-1}
+\1_\FalsePos\cdot\1_\GoodEst\cdot B^{-1}
 ]
 \displaybreak[3]
 \\{}\leq{}&
 B\E[
-\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_\GoodEst
+\1_\FalsePos\cdot\1_\GoodEst
 \cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 ]
 \displaybreak[3]
 \\{}\leq{}&
 B\Bigl(
 \E[
-\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_\GoodEst
+\1_\FalsePos\cdot\1_\GoodEst
 \cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 ]
 \\&
 \hphantom{B\Bigl({}}{}
 +
 \E[
-\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_{\neg\GoodEst}
+\1_\FalsePos\cdot\1_{\neg\GoodEst}
 \cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 ]
-\\&
-\hphantom{B\Bigl({}}{}
 +
-\E[\1_\GoodPKs\cdot\1_\FalsePos\cdot\1_{\neg\GoodEst}]
+\E[\1_\FalsePos\cdot\1_{\neg\GoodEst}]
 \Bigr)
 \displaybreak[3]
 \\{}={}&
 B\Bigl(
 \E[
-\1_\GoodPKs\cdot\1_\FalsePos
+\1_\FalsePos
 \cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 ]
-\\&\hphantom{B\Bigl({}}{}
-+\Pr[\GoodPKs\wedge\FalsePos\wedge\neg\GoodEst]
++\Pr[\FalsePos\wedge\neg\GoodEst]
 \Bigr)
 \displaybreak[3]
 \\{}\leq{}&
 B\Bigl(
 \E[
-\1_\GoodPKs\cdot\1_\FalsePos\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
+\1_\FalsePos\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 ]
 +2^{-\lambda}
 \Bigr)
