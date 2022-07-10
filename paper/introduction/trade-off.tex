@@ -19,6 +19,9 @@ it is possible to make both $|\ct|$ and $\TDec$ constant in a traditional traito
 In existing broadcast encryption (or revocation) schemes~\cite{C:BonGenWat05,AC:Delerablee07,EC:GenWat09,C:BonZha14,EC:AgrYam20,TCC:AgrWicYam20,EPRINT:BraVai20} for $N$ users,
 encrypting to arbitrary subsets of size~$S$ or $({N-S})$ makes ${|\ct|\cdot\TDec=\Omega(S)}$.
 It is precisely the capability to encrypt to many $\Theta(N)$-subsets among $N$ users that is the deal breaker, as we shall see in the formal proof.
+Interestingly,
+the adversary used in the proof is simply the decryption algorithm,
+so the bound holds as long as the scheme is not \emph{blatantly} insecure.
 
 We explain the ideas of our proof based on a corollary of a result~\cite{C:Unruh07} dealing with random oracles in the presence of non-uniform advice.
 Let ${S,T\geq 0}$ be such that ${ST\ll N}$.
