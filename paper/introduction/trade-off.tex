@@ -12,15 +12,13 @@ All the constructions we now know have ${|\ct|\cdot\TDec=\bigOmega(N)}$,
 where $|\ct|$ is the ciphertext length and $\TDec$ is the decryption time.
 It turns out that this bound necessarily holds for all secure AH-BTR, and
 the blame is on the functionality of broadcast encryption (not traitor tracing).
-\luoji{Pending citations.}
-Indeed, all existing broadcast encryption schemes supporting arbitrary recipient set have such limitation,%
-\footnote{The deal breaker, as we shall see from the formal proof, is the capability to encrypt to many $N$-subsets among $2N$ users.
-Indeed, schemes for $N$ users that only encrypt to sets of size at most $S$ or at least $({N-S})$ could have $|\ct|,\TDec$ grow with $S$, not~$N$.}
-whereas
-\luoji{Pending citation.}
 % I haven't verified whether TT from LWE has short decryption time,
 % so no citation at this moment.
+Indeed, 
 it is possible to make both $|\ct|$ and $\TDec$ constant in a traditional traitor tracing scheme~\cite{C:BonZha14}.
+In existing broadcast encryption (or revocation) schemes~\cite{C:BonGenWat05,AC:Delerablee07,EC:GenWat09,C:BonZha14,EC:AgrYam20,TCC:AgrWicYam20,EPRINT:BraVai20} for $N$ users,
+encrypting to arbitrary subsets of size~$S$ or $({N-S})$ makes ${|\ct|\cdot\TDec=\Omega(S)}$.
+It is precisely the capability to encrypt to many $\Theta(N)$-subsets among $N$ users that is the deal breaker, as we shall see in the formal proof.
 
 We explain the ideas of our proof based on a corollary of a result~\cite{C:Unruh07} dealing with random oracles in the presence of non-uniform advice.
 Let ${S,T\geq 0}$ be such that ${ST\ll N}$.
