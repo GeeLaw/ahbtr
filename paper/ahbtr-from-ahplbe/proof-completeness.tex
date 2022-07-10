@@ -77,13 +77,13 @@ By the union bound,
 \\{}={}&
 \Pr[\neg\GoodEst]
 +
-\Pr[\GoodPKs\wedge\GoodDist\wedge\NotFound\wedge\GoodEst]
+\Pr[\GoodDist\wedge\NotFound\wedge\GoodEst]
 \\{}\leq{}&
 2^{-\lambda}
 +
-\Pr[\GoodPKs\wedge\BadEnd],
+\Pr[\BadEnd],
 \end{align*}
-so it remains to show ${\Pr[\GoodPKs\wedge\BadEnd]=\negl(\lambda)}$.
+so it remains to show ${\Pr[\BadEnd]=\negl(\lambda)}$.
 
 Consider the following efficient adversary~$\scriptA$ against the message-hiding property of~$\AHPLBE$:
 \begin{itemize}
@@ -108,28 +108,25 @@ runs and outputs ${b'\draws\scriptD(\mu_0,\mu_1,\ct)\oplus\alpha}$.
 % should say $1$ more often in~$\Exp_0$.
 \end{itemize}
 Routine calculation shows that the advantage of $\scriptA$ is
-${\E[\1_\GoodPKs\cdot 4\epsilon_N^2]}$,
+${\E[4\epsilon_N^2]}$,
 which must be negligible by the message-hiding property of~$\AHPLBE$.
 Let ${B=\poly(\lambda)}$ be an upper bound of~$1/\epsilon^\ast$
-($B$ exists since $1^{1/\epsilon^\ast}$ is output by~$\scriptC$ in polynomial time).
+($B$ exists since $\scriptC$ outputs $1^{1/\epsilon^\ast}$ in polynomial time).
 By Markov's inequality,
 \begin{align*}
-\Pr[\GoodPKs\wedge\BadEnd]
-&{}=
-\Pr[\1_\GoodPKs\cdot 4\epsilon_N^2>(\epsilon^\ast)^2]
-% \displaybreak[2]
-\\&{}\leq
-\Pr[\1_\GoodPKs\cdot 4\epsilon_N^2>B^{-2}]
-% \displaybreak[2]
-\\&{}\leq
-B^2\E[\1_\GoodPKs\cdot 4\epsilon_N^2]
-\WideNarrow{}{
-% \displaybreak[2]
-\\&{}}
+\WideNarrow{}{\hspace*{-3em}}
+\Pr[\BadEnd]
+=
+\Pr[4\epsilon_N^2>(\epsilon^\ast)^2]
+\leq{}&
+\Pr[4\epsilon_N^2>B^{-2}]
+\\{}\leq{}&
+B^2\E[4\epsilon_N^2]
 =
 (\poly(\lambda))^2\negl(\lambda)
 =
 \negl(\lambda).
+\WideNarrow{}{\hspace*{-2em}}
 \qedhere
 \end{align*}
 \end{proof}
