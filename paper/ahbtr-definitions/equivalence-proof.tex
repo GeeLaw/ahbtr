@@ -36,33 +36,27 @@ S&{}\gets[Q],&
 \end{align*}
 and sends $\{\pk_q\}_{q\in[Q]}$ to~$\scriptB$.
 \item $\scriptC_2$ answers queries from $\scriptB$ and updates $S$ as stipulated by the query phase of the traceability experiment, except that it aborts if $\scriptB$ queries for~$\sk_{s^\ast}$.
-\item After the query phase,
-$\scriptC_2$ checks whether ${\pk_s=\pk}$ for some ${s\in S}$ with ${s<s^\ast}$,
-and aborts if so.
-% The check above ensures the probability relation below is a strict equality,
-% i.e.,
-%     Pr_B  = B * Pr_(C_2)
-% instead of
-%     Pr_B <= B * Pr_(C_2).
-% The idea is to ensure only one guess is "correct".
-% Here, C_2 is guessing the smallest s* in S (after all the queries)
-% such that pk*_(i*) = pk_(s*).
-% Without this check, s* is not constrained to be the smallest,
-% and there could be multiple "correct" s*'s.
-% Although we can still show what we want, I personally find it
-% aesthetically more pleasing to have precise equality relations.
-Otherwise, $\scriptB$ outputs
+\item After the query phase, $\scriptB$ outputs
 \begin{align*}
 \scriptD,\quad
 \{\pk_j^\ast\}_{j\in[N]},\quad
 1^{1/\epsilon^\ast},
 \end{align*}
-and $\scriptC_2$ looks for an%
-\footnote{Such $i_\bot^\ast$, if it exists, is unique if $\GoodPKs_\scriptB$
-(the interesting case).}
-${i_\bot^\ast\in[N]}$ such that ${\pk_{i_\bot^\ast}^\ast=\pk}$.
-If no such $i_\bot^\ast$ exists, $\scriptC_2$~aborts.
-Otherwise, it outputs
+and $\scriptC_2$ samples or sets
+\begin{align*}
+i_\bot^\ast\begin{cases}
+\draws I_\bot^\ast,&\textup{if }
+I_\bot^\ast\gets
+\{\,
+{i\in[N]}
+\::\:
+{\pk_i^\ast=\pk}
+\,\}\neq\varnothing;\\
+\gets\bot&\textup{otherwise}.
+\end{cases}
+\end{align*}
+It aborts if ${i_\bot^\ast=\bot}$.
+Otherwise, $\scriptC_2$ outputs
 \begin{align*}
 \scriptD,\quad
 N,\quad
@@ -74,9 +68,8 @@ i_\bot^\ast,\quad
 % This is a coupling argument.
 Routine calculation yields
 \begin{align*}
-\Pr_\scriptB[\FalsePos_\scriptB]
-=
-B\Pr_{\scriptC_2}[\FalsePos_{\scriptC_2}].
+\Pr_{\scriptC_2}[\FalsePos_{\scriptC_2}]
+\geq\frac{1}{B^2}\Pr_\scriptB[\FalsePos_\scriptB].
 \end{align*}
 By the union bound,
 \begin{align*}
@@ -86,13 +79,13 @@ By the union bound,
 \Pr_\scriptB[\FalsePos_\scriptB]
 +
 \Pr_\scriptB[\GoodDist_\scriptB\wedge\NotFound_\scriptB]
-\\{}={}&
-B\Pr_{\scriptC_2}[\FalsePos_{\scriptC_2}]
+\\{}\leq{}&
+B^2\Pr_{\scriptC_2}[\FalsePos_{\scriptC_2}]
 +
 \Pr_{\scriptC_1}[\GoodDist_{\scriptC_1}\wedge\NotFound_{\scriptC_1}]
 \WideNarrow{}{\hspace*{-1em}}
 \\{}={}&
-\poly(\lambda)\negl(\lambda)+\negl(\lambda)
+(\poly(\lambda))^2\negl(\lambda)+\negl(\lambda)
 =
 \negl(\lambda).
 \qedhere
