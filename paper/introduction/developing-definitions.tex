@@ -12,14 +12,14 @@ Similarly, the encryptor is free to remove any public key when it encrypts a sec
 Therefore, the object is named \ad hoc broadcast, trace, and revoke (AH-BTR).
 
 As usual with broadcast encryption, we do not hide the list of recipients.
-Hiding the recipients makes ciphertext grow at least linearly with the number of recipients, deminishing the potential of succinctness.
+Hiding the recipients makes ciphertext grow at least linearly with the number of recipients, diminishing the potential of succinctness.
 As we shall see, it is possible to construct AH-BTR with short ciphertexts.
 
 Due to the decentralized nature of such systems,
 an adversary could indistinguishably generate malformed keys,
 which could potentially evade tracers that only take well-formed keys into account.
 To make it worse, a malformed key could be used to mount a denial-of-service attack against (other) honest users if it appears in the list of recipients' public keys during encryption ---
-the encryption algorithm might have been carelessly designed and the presence of certain malformed keys could make it impossible to decrypt for anyone, including the recipients with honsetly generated public keys.
+the encryption algorithm might have been carelessly designed and the presence of certain malformed keys could make it impossible to decrypt for anyone, including the recipients with honestly generated public keys.
 
 In order to protect against such attacks by definition,
 we define correctness to be \emph{robust} against malformed keys ---

@@ -31,6 +31,7 @@
     "codomain",
     "decryptor",
     "distinguisher",
+    "encryptor",
     "hardwires",
     "Hoeteck",
     "homomorphic",
@@ -40,8 +41,12 @@
     "PLBE",
     "polynomially",
     "PPRF",
+    "presampled",
+    "presampling",
     "puncturable",
+    "Simons",
     "sublinearly",
+    "uniformy",
     "Yao's"
   ]
 }

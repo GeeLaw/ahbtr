@@ -30,7 +30,7 @@ This scheme is also \ad hoc.
 The downside of it is that the ciphertext is of size~$\Omega(N)$.
 
 Our scheme uses obfuscation to compress the na{\"i}ve PLBE ciphertext.
-The ciphertext will contain an obfsucated program, which, when evaluated at~${j\in[N]}$, allows us to recover the PKE ciphertext under~$\pk_j$.
+The ciphertext will contain an obfuscated program, which, when evaluated at~${j\in[N]}$, allows us to recover the PKE ciphertext under~$\pk_j$.
 However, the obfuscated program itself cannot simply compute each PKE ciphertext if we want AH-PLBE ciphertexts of size~$\smallo(N)$, as there is no space to remember all the public keys that have been independently generated.
 
 % LOT should really be called "laconic secure selection".
