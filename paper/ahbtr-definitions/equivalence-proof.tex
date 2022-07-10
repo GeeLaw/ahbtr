@@ -7,18 +7,20 @@ $\scriptC_1$ is against the completeness of the scheme.
 It works by internally simulating the traceability game for~$\scriptB$ and outputting (in the completeness experiment) whatever $\scriptB$ outputs.
 Denoting probabilities and events for adversary~$\scriptX$ in its security experiment with subscript~$\scriptX$,
 \begin{align*}
-\mathsf{Event}_{\scriptC_1}
-\quad\Longleftrightarrow\quad
-\mathsf{Event}_\scriptB
-\quad\qquad
-\textup{for }\mathsf{Event}\in{\{\GoodPKs,\GoodDist,\NotFound\}}.
+\GoodDist_{\scriptC_1}
+\Longleftrightarrow
+\GoodDist_\scriptB
+\qquad\textup{and}\qquad
+\NotFound_{\scriptC_1}
+\Longleftrightarrow
+\NotFound_\scriptB.
 \end{align*}
 Therefore,
 \begin{align*}
-&\Pr_\scriptB[\GoodPKs_\scriptB\wedge\GoodDist_\scriptB\wedge\NotFound_\scriptB]
-\WideNarrow{}{\\&\qquad{}}=
+\Pr_\scriptB[\GoodDist_\scriptB\wedge\NotFound_\scriptB]
+=
 \Pr_{\scriptC_1}
-[\GoodPKs_{\scriptC_1}\wedge\GoodDist_{\scriptC_1}\wedge\NotFound_{\scriptC_1}].
+[\GoodDist_{\scriptC_1}\wedge\NotFound_{\scriptC_1}].
 \end{align*}
 $\scriptC_2$ is against the soundness of the scheme.
 Let ${B=\poly(\lambda)>1}$ be an upper bound of~$Q$ that $\scriptB$ might ever output.
@@ -72,25 +74,24 @@ i_\bot^\ast,\quad
 % This is a coupling argument.
 Routine calculation yields
 \begin{align*}
-\Pr_\scriptB[\GoodPKs_\scriptB\wedge\FalsePos_\scriptB]
+\Pr_\scriptB[\FalsePos_\scriptB]
 =
-B\Pr_{\scriptC_2}[\GoodPKs_{\scriptC_2}\wedge\FalsePos_{\scriptC_2}].
+B\Pr_{\scriptC_2}[\FalsePos_{\scriptC_2}].
 \end{align*}
 By the union bound,
 \begin{align*}
 &
-\Pr_\scriptB[\GoodPKs_\scriptB\wedge(\FalsePos_\scriptB\vee(\GoodDist_\scriptB\wedge\NotFound_\scriptB))]
-\\\WideNarrow{}{\mathllap}{{}\leq{}}&
-\Pr_\scriptB[\GoodPKs_\scriptB\wedge\FalsePos_\scriptB]
+\Pr_\scriptB[\FalsePos_\scriptB\vee(\GoodDist_\scriptB\wedge\NotFound_\scriptB)]
+\\{}\leq{}&
+\Pr_\scriptB[\FalsePos_\scriptB]
 +
-\Pr_\scriptB[\GoodPKs_\scriptB\wedge\GoodDist_\scriptB\wedge\NotFound_\scriptB]
-\\\WideNarrow{}{\mathllap}{{}={}}&
-B\Pr_{\scriptC_2}[\GoodPKs_{\scriptC_2}\wedge\FalsePos_{\scriptC_2}]
+\Pr_\scriptB[\GoodDist_\scriptB\wedge\NotFound_\scriptB]
+\\{}={}&
+B\Pr_{\scriptC_2}[\FalsePos_{\scriptC_2}]
 +
-\Pr_{\scriptC_1}
-[\GoodPKs_{\scriptC_1}\wedge\GoodDist_{\scriptC_1}\wedge\NotFound_{\scriptC_1}]
+\Pr_{\scriptC_1}[\GoodDist_{\scriptC_1}\wedge\NotFound_{\scriptC_1}]
 \WideNarrow{}{\hspace*{-1em}}
-\\\WideNarrow{}{\mathllap}{{}={}}&
+\\{}={}&
 \poly(\lambda)\negl(\lambda)+\negl(\lambda)
 =
 \negl(\lambda).
