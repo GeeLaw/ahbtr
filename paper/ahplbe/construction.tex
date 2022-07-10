@@ -23,7 +23,9 @@ Our AH-PLBE works as follows:
 \begin{itemize}
 \item $\Gen$ is the same as $\PKE.\Gen$.
 \item $\Enc(\{\pk_j\}_{j\in[N]},i_\bot,\mu)$
-first hashes down the public keys by running
+first checks whether ${|\pk_j|=M_0}$ for all ${j\in[N]}$.
+If not, it outputs ${\ct=\bot}$ and terminates.
+Otherwise, the algorithm hashes down the public keys by running
 \begin{align*}
 M&\mathrlap{{}\gets NM_0,}
 \hspace*{14em}
