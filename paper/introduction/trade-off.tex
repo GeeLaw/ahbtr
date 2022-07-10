@@ -2,7 +2,7 @@
 While our basic construction enjoys constant-size ciphertext,
 its decryption algorithm runs in time~$\Omega(N)$.
 Concretely, the LOT hash is a Merkle tree, and before performing LOT decryption, it is necessary to reconstruct the tree as it is not stored in the ciphertext.
-In contrast, the decryption time of the na{\"i}ve PLBE is constant in the RAM model, as it only looks at the relevant piece of the underlying PKE ciphertext.
+In contrast, the decryption time of the scheme implied by the na{\"i}ve PLBE is constant in the RAM model, as it only looks at the relevant piece of the underlying PKE ciphertext.
 
 We can trade ciphertext size for decryption time by using the na{\"i}ve PLBE on top of our construction.
 By grouping the recipients into $\Theta(N^{1-\gamma})$ sets of size~$\Theta(N^\gamma)$ and using our basic construction over each set, we obtain a scheme with ciphertext size~$\Theta(N^{1-\gamma})$ and decryption time~$\Theta(N^\gamma)$.
@@ -37,7 +37,7 @@ regard $\ct$ as the advice.
 Let's try decrypting~$\ct$ using $\sk_{j,R[j]}$ for a random ${j\draws[N]}$.
 Each time the AH-BTR decryption algorithm queries~$\pk_j$,
 we probe $R[j]$ and respond with~$\pk_{j,R[j]}$.
-For the sake of contradiction, suppose ${|\ct|\cdot\TDec\ll N}$,
+By way of contradiction, suppose ${|\ct|\cdot\TDec\ll N}$,
 which would translate to the setting of the corollary as ${S=|\ct|}$, ${T\leq\TDec}$, and ${ST\ll N}$.
 
 By the correctness of AH-BTR,

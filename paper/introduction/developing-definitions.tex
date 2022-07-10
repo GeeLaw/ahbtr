@@ -6,13 +6,13 @@ Decryption should only require one secret key from the list of public keys.
 In addition, the decryptor gets random access to all the recipients' public keys as well as the ciphertext.
 The choice to give random access to these inputs is based on performance concerns, as the decryptor might not have to read all of the public keys or the ciphertext.
 
-Before going into tracing, it should be clear that such a scheme would automatically have the functionality of \ad hoc broadcast encryption.
+It should be clear that such a scheme would automatically have the functionality of \ad hoc broadcast encryption.
 There is no event prior to encryption that ``binds'' the system to a specific, fixed set of possible recipients, and the encryptor is free to use whatever public keys it sees fit.
 Similarly, the encryptor is free to remove any public key when it encrypts a second ciphertext, i.e., the scheme automatically enjoys the capability of revocation.
 Therefore, the object is named \ad hoc broadcast, trace, and revoke (AH-BTR).
 
 As usual with broadcast encryption, we do not hide the list of recipients.
-Hiding the recipients makes ciphertext grow at least linearly with the number of recipients, diminishing the potential of succinctness.
+Hiding the recipients makes ciphertext grow at least linearly with the number of recipients, diminishing the potential of efficiency.
 As we shall see, it is possible to construct AH-BTR with short ciphertexts.
 
 Due to the decentralized nature of such systems,
@@ -28,7 +28,7 @@ we reject \emph{blatantly} malformed keys, e.g., those of incorrect lengths, in 
 This restriction does not hamper the usefulness of such a scheme.
 
 As for security,
-when attacking the \emph{traceability} of the scheme, the adversary is free to supply an arbitrary list of recipients' public keys, generated honestly by the challenger or (adversarially) by the adversary, so that the definition covers the scenario when a (blatantly or not) malformed key is present in the list of recipients' public keys.
+when attacking the \emph{traceability} of the scheme, the adversary is free to supply an arbitrary list of recipients' public keys, generated honestly by the challenger or (adversarially) by the adversary, so that the definition covers the scenario when (blatantly or not) malformed keys are present in the list of recipients' public keys.
 The tracing algorithm is given oracle access to a stateless%
 \footnote{The general transformation~\cite{DRM:KiaYun01,EC:BonSahWat06} to deal with stateful decoder applies to our definition of AH-BTR, \textit{mutatis mutandis}.}
 decoder.
