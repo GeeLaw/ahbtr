@@ -1,7 +1,7 @@
 \subsubsection{Ingredients of Construction~\ref{con:ahbtr-trade-off}.}
 Let ${\OLD=(\OLD.\Gen,\OLD.\Enc,\OLD.\Dec,\OLD.\Trace)}$ be an AH-BTR scheme and
 $\gamma$ some%
-\footnote{We assume that ${N\mapsto\lceil N^\gamma\rceil}$ can be computed in (deterministic) time $\poly(\log N)$.}
+\footnote{We require that ${N\mapsto\lceil N^\gamma\rceil}$ can be computed in (deterministic) time $\poly(\log N)$.}
 constant (${0<\gamma<1}$).
 
 \begin{construction}[adapted from Theorem~1 in~\cite{C:Zhandry20}]\label{con:ahbtr-trade-off}
@@ -93,5 +93,3 @@ T_\Enc=\bigO(N)\poly(\lambda),\quad
 |\ct|=\bigO(N^{1-\gamma})\poly(\lambda),\quad
 T_\Dec=\bigO(N^\gamma)\poly(\lambda).
 \end{align*}
-\luoji{Maybe introduce ``balanced'' somewhere in the introduction?}
-Setting ${\gamma=\frac12}$ yields the ``balanced'' scheme.
