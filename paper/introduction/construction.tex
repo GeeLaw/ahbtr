@@ -17,9 +17,9 @@ When ${i_\bot=N}$, the plaintext should be hidden since all keys are disabled.
 Given an AH-PLBE scheme, an AH-BTR scheme can be constructed by adapting~\cite{EC:BonSahWat06}.
 The AH-BTR inherits key generation and decryption algorithms from AH-PLBE.
 To perform AH-BTR encryption, simply encrypt using AH-PLBE with ${i_\bot=0}$, disabling no key so that every recipient can decrypt.
-Given a pirate decoder~$\scriptD$ capable of decrypting with probability at least~$\epsilon$, the tracing algorithm tests the decoder's success probability with the cut-off index ${i_\bot=0,1,2,\dots,N}$, and identifies the recipient associated with~$\pk_{i^\ast}$ as a traitor if this probability changes by $\Omega(\epsilon/N)$ when $i_\bot$ increases from $({i^\ast-1})$ to $i^\ast$.
+Given a pirate decoder~$\scriptD$ capable of decrypting with probability at least~$\epsilon$, the tracing algorithm tests the decoder's success probability with the cut-off index ${i_\bot=0,1},\allowbreak{2,\dots,N}$, and identifies the recipient associated with~$\pk_{i^\ast}$ as a traitor if this probability changes by $\Omega(\epsilon/N)$ when $i_\bot$ increases from $({i^\ast-1})$ to $i^\ast$.
 
-We shall see that the message-hiding property translates to completeness and index-hiding soundness.
+The message-hiding property translates to completeness, and index-hiding to soundness.
 It remains to construct an AH-PLBE.
 
 \paragraph{Constructing AH-PLBE.}
