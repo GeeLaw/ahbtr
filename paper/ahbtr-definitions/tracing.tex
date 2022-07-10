@@ -41,12 +41,6 @@ Let
 \geq\epsilon^\ast,
 \end{align*}
 \item and
-\luoji{Need motivation in introduction!
-There're two kinds of adversarial public keys.
-One is correctly sampled but secret key is leaked.
-The other is adversarially sampled (could be malformed)!
-Definitions must take the latter scenario into account.
-The tracing algorithm does \emph{not} necessarily identify a public key sampled by the experiment as a traitor.}
 $\NotFound$ the event that ${i^\ast\notin[N]}$ (i.e., ${i^\ast=\bot}$).
 \end{itemize}
 $\scriptB$ \emph{wins} if and only if ${\FalsePos\vee(\GoodDist\wedge\NotFound)}$.
@@ -56,5 +50,6 @@ $\scriptB$ \emph{wins} if and only if ${\FalsePos\vee(\GoodDist\wedge\NotFound)}
 \noindent
 Similar to Remark~3 in~\cite{EPRINT:Zhandry20a},
 traceability implies IND-CPA (omitted here).
+% It also follows that a traceable scheme will have negligible collision probability for~$\pk$.
 
 % Good exercise for the reader to define IND-CPA!
