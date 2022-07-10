@@ -17,7 +17,7 @@ When ${i_\bot=N}$, the plaintext should be hidden since all keys are disabled.
 Given an AH-PLBE scheme, an AH-BTR scheme can be constructed by adapting~\cite{EC:BonSahWat06}.
 The AH-BTR inherits key generation and decryption algorithms from AH-PLBE.
 To perform AH-BTR encryption, simply encrypt using AH-PLBE with ${i_\bot=0}$, disabling no key so that every recipient can decrypt.
-Given a pirate decoder with advantage at least~$\epsilon$, the tracing algorithm computes its advantages with the cut-off index $i_\bot$ being ${0,1},\allowbreak{2,\dots,N}$, and identifies the recipient associated with~$\pk_{i^\ast}$ as a traitor if the advantage changes by $\Omega(\epsilon/N)$ when $i_\bot$ increases from $({i^\ast-1})$ to $i^\ast$.
+Given a pirate decoder with advantage at least~$\epsilon$, the tracing algorithm computes its advantages with the cut-off index $i_\bot$ being ${0,1},\allowbreak{2,\dots,N}$, and identifies the recipient associated with~$\pk_{i^\ast}$ as a traitor if the advantage changes by $\bigOmega(\epsilon/N)$ when $i_\bot$ increases from $({i^\ast-1})$ to $i^\ast$.
 
 The message-hiding property translates to completeness, and index-hiding to soundness.
 It now remains to construct an AH-PLBE.
@@ -27,7 +27,7 @@ It now remains to construct an AH-PLBE.
 It is folklore that any public-key encryption (PKE) scheme can be used to construct a na{\"i}ve PLBE by encrypting individually to each recipient.
 The individual ciphertext that corresponds to a disabled key encrypts garbage instead of the actual plaintext.
 This scheme is also \ad hoc.
-The downside of it is that the ciphertext is of size~$\Omega(N)$.
+The downside of it is that the ciphertext is of size~$\bigOmega(N)$.
 
 Our scheme uses obfuscation to compress the na{\"i}ve PLBE ciphertext.
 The ciphertext will contain an obfuscated program, which, when evaluated at~${j\in[N]}$, allows us to recover the PKE ciphertext under~$\pk_j$.
