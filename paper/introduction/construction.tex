@@ -24,7 +24,6 @@ The message-hiding property translates to completeness, and index-hiding to soun
 It now remains to construct an AH-PLBE.
 
 \paragraph{Constructing AH-PLBE.}
-\luoji{Maybe there's a citable source?}
 It is folklore that any public-key encryption (PKE) scheme can be used to construct a na{\"i}ve PLBE by encrypting individually to each recipient.
 The individual ciphertext that corresponds to a disabled key encrypts garbage instead of the actual plaintext.
 This scheme is also \ad hoc.
@@ -32,7 +31,7 @@ The downside of it is that the ciphertext is of size~$\bigOmega(N)$.
 
 Our scheme uses obfuscation to compress the na{\"i}ve PLBE ciphertext.
 The ciphertext will contain an obfuscated program, which, when evaluated at~${j\in[N]}$, allows us to recover the PKE ciphertext under~$\pk_j$.
-However, the obfuscated program itself cannot simply compute each PKE ciphertext if we want AH-PLBE ciphertexts of size~$\smallo(N)$, as there is no space to remember all the public keys that have been independently generated.
+However, the obfuscated program itself cannot simply compute each PKE ciphertext if we want AH-PLBE ciphertexts of size~$\smallo(N)$, as there is no enough space in the program to encode all the public keys that have been independently generated.
 
 % LOT should really be called "laconic secure selection".
 Laconic oblivious transfer (LOT)~\cite{C:CDGGMP17} comes to rescue.
