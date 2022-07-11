@@ -1,8 +1,18 @@
 # Ad Hoc (Decentralized) Broadcast, Trace, and Revoke
 
-Copyright (c) 2022 by Ji Luo, all rights reserved.
+Copyright (c) 2022 Ji Luo, all rights reserved. This applies to all files not explicitly mentioned below.
+
+## [LNCS](https://www.springer.com/gp/computer-science/lncs)
+
+This applies to `paper/.laomian/llncs.cls` and `paper/.laomian/splncs04.bst`. Consult Springer for its copyright status.
+
+## [CryptoBib](https://github.com/cryptobib/export)
+
+This applies to `paper/crypto.bib` and `paper/abbrev3.bib`. Consult [CryptoBib developers](https://github.com/cryptobib) for its copyright status.
 
 ## [Laomian](https://github.com/GeeLaw/laomian)
+
+This applies to all files under `paper/.laomian`, except `llncs.cls` and `splncs04.bst`.
 
 Copyright (c) 2021 Ji Luo
 
