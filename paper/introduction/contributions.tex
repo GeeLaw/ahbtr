@@ -6,9 +6,9 @@ develop from the ideas thereof, and
 eventually reach the definitions for \ad hoc broadcast, trace, and revoke (AH-BTR).
 We prove the relation among the security notions considered in this work.
 \item \emph{Construction-wise},
-we present a secure AH-BTR based on functional encryption for general circuits~\cite{TCC:BonSahWat11}.
-Ignoring polynomial factors in the security parameter,
-our scheme achieves
+we present secure AH-BTR schemes based on functional encryption for general circuits~\cite{TCC:BonSahWat11}.
+With polynomial factors in the security parameter ignored,
+they achieve
 \begin{align*}
 \textup{encryption time}\qquad\qquad\mathllap{T_\Enc}&{}=\bigO(N),\\
 \textup{ciphertext size}\qquad\qquad\mathllap{|\ct|}&{}=\bigO(N^{1-\gamma}),\\
@@ -20,9 +20,9 @@ we prove that for all secure AH-BTR,
 \begin{align*}
 |\ct|\cdot\TDec=\bigOmega(N),
 \end{align*}
-so our scheme offers all possible optimal trade-offs between $|\ct|$ and~$\TDec$.
-Better yet, the bound holds for a specific (weak) attribute-based encryption%
-\WideNarrow{ (ABE)}{}~\cite{EC:SahWat05,CCS:GPSW06} scheme, thus also shedding new insights into the efficiency of ABE.
+so our schemes offer all possible optimal trade-offs between $|\ct|$ and~$\TDec$.
+Better yet, the bound holds for (weak) attribute-based encryption%
+\WideNarrow{ (ABE)}{}~\cite{EC:SahWat05,CCS:GPSW06} schemes with a specific simple functionality, thus also shedding new insights into the efficiency of ABE.
 \end{itemize}
 A final addition is that our scheme is \emph{compatible} with the existing public-key encryption schemes,
 i.e., the keys of such a scheme can be those of any secure public-key encryption, and
