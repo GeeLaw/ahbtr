@@ -1,10 +1,19 @@
 \begin{abstract}
-Here goes the abstract,
-which should briefly summarize the contents of the paper in 150--250 words.
-Note that subsequent paragraphs need explicit \texttt{\textbackslash abstractparindent} for LNCS.
+Traitor tracing schemes (Chor--Fiat--Naor Crypto '94) help content distributors fight against piracy and
+are defined with the content distributor as a trusted authority having access to the secret keys of all users.
+While the traditional model caters well to its original motivation,
+its centralized nature makes it unsuitable for many scenarios.
+A notion of \ad hoc traitor tracing (naturally with the capability of broadcast and revocation) is proposed and studied in this work.
+Such a scheme allows users in the system to generate their own public/secret key pairs, without trusting any other entity.
+To encrypt, a list of public keys is used to identify the set of recipients, and decryption is possible with a secret key corresponding to any of the public keys in the list.
+In addition, there is a tracing algorithm that given a list of recipients' public keys and a pirate decoder capable of decrypting ciphertexts encrypted to them, identifies at least one recipient whose secret key must have been used to construct the said decoder.
 
 \abstractparindent
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi placerat sapien sit amet auctor feugiat.
+Two constructions are presented.
+The first is based on obfuscation and has constant-size ciphertext, yet its decryption time is linear in the number of recipients.
+The second is a generic transformation that reduces decryption time at the cost of increased ciphertext size.
+A lower bound on the trade-off between ciphertext size and decryption time is shown, indicating that the two constructions achieve all possible optimal trade-offs.
+The lower bound also applies to general attribute-based encryption.
 
 % \keywords is optional (omit if not used).
 \keywords{traitor tracing \and obfuscation \and attribute-based encryption.}
