@@ -4,13 +4,12 @@ all of which can decrypt the ciphertexts created using the public key.
 Given a pirate decoder capable of decrypting,
 which could have been created from the secret keys of multiple subscribers,
 the tracing algorithm can find at least one subscriber (a traitor) whose key was used to create the said decoder.
+A long line of subsequent works~\cite{EC:BonSahWat06,CCS:BonWat06,CCS:BonNao08,C:BonZha14,EC:NisWicZha16,STOC:GoyKopWat18,C:GKRW18,TCC:CVWWW18,C:GQWW19,TCC:GoyKopWat19,C:Zhandry20,C:Zhandry21} proposed the different security definitions, extended the functionality, and presented new constructions.
 
 While the traditional model caters well to the needs of content distributors,
 its centralized nature makes it unsuitable for many scenarios,
 e.g., when a group of individuals want to communicate amongst themselves and trace traitors who provide decoders to outsiders. (See~\cite{C:Zhandry21} for a more concrete example.)
-
-\luoji{Some gluing narration missing.}
-Blah.
+This motivation naturally calls for a decentralized notion of traitor tracing, termed \ad hoc traitor tracing in this work.
 
 The first question is thus naturally the following:
 \begin{center}
