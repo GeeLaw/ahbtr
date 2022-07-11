@@ -18,8 +18,7 @@ takes as input a hash key, a hash, an index, and a ciphertext.
 It runs in time~$\poly(\lambda,\log M)$ and outputs a label (message).
 \end{itemize}
 The scheme must be \emph{correct}, i.e., for all
-${\lambda\in\doubleN}$,
-${M\in\doubleN}$,
+\WideNarrow{${\lambda,M\in\doubleN}$,}{${\lambda\in\doubleN}$, ${M\in\doubleN}$,}
 ${D\in\bit^M}$,
 ${m\in[M]}$,
 ${L_0,L_1\in\bit^\lambda}$,
