@@ -95,15 +95,11 @@ ${|\hk|,|h|=\poly(\lambda,\log N)}$.
 As we shall see later, it suffices to pad $C_\GC$ to size $\poly(\lambda,\log N)$ for the security proofs to go through.
 Putting these together,
 \begin{align*}
-T_\Enc
-\WideNarrow{}{&{}}
-=\bigO(N)\poly(\lambda,\log N),
-\WideNarrow{\quad}{\qquad}
+T_\Enc=\bigO(N)\poly(\lambda,\log N),
+\WideNarrow{\quad}{\ \,}
 |\ct|=\poly(\lambda,\log N),
-\WideNarrow{\qquad}{\\}
-T_\Dec
-\WideNarrow{}{&{}}
-=\bigO(N)\poly(\lambda,\log N).
+\WideNarrow{\quad}{\ \,}
+T_\Dec=\bigO(N)\poly(\lambda,\log N).
 \end{align*}
 In practice and for security reasons,
 we always assume ${N\leq 2^\lambda}$ and ${\log N}$ is absorbed by~$\lambda$.
