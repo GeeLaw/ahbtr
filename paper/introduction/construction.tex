@@ -1,6 +1,7 @@
 \subsubsection{Construction.}
 Our first construction of AH-BTR follows the existing blueprint of traitor tracing schemes from private linear broadcast encryption (PLBE) schemes introduced in~\cite{EC:BonSahWat06}.
-We first define an \ad hoc version of PLBE:
+We first define an \ad hoc version of PLBE:%
+\footnote{AH-PLBE can be cast as multi-authority attribute-based encryption~\cite{TCC:Chase07} for $1$-local monotone functions without global set-up.}
 \begin{itemize}
 \item Everyone generates their own public and secret key pair~$(\pk,\sk)$.
 \item Encryption uses a list $\{\pk_j\}_{j\in[N]}$ of $N$~public keys of the recipients as well as a cut-off index~${0\leq i_\bot\leq N}$.
@@ -34,7 +35,7 @@ The ciphertext will contain an obfuscated program, which, when evaluated at~${j\
 However, the obfuscated program itself cannot simply compute each PKE ciphertext if we want AH-PLBE ciphertexts of size~$\smallo(N)$, as there is no space to remember all the public keys that have been independently generated.
 
 % LOT should really be called "laconic secure selection".
-Laconic oblivious transfer (LOT) comes to rescue.
+Laconic oblivious transfer (LOT)~\cite{C:CDGGMP17} comes to rescue.
 LOT allows compressing an arbitrarily long string~$D$ down to a fixed-length hash~$h$, with which one can efficiently perform oblivious transfer.
 The sender can encrypt messages $L_0,L_1$ to a hash~$h$ and an index~$m$ into~$D$.
 The time to encrypt is independent of the length of~$D$.

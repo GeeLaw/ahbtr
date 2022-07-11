@@ -7,7 +7,9 @@ Decryption should only require one secret key from the list of public keys.
 In addition, the decryptor gets random access to all the recipients' public keys as well as the ciphertext.
 The choice to give random access to these inputs is based on performance concerns, as the decryptor might not have to read all of the public keys or the ciphertext.
 
-It should be clear that such a scheme would automatically have the functionality of broadcast encryption~\cite{C:FiaNao93}.
+It should be clear that such a scheme would automatically have the functionality of broadcast encryption~\cite{C:FiaNao93}.%
+\footnote{Decentralized versions of broadcast encryption were studied in~\cite{SCN:PhaPoiStr12,PAIRING:DelPaiPoi07} with interactive management of recipient sets.
+\Ad hoc (threshold) broadcast encryption was studied in~\cite{DHMR08,CCS:WQZD10} with constructions for bounded schemes requiring global set-up.}
 There is no event prior to encryption that ``binds'' the system to a specific, fixed set of possible recipients, and the encryptor is free to use whatever public keys it sees fit.
 Similarly, the encryptor is free to remove any public key when it encrypts a second ciphertext, i.e., the scheme automatically enjoys the capability of revocation.
 Therefore, the object is named \ad hoc broadcast, trace, and revoke (AH-BTR).
