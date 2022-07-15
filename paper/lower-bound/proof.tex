@@ -151,7 +151,7 @@ Consider the following adversary~$\scriptA(\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg 
 let ${b^\ast\gets Y_5[i^\ast]=\neg R[i^\ast]}$.
 \item Run ${\mu'\draws\Dec^{\mpk,i^\ast,b^\ast,\sk_{i^\ast,b^\ast},Y_5,\ct}()}$,
 i.e., pretend $R[i^\ast]$ were $\neg R[i^\ast]$ and try decrypting using the key given to~$\scriptA$.
-\item Output $1$ if and only if ${\mu'=\mu}$.
+\item Output $1$ if and only if ${\mu'=\mu_0}$.
 \end{itemize}
 If ${\ct=\ct_1}$ is an encryption of~$\mu_1$, then $\mu_0$ is uniformly random and independent of everything else, hence
 \begin{align*}
