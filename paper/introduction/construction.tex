@@ -35,7 +35,7 @@ However, the obfuscated program itself cannot simply compute each PKE ciphertext
 
 % Laconic OT should really be called "laconic secure selection".
 Laconic oblivious transfer (OT)~\cite{C:CDGGMP17} comes to rescue.
-Laconic OT allows compressing an arbitrarily long string~$D$ down to a fixed-length hash~$h$, with which one can efficiently perform oblivious transfer.
+It allows compressing an arbitrarily long string~$D$ down to a fixed-length hash~$h$ with which one can efficiently perform oblivious transfer.
 The sender can encrypt messages $L_0,L_1$ to a hash~$h$ and an index~$m$ into~$D$.
 The time to encrypt is independent of the length of~$D$.
 The receiver will be able to obtain $L_{D[m]}$ by decrypting the laconic OT ciphertext.
