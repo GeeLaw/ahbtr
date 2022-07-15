@@ -37,6 +37,8 @@
 | `EPRINT:AmbGay21` | revisited of MA-ABE |
 | `C:GoySonSri21` | TT-SS |
 
+`EPRINT:MaZha17` is for correlated encryptors.
+
 ## Broadcast/Revocation Efficiency
 
 Citations are from `EC:AgrYam20`. The point of these citations is to show the difficulty in improving `|ct| * T_Dec` for AH-BTR, since it naturally implements a broadcast encryption scheme.
