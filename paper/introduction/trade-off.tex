@@ -23,7 +23,14 @@ Interestingly,
 the adversary used in the proof is simply the decryption algorithm,
 so the bound holds as long as the scheme is not \emph{blatantly} insecure.
 
-We explain the ideas of our proof based on a corollary of a result~\cite{C:Unruh07} dealing with random oracles in the presence of non-uniform advice.
+We explain the ideas of our proof based on a corollary%
+\footnote{This corollary is also a lower bound of a probabilistic variant of Yao's box problem~\cite{STOC:Yao90} (generalized and studied in~\cite{EC:CorHenKog22}), on which our proof can be alternatively based.
+% In the proof based on Yao's box problem, to recover R[i],
+% try decryption twice with R[i] being 0 or 1.
+% Correctness and security guarantee that decryption recovers
+% the correct message only when R[i] is set to the right value.
+}
+of a result~\cite{C:Unruh07} dealing with random oracles in the presence of non-uniform advice.
 Let ${S,T\geq 0}$ be such that ${ST\ll N}$.
 The corollary says that
 for any adversary learning any $S$-bit function (advice) of a random string~${R\draws\bit^N}$ and additionally (adaptively) querying at most $T$ bits in~$R$,
