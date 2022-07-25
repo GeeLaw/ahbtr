@@ -42,7 +42,7 @@ even if the index of the potentially flipped bit is known to the adversary.
 Back to AH-BTR. Imagine that there are $2N$ users in the system, associated with key pairs $(\pk_{j,b},\sk_{j,b})$ for ${j\in[N]}$ and ${b\in\bit}$.
 Consider a ciphertext~$\ct$ encrypting a random plaintext to $\{\pk_{j,R[j]}\}_{j\in[N]}$ for a random string~$R$ and
 regard $\ct$ as the advice.
-Let's try decrypting~$\ct$ using $\sk_{j,R[j]}$ for a random ${j\draws[N]}$.
+Let's try decrypting~$\ct$ using $\sk_{i^\ast,R[i^\ast]}$ for a random ${i^\ast\draws[N]}$.
 Each time the AH-BTR decryption algorithm queries~$\pk_j$,
 we probe $R[j]$ and respond with~$\pk_{j,R[j]}$.
 By way of contradiction, suppose ${|\ct|\cdot\TDec\ll N}$,
@@ -50,7 +50,7 @@ which would translate to the setting of the corollary as ${S=|\ct|}$, ${T\leq\TD
 
 By the correctness of AH-BTR,
 the attempted decryption should successfully recover the plaintext.
-From the corollary it follows that flipping $R[j]$ should also lead to successful recovery.
-But if $R[j]$ is flipped after $\ct$ is computed,
+From the corollary it follows that flipping $R[i^\ast]$ should also lead to successful recovery.
+But if $R[i^\ast]$ is flipped after $\ct$ is computed,
 by the security of AH-BTR,
-the attempted decryption should fail to recover the plaintext except for negligible probability, yielding a contradiction.
+the attempted decryption must fail to recover the plaintext except for negligible probability, yielding a contradiction.
