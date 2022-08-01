@@ -1,6 +1,8 @@
 # Ad Hoc (Decentralized) Broadcast, Trace, and Revoke
 
 - [ePrint 2022/925](https://eprint.iacr.org/2022/925)
+  - [1 August 2022](https://eprint.iacr.org/archive/2022/925/20220801:093441)
+  - [15 July 2022](https://eprint.iacr.org/archive/2022/925/20220715:163054)
 
 This is an “open-thoughts” (an approximant of “open-source”) research. The motivation to make the repository public is to make the thought-process in the course of writing (ultimately, that in the course of research) reproducible, allowing everyone to dig into the topic the same way the author did. It is great if this is helpful to other researchers, yet there is no such guarantee.
 
