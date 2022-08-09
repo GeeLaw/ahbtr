@@ -53,13 +53,13 @@ Let $P$ be determined later, and
 \begin{align*}
 z&{}=\left(\begin{aligned}
 &\mu,z_\Enc,\mpk,\\
-&\{\sk_{j,b}\}_{j\in[N],b\in\bit}
+&\{\sk_{j,s}\}_{j\in[N],s\in\bit}
 \end{aligned}\right)\sim D=
 \left\{\begin{aligned}
 \mu\draws\bit^\lambda,\qquad
 i^\ast\draws{}&[N]\\
 z_\Enc:\textup{randomness for }&\Enc\\
-(\mpk,\{\sk_{j,b}\}_{j\in[N],b\in\bit})\draws{}&\Gen(1^N)
+(\mpk,\{\sk_{j,s}\}_{j\in[N],s\in\bit})\draws{}&\Gen(1^N)
 \end{aligned}\right\},\\
 \rule[1.5em]{0pt}{0pt}
 F(z,R)
@@ -70,13 +70,13 @@ F(z,R)
 Let $G$ be the function guaranteed by Lemma~\ref{lem:ai-rom} and make
 $\scriptB^Y(z,f)$ do the following:
 \begin{itemize}
-\item Sample ${i^\ast\draws[N]}$ and query ${b^\ast\gets Y[i^\ast]}$.
-\item Read $\mu,\mpk,\sk_{i^\ast,b^\ast},\ct$ from $z,f$.
-\item Run ${\mu'\draws\Dec^{\mpk,i^\ast,b^\ast,\sk_{i^\ast,b^\ast},Y,\ct}()}$.
+\item Sample ${i^\ast\draws[N]}$ and query ${r^\ast\gets Y[i^\ast]}$.
+\item Read $\mu,\mpk,\sk_{i^\ast,r^\ast},\ct$ from $z,f$.
+\item Run ${\mu'\draws\Dec^{\mpk,i^\ast,r^\ast,\sk_{i^\ast,r^\ast},Y,\ct}()}$.
 \item Output $1$ if and only if ${\mu=\mu'}$.
 \end{itemize}
 Note that $\scriptB$ indeed makes at most $T$ queries to~$Y$,
-the first to obtain~$b^\ast$ and the rest to run~$\Dec$.
+the first to obtain~$r^\ast$ and the rest to run~$\Dec$.
 
 For ${w\in\{1,2,3,4,5\}}$,
 write $p_w$ for ${\Pr[\scriptB^{Y_w}(z,f;i^\ast)\to 1]}$, where
@@ -148,8 +148,8 @@ p_5
 Consider the following adversary~$\scriptA(\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\ct)$ against the security of the restricted BE scheme:
 \begin{itemize}
 \item Construct $Y_5$ from $R$ and
-let ${b^\ast\gets Y_5[i^\ast]=\neg R[i^\ast]}$.
-\item Run ${\mu'\draws\Dec^{\mpk,i^\ast,b^\ast,\sk_{i^\ast,b^\ast},Y_5,\ct}()}$,
+let ${r^\ast\gets Y_5[i^\ast]=\neg R[i^\ast]}$.
+\item Run ${\mu'\draws\Dec^{\mpk,i^\ast,r^\ast,\sk_{i^\ast,r^\ast},Y_5,\ct}()}$,
 i.e., pretend $R[i^\ast]$ were $\neg R[i^\ast]$ and try decrypting using the key given to~$\scriptA$.
 \item Output $1$ if and only if ${\mu'=\mu_0}$.
 \end{itemize}

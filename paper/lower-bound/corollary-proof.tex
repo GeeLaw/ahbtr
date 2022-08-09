@@ -8,15 +8,15 @@ construct the following restricted BE scheme:
 \begin{itemize}
 \item $\Gen(1^N)$ runs
 \begin{align*}
-(\pk_{j,b},\sk_{j,b})\draws\AHBTR.\Gen()\qquad\textup{for }j\in[N],b\in\bit
+(\pk_{j,s},\sk_{j,s})\draws\AHBTR.\Gen()\qquad\textup{for }j\in[N],s\in\bit
 \end{align*}
-and outputs ${\mpk=\{\pk_{j,b}\}_{j\in[N],b\in\bit}}$ with $\{\sk_{j,b}\}_{j\in[N],b\in\bit}$.
+and outputs ${\mpk=\{\pk_{j,s}\}_{j\in[N],s\in\bit}}$ with $\{\sk_{j,s}\}_{j\in[N],s\in\bit}$.
 \item $\Enc(\mpk,R,\mu)$ runs and outputs
 \begin{align*}
 \ct\draws\AHBTR.\Enc(\{\pk_{j,R[j]}\}_{j\in[N]},\mu).
 \end{align*}
-\item $\Dec^{\mpk,j,b,\sk_{j,b},R,\ct}()$
-runs $\AHBTR.\Dec^{K,\ct}(N,j,\sk_{j,b})$,
+\item $\Dec^{\mpk,i,r,\sk_{i,r},R,\ct}()$
+runs $\AHBTR.\Dec^{K,\ct}(N,i,\sk_{i,r})$,
 where $K$ is an oracle implemented by~$\Dec$ for~$\AHBTR.\Dec$ to probe~$\pk_j$'s.
 Whenever $\AHBTR.\Dec$ probes~$\pk_j[m_0]$,
 we make $\Dec$ probe~$R[j]$ and answer~$\pk_{j,R[j]}[m_0]$.
