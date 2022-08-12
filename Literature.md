@@ -69,3 +69,46 @@ Notes:
 - Are `EPRINT:SakFur07` and `AC:Delerablee07` concurrent? They read very similar.
 - `PKC:AttLib10` reduces the number of pairing to constant, but not the total time. (Constant number of pairings is kind of expected, sicne we usually pair across keys and ciphertext, so using associativity, i.e., pair(source group operations) = target group operations(pair), we must be able to make the number of pairings constant. See `LL20b` footnote.)
 - `C:BonZha14` considers some kind of *ad hoc* BE, but its definitions are not on par with us. Syntactically, there is global setup, maximum broadcast set size, and interactive joining (their construction do not use interaction). Correctness-wise, they do not consider adversarial recipients (some joiners use malformed keys). Security-wise, they do not consider adversarial global parameters.
+
+## Lower Bounds
+
+From search engine
+
+- `broadcast encryption bound`
+- `attribute based encryption bound`
+- `attribute based encryption lower bound`
+- `functional encryption bound`
+- `functional encryption lower bound`
+- `predicate encryption bound`
+- `predicate encryption lower bound`
+
+and `crypto.bib` with `title` matching `bound` and matching `broadcast|attribute|functional|predicate`:
+
+- `AFRICACRYPT:AusKre08`
+- `AC:KYDB98`
+- `C:AGVW13`
+- `EC:LubSta98`
+- `FOCS:GoyKinSak05`
+- `IMA:KobWatShi21`
+- `PODC:Newport13`
+- `PODC:KusMan93`
+- `SODA:TseKir07`
+- `STOC:WooZha12`
+- `EPRINT:PatMuk18`
+- `JC:GolNasRus01`
+- [DOI 10.1007/978-3-642-36373-3_12](https://link.springer.com/chapter/10.1007/978-3-642-36373-3_12)
+- [ePrint 2020/618](https://eprint.iacr.org/2020/618)
+- `EC:BluCre94`
+- `C:AgrMaiYam19`
+- [Master's thesis -- Gorbunov](https://cs.uwaterloo.ca/~sgorbuno/publications/MSc_Gorbunov.pdf)
+- [Course Project Liu](https://crypto.stanford.edu/cs359c/17sp/projects/GusLiu.pdf)
+- [Lewi-Wu ORE](https://www.cs.utexas.edu/~dwu4/papers/BlockORE.pdf)
+- [DOI 10.1007/978-3-030-03810-6_7](https://dl.acm.org/doi/abs/10.1007/978-3-030-03810-6_7)
+- [ePrint 2015/665](https://eprint.iacr.org/2015/665)
+- [ePrint 2013/364](https://eprint.iacr.org/2013/364)
+- [ePrint 2000/017](https://eprint.iacr.org/2000/017)
+- [KY](https://www.cs.umd.edu/~jkatz/papers/PredEncProc.pdf)
+- [BVW](https://drops.dagstuhl.de/opus/volltexte/2018/9940/pdf/LIPIcs-FSTTCS-2018-41.pdf)
+- [PhD thesis -- Zhang](https://rucore.libraries.rutgers.edu/rutgers-lib/64844/PDF/1/play/)
+
+They need to be investigated and maybe we can claim our bound is the first of its kind (fully generic, i.e., does not restrict techniques, space-time trade-off for BE/ABE).
