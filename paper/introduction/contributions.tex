@@ -21,8 +21,14 @@ we prove that for all secure AH-BTR,
 |\ct|\cdot\TDec=\bigOmega(N),
 \end{align*}
 so our schemes offer all possible optimal trade-offs between $|\ct|$ and~$\TDec$.
-Better yet, the bound holds for (weak) attribute-based encryption%
-\WideNarrow{ (ABE)}{}~\cite{EC:SahWat05,CCS:GPSW06} schemes with a specific simple functionality, thus also shedding new insights into the efficiency of ABE.
+Better yet, the bound holds for a restricted kind of weakly secure broadcast encryption~\cite{C:FiaNao93},
+which is a specific case of attribute-based encryption~\cite{EC:SahWat05,CCS:GPSW06},
+thus also shedding new insights into the efficiency of ABE and BE.%
+\footnote{Previous works~\cite{EC:BluCre94,EC:LubSta98,AC:KYDB98,AFRICACRYPT:AusKre08,AC:KatYer09,C:GayKerWee15,ITC:DLY21} show a few efficiency lower bounds related to ABE and BE.
+Yet they only apply to information-theoretically secure primitives and even specific construction techniques.
+Moreover, all of them are space (ciphertext or secret key size, or their trade-off) lower bounds.
+Indeed, based on obfuscation~\cite{C:BonWatZha14} or both LWE and pairing~\cite{EC:AgrYam20}, BE with ${|\ct|,|\sk|=\bigO(1)}$ can be constructed.
+Our result is the first time-space lower bound that applies to any computationally secure broadcast encryption scheme.}
 \end{itemize}
 A final addition is that our scheme is \emph{compatible} with the existing public-key encryption schemes,
 i.e., the keys of such a scheme can be those of any secure public-key encryption, and

@@ -1,10 +1,9 @@
-% Isn't it magical that [t] will generate a perfect point for page break
-% for all the five typesetting configurations (submission, IACR, Springer,
-% camera ready, ePrint)?
-% For submission and ePrint, the page breaks after H_0 and before H_1.
-% For IACR, Springer, camera ready, the page breaks after the previous
-% subsection and before the current subsection.
-\begin{figure}[t]
+% For submission, IACR, Springer, camera ready, the page breaks
+% after the previous subsection and before the current subsection,
+% so the figure should go to the top of the page.
+% For ePrint, the page ends after H_2 is fully described,
+% so the figure should go to the bottom of the page.
+\WideNarrow{\begin{figure}[!b]}{\begin{figure}[t]}
 \input{ahplbe/figures/circuit-create-gc-proof}
 \label{fig:circuit-create-gc-proof}
 \end{figure}

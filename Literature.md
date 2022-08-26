@@ -87,10 +87,10 @@ and `crypto.bib` with `title` matching `bound` and matching `broadcast|attribute
 - `AFRICACRYPT:AusKre08`: `|ct|`-only lower bound, specific to subset-cover schemes; upper bound has constant `T_Dec` and matches ours for `r ~ n/2`.
 - `AC:KYDB98`: `|sk|`-only bound, only works for IT-secure schemes.
 - `EC:LubSta98`: `|ct|`, `|sk|` bounds (storage-only) for IT-secure schemes.
-- [ePrint 2020/618](https://eprint.iacr.org/2020/618): possibly related, `|ct|` bound, only for IT-secure schemes.
+- `ITC:DLY21` a.k.a. [ePrint 2020/618](https://eprint.iacr.org/2020/618): possibly related, `|ct|` bound, only for IT-secure schemes.
 - `EC:BluCre94`: `|ct|`, `|sk|` bounds (storage-only), only for IT-secure schemes.
-- [ePrint 2015/665](https://eprint.iacr.org/2015/665): lower bound for CDS, an IT object, applies to `|ct|`, `|sk|` (storage-only) of specific kinds of ABE.
-- [KY](https://www.cs.umd.edu/~jkatz/papers/PredEncProc.pdf): `|sk|`-only bound (storage-only), only BB constructions (essentially combinatorial).
+- `C:GayKerWee15` a.k.a. [ePrint 2015/665](https://eprint.iacr.org/2015/665): lower bound for CDS, an IT object, applies to `|ct|`, `|sk|` (storage-only) of specific kinds of ABE.
+- `AC:KatYer09` a.k.a. [KY](https://www.cs.umd.edu/~jkatz/papers/PredEncProc.pdf): `|sk|`-only bound (storage-only), only BB constructions (essentially combinatorial).
 
 They need to be investigated and maybe we can claim our bound is the first of its kind (fully generic, i.e., does not restrict techniques, space-time trade-off for BE/ABE).
 
