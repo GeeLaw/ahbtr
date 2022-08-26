@@ -84,31 +84,31 @@ From search engine
 
 and `crypto.bib` with `title` matching `bound` and matching `broadcast|attribute|functional|predicate`:
 
-- `AFRICACRYPT:AusKre08`
-- `AC:KYDB98`
-- `C:AGVW13`
-- `EC:LubSta98`
-- `FOCS:GoyKinSak05`
-- `IMA:KobWatShi21`
-- `PODC:Newport13`
-- `PODC:KusMan93`
-- `SODA:TseKir07`
-- `STOC:WooZha12`
-- `EPRINT:PatMuk18`
-- `JC:GolNasRus01`
-- [DOI 10.1007/978-3-642-36373-3_12](https://link.springer.com/chapter/10.1007/978-3-642-36373-3_12)
-- [ePrint 2020/618](https://eprint.iacr.org/2020/618)
-- `EC:BluCre94`
-- `C:AgrMaiYam19`
-- [Master's thesis -- Gorbunov](https://cs.uwaterloo.ca/~sgorbuno/publications/MSc_Gorbunov.pdf)
-- [Course Project Liu](https://crypto.stanford.edu/cs359c/17sp/projects/GusLiu.pdf)
-- [Lewi-Wu ORE](https://www.cs.utexas.edu/~dwu4/papers/BlockORE.pdf)
-- [DOI 10.1007/978-3-030-03810-6_7](https://dl.acm.org/doi/abs/10.1007/978-3-030-03810-6_7)
-- [ePrint 2015/665](https://eprint.iacr.org/2015/665)
-- [ePrint 2013/364](https://eprint.iacr.org/2013/364)
-- [ePrint 2000/017](https://eprint.iacr.org/2000/017)
-- [KY](https://www.cs.umd.edu/~jkatz/papers/PredEncProc.pdf)
-- [BVW](https://drops.dagstuhl.de/opus/volltexte/2018/9940/pdf/LIPIcs-FSTTCS-2018-41.pdf)
-- [PhD thesis -- Zhang](https://rucore.libraries.rutgers.edu/rutgers-lib/64844/PDF/1/play/)
+- `AFRICACRYPT:AusKre08`: `|ct|`-only lower bound, specific to subset-cover schemes; upper bound has constant `T_Dec` and matches ours for `r ~ n/2`.
+- `AC:KYDB98`: `|sk|`-only bound, only works for IT-secure schemes.
+- `C:AGVW13`: an impossibility lower bound (not efficiency trade-off), unrelated.
+- `EC:LubSta98`: `|ct|`, `|sk|` bounds (storage-only) for IT-secure schemes.
+- `FOCS:GoyKinSak05`: paper has nothing to do with cryptographic security, unrelated.
+- `IMA:KobWatShi21`: `|ct|` bound for anonymous BE, which is already `Omega(N)`, not for ABE, unrelated.
+- `PODC:Newport13`: paper has nothing to do with cryptographic security, unrelated.
+- `PODC:KusMan93`: paper has nothing to do with cryptographic security, unrelated.
+- `SODA:TseKir07`: paper has nothing to do with cryptographic security, unrelated.
+- `STOC:WooZha12`: paper has nothing to do with cryptographic security, unrelated.
+- `EPRINT:PatMuk18`: unrelated.
+- `JC:GolNasRus01`: unrelated.
+- [DOI 10.1007/978-3-642-36373-3_12](https://link.springer.com/chapter/10.1007/978-3-642-36373-3_12): `|ct|` bound for anonymous BE, which is already `Omega(N)`, not for ABE, unrelated.
+- [ePrint 2020/618](https://eprint.iacr.org/2020/618): possibly related, `|ct|` bound, only for IT-secure schemes.
+- `EC:BluCre94`: `|ct|`, `|sk|` bounds (storage-only), only for IT-secure schemes.
+- `C:AgrMaiYam19`: conditional lower bound on feasibility / construction difficulty / lack of techniques, unrelated.
+- [Master's thesis -- Gorbunov](https://cs.uwaterloo.ca/~sgorbuno/publications/MSc_Gorbunov.pdf): size lower bound / impossibility for simulation-secure FE.
+- [Course Project Liu](https://crypto.stanford.edu/cs359c/17sp/projects/GusLiu.pdf): `C:AGVW13`
+- [Lewi-Wu ORE](https://www.cs.utexas.edu/~dwu4/papers/BlockORE.pdf): unrelated.
+- [DOI 10.1007/978-3-030-03810-6_7](https://dl.acm.org/doi/abs/10.1007/978-3-030-03810-6_7): unrelated.
+- [ePrint 2015/665](https://eprint.iacr.org/2015/665): lower bound for CDS, an IT object, applies to `|ct|`, `|sk|` (storage-only) of specific kinds of ABE.
+- [ePrint 2013/364](https://eprint.iacr.org/2013/364): unrelated.
+- [ePrint 2000/017](https://eprint.iacr.org/2000/017): unrelated.
+- [KY](https://www.cs.umd.edu/~jkatz/papers/PredEncProc.pdf): `|sk|`-only bound (storage-only), only BB constructions (essentially combinatorial).
+- [BVW](https://drops.dagstuhl.de/opus/volltexte/2018/9940/pdf/LIPIcs-FSTTCS-2018-41.pdf): unrelated (lower bound for inner-product encodings, an IT object; paper did not explicitly claim connection with encryption schemes, but it seems that the IT lower bound explains optimality under current techniques of using pairing).
+- [PhD thesis -- Zhang](https://rucore.libraries.rutgers.edu/rutgers-lib/64844/PDF/1/play/): unrelated.
 
 They need to be investigated and maybe we can claim our bound is the first of its kind (fully generic, i.e., does not restrict techniques, space-time trade-off for BE/ABE).
