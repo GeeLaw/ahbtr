@@ -30,6 +30,19 @@ We explain the ideas of our proof based on a corollary%
 % try decryption twice with R[i] being 0 or 1.
 % Correctness and security guarantee that decryption recovers
 % the correct message only when R[i] is set to the right value.
+% To directly use \cite{STOC:Yao90} result, we do the following:
+% 1. Use correctness-security gap to obtain a BPP-type algorithm
+%    determining R[i] (let's say that the algorithm only has a
+%    small inverse-polynomial [in lambda] gap of success).
+% 2. Use BPP amplification to obtain BPP-type algorithm with
+%    exponentially small failure probability, after a fixed
+%    polynomial (in lambda) number of attempts.
+% 3. Use counting argument to show that there exists a randomness
+%    that perfectly recovers R[i].
+% 4. Use \cite{STOC:Yao90} bound to conclude the desired inequality.
+% This bound will look like
+%     |ct| * T_Dec >= N / poly(lambda)
+% for some fixed polynomial.
 }
 of a result~\cite{C:Unruh07} dealing with random oracles in the presence of non-uniform advice.
 Let ${S,T\geq 0}$ be such that ${ST\ll N}$.
