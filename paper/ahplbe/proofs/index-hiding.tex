@@ -1,13 +1,3 @@
-% For submission, IACR, Springer, camera ready, the page breaks
-% after the previous subsection and before the current subsection,
-% so the figure should go to the top of the page.
-% For ePrint, the page ends after H_2 is fully described,
-% so the figure should go to the bottom of the page.
-\WideNarrow{\begin{figure}[!b]}{\begin{figure}[t]}
-\input{ahplbe/figures/circuit-create-gc-proof}
-\label{fig:circuit-create-gc-proof}
-\end{figure}
-
 \begin{proof}[\hyperanchor{pf:index-hiding}{Theorem~\ref{thm:index-hiding}}]
 The only difference between $\ExpIH{0}$ and $\ExpIH{1}$ is whether the $C_\GC$ being obfuscated hardwires $\mu$ (in~$\ExpIH{0}$) or $\mu_\bot$ (in~$\ExpIH{1}$) into $C_{\ct,i_\bot^\ast}$, which only affects the output of $C_\GC$ at~${i=i_\bot^\ast}$.
 We consider the following hybrids, each (except the first) described by the changes from the previous one:
@@ -42,6 +32,13 @@ i_\bot^\ast,
 where
 \begin{itemize}
 \item $C_\GC'$ is defined in \Figure~\ref{fig:circuit-create-gc-proof},
+
+% This positions the figure immediately after H_3^b is fully specified.
+\begin{figure}[!b]
+\input{ahplbe/figures/circuit-create-gc-proof}
+\label{fig:circuit-create-gc-proof}
+\end{figure}
+
 \item the PPRF keys are punctured at $i_\bot^\ast$ by running
 \begin{align*}
 \mathring{k}^\GC_{i_\bot^\ast}&{}\draws\PPRF.\Puncture(k^\GC,i_\bot^\ast),\\
