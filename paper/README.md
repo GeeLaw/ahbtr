@@ -47,3 +47,26 @@ Traitor tracing schemes [Chor–Fiat–Naor, Crypto ’94] help content distrib
 Two constructions are presented.  The first is based on obfuscation and has constant-size ciphertext, yet its decryption time is linear in the number of recipients.  The second is a generic transformation that reduces decryption time at the cost of increased ciphertext size.  A lower bound on the trade-off between ciphertext size and decryption time is shown, indicating that the two constructions achieve all possible optimal trade-offs, i.e., fully demonstrate the Pareto front of efficiency.  The lower bound also applies to general attribute-based encryption and may be of independent interest.
 
 ```
+
+## Submission
+
+This section is anti-chronological. Reviews are kept in OneNote.
+
+### Eurocrypt 2022
+
+- Submission #2
+  - [Version 1](../paper.pdf/ec22-ver1.pdf): SHA-256 `49af5261`, 18 Sep 2022 10:17:43pm UTC
+- Early career eligibility: Yes
+- Primary area: ADV (Public Key Primitives with Advanced Functionalities)
+- Secondary area: THE (Theoretical Foundations)
+- Topics:
+  - FE, ABE and (H)IBE
+  - Lower Bounds, Separations and Impossibility Results
+  - Modelling and Design of Advanced Public-Key Primitives
+  - Public-Key Encryption Schemes
+  - Theory of Public-Key Cryptography
+- Comments to Program Chairs: (empty)
+- Resubmission: No
+- Resubmission details: (empty)
+- PC conflicts:
+  - Marshall Ball (2021 UW postdoc)
