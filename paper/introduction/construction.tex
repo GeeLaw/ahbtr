@@ -15,7 +15,7 @@ Colloquially, the cut-off index~$i_\bot$ disables $\sk_1,\dots,\sk_{i_\bot}$, an
 the only way to detect whether an index is disabled is to have control over the corresponding key pair (by knowing~$\sk$ or generating a malformed~$\pk$).
 When ${i_\bot=N}$, the plaintext should be hidden since all keys are disabled.
 
-Given an AH-PLBE scheme, an AH-BTR scheme can be constructed by adapting~\cite{EC:BonSahWat06}.
+Given an AH-PLBE scheme, an AH-BTR scheme can be constructed by adapting the work of~\cite{EC:BonSahWat06}.
 The AH-BTR inherits key generation and decryption algorithms from AH-PLBE.
 To perform AH-BTR encryption, simply encrypt using AH-PLBE with ${i_\bot=0}$, disabling no key so that every recipient can decrypt.
 Given a pirate decoder with advantage at least~$\epsilon$, the tracing algorithm computes its advantages with the cut-off index $i_\bot$ being ${0,1},\allowbreak{2,\dots,N}$, and identifies the recipient associated with~$\pk_{i^\ast}$ as a traitor if the advantage changes by $\bigOmega(\epsilon/N)$ when $i_\bot$ increases from $({i^\ast-1})$ to $i^\ast$.
