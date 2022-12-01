@@ -7,7 +7,7 @@ In contrast, the decryption time of the scheme implied by the na{\"i}ve PLBE is 
 
 We can trade ciphertext size for decryption time by using the na{\"i}ve PLBE on top of our construction.
 By grouping the recipients into $\Theta(N^{1-\gamma})$ sets of size~$\Theta(N^\gamma)$ and using our basic construction over each set, we obtain a scheme with ciphertext size~$\Theta(N^{1-\gamma})$ and decryption time~$\Theta(N^\gamma)$.
-This transformation was formalized as the user expansion compiler~\cite{C:Zhandry20} in the context of traditional traitor tracing.
+The core idea of this transformation was formalized as the user expansion compiler~\cite{C:Zhandry20} in the context of traditional traitor tracing.
 
 All the constructions we now know have ${|\ct|\cdot\TDec=\bigOmega(N)}$,
 where $|\ct|$ is the ciphertext length and $\TDec$ is the decryption time.
