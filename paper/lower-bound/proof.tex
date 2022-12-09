@@ -147,6 +147,7 @@ p_5
 \geq p_1-2|p_1-p_4|
 >1-8\cbrt{\frac{ST}{2N}}.
 \end{align*}
+% This states the syntax of "A(...)" in this proof.
 Consider the following adversary~$\scriptA(\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\ct)$ against the security of the restricted BE scheme:
 \begin{itemize}
 \item Construct $Y_5$ from $R$ and
@@ -157,6 +158,8 @@ i.e., pretend $R[i^\ast]$ were $\neg R[i^\ast]$ and try decrypting using the key
 \end{itemize}
 If ${\ct=\ct_1}$ is an encryption of~$\mu_1$, then $\mu_0$ is uniformly random and independent of everything else, hence
 \begin{align*}
+% Usage of "..." here is acceptable because
+% the syntax of "A(...)" is stated right in this proof.
 \Pr[\scriptA({\cdots})\to 1\textup{ with }\ct=\ct_1]\leq 2^{-\lambda}.
 \end{align*}
 Note that $\scriptA$ is a uniform adversary.
@@ -164,6 +167,8 @@ By the security of the restricted BE scheme,
 \begin{align*}
 p_5
 =\Pr[\scriptB^{Y_5}(z,f;i^\ast)\to 1]
+% Usage of "..." here is acceptable because
+% the syntax of "A(...)" is stated right in this proof.
 =\Pr[\scriptA({\cdots})\to 1\textup{ with }\ct=\ct_0]
 \leq 2^{-\lambda}+\negl(\lambda)
 <\frac15
