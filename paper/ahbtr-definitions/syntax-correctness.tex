@@ -8,18 +8,18 @@ with ${|\pk|=M_0(\lambda)}$.
 \item $\Enc(1^\lambda,\{\pk_j\}_{j\in[N]},{\mu\in\bit^\lambda})$
 takes as input
 a list of public keys and a message.
-It outputs a ciphertext~$\ct$.
+It~outputs a ciphertext~$\ct$.
 \item $\Dec^{\{\pk_j\}_{j\in[N]},\ct}(1^\lambda,N,i\in[N],\sk_i)$
 is given random access to a list of public keys and a ciphertext, and
 takes as input
 the length of the list,
 an index, and
 a secret key.
-It outputs a message.
+It~outputs a message.
 \item $\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast})$
 is given oracle access to a (stateless randomized) distinguisher~$\scriptD$ and takes as input
 a list of public keys and an error bound.
-It outputs an index~${i^\ast\in\{\bot\}\cup[N]}$.
+It~outputs an index~${i^\ast\in\{\bot\}\cup[N]}$.
 \end{itemize}
 The scheme must be \emph{robustly correct}, i.e., for all
 ${\lambda\in\doubleN}$,

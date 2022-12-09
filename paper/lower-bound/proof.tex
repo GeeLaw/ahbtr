@@ -6,10 +6,13 @@ distribution $D$ supported over~$Z$,
 function ${F:Z\times\bit^N\to\bit^S}$,
 there exists a function ${G:Z\times\bit^N\to{\{0,1,\bot\}}^N}$ such that
 \begin{align*}
-|\{{j\in[N]}:{G(z,j)\neq\bot}\}|\leq P
-\qquad\textup{for all }z\in Z
+|\{{j\in[N]}:{G(z,R)[j]\neq\bot}\}|\leq P
+\qquad\textup{for all }z\in Z\textup{ and }R\in\bit^N
 \end{align*}
-and for all (non-efficient) oracle (randomized) algorithm $\scriptB^Y$ making at most $T$ queries to~$Y$,
+and for all%
+\footnote{Here, $\scriptB^Y$ need not be efficient for the lemma to hold.
+The particular $\scriptB^Y$ used in this work is efficient.}
+oracle (randomized) algorithm $\scriptB^Y$ making at most $T$ queries to~$Y$,
 \begin{align*}
 \left|
 \Pr\left[\scriptB^R(z,F(z,R))\to 1\right]
@@ -60,7 +63,7 @@ z&{}=\left(\begin{aligned}
 z_\Enc:\textup{randomness for }&\Enc\\
 (\mpk,\{\sk_{j,s}\}_{j\in[N],s\in\bit})\draws{}&\Gen(1^N)
 \end{aligned}\right\},\\
-\rule[1.5em]{0pt}{0pt}
+\rule[1em]{0pt}{0pt}
 F(z,R)
 \hspace*{-5em}&\hspace*{5em}
 {}=0^{S-|\ct|-1}\concat 1\concat\ct\textup{,\quad where }
@@ -70,7 +73,7 @@ Let $G$ be the function guaranteed by Lemma~\ref{lem:ai-rom} and make
 $\scriptB^Y(z,f)$ do the following:
 \begin{itemize}
 \item Sample ${i^\ast\draws[N]}$ and query ${r^\ast\gets Y[i^\ast]}$.
-\item Read $\mu,\mpk,\sk_{i^\ast,r^\ast},\ct$ from $z,f$.
+\item Read $\mu,\mpk,\sk_{i^\ast,r^\ast}$ from $z$. Read $\ct$ from $f$.
 \item Run ${\mu'\draws\Dec^{\mpk,i^\ast,r^\ast,\sk_{i^\ast,r^\ast},Y,\ct}()}$.
 \item Output $1$ if and only if ${\mu=\mu'}$.
 \end{itemize}
@@ -144,6 +147,7 @@ p_5
 \geq p_1-2|p_1-p_4|
 >1-8\cbrt{\frac{ST}{2N}}.
 \end{align*}
+% This states the syntax of "A(...)" in this proof.
 Consider the following adversary~$\scriptA(\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\ct)$ against the security of the restricted BE scheme:
 \begin{itemize}
 \item Construct $Y_5$ from $R$ and
@@ -154,6 +158,8 @@ i.e., pretend $R[i^\ast]$ were $\neg R[i^\ast]$ and try decrypting using the key
 \end{itemize}
 If ${\ct=\ct_1}$ is an encryption of~$\mu_1$, then $\mu_0$ is uniformly random and independent of everything else, hence
 \begin{align*}
+% Usage of "..." here is acceptable because
+% the syntax of "A(...)" is stated right in this proof.
 \Pr[\scriptA({\cdots})\to 1\textup{ with }\ct=\ct_1]\leq 2^{-\lambda}.
 \end{align*}
 Note that $\scriptA$ is a uniform adversary.
@@ -161,6 +167,8 @@ By the security of the restricted BE scheme,
 \begin{align*}
 p_5
 =\Pr[\scriptB^{Y_5}(z,f;i^\ast)\to 1]
+% Usage of "..." here is acceptable because
+% the syntax of "A(...)" is stated right in this proof.
 =\Pr[\scriptA({\cdots})\to 1\textup{ with }\ct=\ct_0]
 \leq 2^{-\lambda}+\negl(\lambda)
 <\frac15

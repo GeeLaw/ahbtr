@@ -5,7 +5,7 @@ where $\ExpTrace(1^\lambda)$ with adversary~$\scriptB$ proceeds as follows:
 \begin{security}
 \phase{Setup}
 Launch $\scriptB(1^\lambda)$ and receive $1^Q$ from it.
-Let ${S\gets[Q]}$ and run
+Initialize the set $S$ to $[Q]$, run
 \begin{align*}
 (\pk_q,\sk_q)\draws\Gen(1^\lambda)\qquad\textup{for }q\in[Q],
 \end{align*}
@@ -13,7 +13,10 @@ and send $\{\pk_q\}_{q\in[Q]}$ to $\scriptB$.
 \phase{Query}
 Repeat the following for arbitrarily many rounds determined by~$\scriptB$.
 In each round, $\scriptB$ submits ${t\in[Q]}$ for~$\sk_t$.
-Upon the query, let ${S\gets S\setminus\{t\}}$ and send $\sk_t$ to~$\scriptB$.
+% This is awful.
+\WideNarrow
+{Upon the query, remove~$t$~from~$S$~and~send~$\sk_t$~to~$\scriptB$.}
+{Upon the query, remove $t$ from the set $S$ and send $\sk_t$ to~$\scriptB$.}
 \phase{Challenge}
 $\scriptB$ outputs a (probabilistic) circuit~$\scriptD$,
 a list $\{\pk^\ast_j\}_{j\in[N]}$ of public keys, and
