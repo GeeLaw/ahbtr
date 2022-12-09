@@ -73,7 +73,7 @@ Let $G$ be the function guaranteed by Lemma~\ref{lem:ai-rom} and make
 $\scriptB^Y(z,f)$ do the following:
 \begin{itemize}
 \item Sample ${i^\ast\draws[N]}$ and query ${r^\ast\gets Y[i^\ast]}$.
-\item Read $\mu,\mpk,\sk_{i^\ast,r^\ast},\ct$ from $z,f$.
+\item Read $\mu,\mpk,\sk_{i^\ast,r^\ast}$ from $z$. Read $\ct$ from $f$.
 \item Run ${\mu'\draws\Dec^{\mpk,i^\ast,r^\ast,\sk_{i^\ast,r^\ast},Y,\ct}()}$.
 \item Output $1$ if and only if ${\mu=\mu'}$.
 \end{itemize}
