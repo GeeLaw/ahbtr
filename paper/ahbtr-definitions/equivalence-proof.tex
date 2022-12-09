@@ -29,10 +29,11 @@ $\scriptC_2$ does the following:
 \item $\scriptC_2(\pk)$ launches~$\scriptB$, receives $1^Q$ from it,
 samples and sets
 \begin{align*}
-s^\ast&{}\draws[B],&
-\pk_{s^\ast}&{}\gets\pk,\\
-S&{}\gets[Q],&
-(\pk_q,\sk_q)&{}\draws\Gen()\quad\textup{for }q\in{[Q]\setminus{\{s^\ast\}}},
+s^\ast&{}\draws[B],&&
+% This space character approximates the width of "(" in the following line.
+\textup{ initialize the set }S\textup{ to }[Q],\\
+\pk_{s^\ast}&{}\gets\pk,&&
+(\pk_q,\sk_q)\draws\Gen()\quad\textup{for }q\in{[Q]\setminus{\{s^\ast\}}},
 \end{align*}
 and sends $\{\pk_q\}_{q\in[Q]}$ to~$\scriptB$.
 \item $\scriptC_2$ answers queries from $\scriptB$ and updates $S$ as stipulated by the query phase of the traceability experiment, except that it aborts if $\scriptB$ queries for~$\sk_{s^\ast}$.
