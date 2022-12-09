@@ -9,7 +9,10 @@ there exists a function ${G:Z\times\bit^N\to{\{0,1,\bot\}}^N}$ such that
 |\{{j\in[N]}:{G(z,R)[j]\neq\bot}\}|\leq P
 \qquad\textup{for all }z\in Z\textup{ and }R\in\bit^N
 \end{align*}
-and for all (non-efficient) oracle (randomized) algorithm $\scriptB^Y$ making at most $T$ queries to~$Y$,
+and for all%
+\footnote{Here, $\scriptB^Y$ need not be efficient for the lemma to hold.
+The particular $\scriptB^Y$ used in this work is efficient.}
+oracle (randomized) algorithm $\scriptB^Y$ making at most $T$ queries to~$Y$,
 \begin{align*}
 \left|
 \Pr\left[\scriptB^R(z,F(z,R))\to 1\right]
@@ -60,7 +63,7 @@ z&{}=\left(\begin{aligned}
 z_\Enc:\textup{randomness for }&\Enc\\
 (\mpk,\{\sk_{j,s}\}_{j\in[N],s\in\bit})\draws{}&\Gen(1^N)
 \end{aligned}\right\},\\
-\rule[1.5em]{0pt}{0pt}
+\rule[1em]{0pt}{0pt}
 F(z,R)
 \hspace*{-5em}&\hspace*{5em}
 {}=0^{S-|\ct|-1}\concat 1\concat\ct\textup{,\quad where }
