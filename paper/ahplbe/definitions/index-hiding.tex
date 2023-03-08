@@ -2,8 +2,8 @@
 An AH-PLBE scheme $(\Gen,\Enc,\Dec)$ per Definition~\ref{def:ahplbe}
 is \emph{index-hiding} if ${\ExpIH{0}\approx\ExpIH{1}}$,
 where $\ExpIH{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
-\begin{security}
-\phase{Challenge}
+\begin{itemize}\upshape
+\item\textbf{Challenge.}
 Run
 ${(\pk,\sk)\draws\Gen(1^\lambda)}$,
 launch $\scriptA(1^\lambda,\pk)$, and
@@ -18,7 +18,7 @@ run
 \ct\draws\Enc(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},i_\bot^\ast-1+b,\mu),
 \end{align*}
 and send $(\mu,\ct)$ to $\scriptA$.
-\phase{Guess}
+\item\textbf{Guess.}
 $\scriptA$ outputs a bit~$b'$, which is the output of the experiment.
-\end{security}
+\end{itemize}
 \end{definition}

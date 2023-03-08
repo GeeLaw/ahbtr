@@ -42,8 +42,8 @@ A \emph{simulator} is an efficient algorithm
 taking as input a circuit, a non-hardwired input, and a circuit output,
 and producing a simulated garbled circuit and $M_0$~simulated labels.
 The scheme is \emph{$w$-hiding} (or \emph{secure} for the purpose of this work) if there exists a simulator $\SimGarble$ such that ${\ExpGC{0}\approx\ExpGC{1}}$, where $\ExpGC{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
-\begin{security}
-\phase{Challenge}
+\begin{itemize}\upshape
+\item\textbf{Challenge.}
 Launch $\scriptA(1^\lambda)$ and receive
 a circuit ${C:\bit^{n+M_0}\to\bit^{n'}}$,
 a~hardwired input~${w\in\bit^n}$, and
@@ -59,7 +59,7 @@ Run
 &{}\draws\SimGarble(1^\lambda,C,x,C[w](x));
 \end{align*}
 and send $(\widehat{C},\{L_{m_0,x[m_0]}\}_{m_0\in[M_0]})$ to $\scriptA$.
-\phase{Guess}
+\item\textbf{Guess.}
 $\scriptA$ outputs a bit~$b'$, which is the output of the experiment.
-\end{security}
+\end{itemize}
 \end{definition}

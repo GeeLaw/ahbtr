@@ -2,8 +2,8 @@
 An AH-PLBE scheme $(\Gen,\Enc,\Dec)$ per Definition~\ref{def:ahplbe}
 is \emph{message-hiding} if ${\ExpMH{0}\approx\ExpMH{1}}$,
 where $\ExpMH{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
-\begin{security}
-\phase{Challenge}
+\begin{itemize}\upshape
+\item\textbf{Challenge.}
 Launch $\scriptA(1^\lambda)$ and
 receive from it a list~$\{\pk^\ast_j\}_{j\in[N]}$ of public keys.
 Run
@@ -13,7 +13,7 @@ Run
 \ct\draws\Enc(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},N,\mu_b),
 \end{align*}
 and send $(\mu_0,\mu_1,\ct)$ to~$\scriptA$.
-\phase{Guess}
+\item\textbf{Guess.}
 $\scriptA$ outputs a bit~$b'$, which is the output of the experiment.
-\end{security}
+\end{itemize}
 \end{definition}

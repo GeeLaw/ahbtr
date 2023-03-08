@@ -2,8 +2,8 @@
 An AH-BTR scheme $(\Gen,\Enc,\Dec,\Trace)$ per Definition~\ref{def:ahbtr} is \emph{complete}
 if all efficient adversary wins $\ExpComplete$ only with negligible probability,
 where $\ExpComplete(1^\lambda)$ with adversary~$\scriptC$ proceeds as follows:
-\begin{security}
-\phase{Challenge}
+\begin{itemize}\upshape
+\item\textbf{Challenge.}
 Launch $\scriptC(1^\lambda)$,
 which outputs a (probabilistic) circuit~$\scriptD$,
 a list $\{\pk_j^\ast\}_{j\in[N]}$ of public keys, and
@@ -33,5 +33,5 @@ Let
 $\NotFound$ the event that ${i^\ast\notin[N]}$ (i.e., ${i^\ast=\bot}$).
 \end{itemize}
 $\scriptC$ \emph{wins} if and only if ${\GoodDist\wedge\NotFound}$.
-\end{security}
+\end{itemize}
 \end{definition}

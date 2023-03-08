@@ -26,14 +26,14 @@ an \emph{indistinguishability obfuscator for polynomial-sized domain
 ({\iO} for $\poly(\lambda)$-sized domain)}
 if ${\ExpIO{0}\approx\ExpIO{1}}$,
 where $\ExpIO{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
-\begin{security}
-\phase{Challenge}
+\begin{itemize}\upshape
+\item\textbf{Challenge.}
 Launch $\scriptA(1^\lambda)$ and receive from it
 the domain size $1^{2^n}$ and two circuits ${C_0,C_1:\bit^n\to\bit^{n'}}$.
 Send $\Obf(1^\lambda,C_b)$ to~$\scriptA$.
-\phase{Guess}
+\item\textbf{Guess.}
 $\scriptA$ outputs a bit~$b'$.
 The output of the experiment is~$b'$ if $C_0,C_1$ have the same (description) size and ${C_0(x)=C_1(x)}$ for all~${x\in\bit^n}$.
 Otherwise, the output is set to~$0$.
-\end{security}
+\end{itemize}
 \end{definition}

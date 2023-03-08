@@ -33,8 +33,8 @@ k&{}\draws\bit^\lambda\\
 A PPRF $(\Puncture,\Eval)$ per Definition~\ref{def:pprf} is \emph{pseudorandom at the punctured point} (or \emph{secure} for the purpose of this work)
 if ${\ExpPPRF{0}\approx\ExpPPRF{1}}$,
 where $\ExpPPRF{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
-\begin{security}
-\phase{Challenge}
+\begin{itemize}\upshape
+\item\textbf{Challenge.}
 Launch $\scriptA(1^\lambda)$ and receive from it a point~${x\in\bit^\lambda}$.
 Run
 \begin{align*}
@@ -45,7 +45,7 @@ r_0\gets\Eval(1^\lambda,k,x),\quad
 r_1\draws\bit^\lambda,
 \end{align*}
 and send $(\mathring{k}_x,r_b)$ to $\scriptA$.
-\phase{Guess}
+\item\textbf{Guess.}
 $\scriptA$ outputs a bit~$b'$, which is the output of the experiment.
-\end{security}
+\end{itemize}
 \end{definition}

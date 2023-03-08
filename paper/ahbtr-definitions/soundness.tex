@@ -2,8 +2,8 @@
 An AH-BTR scheme $(\Gen,\Enc,\Dec,\Trace)$ per Definition~\ref{def:ahbtr} is \emph{sound}
 if all efficient adversary wins $\ExpSound$ only with negligible probability,
 where $\ExpSound(1^\lambda)$ with adversary~$\scriptC$ proceeds as follows:
-\begin{security}
-\phase{Challenge}
+\begin{itemize}\upshape
+\item\textbf{Challenge.}
 Run ${(\pk,\sk)\draws\Gen(1^\lambda)}$,
 then run $\scriptC(1^\lambda,\pk)$, which outputs
 a (probabilistic) circuit~$\scriptD$,
@@ -17,5 +17,5 @@ i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\as
 \end{align*}
 $\scriptC$ \emph{wins} if and only if ${i^\ast=i_\bot^\ast}$
 (the event $\FalsePos$).
-\end{security}
+\end{itemize}
 \end{definition}
