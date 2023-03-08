@@ -8,42 +8,31 @@ Table~\ref{tab:symbols} lists non-descriptive symbols used in this work.
 \caption{Non-descriptive symbols.}
 \label{tab:symbols}
 \begingroup
-\let\MyColumn=&
-\catcode`\&=\catcode`\~
-\let\oldtabular\tabular
-% This hack of \begingroup \endgroup is devilish.
-\def\SetMyRow{\begingroup\def\\{\unskip\hspace*{1em}\endgroup\\}}
-\WideNarrow{
-  \def&&{\MyColumn\SetMyRow}
-  \def\tabular#1#2{\oldtabular{#1}}
-}{
-  \def&&{\MyColumn\MyColumn\SetMyRow}
-  \def\tabular#1#2{\oldtabular{#2}}
-}
-\begin{tabular}{rl}{rcl}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{rl}
 \toprule
-\hspace*{1em}\textbf{Symbol} && \textbf{Meaning} \\
+\textbf{symbol} & \textbf{meaning} \\
 \midrule
-$\lambda$ && security parameter \\
-$b,\beta,\alpha$ && bit for distinguishing, for guessing, for sign correction \\
-$\scriptA,\scriptB,\scriptC,\scriptD$ && adversary, adversary, adversary, distinguisher \\
-$\mu$ && message \\
-$N,i,j$ && number of recipients, index, dummy index \\
-$i_\bot,i^\ast$ && cut-off index, traitor index \\
-$Q,t$ && number of key pairs, traitor index \\
-$S,T$ && set of non-traitors, set of traitors \\
-$\epsilon,\widehat{\epsilon}$ && guessing advantage, empirical \\
-$\scriptE,E$ && distinguisher experiment, event of correct guessing \\
-$\eta,\xi,\delta$ && number of trials, absolute frequency of events, estimation error \\
-$C,\widehat{C},\widetilde{C}$ && circuit, garbled, obfuscated \\
-$M_0,m_0$ && length of non-hardwired input ($\pk$), index \\
-$L$ && label of garbled circuit \\
-$D,\widehat{D}$ && database ($\pk$'s), processed \\
-$M,m$ && length of database ($NM_0$), index \\
-$k,\mathring{k}_x$ && PPRF key, punctured at~$x$ \\
-$R,r,s,A$ && random oracle (bitset of recipients), bit, dummy bit, oracle algorithm \\
-$Y,K$ && oracle placeholder, oracle implemented during reduction \\
-$F,G,H$ && advice function, presampling function, presampled oracle \\
+$\lambda$ & security parameter \\
+$b,\beta,\alpha$ & bit for distinguishing, for guessing, for sign correction \\
+$\scriptA,\scriptB,\scriptC,\scriptD$ & adversary, adversary, adversary, distinguisher \\
+$\mu$ & message \\
+$N,i,j$ & number of recipients, index, dummy index \\
+$i_\bot,i^\ast$ & cut-off index, traitor index \\
+$Q,t$ & number of key pairs, traitor index \\
+$S,T$ & set of non-traitors, set of traitors \\
+$\epsilon,\widehat{\epsilon}$ & guessing advantage, empirical \\
+$\scriptE,E$ & distinguisher experiment, event of correct guessing \\
+$\eta,\xi,\delta$ & number of trials, absolute frequency of events, estimation error \\
+$C,\widehat{C},\widetilde{C}$ & circuit, garbled, obfuscated \\
+$M_0,m_0$ & length of non-hardwired input ($\pk$), index \\
+$L$ & label of garbled circuit \\
+$D,\widehat{D}$ & database ($\pk$'s), processed \\
+$M,m$ & length of database ($NM_0$), index \\
+$k,\mathring{k}_x$ & PPRF key, punctured at~$x$ \\
+$R,r,s,A$ & random oracle (bitset of recipients), bit, dummy bit, oracle algorithm \\
+$Y,K$ & oracle placeholder, oracle implemented during reduction \\
+$F,G,H$ & advice function, presampling function, presampled oracle \\
 \bottomrule
 \end{tabular}
 \endgroup

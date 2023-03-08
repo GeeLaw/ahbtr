@@ -8,10 +8,10 @@
 }
 \def\MyHeaderHeight{\vphantom{\Bigg|}}
 \def\MyMiniSectionSkip{\rule[-0.8em]{0pt}{0pt}}
-\def\MyAlignedGC#1{\rlap{#1}\hspace*{9em}\ignorespaces}
+\def\MyAlignedGC#1{\hspace*{0.5em}\rlap{#1}\hspace*{9em}\ignorespaces}
 \begin{tabular}{|crlc|}
 \hline%
-\WideNarrow{}{\hspace*{0.03\textwidth}}&%
+\hspace*{0.03\textwidth}&%
 \multicolumn{2}{c}{\hspace*{0.45\textwidth}\clap{%
 $\displaystyle
 C_\GC'[
@@ -26,7 +26,7 @@ i_\bot^\ast,
 ](i)
 \MyHeaderHeight$%
 }\hspace*{0.45\textwidth}}&%
-\WideNarrow{}{\hspace*{0.03\textwidth}}\\ &
+\hspace*{0.03\textwidth}\\ &
 \textbf{Hardwired. }&
 \MyAlignedGC{$N,\hk,h,\mu_\bot,\mu$,}
 see \Figure~\ref{fig:circuit-create-gc}; & \\ &&
@@ -36,13 +36,13 @@ challenge cut-off index; & \\ &&
 PPRF keys punctured at $i_\bot^\ast$; & \\ &&
 \MyAlignedGC{$\widehat{C}_{\ct,i_\bot^\ast}^{\vphantom{|}},
 \LOT.\ct_{i_\bot^\ast,{\cdots}}$,}
-hardwired output of $C_\GC'$ at ${i=i_\bot^\ast}$;
+hardwired output of $C_\GC'$ at ${i=i_\bot^\ast}$.
 & \MyMiniSectionSkip \\ &
 \textbf{Input. }&
 \MyAlignedGC{$i\in[N]$,} index of recipient.
 & \MyMiniSectionSkip \\ &
 \textbf{Output. }&
-Computed as follows.
+\MyAlignedGC{Computed as follows.}
 & \MyMiniSectionSkip \\ &
 & $\displaystyle\MyCodeDedent\begin{aligned}
 &\textbf{if }{\color{red}\boxed{\smash{i=i_\bot^\ast}\vphantom{.^.}}}\,\textup{:}\\
