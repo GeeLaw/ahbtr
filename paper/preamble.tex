@@ -11,6 +11,8 @@
 \def\ad hoc{\textit{ad hoc}}
 \def\Ad #1oc{\textit{Ad #1oc}}
 
+\iffalse
+
 % Unified Sans-Serif Height.
 \def\usfh#1{\smash{\mathsf{#1}}\vphantom{i}}
 
@@ -77,3 +79,66 @@
 \def\mpk{{\usfh{mpk}}}
 \def\TDec{T_\Dec}
 \def\AHBTR{{\usfh{ahBTR}}}
+
+\fi
+
+\def\mathsfi#1{\smash{\mathsf{#1}}\vphantom{i}}
+\def\defmathsfi#1{\expandafter\def\csname #1\endcsname{{\mathsfi{#1}}}}
+
+% generic
+\defmathsfi{Exp}
+\defmathsfi{mpk}
+\defmathsfi{Gen}
+\defmathsfi{Enc}
+\defmathsfi{Dec}
+\defmathsfi{pk}
+\defmathsfi{sk}
+\defmathsfi{ct}
+\def\Hyb{{\mathsfi{H}}}
+\defmathsfi{GoodEst}
+\defmathsfi{BadEnd}
+
+% AH-BTR
+\def\AHBTR{{\mathsfi{ahBTR}}}
+\defmathsfi{Trace}
+\def\ExpTrace{{\mathsfi{Exp}_{\textup{trace}}}}
+\def\ExpComplete{{\mathsfi{Exp}_{\textup{complete}}}}
+\def\ExpSound{{\mathsfi{Exp}_{\textup{sound}}}}
+\defmathsfi{FalsePos}
+\defmathsfi{GoodDist}
+\defmathsfi{NotFound}
+\def\OLD{{\mathsfi{old}}}
+
+% AH-PLBE
+\def\AHPLBE{{\mathsfi{ahPLBE}}}
+\def\ExpMH#1{{\mathsfi{Exp}_{\textup{MH}}^{#1}}}
+\def\ExpIH#1{{\mathsfi{Exp}_{\textup{IH}}^{#1}}}
+
+% GC
+\defmathsfi{GC}
+\defmathsfi{Garble}
+\defmathsfi{Eval}
+\defmathsfi{SimGarble}
+\def\ExpGC#1{{\mathsfi{Exp}_{\textup{GC}}^{#1}}}
+
+% PPRF
+\defmathsfi{PPRF}
+\defmathsfi{Puncture}
+\defmathsfi{Eval}
+\def\ExpPPRF#1{{\mathsfi{Exp}_{\textup{PPRF}}^{#1}}}
+
+% PKE
+\defmathsfi{PKE}
+
+% LOT
+\defmathsfi{LOT}
+\defmathsfi{Hash}
+\defmathsfi{Send}
+\defmathsfi{Recv}
+\defmathsfi{hk}
+\def\ExpLOT#1{{\mathsfi{Exp}_{\textup{LOT}}^{#1}}}
+
+% obfuscation
+\defmathsfi{Obf}
+\def\iO{{\ensuremath{i\scriptO}}}
+\def\ExpIO#1{{\mathsfi{Exp}_{\iO}^{#1}}}
