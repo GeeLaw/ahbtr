@@ -45,7 +45,7 @@ hardwired output of $C_\GC'$ at ${i=i_\bot^\ast}$.
 \MyAlignedGC{Computed as follows.}
 & \MyMiniSectionSkip \\ &
 & $\displaystyle\MyCodeDedent\begin{aligned}
-&\textbf{if }{\color{red}\boxed{\smash{i=i_\bot^\ast}\vphantom{.^.}}}\,\textup{:}\\
+&\textbf{if }{\color{red}\boxed{\smash{i=i_\bot^\ast}\vphantom{.^o_.}}}\,\textup{:}\\
 &\qquad\textbf{output }
 (\widehat{C}_{\ct,i_\bot^\ast},\{\LOT.\ct_{i_\bot^\ast,m_0}\}_{m_0\in[M_0]})
 \textup{ as hardwired}\\
@@ -57,9 +57,9 @@ r^\LOT_{i,m_0}&{}\gets\PPRF.\Eval(\mathring{k}^\LOT_{m_0,i_\bot^\ast},i)\quad\te
 (\widehat{C}_{\ct,i},{}&\{L_{i,m_0,b}\}_{m_0\in[M_0],b\in\bit})\\
 &{}\gets\begin{cases}
 \GC.\Garble(\widehat{C}_\ct,(\mu_\bot,r^\PKE_i);r^\GC_i),&
-\textup{if }{\color{red}\boxed{\smash{i<i_\bot^\ast}\vphantom{.^.}}}\,;\\
+\textup{if }{\color{red}\boxed{\smash{i<i_\bot^\ast}\vphantom{.^o_.}}}\,;\\
 \GC.\Garble(\widehat{C}_\ct,(\mu_{\phantom{\bot}},r^\PKE_i);r^\GC_i),&
-\textup{if }{\color{red}\boxed{\smash{i>i_\bot^\ast}\vphantom{.^.}}}\,;
+\textup{if }{\color{red}\boxed{\smash{i>i_\bot^\ast}\vphantom{.^o_.}}}\,;
 \end{cases}\\
 \mathllap{\LOT.\ct_{i,m_0}}&{}\gets
 \LOT.\Send(\hk,h,(i-1)M_0+m_0,\\
