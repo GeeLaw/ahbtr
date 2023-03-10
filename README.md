@@ -1,4 +1,4 @@
-# Ad Hoc (Decentralized) Broadcast, Trace, and Revoke
+# *Ad Hoc* (Decentralized) Broadcast, Trace, and Revoke
 
 - [ePrint 2022/925](https://eprint.iacr.org/2022/925)
   - [15 September 2022](https://eprint.iacr.org/archive/2022/925/20220915:224904)
