@@ -54,8 +54,13 @@ $\scriptB$ \emph{wins} if and only if ${\FalsePos\vee(\GoodDist\wedge\NotFound)}
 \end{definition}
 
 \noindent
-Similar to Remark~3 in~\cite{EPRINT:Zhandry20a},
-traceability implies KEM security (omitted here).
+AH-BTR as defined above is KEM, following~\cite{C:Zhandry20}.
+Using hybrid encryption,
+such a scheme can be easily adapted for arbitrarily long messages
+with traceability under adversarially chosen messages.
+As noted in Remark~3 of~\cite{EPRINT:Zhandry20a},
+traceability implies KEM security
+(or IND-CPA when combined with hybrid encryption).
 % It also follows that a traceable scheme will have negligible collision probability for~$\pk$.
 
 % Good exercise for the reader to define KEM security and prove it!
