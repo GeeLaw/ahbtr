@@ -4,19 +4,36 @@ if all efficient adversary wins $\ExpTrace$ only with negligible probability,
 where $\ExpTrace(1^\lambda)$ with adversary~$\scriptB$ proceeds as follows:
 \begin{itemize}\upshape
 \item\textbf{Setup.}
+Launch $\scriptB(1^\lambda)$.
+Initialize the set $S$ to $\varnothing$ and let ${Q\gets 0}$.
+\iffalse
 Launch $\scriptB(1^\lambda)$ and receive $1^Q$ from it.
 Initialize the set $S$ to $[Q]$, run
 \begin{align*}
 (\pk_q,\sk_q)\draws\Gen(1^\lambda)\qquad\textup{for }q\in[Q],
 \end{align*}
 and send $\{\pk_q\}_{q\in[Q]}$ to $\scriptB$.
+\fi
 \item\textbf{Query.}
 Repeat the following for arbitrarily many rounds determined by~$\scriptB$.
+In each round, $\scriptB$ has two options:
+\begin{itemize}
+\item $\scriptB$ can request to create a new key pair.
+Upon this request, let ${Q\gets Q+1}$, run
+\begin{align*}
+(\pk_Q,\sk_Q)\draws\Gen(1^\lambda),
+\end{align*}
+insert $Q$ into $S$, and send $\pk_Q$ to $\scriptB$.
+\item $\scriptB$ can query $\sk_t$ for some ${t\in[Q]}$.
+Upon this query, remove $t$ from~$S$ and send $\sk_t$ to~$\scriptB$.
+\end{itemize}
+\iffalse
 In each round, $\scriptB$ submits ${t\in[Q]}$ for~$\sk_t$.
 % This is awful.
 \WideNarrow
 {Upon the query, remove~$t$~from~$S$~and~send~$\sk_t$~to~$\scriptB$.}
 {Upon the query, remove $t$ from the set $S$ and send $\sk_t$ to~$\scriptB$.}
+\fi
 \item\textbf{Challenge.}
 $\scriptB$ outputs a (probabilistic) circuit~$\scriptD$,
 a list $\{\pk^\ast_j\}_{j\in[N]}$ of public keys, and
