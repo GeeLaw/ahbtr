@@ -1,13 +1,19 @@
 \begin{proof}
 [\HyperTargetToThisLine{pf:ahbtr-security-equivalence}%
 Theorem~\ref{thm:ahbtr-security-equivalence}]
-The reductionist proof of necessity is straight-forward by setting ${Q=0}$ (resp.~${Q=1}$) for completeness (resp.~soundness).
+The reductionist proof of necessity is straight-forward ---
+the query phase is
+unused by the reduction algorithm for completeness, and
+used only for creating the public key given to the adversary as input
+for soundness.
 
 To show sufficiency, suppose the AH-BTR scheme $(\Gen,\Enc,\Dec,\Trace)$ is both complete and sound and let $\scriptB$ be an efficient adversary against its traceability.
 We consider two efficient adversaries.
 $\scriptC_1$ is against the completeness of the scheme.
-It works by internally simulating the traceability game for~$\scriptB$ and outputting (in the completeness experiment) whatever $\scriptB$ outputs.
-Denoting probabilities and events for adversary~$\scriptX$ in its security experiment with subscript~$\scriptX$,
+It works by internally simulating the traceability game for~$\scriptB$ and outputting whatever $\scriptB$ outputs.
+Consider the coupling between $\ExpComplete$ for~$\scriptC_1$
+and the simulated $\ExpTrace$ for~$\scriptB$ inside,
+writing the events for adversary~$\scriptX$ in its security experiment with subscript~$\scriptX$,
 \begin{align*}
 \GoodDist_{\scriptC_1}
 \Longleftrightarrow
@@ -19,26 +25,24 @@ Denoting probabilities and events for adversary~$\scriptX$ in its security exper
 \end{align*}
 Therefore,
 \begin{align*}
-\Pr_\scriptB[\GoodDist_\scriptB\wedge\NotFound_\scriptB]
+\Pr[\GoodDist_\scriptB\wedge\NotFound_\scriptB]
 =
-\Pr_{\scriptC_1}
-[\GoodDist_{\scriptC_1}\wedge\NotFound_{\scriptC_1}].
+\Pr[\GoodDist_{\scriptC_1}\wedge\NotFound_{\scriptC_1}].
 \end{align*}
 $\scriptC_2$ is against the soundness of the scheme.
-Let ${B=\poly(\lambda)>1}$ be an upper bound of~$Q$ that $\scriptB$ might ever output ($B$ exists since $\scriptB$ outputs $1^Q$ in polynomial time).
-$\scriptC_2$ does the following:
+Let ${B=\poly(\lambda)>1}$ be an upper bound of the running time of~$\scriptB$.
+The adversary~$\scriptC_2$ does the following:
 \begin{itemize}
-\item $\scriptC_2(\pk)$ launches~$\scriptB$, receives $1^Q$ from it,
+\item $\scriptC_2(\pk)$ launches~$\scriptB$,
+initializes $S$ to~$\varnothing$,
+lets ${Q\gets 0}$, and
 samples and sets
 \begin{align*}
-s^\ast&{}\draws[B],&&
-% This space character approximates the width of "(" in the following line.
-\textup{ initialize the set }S\textup{ to }[Q],\\
-\pk_{s^\ast}&{}\gets\pk,&&
-(\pk_q,\sk_q)\draws\Gen()\quad\textup{for }q\in{[Q]\setminus{\{s^\ast\}}},
+s^\ast\draws[B],\qquad
+\pk_{s^\ast}\gets\pk,\qquad
+(\pk_t,\sk_t)\draws\Gen()\quad\textup{for }t\in{[B]\setminus{\{s^\ast\}}}.
 \end{align*}
-and sends $\{\pk_q\}_{q\in[Q]}$ to~$\scriptB$.
-\item $\scriptC_2$ answers queries from $\scriptB$ and updates $S$ as stipulated by the query phase of the traceability experiment, except that it aborts if $\scriptB$ queries for~$\sk_{s^\ast}$.
+\item $\scriptC_2$ answers queries from $\scriptB$ and updates $Q,S$ as stipulated by the query phase of the traceability experiment, except that it aborts if $\scriptB$ queries for~$\sk_{s^\ast}$.
 \item After the query phase, $\scriptB$ outputs
 \begin{align*}
 \scriptD,\quad
@@ -75,23 +79,25 @@ i_\bot^\ast,\quad
 % A complete argument uses conditional expectation.
 % See the argument of Pr[GoodEst] >= 2^(-lambda)
 % in the proof of AH-BTR from AH-PLBE for an example.
+Consider the coupling between $\ExpSound$ for~$\scriptC_2$
+and the simulated $\ExpTrace$ for~$\scriptB$ inside.
 Routine calculation yields
 \begin{align*}
-\Pr_{\scriptC_2}[\FalsePos_{\scriptC_2}]
-\geq\frac{1}{B^2}\Pr_\scriptB[\FalsePos_\scriptB].
+\Pr[\FalsePos_{\scriptC_2}]
+\geq\frac{1}{B^2}\Pr[\FalsePos_\scriptB].
 \end{align*}
 By the union bound,
 \begin{align*}
 &
-\Pr_\scriptB[\FalsePos_\scriptB\vee(\GoodDist_\scriptB\wedge\NotFound_\scriptB)]
+\Pr[\FalsePos_\scriptB\vee(\GoodDist_\scriptB\wedge\NotFound_\scriptB)]
 \\{}\leq{}&
-\Pr_\scriptB[\FalsePos_\scriptB]
+\Pr[\FalsePos_\scriptB]
 +
-\Pr_\scriptB[\GoodDist_\scriptB\wedge\NotFound_\scriptB]
+\Pr[\GoodDist_\scriptB\wedge\NotFound_\scriptB]
 \\{}\leq{}&
-B^2\Pr_{\scriptC_2}[\FalsePos_{\scriptC_2}]
+B^2\Pr[\FalsePos_{\scriptC_2}]
 +
-\Pr_{\scriptC_1}[\GoodDist_{\scriptC_1}\wedge\NotFound_{\scriptC_1}]
+\Pr[\GoodDist_{\scriptC_1}\wedge\NotFound_{\scriptC_1}]
 \WideNarrow{}{\hspace*{-1em}}
 \\{}={}&
 (\poly(\lambda))^2\negl(\lambda)+\negl(\lambda)

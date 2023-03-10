@@ -4,19 +4,22 @@ if all efficient adversary wins $\ExpTrace$ only with negligible probability,
 where $\ExpTrace(1^\lambda)$ with adversary~$\scriptB$ proceeds as follows:
 \begin{itemize}\upshape
 \item\textbf{Setup.}
-Launch $\scriptB(1^\lambda)$ and receive $1^Q$ from it.
-Initialize the set $S$ to $[Q]$, run
-\begin{align*}
-(\pk_q,\sk_q)\draws\Gen(1^\lambda)\qquad\textup{for }q\in[Q],
-\end{align*}
-and send $\{\pk_q\}_{q\in[Q]}$ to $\scriptB$.
+Launch $\scriptB(1^\lambda)$.
+Initialize the set $S$ to $\varnothing$ and let ${Q\gets 0}$.
 \item\textbf{Query.}
 Repeat the following for arbitrarily many rounds determined by~$\scriptB$.
-In each round, $\scriptB$ submits ${t\in[Q]}$ for~$\sk_t$.
-% This is awful.
-\WideNarrow
-{Upon the query, remove~$t$~from~$S$~and~send~$\sk_t$~to~$\scriptB$.}
-{Upon the query, remove $t$ from the set $S$ and send $\sk_t$ to~$\scriptB$.}
+In each round, $\scriptB$ has two options:
+\begin{itemize}
+\item $\scriptB$ can request that a new user be initialized
+and obtain the newly \WideNarrow{generated}{created} public key.
+Upon this request, let ${Q\gets Q+1}$, run
+\begin{align*}
+(\pk_Q,\sk_Q)\draws\Gen(1^\lambda),
+\end{align*}
+insert $Q$ into $S$, and send $\pk_Q$ to $\scriptB$.
+\item $\scriptB$ can query for $\sk_t$ by submitting ${t\in[Q]}$.
+Upon this query, remove $t$ from~$S$ and send $\sk_t$ to~$\scriptB$.
+\end{itemize}
 \item\textbf{Challenge.}
 $\scriptB$ outputs a (probabilistic) circuit~$\scriptD$,
 a list $\{\pk^\ast_j\}_{j\in[N]}$ of public keys, and
@@ -51,8 +54,13 @@ $\scriptB$ \emph{wins} if and only if ${\FalsePos\vee(\GoodDist\wedge\NotFound)}
 \end{definition}
 
 \noindent
-Similar to Remark~3 in~\cite{EPRINT:Zhandry20a},
-traceability implies KEM security (omitted here).
+AH-BTR as defined above is KEM, following~\cite{C:Zhandry20}.
+Using hybrid encryption,
+such a scheme can be easily adapted for arbitrarily long messages
+with traceability under adversarially chosen messages.
+As noted in Remark~3 of~\cite{EPRINT:Zhandry20a},
+traceability implies KEM security
+(or IND-CPA when combined with hybrid encryption).
 % It also follows that a traceable scheme will have negligible collision probability for~$\pk$.
 
 % Good exercise for the reader to define KEM security and prove it!
