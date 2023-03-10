@@ -10,13 +10,14 @@ Initialize the set $S$ to $\varnothing$ and let ${Q\gets 0}$.
 Repeat the following for arbitrarily many rounds determined by~$\scriptB$.
 In each round, $\scriptB$ has two options:
 \begin{itemize}
-\item $\scriptB$ can request to create a new key pair.
+\item $\scriptB$ can request that a new user be initialized
+and obtain the newly \WideNarrow{generated}{created} public key.
 Upon this request, let ${Q\gets Q+1}$, run
 \begin{align*}
 (\pk_Q,\sk_Q)\draws\Gen(1^\lambda),
 \end{align*}
 insert $Q$ into $S$, and send $\pk_Q$ to $\scriptB$.
-\item $\scriptB$ can query $\sk_t$ for some ${t\in[Q]}$.
+\item $\scriptB$ can query for $\sk_t$ by submitting ${t\in[Q]}$.
 Upon this query, remove $t$ from~$S$ and send $\sk_t$ to~$\scriptB$.
 \end{itemize}
 \item\textbf{Challenge.}
