@@ -6,82 +6,68 @@
 \def\authorLuoJi{Ji Luo}
 }
 
-\makeatletter
-\def\hyperanchor#1#2{\Hy@raisedlink{\hypertarget{#1}{}}#2}
-\makeatother
-
-% Feel free to comment out the lines below.
 \long\defcallout\luoji{Ji}
 
 \def\ad hoc{\textit{ad hoc}}
 \def\Ad #1oc{\textit{Ad #1oc}}
 
-\let\botold\bot
-\def\bot{{\botold}}
+\def\mathsfi#1{\smash{\mathsf{#1}}\vphantom{i}}
+\def\defmathsfi#1{\expandafter\def\csname #1\endcsname{{\mathsfi{#1}}}}
 
-% Unified Sans-Serif Height.
-\def\usfh#1{\smash{\mathsf{#1}}\vphantom{i}}
+% generic
+\defmathsfi{Exp}
+\defmathsfi{mpk}
+\defmathsfi{Gen}
+\defmathsfi{Enc}
+\defmathsfi{Dec}
+\defmathsfi{pk}
+\defmathsfi{sk}
+\defmathsfi{ct}
+\def\Hyb{{\mathsfi{H}}}
+\defmathsfi{GoodEst}
+\defmathsfi{BadEnd}
 
-\def\Gen{{\usfh{Gen}}}
-\def\Enc{{\usfh{Enc}}}
-\def\Dec{{\usfh{Dec}}}
-\def\pk{{\usfh{pk}}}
-\def\sk{{\usfh{sk}}}
-\def\ct{{\usfh{ct}}}
+% AH-BTR
+\def\AHBTR{{\mathsfi{ahBTR}}}
+\defmathsfi{Trace}
+\def\ExpTrace{{\mathsfi{Exp}_{\textup{trace}}}}
+\def\ExpComplete{{\mathsfi{Exp}_{\textup{complete}}}}
+\def\ExpSound{{\mathsfi{Exp}_{\textup{sound}}}}
+\defmathsfi{FalsePos}
+\defmathsfi{GoodDist}
+\defmathsfi{NotFound}
+\def\OLD{{\mathsfi{old}}}
 
-\def\ExpMH#1{{\usfh{Exp}_{\textup{MH}}^{#1}}}
-\def\ExpIH#1{{\usfh{Exp}_{\textup{IH}}^{#1}}}
+% AH-PLBE
+\def\AHPLBE{{\mathsfi{ahPLBE}}}
+\def\ExpMH#1{{\mathsfi{Exp}_{\textup{MH}}^{#1}}}
+\def\ExpIH#1{{\mathsfi{Exp}_{\textup{IH}}^{#1}}}
 
-\def\Puncture{{\usfh{Puncture}}}
-\def\Eval{{\usfh{Eval}}}
+% GC
+\defmathsfi{GC}
+\defmathsfi{Garble}
+\defmathsfi{Eval}
+\defmathsfi{SimGarble}
+\def\ExpGC#1{{\mathsfi{Exp}_{\textup{GC}}^{#1}}}
 
-\def\ExpPPRF#1{{\usfh{Exp}_{\textup{PPRF}}^{#1}}}
+% PPRF
+\defmathsfi{PPRF}
+\defmathsfi{Puncture}
+\defmathsfi{Eval}
+\def\ExpPPRF#1{{\mathsfi{Exp}_{\textup{PPRF}}^{#1}}}
 
-\def\Obf{{\usfh{Obf}}}
+% PKE
+\defmathsfi{PKE}
+
+% LOT
+\defmathsfi{LOT}
+\defmathsfi{Hash}
+\defmathsfi{Send}
+\defmathsfi{Recv}
+\defmathsfi{hk}
+\def\ExpLOT#1{{\mathsfi{Exp}_{\textup{LOT}}^{#1}}}
+
+% obfuscation
+\defmathsfi{Obf}
 \def\iO{{\ensuremath{i\scriptO}}}
-
-\def\ExpIO#1{{\usfh{Exp}_{\iO}^{#1}}}
-
-\def\hk{{\usfh{hk}}}
-\def\Hash{{\usfh{Hash}}}
-\def\Send{{\usfh{Send}}}
-\def\Recv{{\usfh{Recv}}}
-
-\def\ExpLOT#1{{\usfh{Exp}_{\textup{LOT}}^{#1}}}
-
-\def\Garble{{\usfh{Garble}}}
-\def\SimGarble{{\usfh{SimGarble}}}
-
-\def\ExpGC#1{{\usfh{Exp}_{\textup{GC}}^{#1}}}
-
-\def\GC{{\usfh{GC}}}
-\def\PPRF{{\usfh{PPRF}}}
-\def\PKE{{\usfh{PKE}}}
-\def\LOT{{\usfh{LOT}}}
-
-\def\Hyb{{\usfh{H}}}
-
-\def\Trace{{\usfh{Trace}}}
-
-\def\ExpTrace{{\usfh{Exp}_{\textup{trace}}}}
-\def\FalsePos{{\usfh{FalsePos}}}
-\def\GoodDist{{\usfh{GoodDist}}}
-\def\NotFound{{\usfh{NotFound}}}
-
-\def\ExpComplete{{\usfh{Exp}_{\textup{complete}}}}
-\def\ExpSound{{\usfh{Exp}_{\textup{sound}}}}
-
-\def\AHPLBE{{\usfh{ahPLBE}}}
-
-\def\GoodEst{{\usfh{GoodEst}}}
-\def\BadEnd{{\usfh{BadEnd}}}
-
-\def\E{\operatorname*{\doubleE}}
-
-\def\Exp{{\usfh{Exp}}}
-
-\def\OLD{{\usfh{old}}}
-
-\def\mpk{{\usfh{mpk}}}
-\def\TDec{T_\Dec}
-\def\AHBTR{{\usfh{ahBTR}}}
+\def\ExpIO#1{{\mathsfi{Exp}_{\iO}^{#1}}}

@@ -1,4 +1,6 @@
-\begin{proof}[\hyperanchor{pf:ahbtr-from-ahplbe-soundness}{Theorem~\ref{thm:ahbtr-from-ahplbe-soundness}}]
+\begin{proof}
+[\HyperTargetToThisLine{pf:ahbtr-from-ahplbe-soundness}%
+Theorem~\ref{thm:ahbtr-from-ahplbe-soundness}]
 Consider any efficient adversary~$\scriptC$ against the soundness of Construction~\ref{con:ahbtr-from-ahplbe}.
 Similarly to the \hyperlink{pf:ahbtr-from-ahplbe-completeness}{proof} of Theorem~\ref{thm:ahbtr-from-ahplbe-completeness},
 define $\GoodEst$ and recall that ${\Pr[\neg\GoodEst]\leq 2^{-\lambda}}$.
@@ -66,7 +68,7 @@ ${b'\draws\scriptD(\mu_0,\mu_1,\ct)\oplus\neg\beta\oplus\alpha}$.
 \end{itemize}
 Routine calculation shows that the advantage of~$\scriptA$ is
 \begin{align*}
-\E[\1_\FalsePos\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})],
+\EX[\1_\FalsePos\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})],
 \end{align*}
 which must be negligible by the index-hiding property of~$\AHPLBE$.
 
@@ -101,36 +103,36 @@ These together show that
 &
 \Pr[\FalsePos\wedge\GoodEst]
 \\{}={}&
-B\E[
+B\EX[
 \1_\FalsePos\cdot\1_\GoodEst\cdot B^{-1}
 ]
 \displaybreak[3]
 \\{}\leq{}&
-B\E[
+B\EX[
 \1_\FalsePos\cdot\1_\GoodEst
 \cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 ]
 \displaybreak[3]
 \\{}\leq{}&
 B\Bigl(
-\E[
+\EX[
 \1_\FalsePos\cdot\1_\GoodEst
 \cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 ]
 \\&
 \hphantom{B\Bigl({}}{}
 +
-\E[
+\EX[
 \1_\FalsePos\cdot\1_{\neg\GoodEst}
 \cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 ]
 +
-\E[\1_\FalsePos\cdot\1_{\neg\GoodEst}]
+\EX[\1_\FalsePos\cdot\1_{\neg\GoodEst}]
 \Bigr)
 \displaybreak[3]
 \\{}={}&
 B\Bigl(
-\E[
+\EX[
 \1_\FalsePos
 \cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 ]
@@ -139,7 +141,7 @@ B\Bigl(
 \displaybreak[3]
 \\{}\leq{}&
 B\Bigl(
-\E[
+\EX[
 \1_\FalsePos\cdot(-1)^\alpha(\epsilon_{i^\ast-1}-\epsilon_{i^\ast})
 ]
 +2^{-\lambda}

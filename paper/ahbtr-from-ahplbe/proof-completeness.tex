@@ -1,4 +1,6 @@
-\begin{proof}[\hyperanchor{pf:ahbtr-from-ahplbe-completeness}{Theorem~\ref{thm:ahbtr-from-ahplbe-completeness}}]
+\begin{proof}
+[\HyperTargetToThisLine{pf:ahbtr-from-ahplbe-completeness}%
+Theorem~\ref{thm:ahbtr-from-ahplbe-completeness}]
 Consider any efficient adversary~$\scriptC$ against the completeness of Construction~\ref{con:ahbtr-from-ahplbe}.
 Let $\GoodEst$ be the event that ${|\widehat{\epsilon}_i-\epsilon_i|\leq\delta}$ for all~${i\in[0..N]}$.
 % $N$ is a random variable (and $\delta,\eta$ are functions of~$N$).
@@ -11,8 +13,8 @@ Let $\GoodEst$ be the event that ${|\widehat{\epsilon}_i-\epsilon_i|\leq\delta}$
 By the Chernoff bound, the union bound, and the law of total probability,
 \begin{align*}
 \Pr[\neg\GoodEst]
-=\E\bigl[\Pr[\neg\GoodEst\mid\epsilon^\ast,N]\bigr]
-\leq\E[2({N+1})\exp({-2\delta^2\eta})]
+=\EX\bigl[\Pr[\neg\GoodEst\mid\epsilon^\ast,N]\bigr]
+\leq\EX[2({N+1})\exp({-2\delta^2\eta})]
 \leq 2^{-\lambda}.
 \end{align*}
 Let $\BadEnd$ be the event that ${|\epsilon_N|>\frac{\epsilon^\ast}{2}}$,
@@ -107,7 +109,7 @@ runs and outputs ${b'\draws\scriptD(\mu_0,\mu_1,\ct)\oplus\alpha}$.
 % should say $1$ more often in~$\Exp_0$.
 \end{itemize}
 Routine calculation shows that the advantage of $\scriptA$ is
-${\E[4\epsilon_N^2]}$,
+${\EX[4\epsilon_N^2]}$,
 which must be negligible by the message-hiding property of~$\AHPLBE$.
 Let ${B=\poly(\lambda)}$ be an upper bound of~$1/\epsilon^\ast$
 ($B$ exists since $\scriptC$ outputs $1^{1/\epsilon^\ast}$ in polynomial time).
@@ -120,7 +122,7 @@ By Markov's inequality,
 \leq{}&
 \Pr[4\epsilon_N^2>B^{-2}]
 \\{}\leq{}&
-B^2\E[4\epsilon_N^2]
+B^2\EX[4\epsilon_N^2]
 =
 (\poly(\lambda))^2\negl(\lambda)
 =

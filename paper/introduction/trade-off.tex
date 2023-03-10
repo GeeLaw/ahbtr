@@ -9,16 +9,16 @@ We can trade ciphertext size for decryption time by using the na{\"i}ve PLBE on 
 By grouping the recipients into $\Theta(N^{1-\gamma})$ sets of size~$\Theta(N^\gamma)$ and using our basic construction over each set, we obtain a scheme with ciphertext size~$\Theta(N^{1-\gamma})$ and decryption time~$\Theta(N^\gamma)$.
 The core idea of this transformation was formalized as the user expansion compiler~\cite{C:Zhandry20} in the context of traditional traitor tracing.
 
-All the constructions we now know have ${|\ct|\cdot\TDec=\bigOmega(N)}$,
-where $|\ct|$ is the ciphertext length and $\TDec$ is the decryption time.
+All the constructions we now know have ${|\ct|\cdot T_\Dec=\bigOmega(N)}$,
+where $|\ct|$ is the ciphertext length and $T_\Dec$ is the decryption time.
 It turns out that this bound necessarily holds for all secure AH-BTR, and
 the blame is on the functionality of broadcast encryption (not traitor tracing).
 % I haven't verified whether TT from LWE has short decryption time,
 % so no citation at this moment.
 Indeed, 
-it is possible to make both $|\ct|$ and $\TDec$ constant in a traditional traitor tracing scheme~\cite{C:BonZha14}.
+it is possible to make both $|\ct|$ and $T_\Dec$ constant in a traditional traitor tracing scheme~\cite{C:BonZha14}.
 In existing broadcast encryption (or revocation) schemes~\cite{C:BonGenWat05,AC:Delerablee07,EC:GenWat09,C:BonZha14,EC:AgrYam20,TCC:AgrWicYam20,EPRINT:BraVai20} for $N$ users,
-encrypting to arbitrary subsets of size~$S$ or $({N-S})$ makes ${|\ct|\cdot\TDec=\Omega(S)}$.
+encrypting to arbitrary subsets of size~$S$ or $({N-S})$ makes ${|\ct|\cdot T_\Dec=\Omega(S)}$.
 It is precisely the capability to encrypt to many $\Theta(N)$-subsets among $N$ users that is the deal breaker, as we shall see in the formal proof.
 Interestingly,
 the adversary used in the proof is simply the decryption algorithm,
@@ -59,8 +59,8 @@ regard $\ct$ as the advice.
 Let's try decrypting~$\ct$ using $\sk_{i^\ast,R[i^\ast]}$ for a random ${i^\ast\draws[N]}$.
 Each time the AH-BTR decryption algorithm queries~$\pk_j$,
 we probe $R[j]$ and respond with~$\pk_{j,R[j]}$.
-By way of contradiction, suppose ${|\ct|\cdot\TDec\ll N}$,
-which would translate to the setting of the corollary as ${S=|\ct|}$, ${T\leq\TDec}$, and ${ST\ll N}$.
+By way of contradiction, suppose ${|\ct|\cdot T_\Dec\ll N}$,
+which would translate to the setting of the corollary as ${S=|\ct|}$, ${T\leq T_\Dec}$, and ${ST\ll N}$.
 
 By the correctness of AH-BTR,
 the attempted decryption should successfully recover the plaintext.

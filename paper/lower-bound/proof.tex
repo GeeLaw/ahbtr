@@ -33,7 +33,9 @@ H[j]\begin{cases}
 \end{align*}
 \end{lemma}
 
-\begin{proof}[\hyperanchor{pf:lower-bound}{Theorem~\ref{thm:lower-bound}}]
+\begin{proof}
+[\HyperTargetToThisLine{pf:lower-bound}%
+Theorem~\ref{thm:lower-bound}]
 Define
 \begin{align*}
 S=1+\max{|\ct|},\qquad
@@ -41,11 +43,11 @@ T=1+\max{\{\textup{number of bits in $R$ probed by $\Dec$}\}}.
 \end{align*}
 For ${\lambda,N\geq 1}$, it is necessary
 that ${|\ct|\geq 1}$ because $\ct$ can encode any string $\mu$ of length~$\lambda$, and
-that ${\max{\TDec}\geq T}$ because $\Dec$ performs all the probes and, in addition, produces at least $1$~bit of output.
+that ${\max{T_\Dec}\geq T}$ because $\Dec$ performs all the probes and, in addition, produces at least $1$~bit of output.
 Therefore,
 \begin{align*}
-\max{|\ct|}\cdot\max{\TDec}
-\geq\frac{\max{|\ct|}+1}{2}\cdot\max{\TDec}
+\max{|\ct|}\cdot\max{T_\Dec}
+\geq\frac{\max{|\ct|}+1}{2}\cdot\max{T_\Dec}
 \geq\frac{ST}{2}.
 \end{align*}
 It remains to prove ${ST\geq\frac{2N}{1000}}$ for sufficiently large~$\lambda$.

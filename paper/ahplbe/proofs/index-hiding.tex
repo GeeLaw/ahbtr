@@ -8,7 +8,9 @@
 \label{fig:circuit-create-gc-proof}
 \end{figure}
 
-\begin{proof}[\hyperanchor{pf:index-hiding}{Theorem~\ref{thm:index-hiding}}]
+\begin{proof}
+[\HyperTargetToThisLine{pf:index-hiding}%
+Theorem~\ref{thm:index-hiding}]
 The only difference between $\ExpIH{0}$ and $\ExpIH{1}$ is whether the $C_\GC$ being obfuscated hardwires $\mu$ (in~$\ExpIH{0}$) or $\mu_\bot$ (in~$\ExpIH{1}$) into $C_{\ct,i_\bot^\ast}$, which only affects the output of $C_\GC$ at~${i=i_\bot^\ast}$.
 We consider the following hybrids, each (except the first) described by the changes from the previous one:
 \begin{itemize}
