@@ -1,4 +1,4 @@
-# Ad Hoc (Decentralized) Broadcast, Trace, and Revoke
+# *Ad Hoc* (Decentralized) Broadcast, Trace, and Revoke
 
 **Authors.**
 
