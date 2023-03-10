@@ -24,11 +24,11 @@ Two constructions are presented.  The first is based on obfuscation and has cons
 
 This section is anti-chronological. Reviews are kept in OneNote.
 
-### Eurocrypt 2022
+### Eurocrypt 2023
 
 - Submission #2
-  - [Version 1](../paper.pdf/ec22-ver1.pdf): SHA-256 `49af5261`, 18 Sep 2022 10:17:43pm UTC
-  - [Version 2](../paper.pdf/ec22-ver2.pdf): SHA-256 `38604be7`, 29 Sep 2022 9:52:35am UTC
+  - [Version 1](../paper.pdf/ec23-ver1.pdf): SHA-256 `49af5261`, 18 Sep 2022 10:17:43pm UTC
+  - [Version 2](../paper.pdf/ec23-ver2.pdf): SHA-256 `38604be7`, 29 Sep 2022 9:52:35am UTC
 - Early career eligibility: Yes
 - Primary area: ADV (Public Key Primitives with Advanced Functionalities)
 - Secondary area: THE (Theoretical Foundations)
