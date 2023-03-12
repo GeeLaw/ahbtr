@@ -1,6 +1,7 @@
 # *Ad Hoc* (Decentralized) Broadcast, Trace, and Revoke
 
 - [ePrint 2022/925](https://eprint.iacr.org/2022/925)
+  - [12 March 2023](https://eprint.iacr.org/archive/2022/925/20230312:134230)
   - [15 September 2022](https://eprint.iacr.org/archive/2022/925/20220915:224904)
   - [1 August 2022](https://eprint.iacr.org/archive/2022/925/20220801:093441)
   - [15 July 2022](https://eprint.iacr.org/archive/2022/925/20220715:163054)
