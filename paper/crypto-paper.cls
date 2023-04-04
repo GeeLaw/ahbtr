@@ -1,6 +1,6 @@
 % crypto-paper
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{crypto-paper}[2023/03/07 Laomian Cryptography Paper]
+\ProvidesClass{crypto-paper}[2023/04/03 Laomian Cryptography Paper]
 \ClassInfo{crypto-paper}
   {https://github.com/GeeLaw/laomian/tree/main/crypto-paper}
 
@@ -46,6 +46,7 @@
 \laomian@let@iffalse\if@laomian@draft\fi
 \laomian@let@iffalse\if@laomian@runningheads\fi
 \laomian@let@iffalse\if@laomian@anonymous\fi
+\laomian@let@iffalse\if@laomian@pdfmetadata\fi
 \laomian@let@iffalse\if@laomian@orcidicons\fi
 \laomian@let@iffalse\if@laomian@iacrcopyright\fi
 \laomian@let@iffalse\if@laomian@pagenumbers\fi
@@ -62,6 +63,7 @@
 \laomian@let@iffalse\if@laomian@fonts@times\fi
 \laomian@let@iffalse\if@laomian@fonts@palatino\fi
 \laomian@let@iffalse\if@laomian@fonts@libertine\fi
+\laomian@let@iffalse\if@laomian@fonts@utopia\fi
 \laomian@let@iffalse\if@laomian@smartunderlines\fi
 \laomian@let@iffalse\if@laomian@lncsarraytablemargins\fi
 \laomian@let@iffalse\if@laomian@swaptablecaptionmargins\fi
@@ -77,6 +79,7 @@
   \laomian@let@iffalse\if@laomian@draft\fi
   \laomian@let@iffalse\if@laomian@runningheads\fi
   \laomian@let@iffalse\if@laomian@anonymous\fi
+  \laomian@let@iftrue\if@laomian@pdfmetadata\fi
   \laomian@let@iftrue\if@laomian@orcidicons\fi
   \laomian@let@iftrue\if@laomian@iacrcopyright\fi
   \laomian@let@iftrue\if@laomian@pagenumbers\fi
@@ -93,6 +96,7 @@
   \laomian@let@iffalse\if@laomian@fonts@times\fi
   \laomian@let@iffalse\if@laomian@fonts@palatino\fi
   \laomian@let@iffalse\if@laomian@fonts@libertine\fi
+  \laomian@let@iffalse\if@laomian@fonts@utopia\fi
   \laomian@let@iftrue\if@laomian@smartunderlines\fi
   \laomian@let@iftrue\if@laomian@lncsarraytablemargins\fi
   \laomian@let@iftrue\if@laomian@swaptablecaptionmargins\fi
@@ -113,6 +117,7 @@
   \laomian@let@iffalse\if@laomian@draft\fi
   \laomian@let@iffalse\if@laomian@runningheads\fi
   \laomian@let@iffalse\if@laomian@anonymous\fi
+  \laomian@let@iffalse\if@laomian@pdfmetadata\fi
   \laomian@let@iffalse\if@laomian@orcidicons\fi
   \laomian@let@iffalse\if@laomian@iacrcopyright\fi
   \laomian@let@iffalse\if@laomian@pagenumbers\fi
@@ -129,6 +134,7 @@
   \laomian@let@iffalse\if@laomian@fonts@times\fi
   \laomian@let@iffalse\if@laomian@fonts@palatino\fi
   \laomian@let@iffalse\if@laomian@fonts@libertine\fi
+  \laomian@let@iffalse\if@laomian@fonts@utopia\fi
   \laomian@let@iffalse\if@laomian@smartunderlines\fi
   \laomian@let@iftrue\if@laomian@lncsarraytablemargins\fi
   \laomian@let@iftrue\if@laomian@swaptablecaptionmargins\fi
@@ -138,12 +144,14 @@
 \def\laomian@format@lncs@camera@ready@reference{%
   \laomian@format@lncs@camera@ready
   \laomian@let@iftrue\if@laomian@runningheads\fi
+  \laomian@let@iftrue\if@laomian@pdfmetadata\fi
   \laomian@let@iftrue\if@laomian@orcidicons\fi
   \def\laomian@formatchosen{lncs-camera-ready-reference}%
 }
 
 \def\laomian@format@lncs@camera@ready@iacr{%
   \laomian@format@lncs@camera@ready
+  \laomian@let@iftrue\if@laomian@pdfmetadata\fi
   \laomian@let@iftrue\if@laomian@orcidicons\fi
   \laomian@let@iftrue\if@laomian@iacrcopyright\fi
   \laomian@let@iftrue\if@laomian@pagenumbers\fi
@@ -156,6 +164,7 @@
   \laomian@format@lncs@camera@ready
   \laomian@let@iftrue\if@laomian@draft\fi
   \laomian@let@iftrue\if@laomian@runningheads\fi
+  \laomian@let@iftrue\if@laomian@pdfmetadata\fi
   \laomian@let@iftrue\if@laomian@orcidicons\fi
   \laomian@let@iftrue\if@laomian@pagenumbers\fi
   \laomian@let@iftrue\if@laomian@totalpagenumbers\fi
@@ -166,6 +175,7 @@
 \def\laomian@format@lncs@submission{%
   \laomian@format@lncs@camera@ready@iacr
   \laomian@let@iftrue\if@laomian@anonymous\fi
+  \laomian@let@iffalse\if@laomian@pdfmetadata\fi
   \laomian@let@iffalse\if@laomian@iacrcopyright\fi
   \laomian@let@iftrue\if@laomian@supplementarymaterials\fi
   \def\laomian@formatchosen{lncs-submission}%
@@ -182,11 +192,13 @@
   \laomian@let@iffalse\if@laomian@layout@thirtyeight@fortyeight\fi
   \laomian@let@iftrue\if@laomian@layout@sixpointfive@nine\fi
   \laomian@let@iftrue\if@laomian@anonymous\fi
+  \laomian@let@iffalse\if@laomian@pdfmetadata\fi
   \laomian@let@iffalse\if@laomian@iacrcopyright\fi
   \laomian@let@iffalse\if@laomian@fonts@source\fi
   \laomian@let@iffalse\if@laomian@fonts@times\fi
   \laomian@let@iffalse\if@laomian@fonts@palatino\fi
   \laomian@let@iffalse\if@laomian@fonts@libertine\fi
+  \laomian@let@iffalse\if@laomian@fonts@utopia\fi
   \def\laomian@formatchosen{focs-submission}%
 }
 
@@ -302,6 +314,12 @@
   *
 
 \laomian@delcaremultiplechoiceoption
+  {pdf-metadata}{\if@laomian@pdfmetadatachosen}{\laomian@pdfmetadatachosen}
+  {yes}{\laomian@let@iftrue\if@laomian@pdfmetadata\fi}
+  {no}{\laomian@let@iffalse\if@laomian@pdfmetadata\fi}
+  *
+
+\laomian@delcaremultiplechoiceoption
   {opens-on}{\if@laomian@opensonchosen}{\laomian@opensonchosen}
   {right}{\laomian@let@iftrue\if@laomian@opensonright\fi}
   {any}{\laomian@let@iffalse\if@laomian@opensonright\fi}
@@ -332,30 +350,42 @@
     \laomian@let@iffalse\if@laomian@fonts@times\fi
     \laomian@let@iffalse\if@laomian@fonts@palatino\fi
     \laomian@let@iffalse\if@laomian@fonts@libertine\fi
+    \laomian@let@iffalse\if@laomian@fonts@utopia\fi
   }
   {source}{%
     \laomian@let@iftrue\if@laomian@fonts@source\fi
     \laomian@let@iffalse\if@laomian@fonts@times\fi
     \laomian@let@iffalse\if@laomian@fonts@palatino\fi
     \laomian@let@iffalse\if@laomian@fonts@libertine\fi
+    \laomian@let@iffalse\if@laomian@fonts@utopia\fi
   }
   {times}{%
     \laomian@let@iffalse\if@laomian@fonts@source\fi
     \laomian@let@iftrue\if@laomian@fonts@times\fi
     \laomian@let@iffalse\if@laomian@fonts@palatino\fi
     \laomian@let@iffalse\if@laomian@fonts@libertine\fi
+    \laomian@let@iffalse\if@laomian@fonts@utopia\fi
   }
   {palatino}{%
     \laomian@let@iffalse\if@laomian@fonts@source\fi
     \laomian@let@iffalse\if@laomian@fonts@times\fi
     \laomian@let@iftrue\if@laomian@fonts@palatino\fi
     \laomian@let@iffalse\if@laomian@fonts@libertine\fi
+    \laomian@let@iffalse\if@laomian@fonts@utopia\fi
   }
   {libertine}{%
     \laomian@let@iffalse\if@laomian@fonts@source\fi
     \laomian@let@iffalse\if@laomian@fonts@times\fi
     \laomian@let@iffalse\if@laomian@fonts@palatino\fi
     \laomian@let@iftrue\if@laomian@fonts@libertine\fi
+    \laomian@let@iffalse\if@laomian@fonts@utopia\fi
+  }
+  {utopia}{%
+    \laomian@let@iffalse\if@laomian@fonts@source\fi
+    \laomian@let@iffalse\if@laomian@fonts@times\fi
+    \laomian@let@iffalse\if@laomian@fonts@palatino\fi
+    \laomian@let@iffalse\if@laomian@fonts@libertine\fi
+    \laomian@let@iftrue\if@laomian@fonts@utopia\fi
   }
   *
 
@@ -447,6 +477,7 @@
   \laomian@let@iffalse\if@laomian@fonts@times\fi
   \laomian@let@iffalse\if@laomian@fonts@palatino\fi
   \laomian@let@iffalse\if@laomian@fonts@libertine\fi
+  \laomian@let@iffalse\if@laomian@fonts@utopia\fi
   \laomian@let@iftrue\if@laomian@lncsarraytablemargins\fi
   \laomian@let@iftrue\if@laomian@swaptablecaptionmargins\fi
 \fi
@@ -454,6 +485,10 @@
 % by resetting them back to default.
 % But they already have the default value.
 % ----------------------------------------
+% If the document is anonymous, ignore "pdf-metadata=yes".
+\if@laomian@anonymous
+  \laomian@let@iffalse\if@laomian@pdfmetadata\fi
+\fi
 % If the table of contents is shown,
 % ignore the request to not use a separate title page.
 \if@laomian@tableofcontents
@@ -495,6 +530,7 @@
 \laomian@output@conditional{draft}{                        }
 \laomian@output@conditional{runningheads}{                 }
 \laomian@output@conditional{anonymous}{                    }
+\laomian@output@conditional{pdfmetadata}{                  }
 \laomian@output@conditional{orcidicons}{                   }
 \laomian@output@conditional{iacrcopyright}{                }
 \laomian@output@conditional{pagenumbers}{                  }
@@ -771,6 +807,7 @@
     \fi
     \vskip\belowcaptionskip
   }
+  % URL breaking at the end of the class.
 \fi
 
 % -------------------- LNCS/ePrint   ends --------------------
@@ -1194,6 +1231,16 @@
 \def\citedash{--\penalty10000\relax}
 \def\citemid{; }
 
+\DeclareRobustCommand\citenolink{%
+  \@ifnextchar[\laomian@citenolink@a\laomian@citenolink@b
+}
+\def\laomian@citenolink@a[#1]#2{%
+  \begingroup{\NoHyper\cite[#1]{#2}\endNoHyper}\endgroup
+}
+\def\laomian@citenolink@b#1{%
+  \begingroup{\NoHyper\cite{#1}\endNoHyper}\endgroup
+}
+
 % -------------------- bibliography   ends --------------------
 
 % -------------------- supplementary materials begin --------------------
@@ -1251,6 +1298,23 @@
 \RequirePackage{orcidlink}
 
 % -------------------- links   end --------------------
+
+% -------------------- PDF metadata begin --------------------
+
+\if@laomian@pdfmetadata
+  \def\titlepdf#1{\hypersetup{pdftitle={#1}}}
+  \def\authorpdf#1{\hypersetup{pdfauthor={#1}}}
+  \def\keywordspdf#1{\hypersetup{pdfkeywords={#1}}}
+  \def\subjectpdf#1{\hypersetup{pdfsubject={#1}}}
+\else
+  % Make these control sequences do nothing.
+  \let\titlepdf\laomian@eatoneargument
+  \let\authorpdf\laomian@eatoneargument
+  \let\keywordspdf\laomian@eatoneargument
+  \let\subjectpdf\laomian@eatoneargument
+\fi
+
+% -------------------- PDF metadata   end --------------------
 
 % -------------------- theorems begin --------------------
 
@@ -1384,33 +1448,24 @@
 \DeclareMathSymbol{\Omega}{\mathalpha}{operators}{10}
 \DeclareMathSymbol{\omicron}{\mathalpha}{letters}{"6F}
 
-% Use the beautiful version of epsilon, phi, emptyset.
-\let\dumbepsilon\epsilon
-\let\dumbphi\phi
-\let\dumbemptyset\emptyset
-\let\epsilon\varepsilon
-\let\phi\varphi
-\let\emptyset\varnothing
+% \epsilon, \phi, \emptyset are handled by \laomian@maths@fonts.
 
 % Asymptotics.
 \def\bigO{\operatorname{O}}
 \def\smallo{\operatorname{o}}
 \def\bigTheta{\operatorname{\Theta}}
 \def\bigOmega{\operatorname{\Omega}}
-% \smallomega should be non-italicized, but
-% I don't know a satisfactory solution for typesetting
-% upright lowercase Greek letters in Computer Modern.
-\def\smallomega{\operatorname{\omega}}
+% \smallomega is handled by \laomian@maths@fonts.
 
 \def\cbrt{\sqrt[3]}
 \def\laomian@vec@bf#1{\boldsymbol{\mathbf{#1}}}
 \def\laomian@vec@itbf#1{\boldsymbol{#1}}
 \if@laomian@vecisitbf
-  \let\vec\laomian@vec@itbf
+  \let\laomian@vec@vec\laomian@vec@itbf
 \else
-  \let\vec\laomian@vec@bf
+  \let\laomian@vec@vec\laomian@vec@bf
 \fi
-\def\1{{\mathbbm{1}}}
+% \vec, \1 are handled by \laomian@maths@fonts.
 
 \def\esssup{\operatornamewithlimits{ess\,sup}}
 \def\essinf{\operatornamewithlimits{ess\,inf}}
@@ -1453,23 +1508,25 @@
   AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz*
 \let\laomian@def@officeshortcuts\laomian@undefined
 
+% These are applied when the fonts have been selected.
+\def\laomian@maths@fonts\smallomega=#1\1=#2{%
+  % Use the beautiful version of epsilon, phi, emptyset.
+  \let\dumbepsilon\epsilon
+  \let\dumbphi\phi
+  \let\dumbemptyset\emptyset
+  \let\epsilon\varepsilon
+  \let\phi\varphi
+  \let\emptyset\varnothing
+  \def\smallomega{\operatorname{#1}}%
+  \let\vec\laomian@vec@vec
+  \def\1{{#2{1}}}%
+  % Prevent the font settings from being applied twice.
+  \let\laomian@maths@fonts\laomian@undefined
+}
+
 % -------------------- mathematics   end --------------------
 
 % -------------------- fonts begin --------------------
-
-% Reapply adjustments.
-\def\laomian@mathsfonts@after@fancyfonts{%
-  \let\emptyset\varnothing
-  \if@laomian@vecisitbf
-    \let\vec\laomian@vec@itbf
-  \else
-    \let\vec\laomian@vec@bf
-  \fi
-  % Use \upomega (from the fancy fonts) for \smallomega.
-  \def\smallomega{\operatorname{\upomega}}
-  % Match the new blackboard bold font.
-  \def\1{{\mathds{1}}}
-}
 
 \if@laomian@fonts@source
   \RequirePackage[
@@ -1500,8 +1557,11 @@
     \tolerance=5000\relax
   }
   % Adjust underline thickness to match Source Serif Pro.
-  \def\ULthickness{0.111111ex}
-  \laomian@mathsfonts@after@fancyfonts
+  \def\ULthickness{0.1ex}
+  % Adjust mathematical fonts.
+  \laomian@maths@fonts
+    \smallomega=\upomega
+    \1=\mathds
 \else\if@laomian@fonts@times
   \RequirePackage{newtxtext}
   \RequirePackage[
@@ -1511,7 +1571,10 @@
   \RequirePackage[cal=cm]{mathalfa}
   % Adjust underline thickness to match Times.
   \def\ULthickness{0.1ex}
-  \laomian@mathsfonts@after@fancyfonts
+  % Adjust mathematical fonts.
+  \laomian@maths@fonts
+    \smallomega=\upomega
+    \1=\mathds
 \else\if@laomian@fonts@palatino
   \RequirePackage{newpxtext}
   \RequirePackage[
@@ -1521,7 +1584,10 @@
   \RequirePackage[cal=pxtx]{mathalfa}
   % Adjust underline thickness to match Palatino.
   \def\ULthickness{0.1ex}
-  \laomian@mathsfonts@after@fancyfonts
+  % Adjust mathematical fonts.
+  \laomian@maths@fonts
+    \smallomega=\upomega
+    \1=\mathds
 \else\if@laomian@fonts@libertine
   \RequirePackage[tt=false]{libertine}
   \RequirePackage[
@@ -1532,17 +1598,35 @@
   \RequirePackage[cal=cm]{mathalfa}
   % Adjust underline thickness to match Libertine.
   \def\ULthickness{0.1ex}
-  \laomian@mathsfonts@after@fancyfonts
-\fi\fi\fi\fi
-
-\let\laomian@mathsfonts@after@fancyfonts\laomian@undefined
+  % Adjust mathematical fonts.
+  \laomian@maths@fonts
+    \smallomega=\upomega
+    \1=\mathds
+\else\if@laomian@fonts@utopia
+  \RequirePackage{fourier}
+  \RequirePackage[cal=euler]{mathalfa}
+  % Adjust underline thickness to match Utopia.
+  \def\ULthickness{0.1ex}
+  % Adjust mathematical fonts.
+  \laomian@maths@fonts
+    \smallomega=\otheromega
+    \1=\mathbb
+\else
+  % Adjust mathematical fonts for Computer Modern.
+  \laomian@maths@fonts
+    \smallomega=\omega
+    \1=\mathbbm
+  % \smallomega should be non-italicized, but
+  % I don't know a satisfactory solution for typesetting
+  % upright lowercase Greek letters in Computer Modern.
+\fi\fi\fi\fi\fi
 
 % -------------------- fonts end --------------------
 
 % -------------------- underlines begin --------------------
 
-\def\dumbunderline#1{\uline{#1}}
-\def\smartunderline#1{%
+\DeclareRobustCommand*\dumbunderline[1]{\uline{#1}}
+\DeclareRobustCommand*\smartunderline[1]{%
   \begingroup
   \setlength{\ULdepth}{0.45ex}%
   \contourlength{0.32ex}%
@@ -1625,4 +1709,25 @@
 \if@laomian@base@lncs
   % Redefine \UrlFont after the packages might have messed with it.
   \def\UrlFont{\rmfamily}
+\else
+  % Reset URL breaking after the packages might have messed with it.
+  \def\UrlBreaks{%
+    \do\A\do\a\do\B\do\b\do\C\do\c\do\D\do\d\do\E\do\e\do\F\do\f\do\G\do\g
+    \do\H\do\h\do\I\do\i\do\J\do\j\do\K\do\k\do\L\do\l\do\M\do\m\do\N\do\n
+    \do\O\do\o\do\P\do\p\do\Q\do\q\do\R\do\r\do\S\do\s\do\T\do\t
+    \do\U\do\u\do\V\do\v\do\W\do\w\do\X\do\x\do\Y\do\y\do\Z\do\z
+    \do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9%
+  }
+  \def\UrlBigBreaks{%
+    \do\,\do\.\do\?\do\!\do\:\do\;\do\'\do\"%
+    \do\[\do\]\do\{\do\}\do\(\do\)\do\<\do\>%
+    \do\/\do\|\do\\%
+    \do\`\do\@\do\#\do\$\do\^\do\&\do\*\do\_\do\=\do+%
+    % I have no idea how to handle "~", so I am not touching it.
+    % "%" is handled by UrlSpecials.
+    % "-" is handled by not putting it anywhere.
+  }
+  % By not putting "-" anywhere,
+  % a break is allowed before it but not after it.
+  \def\UrlNoBreaks{}
 \fi
