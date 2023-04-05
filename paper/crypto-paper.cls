@@ -1,6 +1,6 @@
 % crypto-paper
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{crypto-paper}[2023/04/03 Laomian Cryptography Paper]
+\ProvidesClass{crypto-paper}[2023/04/05 Laomian Cryptography Paper]
 \ClassInfo{crypto-paper}
   {https://github.com/GeeLaw/laomian/tree/main/crypto-paper}
 
@@ -547,6 +547,7 @@
 \laomian@output@conditional{fonts@times}{                  }
 \laomian@output@conditional{fonts@palatino}{               }
 \laomian@output@conditional{fonts@libertine}{              }
+\laomian@output@conditional{fonts@utopia}{                 }
 \laomian@output@conditional{smartunderlines}{              }
 \laomian@output@conditional{lncsarraytablemargins}{        }
 \laomian@output@conditional{swaptablecaptionmargins}{      }
@@ -599,6 +600,43 @@
   \def\Figures{Figs.}
   \def\Equations{Eqs.}
   \def\Sections{Sects.}
+  % Fix LNCS bug of \switcht@..., see
+  % tex.stackexchange.com/questions/441670/babel-changes-layout-of-lncs-paper
+  \newtoks\laomian@lncs@switcht@toks
+  \def\laomian@lncs@switcht@filter{%
+    \@ifnextchar\egroup{\laomian@lncs@switcht@filter@end}{%
+      \@ifnextchar\bgroup
+        \laomian@lncs@switcht@filter@braced
+        \laomian@lncs@switcht@filter@nonspace
+    }%
+  }
+  % Use the \egroup token to mark the end of filtering.
+  \def\laomian@lncs@switcht@filter@end\egroup{}
+  % For contents inside {}, do not remove space tokens.
+  \def\laomian@lncs@switcht@filter@braced#1{%
+    \laomian@lncs@switcht@toks=\expandafter{\the\laomian@lncs@switcht@toks{#1}}%
+    \laomian@lncs@switcht@filter
+  }
+  % For contents outside {}, the \@ifnextchar will remove space tokens.
+  \def\laomian@lncs@switcht@filter@nonspace#1{%
+    \laomian@lncs@switcht@toks=\expandafter{\the\laomian@lncs@switcht@toks#1}%
+    \laomian@lncs@switcht@filter
+  }
+  \def\laomian@lncs@switcht@patch#1{%
+    \laomian@lncs@switcht@toks={}%
+    \expandafter\laomian@lncs@switcht@filter#1\egroup
+    \edef#1{\the\laomian@lncs@switcht@toks}%
+  }
+  \laomian@lncs@switcht@patch\switcht@albion
+  \laomian@lncs@switcht@patch\switcht@francais
+  \laomian@lncs@switcht@patch\switcht@deutsch
+  % The bug of \switcht@... has been fixed.
+  \let\laomian@lncs@switcht@toks\laomian@undefined
+  \let\laomian@lncs@switcht@filter\laomian@undefined
+  \let\laomian@lncs@switcht@filter@end\laomian@undefined
+  \let\laomian@lncs@switcht@filter@braced\laomian@undefined
+  \let\laomian@lncs@switcht@filter@nonspace\laomian@undefined
+  \let\laomian@lncs@switcht@patch\laomian@undefined
   % Springer compliance: Redefine \UrlFont at the end of the class.
 \else
   \LoadClass[letterpaper,twoside,11pt,onecolumn,final]{article}
@@ -816,6 +854,8 @@
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[english]{babel}
+% "xcolor" ensures (though it might not be the only package that ensures)
+% that the paper size is respected by pdfLaTeX.
 \RequirePackage{xcolor}
 \RequirePackage{float,graphicx}
 \RequirePackage{tabularx,booktabs,multirow}
