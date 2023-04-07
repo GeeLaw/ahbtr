@@ -1,6 +1,6 @@
 % crypto-paper
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{crypto-paper}[2023/04/05 Laomian Cryptography Paper]
+\ProvidesClass{crypto-paper}[2023/04/06 Laomian Cryptography Paper]
 \ClassInfo{crypto-paper}
   {https://github.com/GeeLaw/laomian/tree/main/crypto-paper}
 
@@ -594,6 +594,9 @@
   % Create indentation for subsequent paragraphs of abstract.
   \def\abstractparindent{\hspace*{2em}}
   % Springer compliance: Reference names.
+  % For reference names at the beginning of a sentence,
+  % LNCS requires that you use the full word, so in that case,
+  % just use the word instead of the control sequence.
   \def\Figure{Fig.}
   \def\Equation{Eq.}
   \def\Section{Sect.}
@@ -1523,9 +1526,9 @@
 \def\negl{\operatorname{negl}}
 \DeclareMathSymbol{\laomian@concat@base}{\mathbin}{symbols}{"6B}
 \def\concat{\mathbin{%
-  \mskip-.66667\thinmuskip\relax
+  \mathchoice{\mskip-\thinmuskip}{\mskip-\thinmuskip}{}{}%
   \laomian@concat@base
-  \mskip-.66667\thinmuskip\relax
+  \mathchoice{\mskip-\thinmuskip}{\mskip-\thinmuskip}{}{}%
 }}
 \def\transpose{{\mathsmaller{\mathsf{T}}}}
 \def\bit{{\{0,1\}}}
