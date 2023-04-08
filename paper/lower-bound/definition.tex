@@ -26,10 +26,17 @@ a ciphertext with its attribute $(R,\ct_R)$.
 It is supposed to recover $\mu$ if and only if ${R[i]=r}$.
 \end{itemize}
 The scheme must be \emph{correct}, i.e., for all
+\WideNarrow{%
 ${\lambda,N\in\doubleN}$,
 ${R\in\bit^N}$,
 ${i\in[N]}$,
 ${\mu\in\bit^\lambda}$,
+}{%
+${\lambda,N\!\in\!\doubleN}$,
+${R\!\in\!\bit^N}$,
+${i\!\in\![N]}$,
+${\mu\!\in\!\bit^\lambda}$,
+}%
 \begin{align*}
 \Pr\left[\begin{aligned}
 (\mpk,\{\sk_{j,s}\}_{j\in[N],s\in\bit})
