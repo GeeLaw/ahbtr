@@ -52,11 +52,11 @@ ${\mu\in\bit^\lambda}$,
 The scheme is \emph{1-key secure for random challenge against uniform adversaries} (or \emph{secure} for the purpose of this work) if
 \begin{align*}
 \bigl\{(
-1^\lambda,\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\boxed{\ct_0}\,
+1^\lambda,1^N,\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\boxed{\ct_0}\,
 )\bigr\}
 &{}\approx
 \bigl\{(
-1^\lambda,\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\boxed{\ct_1}\,
+1^\lambda,1^N,\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\boxed{\ct_1}\,
 )\bigr\}
 \WideNarrow{\textup{, where}}{,}\\
 \WideNarrow{}{\textup{where}\qquad\qquad\qquad}
@@ -68,10 +68,10 @@ i^\ast&{}\draws[N],\\
 \ct_b&{}\draws\Enc(1^\lambda,\mpk,R,\mu_b)
 \quad\textup{for }b\in\bit,
 \end{align*}
-for all polynomially bounded ${N=N(\lambda)}$,
-where the computational indistinguishability only has to hold against \emph{uniform} adversaries.%
+for all polynomially bounded ${N=N(\lambda)}$,%
 \footnote{$N$ need not be a computable function of~$\lambda$.
 This does not make the security definition ``non-uniformy'',
 as a standard guessing argument (with advantage sign correction) applies to an interactive formulation
 in which the uniform and efficient $\scriptA$ chooses~$N$.}
+where the computational indistinguishability only has to hold against \emph{uniform} adversaries.
 \end{definition}
