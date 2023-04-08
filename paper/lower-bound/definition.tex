@@ -50,6 +50,7 @@ ${\mu\in\bit^\lambda}$,
 =1.
 \end{align*}
 The scheme is \emph{1-key secure for random challenge against uniform adversaries} (or \emph{secure} for the purpose of this work) if
+\iffalse
 \begin{align*}
 \bigl\{(
 1^\lambda,1^N,\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\boxed{\ct_0}\,
@@ -67,6 +68,28 @@ i^\ast&{}\draws[N],\\
 \mu_b\draws\bit^\lambda,\quad
 \ct_b&{}\draws\Enc(1^\lambda,\mpk,R,\mu_b)
 \quad\textup{for }b\in\bit,
+\end{align*}
+\fi
+\begin{align*}
+\WideNarrow{}{&}
+\bigl\{(
+1^\lambda,1^N,\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\boxed{\ct_0}\,
+)\bigr\}
+\WideNarrow{}{\\}
+{}\approx{}&
+\bigl\{(
+1^\lambda,1^N,\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\boxed{\ct_1}\,
+)\bigr\}
+\end{align*}
+with the components being
+\begin{align*}
+(\mpk,\{\sk_{j,s}\}_{j\in[N],s\in\bit})
+&{}\draws\Gen(1^\lambda,1^N),&
+R&{}\draws\bit^N,&
+i^\ast&{}\draws[N],\\
+\textup{for }b\in\bit,\WideNarrow{\qquad}{}\qquad
+\mu_b&{}\draws\bit^\lambda,&
+\ct_b&\mathrlap{{}\draws\Enc(1^\lambda,\mpk,R,\mu_b).}
 \end{align*}
 for all polynomially bounded ${N=N(\lambda)}$,%
 \footnote{$N$ need not be a computable function of~$\lambda$.
