@@ -50,26 +50,6 @@ ${\mu\in\bit^\lambda}$,
 =1.
 \end{align*}
 The scheme is \emph{1-key secure for random challenge against uniform adversaries} (or \emph{secure} for the purpose of this work) if
-\iffalse
-\begin{align*}
-\bigl\{(
-1^\lambda,1^N,\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\boxed{\ct_0}\,
-)\bigr\}
-&{}\approx
-\bigl\{(
-1^\lambda,1^N,\mpk,R,i^\ast,\mu_0,\sk_{i^\ast,\neg R[i^\ast]},\boxed{\ct_1}\,
-)\bigr\}
-\WideNarrow{\textup{, where}}{,}\\
-\WideNarrow{}{\textup{where}\qquad\qquad\qquad}
-R\draws\bit^N,\quad
-i^\ast&{}\draws[N],\\
-(\mpk,\{\sk_{j,s}\}_{j\in[N],s\in\bit})
-&{}\draws\Gen(1^\lambda,1^N),\\
-\mu_b\draws\bit^\lambda,\quad
-\ct_b&{}\draws\Enc(1^\lambda,\mpk,R,\mu_b)
-\quad\textup{for }b\in\bit,
-\end{align*}
-\fi
 \begin{align*}
 \WideNarrow{}{&}
 \bigl\{(
