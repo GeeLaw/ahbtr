@@ -1,6 +1,6 @@
 % crypto-paper
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{crypto-paper}[2023/04/06 Laomian Cryptography Paper]
+\ProvidesClass{crypto-paper}[2023/04/12 Laomian Cryptography Paper]
 \ClassInfo{crypto-paper}
   {https://github.com/GeeLaw/laomian/tree/main/crypto-paper}
 
@@ -43,6 +43,7 @@
 \laomian@let@iffalse\if@laomian@base@lncs\fi
 \laomian@let@iffalse\if@laomian@layout@thirtyeight@fortyeight\fi
 \laomian@let@iffalse\if@laomian@layout@sixpointfive@nine\fi
+\laomian@let@iffalse\if@laomian@paper@lncs\fi
 \laomian@let@iffalse\if@laomian@draft\fi
 \laomian@let@iffalse\if@laomian@runningheads\fi
 \laomian@let@iffalse\if@laomian@anonymous\fi
@@ -76,6 +77,7 @@
   \laomian@let@iffalse\if@laomian@base@lncs\fi
   \laomian@let@iftrue\if@laomian@layout@thirtyeight@fortyeight\fi
   \laomian@let@iffalse\if@laomian@layout@sixpointfive@nine\fi
+  \laomian@let@iffalse\if@laomian@paper@lncs\fi
   \laomian@let@iffalse\if@laomian@draft\fi
   \laomian@let@iffalse\if@laomian@runningheads\fi
   \laomian@let@iffalse\if@laomian@anonymous\fi
@@ -114,6 +116,7 @@
   \laomian@let@iftrue\if@laomian@base@lncs\fi
   \laomian@let@iffalse\if@laomian@layout@thirtyeight@fortyeight\fi
   \laomian@let@iffalse\if@laomian@layout@sixpointfive@nine\fi
+  \laomian@let@iffalse\if@laomian@paper@lncs\fi
   \laomian@let@iffalse\if@laomian@draft\fi
   \laomian@let@iffalse\if@laomian@runningheads\fi
   \laomian@let@iffalse\if@laomian@anonymous\fi
@@ -143,6 +146,7 @@
 
 \def\laomian@format@lncs@camera@ready@reference{%
   \laomian@format@lncs@camera@ready
+  \laomian@let@iftrue\if@laomian@paper@lncs\fi
   \laomian@let@iftrue\if@laomian@runningheads\fi
   \laomian@let@iftrue\if@laomian@pdfmetadata\fi
   \laomian@let@iftrue\if@laomian@orcidicons\fi
@@ -527,6 +531,7 @@
 \laomian@output@conditional{base@lncs}{                    }
 \laomian@output@conditional{layout@thirtyeight@fortyeight}{}
 \laomian@output@conditional{layout@sixpointfive@nine}{     }
+\laomian@output@conditional{paper@lncs}{                   }
 \laomian@output@conditional{draft}{                        }
 \laomian@output@conditional{runningheads}{                 }
 \laomian@output@conditional{anonymous}{                    }
@@ -1341,6 +1346,35 @@
 \RequirePackage{orcidlink}
 
 % -------------------- links   end --------------------
+
+% -------------------- paper size begins --------------------
+
+\if@laomian@paper@lncs
+  % According to Springer production team,
+  %   paper    width  = 155mm,
+  %   paper   height  = 235mm,
+  %   top     margin  = 13mm,
+  %   bottom  margin >= 13mm,
+  %   gutter  margin  = 19mm,
+  %   outside margin  = 14mm.
+  % Since draft mode already uses a different horizontal placement
+  % for the type center, the document is expected to work even if
+  % the left/right margins change.
+  % In contrast, draft mode does not alter the vertical placement,
+  % so the document might not be ready for such a disturbance, and
+  % we move the cropping box for best compatibility.
+  \setlength{\oddsidemargin}{19mm}
+  \setlength{\evensidemargin}{14mm}
+  % The official PDF has \CropBox[0.0 0.0 439.37 666.142]
+  % with the extra whitespace truly removed.
+  % The values below are found by trial and error
+  % so that between crypto-paper and the official
+  % Asiacrypt 2022 proceedings, there is no difference
+  % in the placements of page numbers visible to naked eyes.
+  \hypersetup{pdfpagescrop={72.25 63.7 511.62 729.842}}
+\fi
+
+% -------------------- paper size   ends --------------------
 
 % -------------------- PDF metadata begin --------------------
 
