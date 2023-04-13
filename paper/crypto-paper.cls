@@ -48,6 +48,7 @@
 \laomian@let@iffalse\if@laomian@runningheads\fi
 \laomian@let@iffalse\if@laomian@anonymous\fi
 \laomian@let@iffalse\if@laomian@pdfmetadata\fi
+\laomian@let@iffalse\if@laomian@envelopeicons\fi
 \laomian@let@iffalse\if@laomian@orcidicons\fi
 \laomian@let@iffalse\if@laomian@iacrcopyright\fi
 \laomian@let@iffalse\if@laomian@pagenumbers\fi
@@ -82,6 +83,7 @@
   \laomian@let@iffalse\if@laomian@runningheads\fi
   \laomian@let@iffalse\if@laomian@anonymous\fi
   \laomian@let@iftrue\if@laomian@pdfmetadata\fi
+  \laomian@let@iftrue\if@laomian@envelopeicons\fi
   \laomian@let@iftrue\if@laomian@orcidicons\fi
   \laomian@let@iftrue\if@laomian@iacrcopyright\fi
   \laomian@let@iftrue\if@laomian@pagenumbers\fi
@@ -121,6 +123,7 @@
   \laomian@let@iffalse\if@laomian@runningheads\fi
   \laomian@let@iffalse\if@laomian@anonymous\fi
   \laomian@let@iffalse\if@laomian@pdfmetadata\fi
+  \laomian@let@iffalse\if@laomian@envelopeicons\fi
   \laomian@let@iffalse\if@laomian@orcidicons\fi
   \laomian@let@iffalse\if@laomian@iacrcopyright\fi
   \laomian@let@iffalse\if@laomian@pagenumbers\fi
@@ -149,6 +152,7 @@
   \laomian@let@iftrue\if@laomian@paper@lncs\fi
   \laomian@let@iftrue\if@laomian@runningheads\fi
   \laomian@let@iftrue\if@laomian@pdfmetadata\fi
+  \laomian@let@iftrue\if@laomian@envelopeicons\fi
   \laomian@let@iftrue\if@laomian@orcidicons\fi
   \def\laomian@formatchosen{lncs-camera-ready-reference}%
 }
@@ -156,6 +160,7 @@
 \def\laomian@format@lncs@camera@ready@iacr{%
   \laomian@format@lncs@camera@ready
   \laomian@let@iftrue\if@laomian@pdfmetadata\fi
+  \laomian@let@iftrue\if@laomian@envelopeicons\fi
   \laomian@let@iftrue\if@laomian@orcidicons\fi
   \laomian@let@iftrue\if@laomian@iacrcopyright\fi
   \laomian@let@iftrue\if@laomian@pagenumbers\fi
@@ -169,6 +174,7 @@
   \laomian@let@iftrue\if@laomian@draft\fi
   \laomian@let@iftrue\if@laomian@runningheads\fi
   \laomian@let@iftrue\if@laomian@pdfmetadata\fi
+  \laomian@let@iftrue\if@laomian@envelopeicons\fi
   \laomian@let@iftrue\if@laomian@orcidicons\fi
   \laomian@let@iftrue\if@laomian@pagenumbers\fi
   \laomian@let@iftrue\if@laomian@totalpagenumbers\fi
@@ -321,6 +327,12 @@
   {pdf-metadata}{\if@laomian@pdfmetadatachosen}{\laomian@pdfmetadatachosen}
   {yes}{\laomian@let@iftrue\if@laomian@pdfmetadata\fi}
   {no}{\laomian@let@iffalse\if@laomian@pdfmetadata\fi}
+  *
+
+\laomian@delcaremultiplechoiceoption
+  {envelope-icons}{\if@laomian@envelopeiconschosen}{\laomian@envelopeiconschosen}
+  {yes}{\laomian@let@iftrue\if@laomian@envelopeicons\fi}
+  {no}{\laomian@let@iffalse\if@laomian@envelopeicons\fi}
   *
 
 \laomian@delcaremultiplechoiceoption
@@ -536,6 +548,7 @@
 \laomian@output@conditional{runningheads}{                 }
 \laomian@output@conditional{anonymous}{                    }
 \laomian@output@conditional{pdfmetadata}{                  }
+\laomian@output@conditional{envelopeicons}{                }
 \laomian@output@conditional{orcidicons}{                   }
 \laomian@output@conditional{iacrcopyright}{                }
 \laomian@output@conditional{pagenumbers}{                  }
@@ -596,6 +609,11 @@
     \setlength{\oddsidemargin}{-2495509sp}
     \setlength{\evensidemargin}{10532285sp}
   \fi
+  % Define the authorship icons.
+  \def\laomian@hasenvelope{\unskip${}^{(\text{\Letter})}$}
+  % "orcidlink" is handled by \if@laomian@colorfullinks
+  % because we want to include "hyperref" first.
+  \def\laomian@hasorcid#1{\unskip${}^{}$\raisebox{-0.125em}{\scalebox{1.25}{\orcidlink{#1}}}${}^{}$}
   % Create indentation for subsequent paragraphs of abstract.
   \def\abstractparindent{\hspace*{2em}}
   % Springer compliance: Reference names.
@@ -774,7 +792,11 @@
   % Supply LNCS metadata control sequences.
   \let\titlerunning\laomian@eatoneargument
   \let\authorrunning\laomian@eatoneargument
-  % \orcidID is handled by \if@laomian@orcidicons.
+  % Define the authorship icons.
+  \def\laomian@hasenvelope{\unskip\textsuperscript{\,(\Letter)}}
+  % "orcidlink" is handled by \if@laomian@colorfullinks
+  % because we want to include "hyperref" first.
+  \def\laomian@hasorcid#1{\unskip\,\raisebox{-0.125em}{\scalebox{1.25}{\orcidlink{#1}}}}
   % Supply the \institute control sequence.
   \let\laomian@institute\relax
   \def\inst#1{\unskip\textsuperscript{\,#1}}
@@ -1040,15 +1062,20 @@
 
 % -------------------- anonymous   ends --------------------
 
-% -------------------- ORCID icons begin --------------------
+% -------------------- authorship icons begin --------------------
 
-\if@laomian@orcidicons
-  % "orcidlink" is handled by \if@laomian@colorfullinks
-  % because we want to include "hyperref" first.
-  \def\orcidID#1{\unskip\,\orcidlink{#1}}
+\if@laomian@envelopeicons
+  \RequirePackage{marvosym}
+  \let\isCorrespondingAuthor\laomian@hasenvelope
+\else
+  \def\isCorrespondingAuthor{\unskip}
 \fi
 
-% -------------------- ORCID icons   end --------------------
+\if@laomian@orcidicons
+  \let\orcidID\laomian@hasorcid
+\fi
+
+% -------------------- authorship icons   end --------------------
 
 % -------------------- IACR copyright begins --------------------
 
