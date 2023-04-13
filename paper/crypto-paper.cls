@@ -1179,7 +1179,7 @@
     \let\laomian@tableofcontents@bak@Hy@colorlink\Hy@colorlink
     \def\Hy@colorlink##1{\begingroup}
     % Print the table of contents.
-    \newpage
+    \clearpage
     \tableofcontents
     % Restore link coloring.
     \let\Hy@colorlink\laomian@tableofcontents@bak@Hy@colorlink
@@ -1227,7 +1227,7 @@
 
 \if@laomian@separatetitlepage
   \def\laomian@separatetitlepage@startbody{%
-    \newpage
+    \clearpage
     \setcounter{page}{1}%
     \setcounter{footnote}{0}%
     \laomian@pagestyle@set@body
@@ -1243,7 +1243,7 @@
 \if@laomian@opensonright
   \def\laomian@opensonright@ensure@evenpage{%
     \ifodd\c@page\relax
-      \newpage
+      \clearpage
       \leavevmode
       \thispagestyle{empty}%
     \fi
@@ -1322,7 +1322,7 @@
 
 \if@laomian@supplementarymaterials
   \def\LaomianAppendix{%
-    \newpage
+    \clearpage
     % The document must be in LNCS mode, so the following line is unnecessary.
     % \laomian@tableofcontents@appendix
     \begin{center}\huge\bfseries Supplementary Materials\end{center}%
@@ -1330,7 +1330,12 @@
   }
 \else
   \def\LaomianAppendix{%
-    \newpage
+    % This is a safety net ensuring that all pending
+    % floats are placed before the appendix begins.
+    % However, if any float is placed by this \clearpage,
+    % it means that they are placed after the bibliography,
+    % which is already terrible.
+    \clearpage
     \laomian@tableofcontents@appendix
     \appendix
   }
