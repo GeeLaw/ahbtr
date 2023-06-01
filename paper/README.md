@@ -28,6 +28,7 @@ This section is anti-chronological. Reviews are kept in OneNote.
 
 - Submission #118
   - [Version 1](../paper.pdf/tcc23-ver1.pdf): SHA-256 `28bde880`, 1 Jun 2023 2:32:56pm UTC
+- Young researcher eligibility: Yes
 - PC conflicts:
   - Aarushi Goel (2021 NTTR)
   - Aayush Jain (coauthorship)
