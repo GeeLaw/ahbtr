@@ -24,6 +24,18 @@ Two constructions are presented.  The first is based on functional encryption fo
 
 This section is anti-chronological. Reviews are kept in OneNote.
 
+### TCC 2023
+
+- Submission #118
+  - [Version 1](../paper.pdf/tcc23-ver1.pdf): SHA-256 `28bde880`, 1 Jun 2023 2:32:56pm UTC
+- PC conflicts:
+  - Aarushi Goel (2021 NTTR)
+  - Aayush Jain (coauthorship)
+  - Hoeteck Wee (2021 NTTR)
+  - Jiahui Liu (2021 NTTR)
+  - Mark Zhandry (2021 NTTR)
+  - Stefano Tessaro (advisory)
+
 ### Eurocrypt 2023
 
 - Submission #2
