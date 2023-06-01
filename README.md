@@ -5,7 +5,6 @@
   - [15 September 2022](https://eprint.iacr.org/archive/2022/925/20220915:224904)
   - [1 August 2022](https://eprint.iacr.org/archive/2022/925/20220801:093441)
   - [15 July 2022](https://eprint.iacr.org/archive/2022/925/20220715:163054)
-
 - Slides
   - [Animated, Chinese](https://luoji.bio/assets/slides/Luo22zh-animated.pdf)
 
