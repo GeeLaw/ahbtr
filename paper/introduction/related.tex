@@ -1,0 +1,23 @@
+\subsubsection{Related Works.}
+We discuss several related works.
+
+\paragraph{\Ad Hoc, Decentralized, or Distributed Broadcast.}
+Decentralized versions of broadcast encryption were
+studied in~\cite{SCN:PhaPoiStr12,PAIRING:DelPaiPoi07}
+with interactive management of recipient sets.
+\Ad hoc (a.k.a.~distributed; potentially threshold) broadcast encryption was
+studied in several prior/later works,
+all of which only considered bounded schemes.
+Pairing-based constructions~\cite{DHMR08,CCS:WQZD10,KolMalWee23}
+require global set-up, and
+the obfuscation-based one~\cite{C:BonZha14} do not.
+
+\paragraph{Lower Bounds.}
+Previous works~\cite{EC:BluCre94,EC:LubSta98,AC:KYDB98,AFRICACRYPT:AusKre08,AC:KatYer09,C:GayKerWee15,ITC:DLY21} show a few efficiency lower bounds related to ABE and BE,
+yet they only apply to information-theoretically secure primitives and even specific construction techniques.
+Moreover, all of them prove space (ciphertext or secret key size, or their trade-off) lower bounds, whereas
+this work is about space-time trade-offs.
+Based on obfuscation~\cite{C:BonWatZha14} or both LWE and pairing~\cite{EC:AgrYam20}, broadcast encryption with ${|\ct|,|\sk|=\bigO(1)}$ can be achieved,
+circumventing all previously known bounds.
+In a concurrent work~\cite{EC:JaiLinLuo23},
+lower bounds of (partially hiding) functional encryption are shown.
