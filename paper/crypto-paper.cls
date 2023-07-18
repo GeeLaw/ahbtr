@@ -1520,6 +1520,10 @@
 \def\proof{\begingroup\pushQED{\qed}\begin{laomian@proof}}
 \def\endproof{\popQED\end{laomian@proof}\endgroup}
 
+\newtheorem*{laomian@proof@sketch}{Proof Sketch}
+\def\proofsketch{\begingroup\pushQED{\qed}\begin{laomian@proof@sketch}}
+\def\endproofsketch{\popQED\end{laomian@proof@sketch}\endgroup}
+
 \if@laomian@base@lncs
   \theoremstyle{plain}
 \else
