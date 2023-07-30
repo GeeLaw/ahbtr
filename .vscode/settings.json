@@ -22,6 +22,38 @@
     "-Command",
     "Set-Location -LiteralPath ./paper -ErrorAction Ignore"
   ],
+  "terminal.integrated.profiles.osx":
+  {
+    "paper":
+    {
+      "path": "/bin/bash",
+      "args":
+      [
+        "--noprofile",
+        "--norc",
+        "-c",
+        "cd ./paper >/dev/null 2>&1; PWSHFN=$(which pwsh); if [ $? -eq 0 ]; then exec /bin/bash -l -c \"$(printf \"exec %q -NoLogo\" \"$PWSHFN\")\"; else exec bash -l; fi"
+      ],
+      "icon": "terminal-powershell"
+    }
+  },
+  "terminal.integrated.defaultProfile.osx": "paper",
+  "terminal.integrated.profiles.windows":
+  {
+    "paper":
+    {
+      "path": "powershell.exe",
+      "args":
+      [
+        "-NoLogo",
+        "-NoExit",
+        "-Command",
+        "Set-Location -LiteralPath ./paper -ErrorAction Ignore"
+      ],
+      "icon": "terminal-powershell"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "paper",
   "files.eol": "\n",
   "cSpell.words":
   [
