@@ -1,16 +1,31 @@
 \subsubsection{Related Works.}
 We discuss several related works.
 
-\paragraph{\Ad Hoc, Decentralized, or Distributed Broadcast.}
-Decentralized versions of broadcast encryption were
-studied in~\cite{SCN:PhaPoiStr12,PAIRING:DelPaiPoi07}
-with interactive management of recipient sets.
-\Ad hoc (a.k.a.~distributed; potentially threshold) broadcast encryption was
-studied in several prior/later works,
-all of which only considered bounded schemes.
-Pairing-based constructions~\cite{DHMR08,CCS:WQZD10,KolMalWee23}
+\paragraph{\Ad Hoc, Decentralized, Distributed, or Flexible
+Broadcast Encryption.}
+\leavevmode\unskip\footnote{
+While the details of the definition in each work differ,
+their common theme is that each recipient generates their own key pair.}
+Decentralized BE
+with interactive management of recipient sets
+was studied in~\cite{SCN:PhaPoiStr12,PAIRING:DelPaiPoi07}.
+\Ad hoc (a.k.a.~distributed or flexible) BE
+was studied in several prior/later works.
+% It's an open problem to construct unbounded schemes
+% from pairing with non-trivial storage efficiency.
+Schemes based on
+pairing~\cite{DHMR08,CCS:WQZD10,KolMalWee23} or
+% This construction is bounded because its security definition
+% constrains "n" (binary, maximum number of recipients, given to Setup)
+% to be polynomial.
+% It's unclear to me whether the restriction can be removed with some effort,
+% e.g., by considering "function-binding hash" for sparse strings.
+witness encryption~\cite{C:FreWatWu23}
 require global set-up, and
+% This construction is bounded because of its syntax/security definition.
 the obfuscation-based one~\cite{C:BonZha14} do not.
+% However, nowhere else in this paper did I mention the distinction between
+% bounded and unbounded schemes, so I am not mentioning it here either.
 
 \paragraph{Lower Bounds.}
 Previous works~\cite{EC:BluCre94,EC:LubSta98,AC:KYDB98,AFRICACRYPT:AusKre08,AC:KatYer09,C:GayKerWee15,ITC:DLY21} show a few efficiency lower bounds related to ABE and BE,
