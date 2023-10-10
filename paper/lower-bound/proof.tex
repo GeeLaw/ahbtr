@@ -1,9 +1,9 @@
 To prove Theorem~\ref{thm:lower-bound}, we need the following lemma:
 
 \begin{lemma}[adapted from {\cite[Theorem~2]{C:Unruh07}}]\label{lem:ai-rom}
-For all ${N,P\in\doubleN}$ \WideNarrow{subject to}{with} ${1\leq P\leq N}$,
+For all ${N,P\in\doubleN}$ subject to ${1\leq P\leq N}$,
 distribution $D$ supported over~$Z$,
-function ${F:Z\times\bit^N\to\bit^S}$,
+function ${F:Z\times\bit^N\WideNarrow{}{\!}\to\bit^S\WideNarrow{}{\!}}$,
 there exists a function ${G:Z\times\bit^N\to{\{0,1,\bot\}}^N}$ such that
 \begin{align*}
 |\{{j\in[N]}:{G(z,R)[j]\neq\bot}\}|\leq P
@@ -141,9 +141,9 @@ where the last inequality follows from ${N\geq 2}$.
 By how $Y[i^\ast]$ is set,
 \begin{align*}
 p_4=\frac{p_1+p_5}{2}
-\WideNarrow{}{\!\!}
-\qquad\Longrightarrow\qquad
-\WideNarrow{}{\!\!}
+\WideNarrow{\qquad}{\quad}
+\Longrightarrow
+\WideNarrow{\qquad}{\quad}
 p_5
 =p_1-2(p_1-p_4)
 \geq p_1-2|p_1-p_4|
