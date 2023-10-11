@@ -106,3 +106,52 @@ they?
 We have revised the text, currently around the top of page~27,
 to make the definition clear.
 (Answer to original question: Yes, they are still included.)
+
+\subsubsection{Definition Style.}
+From \underlined{EC/B}:
+
+\texttt{
+Why does Enc take 1\string^{\string\lambda} as an extra input, but not 1\string^N? \\
+Giving 1\string^{\string\lambda} as an extra input seems okay, but could be avoided \\
+too as done for most crypto objects.
+}
+
+The reviewer is talking about the definitions of AH-PLBE and AH-BTR.
+We choose to not omit $\lambda$ as a style of consistency,
+even when the other input is sufficiently long.
+The list length is implicit in the list of public keys.
+
+\subsubsection{Definition of AH-BTR Traceability.}
+From \underlined{EC/B}:
+
+\texttt{
+What does S {\string\leftarrow} [Q] mean? Does it mean S := [Q]?
+}
+
+\texttt{
+Also, why is B asked to declare Q at the beginning? A more \\
+appropriate/general definition would be to let B make arbitrary \\
+setup queries, and get handles to keys. Later it can decide which \\
+to corrupt adaptively. Why these steps be sequential and not \\
+interleaved?
+}
+
+We have revised the definition,
+currently in the middle of page~13,
+to be the natural (``appropriate/general'') version.
+The confusion between
+``sampling from a set'' (always done using $\draws$) and
+``assigning a set to a variable'' (always done in words) is corrected.
+
+\subsubsection{Random vs.\ Chosen Messages in AH-BTR.}
+From \underlined{EC/B}:
+
+\texttt{
+Why doesn't B pick mu\_0 and mu\_1? There are picked randomly for \\
+defining GoodDist. This deviates significantly from the formalization \\
+standardized in TT literature.
+}
+
+We have revised the text, currently at the end of page~13,
+following Definition~\ref{def:tracing-security},
+to explain that KEM style definition is a customary simplification.
