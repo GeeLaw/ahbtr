@@ -1,5 +1,5 @@
 \subsubsection{Simplifying Security Notions.}
-Traditionally~\cite{EC:BonSahWat06}, traceability has been defined using one comprehensive interactive experiment,%
+Traditionally~\cite{EC:BonSahWat06}, traceability has been defined using one comprehensive \emph{interactive} experiment,%
 % The definition of TCC:CVWWW18 seems to have a problem...
 % In the first version of ePrint 2018/897, on p.19, the definition of
 % tracing security requires
@@ -10,7 +10,9 @@ Traditionally~\cite{EC:BonSahWat06}, traceability has been defined using one com
 % confirmation/soundness notion) is not as related as I anticipated,
 % and mentioning here should be good enough.
 \footnote{While some previous works~\cite{C:BonFra99,STOC:GoyKopWat18,C:Zhandry20} separate traceability into multiple notions,
-those notions still share one single complicated security experiment.}
+each notion still requires interaction in its security experiment,
+due to the centralized nature of
+the set-up process of traditional traitor tracing.}
 which is complicated to work with.
 Intuitively, the notion requires that
 \emph{i)}~a traitor should be found from a decoder with sufficient advantage and
@@ -20,5 +22,6 @@ We thus define two security notions for AH-BTR capturing the requirements separa
 The former is called \emph{completeness} and the latter is called \emph{soundness}.
 Their conjunction is equivalent to \emph{traceability}.
 Since only one requirement is considered in each notion,
-both of them can be vastly simplified and the interactions in those notions are minimal.
-They are also more convenient for reductionist proofs.
+both of them can be vastly simplified and
+the security experiments become \emph{non-interactive}.
+They are much more convenient for reductionist proofs.
