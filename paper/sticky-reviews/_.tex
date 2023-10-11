@@ -7,3 +7,102 @@ They are grouped by \textbf{topic},
 marked with \underlined{venue/review}
 (e.g., \underlined{EC/A} for review A from Eurocrypt 2023),
 \texttt{quoted} then discussed.
+Not in every case did we revise the text.
+
+\subsubsection{AH-PLBE/BTR Security Notion Relations.}
+From \underlined{EC/A}:
+
+\texttt{
+On page 15, when defining the security notions for AH-PLBE, the \\
+authors mentioned "The two security definitions have a one-to-one \\
+correspondence to the simplified security notions of AH-BTR in Sect. \\
+3.1". Intuitively, is it correct if I understand this detail as "an \\
+AH-PLBE is a particular version of AH-BTR, with no tracing algorithm"? \\
+If not, how can we interpret this "one-to-one correspondence"?
+}
+
+We have revised the text, currently around the middle of page~15, to clarify
+which security property of AH-PLBE translates to (is used to prove)
+which of AH-BTR in the classic scheme
+(Construction~\ref{con:ahbtr-from-ahplbe}).
+The best way to think about this is that
+``AH-PLBE vs.~AH-BTR'' is similar to ``KEM vs.~PKE''.
+In both cases, the former formally is not a particular version of the latter
+--- aside from tracing,
+AH-PLBE encryption takes a cut-off index as input but AH-BTR does not;
+KEM encapsulation outputs a random message, i.e., the encapsulated key,
+but PKE encryption takes the actual message as input ---
+yet in both cases, the former is a ``dumbed down'' version of the latter
+and the security properties of the former can be used to prove
+those of the latter in classic constructions.
+
+\subsubsection{Syntax of Restricted BE.}
+From \underlined{EC/A}:
+
+\texttt{
+In Def. 18 of Section 7 for restricted BE, the decryption algorithm \\
+receives only the security parameter in unary and is having random \\
+accesses to the public key as well as the secret key. At the same \\
+time, the correctness is required to be perfect. Out of curiosity, \\
+is it plausible to require perfect correctness when giving only \\
+random accesses to the secret key? Anyway, the lower bound proven \\
+in Section 7 still holds even when relaxing the correctness.
+}
+
+For the purpose of this lower bound,
+it is fine to assume that each secret key of restricted BE
+contains a verbatim copy of the master public key.
+We did not do this because our definition format
+(explicitly giving components to algorithms
+instead of letting any component ``absorb'' any other)
+is customary when efficiency is a concern,
+even if the particular efficiency property is unaffected
+by the change of definition.
+
+\subsubsection{Lemma from Auxiliary-Input Random Oracle Model.}
+From \underlined{EC/A}:
+
+\texttt{
+In the statement of Lemma 10, is it a typo in the constraint \\
+of the presampling function G that \\
+\hspace*{4em}"\#\{G(z,j) {\string\neq} {\string\bot}\} <= P for all z {\string\in} Z"? \\
+Shouldn't it be \\
+\hspace*{4em}\ \#\{G(z,R)[j] {\string\neq} {\string\bot}\} <= P for all z {\string\in} Z \\
+\hspace*{18.5em}w.r.t a fixed R? \\
+Moreover, it is not clear to me why the oracle algorithm B can be \\
+inefficient. Could the authors please elaborate more on this point?%
+}
+
+We have revised the statement of Lemma~\ref{lem:ai-rom},
+currently around the bottom of page~27.
+We have revised the text, in the footnotes of page~28, to clarify
+that $\scriptB$ does not have to be efficient for the lemma to hold,
+although in our application, we invoke the lemma for an efficient~$\scriptB$.
+
+\subsubsection{Encryption Randomness in Proof.}
+From \underlined{EC/A}:
+
+\texttt{
+In the proof of Theorem 9, why does z contain the encryption's \\
+randomness? It seems that this enc's randomness is never used by B\string^Y \\
+(to recover ct it parses f).
+}
+
+It is a formalism issue.
+Lemma~\ref{lem:ai-rom} is for ``function~$F$'',
+so $F$ cannot use randomness.
+The encryption randomness is included for use by~$F$.
+
+\subsubsection{Restricted BE Security Definition.}
+From \underlined{EC/A}:
+
+\texttt{
+In the security notion of restricted BE, at the beginning of \\
+page 22, i* and mu\_0 are still contained in the {\string\cdots} in the \\
+distribution on the right hand side of the {\string\approx} property, aren't \\
+they?
+}
+
+We have revised the text, currently around the top of page~27,
+to make the definition clear.
+(Answer to original question: Yes, they are still included.)
