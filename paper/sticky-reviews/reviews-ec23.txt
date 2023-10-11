@@ -1,0 +1,297 @@
+2 Ad Hoc (Decentralized) Broadcast, Trace, and Revoke
+ 
+Review #2A
+===========================================================================
+ 
+Paper summary
+-------------
+The current paper focuses on broadcast encryption systems, with traitor tracing and revocability.
+The authors defined a decentralized variant of such sytems, said "ad hoc" and coined AH-BTR, where the users of a broadcast group can generate on their own the public and secret keys for communication,
+while maintaining all the requirements. 
+Then, they gave a construction of AH-BTR from public-key encryption schemes (PKE), indistinguishability obfuscation (iO), with contant-size ciphertext, using laconic oblivious transfer (laconic OT), while the decryption runs in time linear in the broadcast group's size.
+Finally, they presented an analysis of the trade-off between ciphertexts' size and decryption time in broadcast encryption systems,
+concluding that the AH-BTR proposed in the paper matches the lower bound of decryption time when aiming for constant-size ciphertext.
+ 
+Overall merit
+-------------
+3. Weak reject (I have more arguments in favor of reject)
+ 
+Reviewer expertise
+------------------
+2. Some familiarity (I have not worked on this topic domain but I am
+superficially familiar with the literature)
+ 
+Confidence level
+----------------
+3. Medium (Carefully read and understood the main submission, but only
+skimmed some relevant parts of the supplementary material)
+ 
+Questions/Clarifications for the Authors
+----------------------------------------
+1/ On page 15, when defining the security notions for AH-PLBE, the authors mentioned "The two security definitions have a one-to-one correspondence to the simplified security notions of AH-BTR in Sect. 3.1".
+Intuitively, is it correct if I understand this detail as "an AH-PLBE is a particular version of AH-BTR, with no tracing alogrithm"? If not, how can we interpret this "one-to-one correspondence"?
+ 
+2/ In Def. 18 of Section 7 for restricted BE, the decryption algorithm receives only the security parameter in unary and is having random accesses to the public key as well as the secret key.
+At the same time, the correctness is required to be perfect.
+Out of curiosity, is it plausible to require perfect correctness when giving only random accesses to the secret key?
+Anyway, the lower bound proven in Section 7 still holds even when relaxing the correctness.
+ 
+3/ In the statement of Lemma 10, is it a typo in the constraint of the presampling function G that "#{G(z,j) \neq \bot} <= P for all z \in Z"? Shouldn't it be #{G(z,R)[j] \neq \bot} <= P for all z \in Z w.r.t a fixed R?
+Moreover, it is not clear to me why the oracle algorithm B can be inefficient. Could the authors please elaborate more on this point?
+ 
+4/ In the proof of Theorem 9, why does z contain the encryption's randomness? It seems that this enc's randomness is never used by B^Y (to recover ct it parses f).
+ 
+5/ In the security notion of restricted BE, at the beginning of page 22, i* and mu_0 are still contained in the \cdots in the distribution on the right hand side of the \approx property, aren't they?
+ 
+Technical details
+-----------------
+This paper starts by introducing the notion of ad hoc broadcast, trace, and revoke (AH-BTR) systems.
+The key generation can be run in a decentralized manner, by each member of the system.
+The encryption scheme takes as inputs a list of public keys, among which mght there be some malformed keys coming from an adversary. 
+For the reason of efficiency, the list of recepients is not hidden as well as the decryption algorithm has random accesses to the list of public keys and the ciphertext (as it might not need to read the whole list or the ciphertext), while being given a secret key corresponding to one member's public key.
+The correctness requirement is strong in the sense that it should hold even when malformed public keys are present in the list at the time of decryption.
+*Minor suggestion*: It could be helpful to recall the intuition of this syntax with random access to public keys for the decryption algorithm, similar to what is put in the technical overview.
+ 
+With respect to security, the authors first define the traceability for AH-BTR in definition 12, which implies semantic security for the encrypted message following Remark 3 in [Zhandry20].
+In the security experiment for traceability, a ppt adversary first declares a list's length Q to receive a list of public keys, then can corrupt arbitrarily a secret key in the list of its choices.
+Afterwards, in the challenge phase, the adversary outputs a decoder, a new list of public keys, together with an error bound. 
+The decoder is "good" if it can distinguish the ciphertexts of random messages of the AH-BTR system with advantage being at least the given bound.
+The traceability of the AH-BTR requires that only with negligible probability, the Trace^D algorithm (with black-box access to D, being given the list of public keys and the bound) output a non-corrupted member among Q or Trace^D not be able to output a traced member even when D is good.
+ 
+The authors proposed a simplified version of the traceability by requiring two separate properties: soundness (Def. 13) and completeness (Def. 14). The former means an innocent member is accused by Trace^D only with negligible probability, while the latter means if D is good then Trace^D is likely to trace succefully.
+Theorem 2 proves that an AH-BTR satisfies the traceability if and only if it is sound and complete. 
+I did check the proof of Theorem 2 in details and it is convincing.
+Theorem 2 allows considering the two simpler notions separately and this is the case for the rest of the paper.
+ 
+After introducing a new notion of AH-BTR and its relevant security notions, the authors advances the construction of such a system. 
+In section 4, an ad hoc version of private linear broadcast encryption (coined AH-PLBE henceforth) is defined
+that will be used as a building block for AH-BTR, following the blueprint in [BonehSahaiWaters06].
+The foregoing blueprint can be adapted directly to the ad hoc setting in Section 5, therefore it is of more interest to focus on the technical details of AH-PLBE.
+ 
+The key generation stays decentralized, which gives a member a pair of public key and secret key; The encryption algorithm receives a list of members' public keys, a cut-off index meaning the encrypted message is destined for members of index larger than this cut-off, to as to encrypt a message.
+The decryption algorithm retains the syntax of AH-BTR with random accesses to a list of public keys and the ciphertext, uses a secret key of one member's public key to decrypt while being given the list's length as well as the secret key's index.
+ 
+The strong property of robust correctness is also required for AH-PLBE.
+Regarding security properties, there are two desired properties, and the authors mentioned that they correspond one-to-one to the soundness and completeness of an AH-BTR (see question 1).
+The first property is message-hiding (supposedly corresponding to completeness of AH-BTR), which requires semantic security when the cut-off is N = #members, i.e. a ppt adversary cannot distinguish ciphertexts of random messages that are intended for nobody.
+The second property is index-hiding (supposedly corresponding to soudness of AH-BTR), which enforces that a ppt adversary cannot distinguish if a ciphertext is cut-off at i* or at i*-1, where i* is the challenge index chosen by the advresary whose keys are honestly generated.
+ 
+After defining the notion of AH-PLBE, the authors moved on to its construction. A generic construction of AH-PLBE using Garbled Circuits (GC), Punctured PRFs (PPRFs), Laconic OT (LOT), and iO (for poly-size domain circuits) is given.
+Intuitively the AH-PLBE encryption will obfuscate a circuit, in which the message and the cut-off index are hardcoded, that being given input an index i will garble a PKE
+encryption circuit and output LOT ciphertexts for the i-th public key.
+We only need obfuscation for circuits with of poly-size domain because the indices are from poly-size range, while many other information are hard-coded.
+The PKE encryption circuit is defined only at the time of AH-PLBE encryption using the index i.
+In the (obfuscated) circuit, all randomness will be computed by the PPRF on input i.
+To decrypt, given as inputs an index i and the PKE secret key sk_i, the decryption algorithm runs the obfuscated circuit on its input index to obtain the garbled PKE encryption and LOT ciphertexts, then probes the list of public keys for pk_i, uses pk_i to "LOT-decrypt" for the labels of the garbled PKE encryption;
+Finally running the garbled PKE encryption on these labels gives a PKE ciphertext, which can be decrypted using sk_i (to the real message iff i is larger than the cut-off index).
+The robust correctness is clear; I skimmed the proofs in supplementary materials for this construction and they look solid too.
+This construction of AH-PLBE achieves (quasi-)constant ciphertext's size and (quasi-)linear decryption time.
+ 
+The construction of AH-BTR from AH-PLBE in Section 5 retains the (quasi-)constant ciphertext's size and (quasi-)linear decryption time of its building block. 
+In Section 6, the authors explained how to aime for a trade-off between ciphertext's size and decryption time, using a technique of grouping recipients that is similar to Theorem 1 in [Zhandry20].
+ 
+In the final section 7, the authors analyzed the lower bound of max{ciphertext's size}*max{Decryption time}, for all secure AH-BTR.
+The approach is to consider a restricted broadcast encryption (namely restricted BE) that can be implemented using AH-BTR and a lower bound for the former implies a lower bound for the latter.
+More specifically, a restricted BE broadcasts to N pairs of members (in total 2N), exactly one member in each pair is intended to receive the message, which is indicated by an N-long bitstring at the time of encryption.
+A secret key sk_i,r will be able to decrypt iff R[i] = r.
+The correctness of a restricted BE is defined to be perfect.
+The security notion for restricte BE requires that a uniform adversary, which can pick a challenge pair i*,mu_0 uniformly random and control sk_{i*,1-R[i*]}, be unable to distringuish the ciphertext of mu_0 from the ciphertext of another uniformly random mu_1.
+ 
+The aforementioned lower bound is proven in Theorem 9. 
+The key technical tool is [Theorem 2, Unruh07], which concerns the statistical distance when we simulate a random oracle with a bounded number of presamplings, in the context of oracle algorithms making a bounded number of queries and receiving auxiliary inputs of bounded lengths.
+The adaptation of [Theorem 2, Unruh07] to the authors' purpose is presented in Lemma 10.
+More specifically, in the context of this paper, the adversary distinguishing the two distributions in question is a (potentially inefficient) oracle algorithm B, making a bounded number T of probings:
+- Case 1: On one hand, B is having accesses to a random string (the random oracle case in [Theorem 2, Unruh07] accordingly).
+- Case 2: On the other hand, B is given accesses to a string that is presampled at a bounded number of positions (the rest stays uniformly random).
+In both cases, B is also given some auxiliary inputs (z,F(z,R)) where z is distributed according to some distribution and F(z,R) is of bounded length S.
+Lemma 10 states that there exists a presampling function G(z,R) that presamples R at a bounded number P of positions so that for all B, the statistical distances of the above 2 cases is upper bounded by O(sqrt(ST/P)).
+ 
+Towards the proof of Theorem 9, the oracle algorithm is B, the random bitstring R is the one indicating the receivers when encrypting in restricted BE, the auxiliary inputs (z,F(z,R)) are defined so that it "grants" B an equivalent power that Dec has as random accesses when decrypting (please see the above question 4 for more on this point).
+It's important to notice that z contains all the secret keys of the restricted BE system, together with a random message mu, while F(z,R) encodes a ciphertext of mu.
+The length S of F(z,R) is related to ciphertext's length, while the number T of oracle accesses by B is related to the #{positions of R} probed by Dec, 
+and therefore a lower-bound on ST implies the main lower bound (P will be chosen later).
+The algorithm B is designed to probe its oracle at a random index i*, use the auxiliary inputs, then try decrypting ct (from F(z,R)) and B outputs 1 iff the result is equal to the message mu (from z).
+Lemma 10 applies to all oracle algorithms and thus applies to this specific B as well.
+To start with, the authors considered the case where B has accesses to the correct random string R (used at encryption); The perfect correctness of the restricted BE implies that B is correct with proability 1 in this case.
+Next, the goal is to arrive at the case where the bit at R[i*] is flipped to 1-R[i*] (recalled that i* is the guessed index by B), then to apply the security of the restricted BE to upper the probability that B is correct, denoted p_final.
+The proof applies:
+- first Lemma 10 to presample the oracle string of B, 
+- then a statistical change to "correct" the i*-th position of the presampled string back to uniformly random if it is presampled from the previous step,
+- then Lemma 10 again to have R[j] at all positions j except i*,
+- then finally another statistical change to change the i*-th position to 1-R[i*].
+Each application of Lemma 10 induces an inequality bounding {ST/N}^1/3 (after picking P appropriately),
+the statistical changes induce either a constant multiplicative factor or an additive loss of order {ST/N}^1/3.
+In the end, we arrive at a lower bound O({ST/N}^1/3) > 1 - p_final and it remains to upper bound p_final.
+The authors' idea was to construct an adversary A against the security of the restricted BE so that p_final = Pr[A receives encryptions of mu_0 --> 1].
+Here mu_0 is the message mu received by B, the challenge ciphertext of A is defined to be the ct in B's aux inputs, the index i* of A is the same as that chosen by B, 
+A will use the secret key sk_{i,1-R[i*]} to try to decrypt the ciphertext ct and outputs 1 iff the result is equal to mu_0. 
+The behaviors of A are identical to what B does in the final case, because at position i* in the oracle string is not 1-R[i*] when B probes its oracle, hence p_final = Pr[A receives encryptions of mu_0 --> 1].
+The security applies to all A thus applies to this particular A as well.
+A routine calculation upper bounds p_final by some constant and from O({ST/N}^1/3) > 1 - p_final the theorem is conlcuded.
+ 
+[Zhandry20] New techniques for traitor tracing: Size N^1/3 and more from pairings. Crypto'20
+[BonehSahaiWaters06] Fully collusion resistant traitor tracing with short ciphertexts and private keys. Eurocrypt'06
+[Unruh07] Random oracles and auxiliary input. Crypto'07
+ 
+Editorial details
+-----------------
+The paper is well written and I enjoyed reading it. The authors did a great job in maintaining a consistency of notations throughout the whole paper, especially when multiple input-length parameters are involved in various primitives.
+It might help if the "..." can be avoided at some places, for instance in the security definition of restricted BE.
+ 
+Novelty and conceptual contributions
+------------------------------------
+The main novelty is theorem 9 that proves a lower bound max{ciphertext's size}*max{Decryption time} for all secure AH-BTR.
+This gives the first time-space lower bound for computationally secure BE in particular.
+In addition, theorem 9 also demonstrates that this paper's construction of AH-BTR matches the lower bound and is thus optimal in terms of trade-offs between ciphertext's size and decryption time.
+The technical ideas to prove theorem 9 are also fascinating, which employs techniques in the context of random oracles with auxiliary inputs.
+Please refer to the "technical details" section for details on how they proved it.
+ 
+ 
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ 
+ 
+Review #2B
+===========================================================================
+* Updated: 31 Jan 2023 3:57:12pm UTC
+ 
+Paper summary
+-------------
+The paper proposes a new traitor tracing framework, called ad hoc TT. The goal is to decentralize the key generation part of TT. Typically, in TT, there is a centralized setup algorithm that samples the secret keys for all users. This work studies the setting where having a centralized setup is bad for applications. They study what types of TT is possible for such settings.
+ 
+Overall merit
+-------------
+2. Reject (I will argue against it)
+ 
+Reviewer expertise
+------------------
+3. Knowledgeable (I have not worked on this topic domain but I'm familiar
+with the literature)
+ 
+Confidence level
+----------------
+3. Medium (Carefully read and understood the main submission, but only
+skimmed some relevant parts of the supplementary material)
+ 
+Questions/Clarifications for the Authors
+----------------------------------------
+There are a few questions regarding definitions 11 and 12.
+-- Why does Enc take 1^\lambda as an extra input, but not 1^N? Giving 1^\lambda as an extra input seems okay, but could be avoided too as done for most crypto objects.
+-- What does S \leftarrow [Q] mean? Does it mean S := [Q]?
+-- Also, why is B asked to declare Q at the beginning? A more appropriate/general definition would be to let B make arbitrary setup queries, and get handles to keys. Later it can decide which to corrupt adaptively. Why these steps be sequential and not interleaved?
+-- Why doesn't B pick mu_0 and mu_1? There are picked randomly for defining GoodDist. This deviates significantly from the formalization standardized in TT literature.
+ 
+Technical details
+-----------------
+The main technical contributions of this paper are to introduce a framework for ad hoc TT, giving a construction from iO, and study the lower bounds in this model.
+ 
+Editorial details
+-----------------
+Yes.
+ 
+Novelty and conceptual contributions
+------------------------------------
+The concept of ad hoc is a natural extension to BTR. It is nice to see the first formalization effort from the authors on this. Despite the ad hoc notion not being straightforward, the overall novelty is not as high as other submission. And, the conceptual contributions are somewhat limited. Even further, given a lot from simple crypto assumptions is known for existing TT/BTR constructions, thus the iO based positive result seems very limited as well.
+ 
+Final reviewer consensus
+------------------------
+While the reviewers were in agreement that the concept of ad-hoc tracing is well-defined, there was consensus that the motivation is not that strong. And, the use of obfuscation also seems like an overkill. Some constructions that did not rely on obfuscation would have been nice. It might benefit the paper to look for some more concretely efficient constructions.
+ 
+ 
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ 
+ 
+Review #2C
+===========================================================================
+ 
+Paper summary
+-------------
+The authors proposed a new notions of traitor tracing schemes, ad hoc traitor tracing. This notion essentially is a decentralized version of tracing. Constructions of the new notion were proposed. Their constructions follow the approach of Boneh et al., namely, they were constructed via the ad hoc private broadcast linear encryption. They required obfuscations.
+ 
+Overall merit
+-------------
+3. Weak reject (I have more arguments in favor of reject)
+ 
+Reviewer expertise
+------------------
+2. Some familiarity (I have not worked on this topic domain but I am
+superficially familiar with the literature)
+ 
+Confidence level
+----------------
+3. Medium (Carefully read and understood the main submission, but only
+skimmed some relevant parts of the supplementary material)
+ 
+Questions/Clarifications for the Authors
+----------------------------------------
+1. I would like to have a clarification on the motivation of this ad hoc traitor tracing notion.
+ 
+2. What would be the further applications of the techniques proposed in this paper beyond traitor tracing?
+ 
+Technical details
+-----------------
+The main technical contributions are a new notion of traitor tracing, constructions of it, and analysis of its lower bound on ciphertext sizes and decryption time. As I mentioned earlier, I would like to understand the practicality of this new notion and whether their techniques would be interesting to a wider audience.
+ 
+Editorial details
+-----------------
+The editorial quality is good.
+ 
+ 
+Comment @A1 by Ji Luo 
+---------------------------------------------------------------------------
+We thank the reviewers for their comments and will incorporate them into the revision of our manuscript. Below, we address individual questions.
+ 
+Re: Reviewer A, question 1
+ 
+Almost. The more accurate phrasing is that in the construction of AH-BTR from AH-PLBE, message-hiding (resp. index-hiding) property of the underlying AH-PLBE implies completeness (resp. soundness) of AH-BTR. AH-PLBE is related to AH-BTR, but they have some syntactical differences, so the former is not a particular version of AH-BTR in a formal sense.
+ 
+Re: Reviewer A, question 2
+ 
+Yes, it is possible. We can always assume that the secret key contains a verbatim copy of the public key.
+ 
+Re: Reviewer A, question 3
+ 
+Yes. Thanks for catching this. The constraint on G should be
+|{ j in [N] : G(z,R)[j]\neq\bot }| <= P for all z in Z, r in {0,1}^N.
+We intended to emphasize that the oracle algorithm B need not be efficient for the lemma to hold, but the B's we use in our proof are indeed efficient. We will update the phrasing to make it clear.
+ 
+Re: Reviewer A, question 4
+ 
+It is due to the formulation of Lemma 10 --- it says "function F", so formally F cannot sample encryption randomness on its own. The encryption randomness is included in z just for F.
+ 
+Re: Reviewer A, question 5
+ 
+Yes. The only difference between the two distributions is whether it includes ct_0 or ct_1. We will modify the presentation to make it clear.
+ 
+Re: Reviewer A, paper summary
+ 
+> concluding that the AH-BTR proposed in the paper matches the lower bound of decryption time when aiming for constant-size ciphertext.
+ 
+We would like to clarify that this is not the only result in this regard. In the paper, we present two AH-BTR constructions (p.16 and p.18). They together achieve all the optimal trade-offs subject to the lower bound. As we mentioned, we fully demonstrate the Pareto front of AH-BTR efficiency.
+ 
+Re: Reviewer B, question 1 (lambda and N)
+ 
+The security parameter is included for every efficient algorithm in the definition for consistency, even if it is not needed due to other inputs being sufficiently long. The length of public key list (in unary or binary) can be included without making the definition technically different. We regard it being part of the list. It is only a matter of choice.
+ 
+Re: Reviewer B, question 2 (S gets [Q])
+ 
+Yes, it means setting S to be the set [Q]. Thanks for pointing out the confusion as it looks too similar to sampling an element from [Q]. We will edit the paper to make it clear.
+ 
+Re: Reviewer B, question 3 (declaring Q)
+ 
+The alternate definition is (polynomially) equivalent to the current one, because one can always declare Q to be a polynomial upper bound of the running time of B (if we think about a reduction, the reduction will hand out public keys from its "reservoir" as the adversary asks to create new key pairs). It is written in this way to reduce the complexity of the definition (namely, to avoid having to consider interleaving).
+ 
+Re: Reviewer B, question 4 (KEM vs PKE)
+ 
+The key encapsulation mechanism style definition used in this work has been used by [C:Zhandry20] (ePrint 2020/954). It makes the formulation simpler, and obtaining the usual PKE-style version is simply doing hybrid encryption, with the random message as a secret key to encrypt the actual message.
+ 
+Re: Reviewer C, question 1
+ 
+The following scenario is taken from [C:Zhandry21] (ePrint 2021/891) and extended. Consider encrypted group chat among protesters, where the users are concerned about traitors handing their keys to the government as well as infiltration by government agents. To attack the former concern, they want to trace traitors and remove them from the group. However, due to the latter concern, they also do not want any particular person to generate all the keys in a traditional traitor tracing scheme, who could impersonate everyone since they know everyone's secret key. In addition, as the protest gets spread among and more support from the people, more and more people need to join the group. AH-BTR provides a solution to all of these issues/needs.
+ 
+Re: Reviewer C, question 2
+ 
+There are quite a few techniques used in this paper.
+ 
+For example, we carefully combine laconic OT and obfuscation in a way that does not require non-falsifiable assumptions (the usual indistinguishability obfuscation is not falsifiable because we do not know how to check circuit equivalence in polynomial time; sub-exponential hardness is non-falsifiable because the advantage gap is too small to reject with high confidence in polynomial time). Further development of such techniques could help reduce reliance on non-falsifiable assumptions.
+ 
+Another example is the usage of auxiliary-input ROM simulation techniques. They have been extensively used to prove efficiency lower bounds for "destructive" tasks, namely, lower bounds of adversary advantage and size in AI-ROM. Here, we use it to prove efficiency lower bounds on a "constructive" task, as it is related to the efficiency parameters of a secure cryptographic scheme, and the AI-ROM techniques is used to analyze an upper bound of adversary advantage. Further exploration of these techniques for non-traditional usages is an interesting direction of research.
