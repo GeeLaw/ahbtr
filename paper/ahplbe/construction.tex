@@ -107,7 +107,12 @@ T_\Dec
 \bigO(N)\poly(\lambda,\log N).
 \end{align*}
 In practice and for security reasons,
-we always assume ${N\leq 2^\lambda}$ and ${\log N}$ is absorbed by~$\lambda$.
+we always assume ${N\leq 2^\lambda}$ and ${\log N}$ is absorbed by~$\lambda$.%
+\footnote{%
+A scheme can always set the ciphertext to the message itself
+whenever ${N>2^\lambda}$ and
+remain correct and asymptotically secure.
+See also Footnote~\ref{fn:ignore-poly-lambda}.}
 Therefore, with $\poly(\lambda)$ factors ignored,
 both encryption and decryption take linear time,
 and the ciphertext is constant-size.
