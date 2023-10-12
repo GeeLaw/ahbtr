@@ -200,3 +200,127 @@ to provide a more concrete description of the real-world motivation
 % as it is related to the efficiency parameters of a secure cryptographic scheme.
 % Further exploration of these techniques for non-traditional usages
 % is an interesting direction of research.
+
+\subsubsection{Full Definition and Simplified Definitions.}
+From \underlined{TCC/A}:
+
+\texttt{
+I wonder why do you need to give the full definition and then \\
+the two equivalent smaller ones. I think it is not particularly \\
+informative and I would have been as convinced with the two \\
+equivalent definitions and it saves energy and effort from the \\
+reader for the rest.
+}
+
+We have revise the text,
+in the footnotes of page~5
+and
+around the top of page~14,
+for clarification of security notion simplification.
+
+As a paper studying a new notion,
+the definition should arise from first principles.
+Therefore, we first present the full definition.
+Readers also have different familiarity
+with possible simplifications of definitions,
+cf.~EC/B ``why is B asked to declare Q at the beginning''
+(in a previous version of the definition,
+all the honestly generated public keys are created at the beginning,
+instead of being instructed by the adversary).
+
+In traditional traitor tracing,
+similarly decomposing the definition into two
+does not make the two properties much simpler ---
+in particular, they will still be interactive.
+This is due to the centralized nature of the set-up process ---
+it is not possible to remove interaction of key creation and corruption.
+The revised text now emphasizes this point.
+
+\subsubsection{Notations Defined Too Late.}
+From \underlined{TCC/A}:
+
+\texttt{
+In the intro, you use N before you say what it is.
+}
+
+We have revised the text,
+currently in the middle of page~2,
+to make it clear.
+
+\subsubsection{Better Narration.}
+From \underlined{TCC/A}:
+
+\texttt{
+A bit more intuition of why is Private Linear Broadcast Encryption \\
+defined on this way would be useful, and some comment on why you don't \\
+need mode indistinguishability also. The cut-off message appears in \\
+the construction but not in the syntactic definition.
+}
+
+\texttt{
+It would help me to get a more detailed explanation/intuition of \\
+how Theorem 14 implies the lower bound.
+}
+
+We have revised the text,
+currently in the middle of page~15,
+to explain that mode indistinguishability is only for private traceability
+(we consider public traceability in this work).
+
+We have revised the text
+to replace ``cut-off message'' by ``placeholder message''
+for clarity.
+The placeholder message is an implementation detail,
+so it does not appear in the syntax.
+
+For intuition on PLBE,
+we believe the usage of PLBE for traitor tracing
+is established in the literature.
+
+For Theorem~\ref{thm:lower-bound},
+the intuitive explanation is in the overview (search ``Back to AH-BTR'').
+
+\subsubsection{Using Strong Tools.}
+From \underlined{TCC/A}:
+
+\texttt{
+The weakest point is that the construction based on falsifiable \\
+assumptions uses very strong tools (although they can all be based \\
+on falsifiable assumptions).
+}
+
+The use of strong tools is simply because the construction in the manuscript
+is the only successful attempt till now in achieving
+all the desired properties ---
+my intuition is that the most difficult part is doing it without global set-up.
+
+\subsubsection{Applicability of Lower Bounds.}
+From \underlined{TCC/A}:
+
+\texttt{
+The lower bound might not be very meaningful for small N.
+}
+
+We have revised the text, current in the lower half of page~27,
+to explain why the phrasing ``for sufficiently large~$\lambda$'' is necessary
+and when the bound ``starts to hold''.
+We did not further optimize the constants in our bounds,
+partly because a cell-probe argument
+already fails to capture computation time outside memory access.
+Nevertheless, we emphasize that the lower bound is the first of its kind
+and asymptotically tightly characterizes all the possible efficiency frontiers.
+
+\subsubsection{Absorption of $\poly(\log N)$ into $\poly(\lambda)$.}
+From \underlined{TCC/A}:
+
+\texttt{
+I wonder to which extent it is fair to say that the AH-PLBE has \\
+constant size ciphertexts ignoring the log N factor (the argument \\
+is that since the ciphertext is poly({\string\lambda},log N) and \\
+N {\string\leq} 2\string^\{{\string\lambda}\}, the ciphertext is poly({\string\lambda})).
+}
+
+We have revised the text,
+currently in the footnotes of pages~6 and~18,
+to explain why we should ignore $\poly(\lambda,\log N)$ factors
+in asymptotic security.
