@@ -1,0 +1,52 @@
+This section is inspired by ``sticky reviews''
+(see \url{https://www.iacr.org/docs/author.pdf} lower half of page~2).
+Here, we respond to select questions/concerns raised by reviewers
+of Eurocrypt 2022 and TCC 2023.
+(Most other comments have been incorporated into the paper.)
+
+\subsubsection{Complex/Simple Definitions of Traceability.}
+A reviewer wondered why we give
+Definition~\ref{def:tracing-security} (full definition)
+then Definitions~\ref{def:completeness} and~\ref{def:soundness}
+(two equivalent smaller ones),
+instead of just the latter two,
+which would be equally convincing to the reviewer.
+
+Since this work is studying a new notion and
+security definitions are generally nuanced,
+we derive Definition~\ref{def:tracing-security}
+from \emph{first principles} ---
+the full definition maps to our intuitive notion of security
+in a straight-forward way.
+After that, we study its simplification,
+which might or might not be intuitive for security,
+for different readers.
+
+Another reviewer commented that
+a previous version of Definition~\ref{def:tracing-security},
+where the total number of ``new user initialization'' queries
+was declared at the onset of the experiment,
+was not good for intuition.
+We revised the definition into its current form
+in response to this other review.
+
+\subsubsection{Strong Assumptions.}
+Many reviewers raised the concern
+that using obfuscation for AH-BTR appeared to be an overkill.
+
+We would be thrilled to find a construction based on lighter hammers.
+However, all other attempts till now have failed
+to simultaneously achieve the desired properties ---
+no global set-up,
+robustly correct,
+no bound on recipient list length ---
+except for the na\"ive construction.
+We regard the construction using obfuscation as a good first step ---
+doing so confirms that the notion is plausibly achievable and
+the related notion of broadcast encryption has recently witnessed a great path
+(\cite{C:BonWatZha14} first size-optimal scheme using obfuscation, then
+\cite{EC:AgrYam20,TCC:AgrWicYam20} size-optimal from LWE and pairing, then
+\cite{EC:Wee22} size-optimal from lattices).
+Moreover, this work is not just about construction,
+but also the formalization and
+the complete characterization of Pareto frontier of efficiency.
