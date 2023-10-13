@@ -27,6 +27,19 @@ the obfuscation-based one~\cite{C:BonZha14} do not.
 % However, nowhere else in this paper did I mention the distinction between
 % bounded and unbounded schemes, so I am not mentioning it here either.
 
+\paragraph{Efficiency Parameters.}
+Existing works studying
+BE~\cite{C:FiaNao93,C:BonGenWat05,EC:GenWat09,C:BonWatZha14,EC:AgrYam20,TCC:AgrWicYam20,EPRINT:BraVai20,C:Zhandry20,EC:Wee22}
+and
+its extensions~\cite{PAIRING:DelPaiPoi07,AC:Delerablee07,EPRINT:SakFur07,C:BonZha14}
+have been focused on improving the sizes of various components,
+and the time complexity has been largely overlooked.
+In a rare exception,
+the work of~\cite{PKC:AttLib10}
+reduces the number of pairing operations during decryption down to constant,
+yet the overall decryption time is not among its concerns.
+This work brings the total decryption time into the picture.
+
 \paragraph{Lower Bounds.}
 Previous works~\cite{EC:BluCre94,EC:LubSta98,AC:KYDB98,AFRICACRYPT:AusKre08,AC:KatYer09,C:GayKerWee15,ITC:DLY21} show a few efficiency lower bounds related to ABE and BE,
 yet they only apply to information-theoretically secure primitives and even specific construction techniques.
