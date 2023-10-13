@@ -22,7 +22,7 @@ a list of public keys and an error bound.
 It~outputs an index~${i^\ast\in\{\bot\}\cup[N]}$.%
 \footnote{Considering an index instead of a set of indices
 does not lose currently provable properties.
-The issue with current formalism is that
+The issue with existing formalism is that
 there is no known way to define the ``true'' set of traitors
 (e.g., a user whose secret key is
 revealed to then immediately discarded by the adversary
@@ -32,6 +32,8 @@ hence the security definition cannot require $\Trace$
 to catch all ``true'' traitors.
 Consequently, we can only require it to and prove that it does
 identify at least one traitor.
+Our constructions can be modified to potentially find multiple traitors
+in the usual way~\cite{EC:BonSahWat06}.
 }
 \end{itemize}
 The scheme must be \emph{robustly correct}, i.e., for all
