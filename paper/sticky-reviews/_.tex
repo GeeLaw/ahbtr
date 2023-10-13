@@ -152,7 +152,7 @@ defining GoodDist. This deviates significantly from the formalization \\
 standardized in TT literature.
 }
 
-We have revised the text, currently at the end of page~13,
+We have revised the text, currently around the top of page~14,
 following Definition~\ref{def:tracing-security},
 to explain that KEM style definition is a customary simplification.
 
@@ -263,7 +263,7 @@ how Theorem 14 implies the lower bound.
 }
 
 We have revised the text,
-currently in the middle of page~15,
+currently in the lower half of page~15,
 to explain that mode indistinguishability is only for private traceability
 (we consider public traceability in this work).
 
@@ -324,3 +324,92 @@ We have revised the text,
 currently in the footnotes of pages~6 and~18,
 to explain why we should ignore $\poly(\lambda,\log N)$ factors
 in asymptotic security.
+
+\subsubsection{Traitor Set vs.\ Index.}
+From \underlined{TCC/B}:
+
+\texttt{
+In prior definitions the trace algorithm outputs a "traitor set" \\
+as opposed to a single traitor. It seems like the construction in \\
+the paper would also allow for multiple indices to be output. Is \\
+that the case? If so, is the definition for the trace algorithm \\
+written as such so that the decomposition into the two properties \\
+works out?
+}
+
+We have revised the text,
+currently in the footnotes of pages~13 and~14,
+to clarify that our constructions could indeed output multiple traitors
+but the change in definition is not for the purpose of decomposition.
+
+\subsubsection{Justification of Strong Assumptions.}
+From \underlined{TCC/B}:
+
+\texttt{
+Given that the parameters of the scheme are so close to the naive \\
+ad hoc construction, would it be possible to compress the public \\
+key (to be independent of N) such that the key can be publicly/\\
+verifiably updated non-interactively for parties choosing to join/\\
+leave? This isn't quite compatible with the use of laconic OT in the \\
+current construction, but may provide a justification for using \\
+stronger assumptions.
+}
+
+My previous response:
+
+\texttt{
+I would like to first clarify the statement that "the parameters \\
+of the scheme are so close to the naive ad hoc construction". By the \\
+syntax of AH-BTR, public and secret keys must not depend on the number \\
+of users/recipients, because Gen is poly-time in lambda only, not \\
+the number of users/recipients. Discounting poly(lambda) factors, \\
+the only non-trivial efficiency parameters of AH-BTR are efficiency \\
+(space / time / output length) of Enc and (space / time) Dec. This \\
+work put focus on Dec time and ciphertext length (output length of \\
+Enc).
+}
+
+\texttt{
+The naive construction only achieves Theta(1) decryption time and \\
+Theta(N) ciphertext length. Constructions 1 and 2 achieve Theta(N{\string^}a) \\
+decryption time and Theta(N{\string^}(1-a)) ciphertext length for any constant \\
+0<=a<=1, offering the complete spectrum of trade-offs matching the \\
+lower bound proven in this work.
+}
+
+\texttt{
+Regarding the suggested features of non-interactive public/\\
+verifiable update. They are beyond the fundamental questions studied \\
+in this paper. They can be achieved, though there are two immediate \\
+issues, technical and practical.
+}
+
+\texttt{
+- (Technical, solvable.) Laconic OT compresses ordered sequence \\
+of bits, c.f. ordered list of public keys in current syntax. \\
+Consequently, it appears to require a complete rehashing upon someone \\
+leaving "from the middle". This can be solved by considering laconic \\
+OT for exponentially long but polynomially sparse strings, by placing \\
+public key PK at address indexed by PK upon joining, and clearing \\
+the contents there when PK leaves.
+}
+
+\texttt{
+- (Practical, requires investigation.) AH-BTR, as a decentralized \\
+primitive, is defined to minimize trust. For this reason, every \\
+encryptor must perform their own compression. Consider group messaging \\
+among N people where everyone is both a sender and a recipient, this \\
+means everyone has to keep N copies of compression. A lower bound \\
+similar to Theorem 14 applies to "update time" and "amount of \\
+auxiliary information store beside the compressed public key", so \\
+either updating will be slow or storage will be high. The potential \\
+advantage or trade-off in storage and time requires further \\
+investigation.
+}
+
+\texttt{
+Regarding the use of strong assumptions (FE). It is simply because \\
+the construction in the manuscript is the only successful attempt \\
+till now in achieving all the desired properties --- my intuition \\
+is that the most difficult part is doing it without global set-up.
+}
