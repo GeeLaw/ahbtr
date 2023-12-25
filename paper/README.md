@@ -24,6 +24,17 @@ Two constructions are presented.  The first is based on functional encryption fo
 
 This section is anti-chronological. Reviews are kept in OneNote.
 
+### PKC 2024
+
+- Submission #130
+  - [Version 1](../paper.pdf/pkc24-ver1.pdf): SHA-256 `49e6972d`, 15 Oct 2023 7:29:50pm UTC
+  - [Version 2](../paper.pdf/pkc24-ver2.pdf): SHA-256 `852c3d54`, 15 Oct 2023 7:47:54pm UTC
+- Primary area `ADV`
+- Topics:
+  - Broadcast encryption (reason --- end result on definition, construction)
+  - Identity/Attribute based encryption (reason --- end result on lower bound)
+  - Other PKC-relevant topics (reason --- traitor tracing)
+
 ### TCC 2023
 
 - Submission #118
