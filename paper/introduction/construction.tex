@@ -1,6 +1,6 @@
 \subsubsection{Construction.}
-Our first construction of AH-BTR follows the existing blueprint of traitor tracing schemes from private linear broadcast encryption (PLBE) schemes introduced in~\cite{EC:BonSahWat06}.
-We first define an \ad hoc version of PLBE:%
+Our first construction of AH-BTR adapts the blueprint of  obtaining traitor tracing schemes from private linear broadcast encryption (PLBE) schemes introduced in~\cite{EC:BonSahWat06}.
+We consider \ad hoc PLBE:%
 \footnote{AH-PLBE can be cast as multi-authority attribute-based encryption~\cite{TCC:Chase07} for $1$-local monotone functions without global set-up.}
 \begin{itemize}
 \item Everyone generates their own public and secret key pair~$(\pk,\sk)$.
@@ -15,12 +15,13 @@ Colloquially, the cut-off index~$i_\bot$ disables $\sk_1,\dots,\sk_{i_\bot}$, an
 the only way to detect whether an index is disabled is to have control over the corresponding key pair (by knowing~$\sk$ or generating a malformed~$\pk$).
 When ${i_\bot=N}$, the plaintext should be hidden since all keys are disabled.
 
-Given an AH-PLBE scheme, an AH-BTR scheme can be constructed by adapting the work of~\cite{EC:BonSahWat06}.
-The AH-BTR inherits key generation and decryption algorithms from AH-PLBE.
+An AH-PLBE scheme gives rise to an AH-BTR scheme.
+The AH-BTR inherits the key generation and decryption algorithms from AH-PLBE.
 To perform AH-BTR encryption, simply encrypt using AH-PLBE with ${i_\bot=0}$, disabling no key so that every recipient can decrypt.
-Given a pirate decoder with advantage at least~$\epsilon$, the tracing algorithm computes its advantages with the cut-off index $i_\bot$ being ${0,1},\allowbreak{2,\dots,N}$, and identifies the recipient associated with~$\pk_{i^\ast}$ as a traitor if the advantage changes by $\bigOmega(\epsilon/N)$ when $i_\bot$ increases from $({i^\ast-1})$ to $i^\ast$.
+Given a pirate decoder with advantage at least~$\epsilon$, the tracing algorithm estimates its advantages with the cut-off index $i_\bot$ being ${0,1},\allowbreak{2,\dots,N}$, and identifies the recipient associated with~$\pk_{i^\ast}$ as a traitor if the advantage changes by $\bigOmega(\epsilon/N)$ when $i_\bot$ increases from $({i^\ast-1})$ to $i^\ast$.
 
-The message-hiding property translates to completeness, and index-hiding to soundness.
+For security,
+the message-hiding property translates to completeness, and index-hiding to soundness.
 It now remains to construct an AH-PLBE.
 
 \paragraph{Constructing AH-PLBE.}
