@@ -70,6 +70,37 @@ Notes:
 - `PKC:AttLib10` reduces the number of pairing to constant, but not the total time. (Constant number of pairings is kind of expected, sicne we usually pair across keys and ciphertext, so using associativity, i.e., pair(source group operations) = target group operations(pair), we must be able to make the number of pairings constant. See `LL20b` footnote.)
 - `C:BonZha14` considers some kind of *ad hoc* BE, but its definitions are not on par with us. Syntactically, there is global setup, maximum broadcast set size, and interactive joining (their construction do not use interaction). Correctness-wise, they do not consider adversarial recipients (some joiners use malformed keys). Security-wise, they do not consider adversarial global parameters.
 
+## BTR Schemes
+
+These references are fished from `https://www.cs.utexas.edu/~dwu4/papers/TraceRevoke.pdf` (in this section, `KimWu`). The goal of this section of literature is about prior schemes of BTR per the modern definition (those deemed irrelevant in this section might still be relevant as a related work of this work, due to other reasons).
+
+No combinatorial citations are relevant, with reason in parentheses:
+
+- `C:ChoFiaNao94` (only tracing, not BTR)
+- `C:NaoPin98` (only tracing, not BTR)
+- `StaStiWei01` (title is "Combinatorial properties of frameproof and traceability codes"; a study of some information-theoretical security)
+- `ChoFiaNaoPin00` (revised version of `C:ChoFiaNao94` and `C:NaoPin98`)
+- `C:NaoNaoLot01` (`KimWu` says weaker notion of tracing)
+- `C:HalSha02` (no tracing)
+- `DodFaz02` (title is "Public key broadcast encryption for stateless receivers"; only achieves weak tracing per `KimWu`)
+- `BonNao08` (title is "Traitor tracing with constant size ciphertext"; this has large secret key, does only tracing, but not BTR)
+
+For the algebraic citations, the irrelevant ones:
+
+- `KD98`, `NP00`, `LPSS14`, `KT15`, `NWZ16`, `ABP+17` (only against bounded collusion, according to `KimWu`).
+- `BSW06` (only tracing, not BTR)
+- `GKW18` (only tracing, secret tracing, not BTR)
+
+The relevant ones:
+
+- `BW06` (sqrt-size).
+- `GKSW10` (ePrint 2009/532/20101020:084858 p.9 `Setup` algo. secret key should be `K_(x,y)={... for all i != y, u_i^(sigma_(x,y))}` not `u_y`, and it should be mentioned that `sigma_(x,y)`'s are random values sampled by `Setup` then discarded except as computed into keys), this is the prime-order version of `BW06`. The scheme heavily relies on key correlation and it's not clear how to adapt it to the ad hoc setting like in `KolMalWee23`.
+- `CVW+18a` attribute-based TT (whose functionality includes BTR), only secret tracing; but when applied to BTR for arbitrary recipient set, the scheme is less efficient than (dominated by, so there's no point in doing it) trivial scheme because LWE-based ABE (at that time) requires `|ct|=Omega(|x|)`, where `x` would encode an arbitrary recipient set and hence has size `Omega(N)`.
+- `GVW19` requires positional witness encryption, optimal size, public tracing.
+- `GQWW19` the famous `N^eps` scheme, secret tracing, combining pairing and LWE. It is not clear how this can be applied to AH scenario.
+
+There's also `NWZ16` (obfuscation-based, non-falsifiable) and `AKYY23` (obfustopia, falsifiable, FE + special ABE) and `JLL23` (obfustopia, falsifiable version, just FE).
+
 ## Lower Bounds
 
 From search engine

@@ -27,6 +27,50 @@ the obfuscation-based one~\cite{C:BonZha14} do not.
 % However, nowhere else in this paper did I mention the distinction between
 % bounded and unbounded schemes, so I am not mentioning it here either.
 
+\paragraph{Broadcast, Trace, and Revoke.}
+BTR~\cite{FC:NaoPin00,C:NaoNaoLot01} is also known as
+\emph{broadcast and trace} or \emph{trace and revoke}.
+Non-AH version of BTR supporting \emph{public tracing} with optimal size
+currently is only known from
+functional encryption for general circuits
+(polynomial hardness, same as in this work)~\cite{EC:AKYY23,EC:JaiLinLuo23}
+or witness encryption or obfuscation
+(non-falsifiable assumptions)~\cite{EC:NisWicZha16,PKC:GoyVusWat19}.
+BTR is also known
+from pairing (standard assumption)~\cite{CCS:BonWat06,CCS:GKSW10}
+with $\bigTheta(\sqrt{N})$-size components supporting \emph{public} tracing,
+or from pairing (generic group model)~\cite{C:Zhandry20}
+with various size trade-offs supporting \emph{secret} tracing
+(still $\bigOmega(\sqrt{N})$ when size is balanced across components),
+or from both pairing (standard assumption) and LWE~\cite{C:GQWW19}
+with $\bigO(N^\epsilon)$-size ciphertexts for any constant ${\epsilon>0}$
+but having $\bigOmega(N)$-size keys and only supporting \emph{secret} tracing.
+
+Continuing the discussion of technical challenges in open questions,
+AH-BTR implies BTR supporting \emph{public} tracing
+with the same ciphertext size.
+Therefore, it makes more sense to survey
+the techniques for public-tracing BTR schemes,
+than secret-tracing or non-BTR traitor tracing ones,
+in search of non-obfustopia instantiations.
+Filtered as such,
+the only schemes~\cite{CCS:BonWat06,CCS:GKSW10}
+with non-trivial (i.e., sublinear) ciphertext size
+are pairing-based and
+heavily rely on shared public parameter for key correlation
+(enabling ciphertext compression)
+---
+antithetical to the fully decentralized nature of AH-BTR.
+Even if we cease
+the insistence of having no centrally generated public parameters,
+the only known \ad hoc type of (pairing-based) schemes are
+broadcast encryption~\cite{CCS:WQZD10,KolMalWee23} without tracing,
+which are clever modifications of non-AH BE schemes.
+However, it is unclear
+how such adaptations can be done for~\cite{CCS:BonWat06,CCS:GKSW10}
+or, more generally,
+how AH-BTR can be constructed following any known pairing-based paradigms.
+
 \paragraph{Efficiency Parameters.}
 Existing works studying
 BE~\cite{C:FiaNao93,C:BonGenWat05,EC:GenWat09,C:BonWatZha14,EC:AgrYam20,TCC:AgrWicYam20,EPRINT:BraVai20,C:Zhandry20,EC:Wee22}
