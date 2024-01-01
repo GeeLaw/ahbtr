@@ -31,3 +31,32 @@ shedding new insights into the efficiency of ABE and BE.
 A final addition is that our scheme is \emph{compatible} with the existing public-key encryption schemes,
 i.e., the keys of such a scheme can be those of any secure public-key encryption, and
 there is no need to regenerate keys to take advantage of our scheme.
+
+\subsubsection{More on the Lower Bound.}
+Most works on broadcast encryption have been focused on minimizing component sizes,
+motivating shorter ciphertexts with savings on broadcaster storage and bandwidth.
+Decryption time has been largely neglected.
+% I'd like to say "storage cost is reduced at the cost of social welfare",
+% but it's not formally connected to the concept of "social welfare"
+% in game theory.
+% Note that in contrast, Pareto-optimality is not necessarily game-theoretic,
+% and it is a concept in multi-objective optimization.
+However, by our lower bound, a BE scheme with constant-size ciphertext
+% This "could" is intentional, because this lower bound holds
+% only when the recipient set is around half of the total number of users.
+could force each recipient to spend $\bigOmega(N)$ time on decryption and
+drive the total computational cost to $\bigOmega(N^2)$.
+In contrast, the na{\"i}ve scheme encrypting to recipients individually
+has total cost only $\bigO(N)$ in storage, communication, and computation.
+
+This urges us to \emph{rethink about the goals} of broadcast encryption
+---
+are short component sizes still the ultimate desideratum,
+given the high total cost?
+The lower bound, as an integral part of our results,
+shows that optimizing for one efficiency parameter
+might bring inefficiency in another, and
+calls the question of
+the \emph{trade-offs} among multiple efficiency parameters
+of advanced forms of encryption
+into attention.
