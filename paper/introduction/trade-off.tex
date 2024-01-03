@@ -21,7 +21,9 @@ In existing broadcast encryption (or revocation) schemes~\cite{C:BonGenWat05,AC:
 encrypting to arbitrary subsets of size~$S$ or $({N-S})$ makes ${|\ct|\cdot T_\Dec=\Omega(S)}$.
 It is precisely the capability to encrypt to many ${(N/2)}$-subsets among $N$ users that is the deal breaker, as we shall see in the formal proof.
 Interestingly,
-the adversary used in the proof is simply the decryption algorithm,
+the adversary used in the proof
+simply runs the decryption algorithm with a \emph{non-decrypting} key
+(while \emph{lying} about the recipient set),
 so the bound holds as long as the scheme is not \emph{blatantly} insecure.
 
 We explain the ideas of our proof based on a corollary%
@@ -56,15 +58,19 @@ even if the index of the potentially flipped bit is revealed to the adversary af
 Back to AH-BTR. Imagine that there are $2N$ users in the system, associated with key pairs $(\pk_{j,s},\sk_{j,s})$ for ${j\in[N]}$ and ${s\in\bit}$.
 Consider a ciphertext~$\ct$ encrypting a random plaintext to $\{\pk_{j,R[j]}\}_{j\in[N]}$ for a random string~$R$ and
 regard $\ct$ as the advice.
-Let's try decrypting~$\ct$ using $\sk_{i^\ast,R[i^\ast]}$ for a random ${i^\ast\draws[N]}$.
+Suppose $Y$ is either $R$ itself or $R$ flipped at index ${i^\ast\draws[N]}$.
+Let's try decrypting~$\ct$ using $\sk_{i^\ast,Y[i^\ast]}$
+while \emph{pretending} that $\ct$ is generated for~$Y$.
 Each time the AH-BTR decryption algorithm queries~$\pk_j$,
-we probe $R[j]$ and respond with~$\pk_{j,R[j]}$.
+we probe $Y[j]$ and respond with~$\pk_{j,Y[j]}$.
 By way of contradiction, suppose ${|\ct|\cdot T_\Dec\ll N}$,
-which would translate to the setting of the corollary as ${S=|\ct|}$, ${T\leq T_\Dec}$, and ${ST\ll N}$.
+which would translate to ${ST\ll N}$ in the corollary.
 
-By the correctness of AH-BTR,
+By the correctness of AH-BTR, when $Y$ is $R$ itself,
 the attempted decryption should successfully recover the plaintext.
-From the corollary it follows that flipping $R[i^\ast]$ should also lead to successful recovery.
-But if $R[i^\ast]$ is flipped after $\ct$ is computed,
+From the corollary it follows that the other case
+($Y$ is $R$ flipped at~$i^\ast$)
+should also lead to successful recovery.
+But if ${Y[i^\ast]=\neg R[i^\ast]}$,
 by the security of AH-BTR,
 the attempted decryption must fail to recover the plaintext except for negligible probability, yielding a contradiction.
