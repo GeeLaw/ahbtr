@@ -1,14 +1,17 @@
-\documentclass[
-  layout=6x9,
-  envelope-icons=no,
-  format=eprint
-]{crypto-paper}
+\documentclass[version=submission]{iacrcc}
+
+\input{preamble-iacrcic}
 
 \input{preamble}
 
+\input{title}
+
+% For draft mode.
+\geometry{showframe}
+
 \begin{document}
 
-\input{title}
+\maketitle
 
 \input{abstract}
 
@@ -28,7 +31,7 @@
 
 \input{lower-bound/_}
 
-\LaomianAcknowledgments
+% \input{acknowledgments}
 
 \LaomianBibliography{abbrev3,refs,crypto}
 
