@@ -5,7 +5,7 @@ We consider \ad hoc PLBE:%
 \begin{itemize}
 \item Everyone generates their own public and secret key pair~$(\pk,\sk)$.
 \item Encryption uses a list $\{\pk_j\}_{j\in[N]}$ of $N$~public keys of the recipients as well as a cut-off index~${0\leq i_\bot\leq N}$.
-\item Decryption is possible with~$\sk_j$ if ${j>i_\bot}$.
+\item Decryption is possible with~$\sk_j$ if (and only if) ${j>i_\bot}$.
 \end{itemize}
 There are two security requirements.
 Message-hiding requires that the plaintext is hidden if ${i_\bot=N}$.
