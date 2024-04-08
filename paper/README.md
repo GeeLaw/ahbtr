@@ -24,6 +24,21 @@ Two constructions are presented.  The first is based on functional encryption fo
 
 This section is anti-chronological. Reviews are kept in OneNote.
 
+### Crypto 2024
+
+- Submission #206
+  - [Version 1](../paper.pdf/c24-ver1.pdf): SHA-256 `6906f86b`, 13 Feb 2024 10:03:08am UTC
+- Title `Ad Hoc Broadcast, Trace, and Revoke --- Plus Time-Space Trade-Off for Attribute-Based Encryption`
+- Primary area `Public-key Cryptography with Advanced Functionalities`
+- Topics:
+  - Broadcast Encryption
+  - Functional Encryption (including ABE and (H)IBE)
+  - Lower Bounds, Separations and Impossibility Results
+  - Novel Public-Key Primitives
+- Conflicts of interest
+  - None declared
+  - Neither is any suggested by the submission system
+
 ### PKC 2024
 
 - Submission #130
