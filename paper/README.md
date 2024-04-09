@@ -29,7 +29,7 @@ This section is anti-chronological. Reviews are kept in OneNote.
 - Submission #42
   - [Version 1](../paper.pdf/cic2024-qtr2-ver1.pdf): SHA-256, `0b2cf4ce`, 8 Apr 2024 3:49:12am UTC
   - [Version 2](../paper.pdf/cic2024-qtr2-ver2.pdf): SHA-256 `2787da46`, 8 Apr 2024 7:41:28am UTC
-- Title: `Ad Hoc Broadcast, Trace, and Revoke --- Plus Time-Space Trade-Off for Attribute-Based Encryption`
+- Title: `Ad Hoc Broadcast, Trace, and Revoke --- Plus Time-Space Trade-Offs for Attribute-Based Encryption`
 - Type: original research paper
 - Long paper: yes
 - Primary area: `ADV` (advanced primitives)
