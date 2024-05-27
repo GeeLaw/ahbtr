@@ -87,24 +87,22 @@ Lastly, the algorithm runs and outputs (as the decrypted message)
 This can be verified by inspection.
 
 \subsubsection{Efficiency.}
-By the efficiency of laconic OT,
+By laconic OT efficiency,
+the call to
 $\LOT.\Gen$ takes time ${\poly(\lambda,\log(N+1))}$,
+that to
 $\LOT.\Hash$ takes time ${(N+1)\poly(\lambda,\log(N+1))}$, and
 ${|\hk|,|h|=\poly(\lambda,\log(N+1))}$.
 As we shall see later, it suffices to pad $C_\GC$ to size ${\poly(\lambda,\log(N+1))}$ for the security proofs to go through.
 Putting these together,
 \begin{align*}
-T_\Enc
-\WideNarrow{=}{\!=\!}
+T_\Enc,T_\Dec
+=
 (N+1)\poly(\lambda,\log(N+1)),
-\WideNarrow{\quad}{\,\,\,}
+\qquad
 |\ct|
-\WideNarrow{=}{\!=\!}
-\poly(\lambda,\log(N+1)),
-\WideNarrow{\quad}{\,\,\,}
-T_\Dec
-\WideNarrow{=}{\!=\!}
-(N+1)\poly(\lambda,\log(N+1)).
+=
+\poly(\lambda,\log(N+1)).
 \end{align*}
 In practice and for security reasons,
 we always assume ${N\leq 2^\lambda}$ and ${\log(N+1)}$ is absorbed by~$\lambda$.%
