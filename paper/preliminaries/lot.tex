@@ -7,15 +7,15 @@ A \emph{laconic oblivious transfer (OT) scheme} (with message space~$\bit^\lambd
 \item $\Gen(1^\lambda,{M\in\doubleN})$ takes the database length as input and outputs a hash key~$\hk$.
 \item $\Hash(1^\lambda,\hk,{D\in\bit^M})$ takes as input a hash key and a database.
 It is deterministic,
-runs in time~$\bigO(M)\poly(\lambda,\log M)$, and
-outputs a hash $h$ of length~$\poly(\lambda,\log M)$ and a processed database~$\widehat{D}$.
+runs in time~${(M+1)\poly(\lambda,\log(M+1))}$, and
+outputs a hash $h$ of length~${\poly(\lambda,\log(M+1))}$ and a processed database~$\widehat{D}$.
 \item $\Send(1^\lambda,\hk,h,{m\in[M]},{L_0\in\bit^\lambda},{L_1\in\bit^\lambda})$
 takes as input a hash key, a hash, an index, and two labels (messages).
 It outputs a ciphertext~$\ct$.
 \item $\Recv^{\widehat{D}}(1^\lambda,\hk,h,{m\in[M]},\ct)$
 is given random access to a processed database, and
 takes as input a hash key, a hash, an index, and a ciphertext.
-It runs in time~$\poly(\lambda,\log M)$ and outputs a label (message).
+It runs in time~${\poly(\lambda,\log(M+1))}$ and outputs a label (message).
 \end{itemize}
 The scheme must be \emph{correct}, i.e., for all
 \WideNarrow{${\lambda,M\in\doubleN}$,}{${\lambda\in\doubleN}$, ${M\in\doubleN}$,}

@@ -88,26 +88,26 @@ This can be verified by inspection.
 
 \subsubsection{Efficiency.}
 By the efficiency of laconic OT,
-$\LOT.\Gen$ takes time $\poly(\lambda,\log N)$,
-$\LOT.\Hash$ takes time $\bigO(N)\poly(\lambda,\log N)$, and
-${|\hk|,|h|=\poly(\lambda,\log N)}$.
-As we shall see later, it suffices to pad $C_\GC$ to size $\poly(\lambda,\log N)$ for the security proofs to go through.
+$\LOT.\Gen$ takes time ${\poly(\lambda,\log(N+1))}$,
+$\LOT.\Hash$ takes time ${(N+1)\poly(\lambda,\log(N+1))}$, and
+${|\hk|,|h|=\poly(\lambda,\log(N+1))}$.
+As we shall see later, it suffices to pad $C_\GC$ to size ${\poly(\lambda,\log(N+1))}$ for the security proofs to go through.
 Putting these together,
 \begin{align*}
 T_\Enc
 \WideNarrow{=}{\!=\!}
-\bigO(N)\poly(\lambda,\log N),
+(N+1)\poly(\lambda,\log(N+1)),
 \WideNarrow{\quad}{\,\,\,}
 |\ct|
 \WideNarrow{=}{\!=\!}
-\poly(\lambda,\log N),
+\poly(\lambda,\log(N+1)),
 \WideNarrow{\quad}{\,\,\,}
 T_\Dec
 \WideNarrow{=}{\!=\!}
-\bigO(N)\poly(\lambda,\log N).
+(N+1)\poly(\lambda,\log(N+1)).
 \end{align*}
 In practice and for security reasons,
-we always assume ${N\leq 2^\lambda}$ and ${\log N}$ is absorbed by~$\lambda$.%
+we always assume ${N\leq 2^\lambda}$ and ${\log(N+1)}$ is absorbed by~$\lambda$.%
 \footnote{%
 A scheme can always set the ciphertext to the message itself
 whenever ${N>2^\lambda}$ and
