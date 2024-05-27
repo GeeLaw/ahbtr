@@ -75,6 +75,42 @@ how such adaptations can be done for~\cite{CCS:BonWat06,CCS:GKSW10}
 or, more generally,
 how AH-BTR can be constructed following any known pairing-based paradigms.
 
+\paragraph{Registration-Based (Registered) Encryption.}
+RBE~\cite{TCC:GHMR18,PKC:GHMRS19,C:GoyVus20,IMA:ConEldSma21,CCS:GKMR23,EC:HLWW23,C:FreWatWu23,AC:FioKolPer23,AC:FFMMRV23,AC:ZZGQ23,EC:ZLZGQ24,C:GLWW24}
+is an emerging paradigm to decentralize functional encryption,
+where users generate their own key pairs
+and
+their public keys are aggregated for use during encryption.
+AH-BTR and RBE share similarities in
+motivation and techniques ---
+e.g.,
+typical constructions of both rely on laconic cryptography~\cite{C:CDGGMP17}
+to compress public keys.
+
+We can conceive casting \ad hoc private linear broadcast encryption,
+our building block of AH-BTR,
+as RBE for compare-index-and-reveal,
+yet there is no study of this functionality in the literature.
+Even under this view,
+RBE is not ``ergonomic'' to the usage pattern of AH-BTR
+and
+such reduction may suffer efficiency issues.
+The reason is that RBE requires
+distributing decryption updates
+(public information that, when used with user-generated secret keys,
+helps with decrypting ciphertexts encrypted using the aggregated public key)
+as the public keys are aggregated.
+RBE aggregation corresponds to the choice of recipients in AH-BTR,
+which happens at encryption time.
+Consequently,
+decryption updates from RBE would have to be included in every ciphertext,
+or
+every recipient must redo aggregation.
+Without further investigation,
+it is unclear whether the issue can be resolved.
+In this work,
+we study AH-BTR directly and do not try casting it under RBE.
+
 \paragraph{Efficiency Parameters.}
 Existing works studying
 BE~\cite{C:FiaNao93,C:BonGenWat05,EC:GenWat09,C:BonWatZha14,EC:AgrYam20,TCC:AgrWicYam20,EPRINT:BraVai20,C:Zhandry20,EC:Wee22}
