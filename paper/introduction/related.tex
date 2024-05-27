@@ -45,6 +45,10 @@ with various size trade-offs supporting \emph{secret} tracing
 or from both pairing (standard assumption) and LWE~\cite{C:GQWW19}
 with $\bigO(N^\epsilon)$-size ciphertexts for any constant ${\epsilon>0}$
 but having $\bigOmega(N)$-size keys and only supporting \emph{secret} tracing.
+Regardless of public or secret traceability,
+these schemes generate recipients' decryption keys
+correlated by the master secret key,
+the major downside that AH-BTR intends to address.
 
 Continuing the discussion of technical challenges in open questions,
 AH-BTR implies BTR supporting \emph{public} tracing
