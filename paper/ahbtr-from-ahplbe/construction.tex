@@ -10,7 +10,7 @@ Our AH-BTR works as follows:
 \item $\Enc(\{\pk_j\}_{j\in[N]},\mu)$ runs and outputs
 ${\ct\draws\AHPLBE.\Enc(\{\pk_j\}_{j\in[N]},0,\mu)}$.
 \item $\Dec$ is the same as $\AHPLBE.\Dec$.
-\item $\Trace^\scriptD(\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast})$
+\item $\Trace^\scriptD(\{\pk^\ast_j\}_{j\in[N]}^\sphantom,1^{1/\epsilon^\ast})$
 defines
 % Here, $\epsilon_i$'s are only defined, not computed,
 % hence need not be efficiently computable.
@@ -22,7 +22,7 @@ for ${i\in[0..N]}$,
 \mu_0&{}\draws\bit^\lambda,\quad
 \mu_1\draws\bit^\lambda,\quad
 \beta\draws\bit\\
-\ct&{}\draws\AHPLBE.\Enc(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},i,\mu_\beta)
+\ct&{}\draws\AHPLBE.\Enc(1^\lambda,\{\pk^\ast_j\}_{j\in[N]}^\sphantom,i,\mu_\beta)
 \end{aligned}
 \::\:
 \scriptD(\mu_0,\mu_1,\ct)=\beta

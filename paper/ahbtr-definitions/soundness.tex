@@ -9,11 +9,11 @@ then run $\scriptC(1^\lambda,\pk)$, which outputs
 a (probabilistic) circuit~$\scriptD$,
 some~${N\in\doubleN}$,
 a challenge index~${i_\bot^\ast\in[N]}$,
-a list $\{\pk^\ast_j\}_{j\in[N]\setminus\{i_\bot^\ast\}}$ of public keys, and
+a list $\smash{\{\pk^\ast_j\}_{j\in[N]\setminus\{i_\bot^\ast\}}^\sphantom}$ of public keys, and
 an error bound $1^{1/\epsilon^\ast}$ in unary.
 Let ${\pk^\ast_{i_\bot^\ast}\gets\pk}$ and run
 \begin{align*}
-i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast}).
+i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]}^\sphantom,1^{1/\epsilon^\ast}).
 \end{align*}
 $\scriptC$ \emph{wins} if and only if ${i^\ast=i_\bot^\ast}$
 (the event $\FalsePos$).

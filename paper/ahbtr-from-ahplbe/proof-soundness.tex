@@ -39,13 +39,13 @@ Consider the following efficient adversary~$\scriptA$ against the index-hiding p
 \scriptD,\quad
 N,\quad
 i_\bot^\ast,\quad
-\{\pk^\ast_j\}_{j\in{[N]\setminus{\{i_\bot^\ast\}}}},\quad
+\{\pk^\ast_j\}_{j\in{[N]\setminus{\{i_\bot^\ast\}}}}^\sphantom,\quad
 1^{1/\epsilon^\ast},
 \end{align*}
 and sets ${\pk^\ast_{i_\bot^\ast}\gets\pk}$.
 \item $\scriptA$ runs
 \begin{align*}
-i^\ast\draws\Trace^\scriptD(\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast}),
+i^\ast\draws\Trace^\scriptD(\{\pk^\ast_j\}_{j\in[N]}^\sphantom,1^{1/\epsilon^\ast}),
 \end{align*}
 and aborts if ${i^\ast\neq i_\bot^\ast}$.
 \item $\scriptA$ notes down ${\alpha\in\bit}$ from the above execution of~$\Trace$,
@@ -53,7 +53,7 @@ submits
 \begin{align*}
 N,\quad
 i_\bot^\ast,\quad
-\{\pk^\ast_j\}_{j\in[N]\setminus\{i_\bot^\ast\}}
+\{\pk^\ast_j\}_{j\in[N]\setminus\{i_\bot^\ast\}}^\sphantom
 \end{align*}
 to the index-hiding experiment,
 gets $(\mu,\ct)$ back,
