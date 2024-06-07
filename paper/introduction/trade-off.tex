@@ -6,7 +6,7 @@ Concretely, the laconic OT hash is a Merkle tree, and before performing laconic 
 In contrast, the decryption time of the scheme implied by the na{\"i}ve PLBE is constant in the RAM model, as it only looks at the relevant piece of the underlying PKE ciphertext.
 
 We can trade ciphertext size for decryption time by using the na{\"i}ve PLBE on top of our construction.
-By grouping the recipients into $\Theta(N^{1-\gamma})$ sets of size~$\Theta(N^\gamma)$ and using our basic construction over each set, we obtain a scheme with ciphertext size~$\Theta(N^{1-\gamma})$ and decryption time~$\Theta(N^\gamma)$.
+By grouping the recipients into $\bigTheta(N^{1-\gamma})$ sets of size~$\bigTheta(N^\gamma)$ and using our basic construction over each set, we obtain a scheme with ciphertext size~$\bigTheta(N^{1-\gamma})$ and decryption time~$\bigTheta(N^\gamma)$.
 The core idea of this transformation was formalized as the user expansion compiler~\cite{C:Zhandry20} in the context of traditional traitor tracing.
 
 All the constructions we now know have ${|\ct|\cdot T_\Dec=\bigOmega(N)}$,
@@ -18,7 +18,7 @@ the blame is on the functionality of broadcast encryption (not traitor tracing).
 Indeed, 
 it is possible to make both $|\ct|$ and $T_\Dec$ constant in a traditional traitor tracing scheme~\cite{C:BonZha14}.
 In existing broadcast encryption (or revocation) schemes~\cite{C:BonGenWat05,AC:Delerablee07,EC:GenWat09,C:BonZha14,EC:AgrYam20,TCC:AgrWicYam20,EPRINT:BraVai20} for $N$ users,
-encrypting to arbitrary subsets of size~$S$ or $({N-S})$ makes ${|\ct|\cdot T_\Dec=\Omega(S)}$.
+encrypting to arbitrary subsets of size~$S$ or $({N-S})$ makes ${|\ct|\cdot T_\Dec=\bigOmega(S)}$.
 It is precisely the capability to encrypt to many ${(N/2)}$-subsets among $N$ users that is the deal breaker, as we shall see in the formal proof.
 Interestingly,
 the adversary used in the proof
