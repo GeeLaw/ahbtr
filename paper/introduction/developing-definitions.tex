@@ -1,5 +1,5 @@
 \subsubsection{Developing Definitions.}
-We start with the first principles of \ad hoc traitor tracing.
+We start with the first principles of \ad hoc \underlined{traitor tracing}.
 Syntactically, there should be a key generation algorithm that is run by each user of the system.%
 \footnote{We aim for a scheme without any trusted party, so there should be no global set-up.}
 To encrypt, a list of public keys is used to identify the set of recipients.
@@ -10,7 +10,7 @@ The choice to give random access to these inputs is based on performance concern
 It should be clear that such a scheme would automatically have the functionality of broadcast encryption~\cite{C:FiaNao93}.
 There is no event prior to encryption that ``binds'' the system to a specific, fixed set of possible recipients, and the encryptor is free to use whatever public keys it sees fit.
 Similarly, the encryptor can remove any public key when it encrypts a second ciphertext, i.e., the scheme supports revocation.
-Therefore, the object is named \ad hoc broadcast, trace, and revoke (AH-BTR).
+Therefore, the object is named \ad hoc \underlined{broadcast}, trace, and \underlined{revoke} (AH-BTR)\@.
 
 As usual with broadcast encryption, we do not hide the list of recipients
 and
@@ -44,4 +44,4 @@ It \emph{must find} a traitor as long as the decoder breaks semantic security (i
 
 The issues above must be identified and conceptually resolved (as done here)
 to arrive at suitable definitions
-accurately capturing the decentralized nature of AH-BTR.
+accurately capturing the decentralized nature of AH-BTR\@.

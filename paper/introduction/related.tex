@@ -14,7 +14,7 @@ was studied in several prior/later works.
 % It's an open problem to construct unbounded schemes
 % from pairing with non-trivial storage efficiency.
 Schemes based on
-pairing~\cite{DHMR08,CCS:WQZD10,KolMalWee23} or
+pairing~\cite{DHMR08,CCS:WQZD10,AC:KolMalWee23} or
 % This construction is bounded because its security definition
 % constrains "n" (binary, maximum number of recipients, given to Setup)
 % to be polynomial.
@@ -45,6 +45,10 @@ with various size trade-offs supporting \emph{secret} tracing
 or from both pairing (standard assumption) and LWE~\cite{C:GQWW19}
 with $\bigO(N^\epsilon)$-size ciphertexts for any constant ${\epsilon>0}$
 but having $\bigOmega(N)$-size keys and only supporting \emph{secret} tracing.
+Regardless of public or secret traceability,
+these schemes generate recipients' decryption keys
+correlated by the master secret key,
+the major downside that AH-BTR intends to address.
 
 Continuing the discussion of technical challenges in open questions,
 AH-BTR implies BTR supporting \emph{public} tracing
@@ -60,16 +64,52 @@ are pairing-based and
 heavily rely on shared public parameter for key correlation
 (enabling ciphertext compression)
 ---
-antithetical to the fully decentralized nature of AH-BTR.
+antithetical to the fully decentralized nature of AH-BTR\@.
 Even if we cease
 the insistence of having no centrally generated public parameters,
 the only known \ad hoc type of (pairing-based) schemes are
-broadcast encryption~\cite{CCS:WQZD10,KolMalWee23} without tracing,
+broadcast encryption~\cite{CCS:WQZD10,AC:KolMalWee23} without tracing,
 which are clever modifications of non-AH BE schemes.
 However, it is unclear
 how such adaptations can be done for~\cite{CCS:BonWat06,CCS:GKSW10}
 or, more generally,
 how AH-BTR can be constructed following any known pairing-based paradigms.
+
+\paragraph{Registration-Based (Registered) Encryption.}
+RBE~\cite{TCC:GHMR18,PKC:GHMRS19,C:GoyVus20,IMA:ConEldSma21,CCS:GKMR23,EC:HLWW23,C:FreWatWu23,AC:FioKolPer23,AC:FFMMRV23,AC:ZZGQ23,EC:ZLZGQ24,C:GLWW24}
+is an emerging paradigm to decentralize functional encryption,
+where users generate their own key pairs
+and
+their public keys are aggregated for use during encryption.
+AH-BTR and RBE share similarities in
+motivation and techniques ---
+e.g.,
+typical constructions of both rely on laconic cryptography~\cite{C:CDGGMP17}
+to compress public keys.
+
+We can conceive casting \ad hoc private linear broadcast encryption,
+our building block of AH-BTR,
+as RBE for compare-index-and-reveal,
+yet there is no study of this functionality in the literature.
+Even under this view,
+RBE is not ``ergonomic'' to the usage pattern of AH-BTR
+and
+such reduction may suffer efficiency issues.
+The reason is that RBE requires
+distributing decryption updates
+(public information that, when used with user-generated secret keys,
+helps with decrypting ciphertexts encrypted using the aggregated public key)
+as the public keys are aggregated.
+RBE aggregation corresponds to the choice of recipients in AH-BTR,
+which happens at encryption time.
+Consequently,
+decryption updates from RBE would have to be included in every ciphertext,
+or
+every recipient must redo aggregation.
+Without further investigation,
+it is unclear whether the issue can be resolved.
+In this work,
+we study AH-BTR directly and do not try casting it under RBE\@.
 
 \paragraph{Efficiency Parameters.}
 Existing works studying

@@ -16,15 +16,15 @@ the only way to detect whether an index is disabled is to have control over the 
 When ${i_\bot=N}$, the plaintext should be hidden since all keys are disabled.
 
 An AH-PLBE scheme gives rise to an AH-BTR scheme.
-The AH-BTR inherits the key generation and decryption algorithms from AH-PLBE.
+The AH-BTR inherits the key generation and decryption algorithms from AH-PLBE\@.
 To perform AH-BTR encryption, simply encrypt using AH-PLBE with ${i_\bot=0}$, disabling no key so that every recipient can decrypt.
 Given a pirate decoder with advantage at least~$\epsilon$, the tracing algorithm estimates its advantages with the cut-off index $i_\bot$ being ${0,1},\allowbreak{2,\dots,N}$, and identifies the recipient associated with~$\pk_{i^\ast}$ as a traitor if the advantage changes by $\bigOmega(\epsilon/N)$ when $i_\bot$ increases from $({i^\ast-1})$ to $i^\ast$.
 
 For security,
 the message-hiding property translates to completeness, and index-hiding to soundness.
-It now remains to construct an AH-PLBE.
+It now remains to construct an AH-PLBE\@.
 
-\paragraph{Constructing AH-PLBE.}
+\paragraph{Constructing AH-PLBE\@.}
 It is folklore that any public-key encryption (PKE) scheme can be used to construct a na{\"i}ve PLBE by encrypting individually to each recipient.
 The individual ciphertext that corresponds to a disabled key encrypts garbage instead of the actual plaintext.
 This scheme is also \ad hoc.
@@ -56,10 +56,10 @@ We ignore \emph{fixed} polynomial factors in the security parameter.
 The point is that the size does not grow with $N$, the number of recipients.
 Furthermore, exact dependency on~$\lambda$ is
 only meaningful for concrete security,
-whereas this work focuses on asymptotic security,
-in which scenario one can arbitrarily tune down such dependency by setting
+whereas this work focuses on polynomial security,
+in which scenario one can arbitrarily tune~down such dependency by setting
 ${\lambda'=\lambda^\epsilon}$ for any constant ${\epsilon>0}$,
 where $\lambda'$ is the actual value of the security parameter
-to use for the algorithms without affecting asymptotic security.}
+to use for the algorithms without affecting polynomial security.}
 because
 both the time to garble a PKE encryption circuit and the time of laconic OT encryptions are constant.

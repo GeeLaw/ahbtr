@@ -1,7 +1,7 @@
 \subsubsection{Ingredients of Construction~\ref{con:ahbtr-trade-off}.}
 Let ${\OLD=(\OLD.\Gen,\OLD.\Enc,\OLD.\Dec,\OLD.\Trace)}$ be an AH-BTR scheme and
 $\gamma$ some%
-\footnote{We require that ${N\mapsto\lceil N^\gamma\rceil}$ can be computed in (deterministic) time $\poly(\log N)$.}
+\footnote{We require that ${N\mapsto\lceil N^\gamma\rceil}$ can be computed in (deterministic) time ${\poly(\log(N+1))}$.}
 constant (${0<\gamma<1}$).
 
 \begin{construction}[adapted from {\cite[Theorem~1]{C:Zhandry20}}]\label{con:ahbtr-trade-off}
@@ -63,17 +63,17 @@ i^\ast_{j_1}\neq\bot;\\
 \end{itemize}
 \end{construction}
 
-\subsubsection{Robustness Correctness and Compatibility.}
-These are inherited from the underlying AH-BTR.
+\subsubsection{Robust Correctness and Compatibility.}
+These are inherited from the underlying AH-BTR\@.
 When based on Construction~\ref{con:ahbtr-from-ahplbe},
 the resultant AH-BTR is compatible with the existing public-key encryption schemes.
 
 \subsubsection{Efficiency.}
 Let $\gamma_1,\gamma_2,\gamma_3$ be constants such that the AH-BTR efficiency is
 \begin{align*}
-T_\Enc=\bigO(N^{\gamma_1})\poly(\lambda),\qquad
-|\ct|=\bigO(N^{\gamma_2})\poly(\lambda),\qquad
-T_\Dec=\bigO(N^{\gamma_3})\poly(\lambda),
+T_\Enc=(N+1)^{\gamma_1}\poly(\lambda),\qquad
+|\ct|=(N+1)^{\gamma_2}\poly(\lambda),\qquad
+T_\Dec=(N+1)^{\gamma_3}\poly(\lambda),
 \end{align*}
 then the underlying efficiency is mapped to the resultant efficiency%
 \footnote{We assume that $\OLD.\ct$'s are of deterministic length
@@ -87,7 +87,7 @@ by
 When based on Construction~\ref{con:ahbtr-from-ahplbe},
 the resultant AH-BTR enjoys
 \begin{align*}
-T_\Enc=\bigO(N)\poly(\lambda),\quad
-|\ct|=\bigO(N^{1-\gamma})\poly(\lambda),\quad
-T_\Dec=\bigO(N^\gamma)\poly(\lambda).
+T_\Enc=(N+1)\poly(\lambda),\quad
+|\ct|=(N+1)^{1-\gamma}\poly(\lambda),\quad
+T_\Dec=(N+1)^\gamma\poly(\lambda).
 \end{align*}

@@ -1,6 +1,6 @@
 \begin{definition}[traceability]\label{def:tracing-security}
 An AH-BTR scheme $(\Gen,\Enc,\Dec,\Trace)$ per Definition~\ref{def:ahbtr} is \emph{traceable}
-if all efficient adversary wins $\ExpTrace$ only with negligible probability,
+if all efficient adversaries win $\ExpTrace$ only with negligible probability,
 where $\ExpTrace(1^\lambda)$ with adversary~$\scriptB$ proceeds as follows:
 \begin{itemize}\upshape
 \item\textbf{Setup.}
@@ -23,7 +23,7 @@ Upon this query, remove $t$ from~$S$ and send $\sk_t$ to~$\scriptB$.
 \item\textbf{Challenge.}
 $\scriptB$ outputs a (probabilistic) circuit~$\scriptD$,
 a list $\{\pk^\ast_j\}_{j\in[N]}$ of public keys, and
-an error bound~$1^{1/\epsilon^\ast}$.
+an error bound $1^{1/\epsilon^\ast}$ in unary.
 Run
 \begin{align*}
 i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast}).
@@ -54,7 +54,7 @@ $\scriptB$ \emph{wins} if and only if ${\FalsePos\vee(\GoodDist\wedge\NotFound)}
 \end{definition}
 
 \noindent
-AH-BTR as defined above is KEM, following~\cite{C:Zhandry20}.
+AH-BTR as defined above is a key-encapsulation mechanism, following~\cite{C:Zhandry20}.
 Using hybrid encryption,
 such a scheme can be easily adapted for arbitrarily long messages
 with traceability under adversarially chosen messages.

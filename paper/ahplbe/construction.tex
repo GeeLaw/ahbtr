@@ -3,13 +3,13 @@
 \subsubsection{Ingredients of Construction~\ref{con:ahplbe}.}
 Let
 \begin{itemize}
-\item $\GC=(\GC.\Garble,\GC.\Eval,\GC.\SimGarble)$ be a circuit garbling scheme
-such that $\GC.\Garble$ uses $\lambda$-bit randomness,
-\item $\PPRF=(\PPRF.\Puncture,\PPRF.\Eval)$ a PPRF,
-\item $\PKE=(\PKE.\Gen,\PKE.\Enc,\PKE.\Dec)$ a PKE scheme
-such that $\PKE.\Enc$ uses $\lambda$-bit randomness and
+\item ${\GC=(\GC.\Garble,\GC.\Eval,\GC.\SimGarble)}$ be a circuit garbling scheme
+whose $\GC.\Garble$ uses $\lambda$-bit randomness,
+\item ${\PPRF=(\PPRF.\Puncture,\PPRF.\Eval)}$ a PPRF,
+\item ${\PKE=(\PKE.\Gen,\PKE.\Enc,\PKE.\Dec)}$ a PKE scheme
+whose $\PKE.\Enc$ uses $\lambda$-bit randomness and
 whose public keys are (exactly) of polynomial length~$M_0$,
-\item $\LOT=(\LOT.\Gen,\LOT.\Hash,\LOT.\Send,\LOT.\Recv)$ a laconic OT scheme,
+\item ${\LOT=(\LOT.\Gen,\LOT.\Hash,\LOT.\Send,\LOT.\Recv)}$ a laconic OT scheme,
 \item $\Obf$ an obfuscator.
 \end{itemize}
 
@@ -83,31 +83,29 @@ Lastly, the algorithm runs and outputs (as the decrypted message)
 \end{itemize}
 \end{construction}
 
-\subsubsection{Robustness Correctness.}
-This can be verified by inspection.
+\subsubsection{Robust Correctness.}
+It follows from the correctness of the ingredients.
 
 \subsubsection{Efficiency.}
-By the efficiency of laconic OT,
-$\LOT.\Gen$ takes time $\poly(\lambda,\log N)$,
-$\LOT.\Hash$ takes time $\bigO(N)\poly(\lambda,\log N)$, and
-${|\hk|,|h|=\poly(\lambda,\log N)}$.
-As we shall see later, it suffices to pad $C_\GC$ to size $\poly(\lambda,\log N)$ for the security proofs to go through.
+By laconic OT efficiency,
+the call to
+$\LOT.\Gen$ takes time ${\poly(\lambda,\log(N+1))}$,
+that to
+$\LOT.\Hash$ takes time ${(N+1)\poly(\lambda,\log(N+1))}$, and
+${|\hk|,|h|=\poly(\lambda,\log(N+1))}$.
+As we shall see later, it suffices to pad $C_\GC$ to size ${\poly(\lambda,\log(N+1))}$ for the security proofs to go through.
 Putting these together,
 \begin{align*}
-T_\Enc
-\WideNarrow{=}{\!=\!}
-\bigO(N)\poly(\lambda,\log N),
-\WideNarrow{\quad}{\,\,\,}
+T_\Enc,T_\Dec
+=
+(N+1)\poly(\lambda,\log(N+1)),
+\qquad
 |\ct|
-\WideNarrow{=}{\!=\!}
-\poly(\lambda,\log N),
-\WideNarrow{\quad}{\,\,\,}
-T_\Dec
-\WideNarrow{=}{\!=\!}
-\bigO(N)\poly(\lambda,\log N).
+=
+\poly(\lambda,\log(N+1)).
 \end{align*}
 In practice and for security reasons,
-we always assume ${N\leq 2^\lambda}$ and ${\log N}$ is absorbed by~$\lambda$.%
+we always assume ${N\leq 2^\lambda}$ and ${\log(N+1)}$ is absorbed by~$\lambda$.%
 \footnote{%
 A scheme can always set the ciphertext to the message itself
 whenever ${N>2^\lambda}$ and

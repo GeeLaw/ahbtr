@@ -34,13 +34,6 @@ This ensures that the superscript "+" is properly italicized.
   doi =          "10.1007/978-3-031-06944-4_23",
 }
 
-@unpublished{GonLuoWee,
-  author = {Junqing Gong and Ji Luo and Hoeteck Wee},
-  title = {Personal communication},
-  month = jul,
-  year = 2021
-}
-
 @inproceedings{DRM:KiaYun01,
   author = {Kiayias, Aggelos and Yung, Moti},
   title = {On Crafty Pirates and Foxy Tracers},
@@ -100,31 +93,33 @@ Parsing {\egroup\bgroup\itshape\bgroup A}d-Hoc{\egroup}
   doi =		{10.4230/LIPIcs.ITC.2021.10}
 }
 
-% This is currently ePrint (not included in crypto.bib yet).
+The following are not yet in crypto.bib.
 
-@Misc{KolMalWee23,
-  author = {Dimitris Kolonelos and Giulio Malavolta and Hoetekc Wee},
-  title = {Distributed Broadcast Encryption from Bilinear Groups},
-  pages =        "3--32",
-  editor =       asiacrypt23ed,
-  booktitle =    asiacryptname # "~2023, Part~V",
-  volume =       "14442",
-  address =      asiacrypt23addr,
-  month =        asiacrypt23month,
-  publisher =    asiacryptpub,
-  series =       mylncs,
-  year =         2023,
-  doi =          "10.1007/978-981-99-8733-7_13",
+@string{ ec24ed = "Marc Joye and Gregor Leander" }
+@string{ ec24name2 = eurocrypt24name2 }
+@string{ ec24vol2 = "14652" }
+@string{ ec24addr = "" }
+@string{ ec24month = may }
+
+@InProceedings{EC:ZLZGQ24,
+  author =  {Ziqi Zhu and Jiangtao Li and Kai Zhang and Junqing Gong and Haifeng Qian},
+  title = {Registered Functional Encryptions from Pairings},
+  pages = {373--402},
+  editor = ec24ed,
+  booktitle = ec24name2,
+  volume = ec24vol2,
+  address = ec24addr,
+  month = ec24month,
+  publisher = eurocryptpub,
+  series = mylncs,
+  year = 2024,
+  doi = {10.1007/978-3-031-58723-8_13},
 }
 
-% The proceedings are not out yet.
-
-@Misc{C:FreWatWu23,
-  author =       "Cody Freitag and
-                  Brent Waters and
-                  David J. Wu",
-  title =        "How to Use (Plain) Witness Encryption: Registered {ABE}, Flexible Broadcast, and More",
-  year =         2023,
-  howpublished = "Cryptology ePrint Archive, Report 2023/812",
-  note =         "\url{https://eprint.iacr.org/2023/812}",
+@Misc{C:GLWW24,
+  author = {Rachit Garg and George Lu and Brent Waters and David J. Wu},
+  title = {Reducing the {CRS} Size in Registered {ABE} Systems},
+  year = 2024,
+  howpublished = {Cryptology ePrint Archive, Report 2024/749},
+  note = {To appear at Crypto 2024, available at \url{https://eprint.iacr.org/2024/749}},
 }
