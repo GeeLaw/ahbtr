@@ -40,7 +40,7 @@ We only need database-selective security~\cite{TCC:AnaLom18}.
 The following indistinguishability-based definition is equivalent to the usual simulation-based formulation.
 
 \begin{definition}[laconic OT security~\cite{C:CDGGMP17,TCC:AnaLom18,C:KNTY19}]\label{def:lot-security}
-A laconic OT scheme $(\Gen,\Hash,\allowbreak\Send,\Recv)$ per Definition~\ref{def:lot} is \emph{database-selectively sender-private} (or \emph{secure} for the purpose of this work) if ${\ExpLOT{0}\approx\ExpLOT{1}}$, where $\ExpLOT{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
+A laconic OT scheme $(\Gen,\allowbreak\Hash,\allowbreak\Send,\allowbreak\Recv)$ per Definition~\ref{def:lot} is \emph{database-selectively sender-private} (or \emph{secure} for the purpose of this work) if ${\ExpLOT{0}\approx\ExpLOT{1}}$, where $\ExpLOT{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
 \begin{itemize}\upshape
 \item\textbf{Setup.}
 Launch $\scriptA(1^\lambda)$ and
