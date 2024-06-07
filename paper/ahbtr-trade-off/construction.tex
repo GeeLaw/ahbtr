@@ -28,12 +28,12 @@ The algorithm runs and outputs
 \OLD.\Dec^{\{\pk_j\}_{(i_1-1)N_2<j\leq i_1N_2},\OLD.\ct_{i_1}}
 (N_2',i-(i_1-1)N_2,\sk_i).
 \end{align*}
-\item $\Trace^\scriptD(\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast})$ sets
+\item $\Trace^\scriptD(\{\pk^\ast_j\}_{j\in[N]}^\sphantom,1^{1/\epsilon^\ast})$ sets
 ${N_1=\lceil N^\gamma\rceil}$ and
 ${N_2=\lceil N/N_1\rceil}$.
 It runs
 \begin{align*}
-i^\ast_{j_1}\draws\OLD.\Trace^{\scriptD_{j_1}}(\{\pk^\ast_j\}_{(j_1-1)N_2<j\leq j_1N_2},1^{N_1/\epsilon^\ast})
+i^\ast_{j_1}\draws\OLD.\Trace^{\scriptD_{j_1}}(\{\pk^\ast_j\}_{(j_1-1)N_2<j\leq j_1N_2}^\sphantom,1^{N_1/\epsilon^\ast})
 \qquad\textup{for }j_1\in[N_1],
 \end{align*}
 where
@@ -43,10 +43,10 @@ $\scriptD(\mu_0,\mu_1,\{\OLD.\ct_{j_1'}\}_{j_1'\in[N_1]})$
 with
 \begin{align*}
 \OLD.\ct_{j_1'}\begin{cases}
-\draws\OLD.\Enc(\{\pk^\ast_j\}_{(j_1'-1)N_2<j\leq j_1'N_2},\mu_0),&
+\draws\OLD.\Enc(\{\pk^\ast_j\}_{(j_1'-1)N_2<j\leq j_1'N_2}^\sphantom,\mu_0),&
 \textup{if }j_1'<j_1;\\
 \gets\OLD.\ct^\ast,&\textup{if }j_1'=j_1;\\
-\draws\OLD.\Enc(\{\pk^\ast_j\}_{(j_1'-1)N_2<j\leq j_1'N_2},\mu_1),&
+\draws\OLD.\Enc(\{\pk^\ast_j\}_{(j_1'-1)N_2<j\leq j_1'N_2}^\sphantom,\mu_1),&
 \textup{if }j_1'>j_1.
 \end{cases}
 \end{align*}
@@ -54,7 +54,7 @@ The algorithm outputs
 \begin{align*}
 \begin{cases}
 (j_1-1)N_2+i^\ast_{j_1},&\textup{if }
-i^\ast_{j_1'}=\bot\textup{ for all }j_1'<j_1
+i^\ast_{j_1'}=\bot\textup{ for all }j_1'<j_1^\sphantom
 \textup{ and }
 i^\ast_{j_1}\neq\bot;\\
 \bot,&\textup{if }i^\ast_{j_1'}=\bot\textup{ for all }j_1'\in[N_1].

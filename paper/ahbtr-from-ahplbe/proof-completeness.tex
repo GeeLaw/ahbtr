@@ -91,13 +91,13 @@ Consider the following efficient adversary~$\scriptA$ against the message-hiding
 \item $\scriptA$ runs $\scriptC$ to obtain
 \begin{align*}
 \scriptD,\quad
-\{\pk^\ast_j\}_{j\in[N]},\quad
+\{\pk^\ast_j\}_{j\in[N]}^\sphantom,\quad
 1^{1/\epsilon^\ast}.
 \end{align*}
 \item $\scriptA$ runs $\scriptE_N$ once and
 notes down ${\alpha\in\bit}$ indicating whether $E_N$ happened,
 i.e., ${\alpha=1}$ if and only if $\scriptD$ guessed correctly in the trial.
-\item $\scriptA$ submits $\{\pk^\ast_j\}_{j\in[N]}$ to the message-hiding experiment, receives $(\mu_0,\mu_1,\ct)$ back, and
+\item $\scriptA$ submits $\{\pk^\ast_j\}_{j\in[N]}^\sphantom$ to the message-hiding experiment, receives $(\mu_0,\mu_1,\ct)$ back, and
 runs and outputs ${b'\draws\scriptD(\mu_0,\mu_1,\ct)\oplus\alpha}$.
 % This ``sign correction'', producing ``the wrong guess'',
 % is sadly correct (making the advantage non-negative).

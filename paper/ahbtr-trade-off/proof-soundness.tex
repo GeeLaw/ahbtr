@@ -9,7 +9,7 @@ Consider the following efficient adversary $\scriptC_\OLD$ against the soundness
 \scriptD,\quad
 N,\quad
 i^\ast_\bot,\quad
-\{\pk^\ast_j\}_{j\in{[N]\setminus\{i^\ast_\bot\}}},\quad
+\{\pk^\ast_j\}_{j\in{[N]\setminus\{i^\ast_\bot\}}}^\sphantom,\quad
 1^{1/\epsilon^\ast}.
 \end{align*}
 It computes $N_1,N_2$ as specified by the resultant scheme.
@@ -23,7 +23,7 @@ and outputs
 &{}\min{\{N_2,N-(j^\ast_1-1)N_2\}},\quad
 i^\ast_\bot-(j^\ast_1-1)N_2,
 \WideNarrow{\quad}{\\&}
-\{\pk^\ast_j\}_{(j^\ast_1-1)N_2<j\leq j^\ast_1N_2,\,j\neq i^\ast_\bot},\quad
+\{\pk^\ast_j\}_{(j^\ast_1-1)N_2^\sphantom<j\leq j^\ast_1N_2^\sphantom,\,j\neq i^\ast_\bot}^\sphantom,\quad
 1^{N_1/\epsilon^\ast}.
 \end{align*}
 \end{itemize}

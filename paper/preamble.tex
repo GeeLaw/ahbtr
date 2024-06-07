@@ -10,12 +10,14 @@
 \def\authorpdfJiLuo{Ji Luo}
 }
 
+\def\sphantom{{\vphantom-}}
+
 \long\defcallout\luoji{Ji}
 
 \def\ad hoc{\textit{ad hoc}}
 \def\Ad #1oc{\textit{Ad #1oc}}
 
-\def\mathsfi#1{\smash{\mathsf{#1}}\vphantom{i}}
+\def\mathsfi#1{\smash{\mathsf{#1}}\vphantom-}
 \def\defmathsfi#1{\expandafter\def\csname #1\endcsname{{\mathsfi{#1}}}}
 
 % generic

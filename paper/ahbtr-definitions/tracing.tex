@@ -22,15 +22,15 @@ Upon this query, remove $t$ from~$S$ and send $\sk_t$ to~$\scriptB$.
 \end{itemize}
 \item\textbf{Challenge.}
 $\scriptB$ outputs a (probabilistic) circuit~$\scriptD$,
-a list $\{\pk^\ast_j\}_{j\in[N]}$ of public keys, and
+a list $\{\pk^\ast_j\}_{j\in[N]}^\sphantom$ of public keys, and
 an error bound $1^{1/\epsilon^\ast}$ in unary.
 Run
 \begin{align*}
-i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},1^{1/\epsilon^\ast}).
+i^\ast\draws\Trace^\scriptD(1^\lambda,\{\pk^\ast_j\}_{j\in[N]}^\sphantom,1^{1/\epsilon^\ast}).
 \end{align*}
 Let
 \begin{itemize}
-\item $\FalsePos$ be the event that ${i^\ast\in[N]}$ and ${\pk^\ast_{i^\ast}=\pk_s}$ for some ${s\in S}$,
+\item $\FalsePos$ be the event that ${i^\ast\in[N]}$ and ${\pk^\ast_{i^\ast}=\pk_s^\sphantom}$ for some ${s\in S}$,
 \item $\GoodDist$ the event that
 \begin{align*}
 \left|\Pr\left[
@@ -38,7 +38,7 @@ Let
 \mu_0&{}\draws\bit^\lambda,\qquad
 \mu_1\draws\bit^\lambda\\
 \beta&{}\draws\bit\\
-\ct&{}\draws\Enc(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},\mu_\beta)
+\ct&{}\draws\Enc(1^\lambda,\{\pk^\ast_j\}_{j\in[N]}^\sphantom,\mu_\beta)
 \end{aligned}
 \::\:
 \scriptD(\mu_0,\mu_1,\ct)=\beta

@@ -5,12 +5,12 @@ where $\ExpMH{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
 \begin{itemize}\upshape
 \item\textbf{Challenge.}
 Launch $\scriptA(1^\lambda)$ and
-receive from it a list~$\{\pk^\ast_j\}_{j\in[N]}$ of public keys.
+receive from it a list~$\{\pk^\ast_j\}_{j\in[N]}^\sphantom$ of public keys.
 Run
 \begin{align*}
 \mu_0\draws\bit^\lambda,\quad
 \mu_1\draws\bit^\lambda,\qquad
-\ct\draws\Enc(1^\lambda,\{\pk^\ast_j\}_{j\in[N]},N,\mu_b),
+\ct\draws\Enc(1^\lambda,\{\pk^\ast_j\}_{j\in[N]}^\sphantom,N,\mu_b),
 \end{align*}
 and send $(\mu_0,\mu_1,\ct)$ to~$\scriptA$.
 \item\textbf{Guess.}
