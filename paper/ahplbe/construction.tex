@@ -13,10 +13,6 @@ its public keys are (exactly) of polynomial length~$M_0$,
 \item $\Obf$ an obfuscator.
 \end{itemize}
 
-\begin{figure}
-\input{ahplbe/figures/circuit-create-gc}
-\end{figure}
-
 \begin{construction}[AH-PLBE]\label{con:ahplbe}
 Our AH-PLBE works as follows:
 \begin{itemize}
@@ -46,6 +42,11 @@ N,\hk,h,i_\bot,\mu_\bot,\mu,
 k^\GC,k^\PKE,\{k^\LOT_{m_0}\}_{m_0\in[M_0]}]).
 \end{align*}
 The algorithm outputs ${\ct=(\hk,\widetilde{C}_\GC)}$ as the ciphertext.
+
+\begin{figure}[!t]
+\input{ahplbe/figures/circuit-create-gc}
+\end{figure}
+
 \item $\Dec^{\{\pk_j\}_{j\in[N]},\ct}(N,i,\sk_i)$
 first parses ${\ct=(\hk,\widetilde{C}_\GC)}$ and recomputes
 \begin{align*}
