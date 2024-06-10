@@ -91,7 +91,9 @@ By laconic OT efficiency,
 the call to
 $\LOT.\Gen$ takes time ${\poly(\lambda,\log(N+1))}$,
 that to
-$\LOT.\Hash$ takes time ${(N+1)\poly(\lambda,\log(N+1))}$, and
+% The extra "{}" around "+" are intentional to shrink the width
+% so that there is no horizontal overflow.
+$\LOT.\Hash$ takes time ${(N{+}1)\poly(\lambda,\log(N{+}1))}$, and
 ${|\hk|,|h|=\poly(\lambda,\log(N+1))}$.
 As we shall see later, it suffices to pad $C_\GC$ to size ${\poly(\lambda,\log(N+1))}$ for the security proofs to go through.
 Putting these together,
