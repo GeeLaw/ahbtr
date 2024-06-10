@@ -196,7 +196,17 @@
   % IACR CiC sets \bibliographystyle{alphaurl} and forbids further calls.
   % \bibliographystyle{alpha}%
   % \laomian@tableofcontents@bib@begin
+  \let\laomian@old@section\section
+  \def\section{\@ifstar{\laomian@bib@section}{\laomian@bib@section}}%
+  \def\laomian@bib@section##1{%
+    \let\section\laomian@old@section
+    \let\laomian@bib@section\laomian@undefined
+    \section*{##1\Hy@raisedlink{\hypertarget{references}{}}}%
+  }%
   \bibliography{#1}%
+  \let\section\laomian@old@section
+  \let\laomian@old@section\laomian@undefined
+  \let\laomian@bib@section\laomian@undefined
   % \laomian@tableofcontents@bib@end
 }
 
