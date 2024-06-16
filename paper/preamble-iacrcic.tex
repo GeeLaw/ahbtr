@@ -71,7 +71,7 @@
 \RequirePackage{afterpage}
 \RequirePackage[normalem]{ulem}
 \RequirePackage[outline]{contour}
-% \RequirePackage{lastpage}
+\RequirePackage{lastpage}
 
 % \let\proof\laomian@undefined
 % \let\endproof\laomian@undefined
@@ -196,17 +196,7 @@
   % IACR CiC sets \bibliographystyle{alphaurl} and forbids further calls.
   % \bibliographystyle{alpha}%
   % \laomian@tableofcontents@bib@begin
-  \let\laomian@old@section\section
-  \def\section{\@ifstar{\laomian@bib@section}{\laomian@bib@section}}%
-  \def\laomian@bib@section##1{%
-    \let\section\laomian@old@section
-    \let\laomian@bib@section\laomian@undefined
-    \section*{##1\Hy@raisedlink{\hypertarget{references}{}}}%
-  }%
   \bibliography{#1}%
-  \let\section\laomian@old@section
-  \let\laomian@old@section\laomian@undefined
-  \let\laomian@bib@section\laomian@undefined
   % \laomian@tableofcontents@bib@end
 }
 
@@ -265,107 +255,9 @@
 
 % -------------------- theorems begin --------------------
 
-% Consistent with IACR CiC,
-% do not apply theorem heading fonts to theorem notes.
-\def\laomian@thethmnotefont{\the\thm@notefont}
-
-\def\thmhead@plain#1#2#3{%
-  \thmname{#1}\thmnumber{\@ifnotempty{#1}{ }\relax{#2}}%
-  \thmnote{ {\laomian@thethmnotefont(#3)}}%
-}
-\let\thmhead\thmhead@plain
-
-% Undefine these theorem environments as well as the counters.
-% They are redefined later.
-\def\laomian@undefine@theorem#1{%
-  \expandafter\let\csname #1\endcsname\laomian@undefined
-  \expandafter\let\csname end#1\endcsname\laomian@undefined
-  \expandafter\let\csname c@#1\endcsname\laomian@undefined
-}
-
-\laomian@undefine@theorem{assumption}
-\laomian@undefine@theorem{claim}
-\laomian@undefine@theorem{conjecture}
-\laomian@undefine@theorem{construction}
-\laomian@undefine@theorem{corollary}
-\laomian@undefine@theorem{definition}
-\laomian@undefine@theorem{lemma}
-\laomian@undefine@theorem{proof}
-\laomian@undefine@theorem{proposition}
-\laomian@undefine@theorem{question}
-\laomian@undefine@theorem{remark}
-\laomian@undefine@theorem{theorem}
-
-% Undefine these theorem environments but keep the counters.
-% They are not redefined later.
-% Their counters are reset by LNCS and must not be undefined.
-\def\laomian@undefine@theorem#1{%
-  \expandafter\let\csname #1\endcsname\laomian@undefined
-  \expandafter\let\csname end#1\endcsname\laomian@undefined
-}
-
-\laomian@undefine@theorem{case}
-\laomian@undefine@theorem{example}
-\laomian@undefine@theorem{exercise}
-\laomian@undefine@theorem{note}
-\laomian@undefine@theorem{problem}
-\laomian@undefine@theorem{property}
-\laomian@undefine@theorem{solution}
-
-\let\laomian@undefine@theorem\laomian@undefined
-
-% Modified from amsthm.sty:
-\def\th@remark{%
-  \thm@headfont{\itshape}%
-  \normalfont % body font
-  % Use normal spacing.
-  % \thm@preskip\topsep \divide\thm@preskip\tw@
-  % \thm@postskip\thm@preskip
-}
-
-\theoremstyle{remark}
-\newtheorem{remark}{Remark}
-\newtheorem*{remarks}{Remarks}
-
-\newtheorem*{laomian@proof}{Proof}
-\def\proof{\begingroup\pushQED{\qed}\begin{laomian@proof}}
-\def\endproof{\popQED\end{laomian@proof}\endgroup}
-
-\newtheorem*{laomian@proof@sketch}{Proof Sketch}
-\def\proofsketch{\begingroup\pushQED{\qed}\begin{laomian@proof@sketch}}
-\def\endproofsketch{\popQED\end{laomian@proof@sketch}\endgroup}
+% IACR CiC handles this.
 
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}
-\newtheorem{question}{Question}
-
-\theoremstyle{plain}
-\newtheorem{conjecture}{Conjecture}
-\newtheorem{corollary}{Corollary}
-\newtheorem{claim}{Claim}
-\newtheorem{lemma}{Lemma}
-\newtheorem{proposition}{Proposition}
-\newtheorem{theorem}{Theorem}
-
-% Make these theorem environments share the same counter.
-\let\c@corollary\c@theorem
-\let\c@claim\c@theorem
-\let\c@lemma\c@theorem
-\let\c@proposition\c@theorem
-
-\newtheorem*{laomian@restated}{\laomian@restated@name}
-\def\restated#1{%
-  \begingroup
-  \def\laomian@restated@name{#1}%
-  \begin{laomian@restated}%
-}
-\def\endrestated{%
-  \end{laomian@restated}%
-  \endgroup
-}
-
-\theoremstyle{definition}
-\newtheorem{assumption}{Assumption}
 \newtheorem{construction}{Construction}
 
 % -------------------- theorems   end --------------------

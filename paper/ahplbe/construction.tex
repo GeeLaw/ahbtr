@@ -4,14 +4,18 @@
 Let
 \begin{itemize}
 \item ${\GC=(\GC.\Garble,\GC.\Eval,\GC.\SimGarble)}$ be a circuit garbling scheme
-such that its $\GC.\Garble$ uses $\lambda$-bit randomness,
+whose $\GC.\Garble$ uses $\lambda$-bit randomness,
 \item ${\PPRF=(\PPRF.\Puncture,\PPRF.\Eval)}$ a PPRF,
 \item ${\PKE=(\PKE.\Gen,\PKE.\Enc,\PKE.\Dec)}$ a PKE scheme
-such that its $\PKE.\Enc$ uses $\lambda$-bit randomness and
-its public keys are (exactly) of polynomial length~$M_0$,
+whose $\PKE.\Enc$ uses $\lambda$-bit randomness and
+whose public keys are (exactly) of polynomial length~$M_0$,
 \item ${\LOT=(\LOT.\Gen,\LOT.\Hash,\LOT.\Send,\LOT.\Recv)}$ a laconic OT scheme,
 \item $\Obf$ an obfuscator.
 \end{itemize}
+
+\begin{figure}
+\input{ahplbe/figures/circuit-create-gc}
+\end{figure}
 
 \begin{construction}[AH-PLBE]\label{con:ahplbe}
 Our AH-PLBE works as follows:
@@ -42,11 +46,6 @@ N,\hk,h,i_\bot,\mu_\bot,\mu,
 k^\GC,k^\PKE,\{k^\LOT_{m_0}\}_{m_0\in[M_0]}]).
 \end{align*}
 The algorithm outputs ${\ct=(\hk,\widetilde{C}_\GC)}$ as the ciphertext.
-
-\begin{figure}[!t]
-\input{ahplbe/figures/circuit-create-gc}
-\end{figure}
-
 \item $\Dec^{\{\pk_j\}_{j\in[N]},\ct}(N,i,\sk_i)$
 first parses ${\ct=(\hk,\widetilde{C}_\GC)}$ and recomputes
 \begin{align*}
@@ -92,9 +91,7 @@ By laconic OT efficiency,
 the call to
 $\LOT.\Gen$ takes time ${\poly(\lambda,\log(N+1))}$,
 that to
-% The extra "{}" around "+" are intentional to shrink the width
-% so that there is no horizontal overflow.
-$\LOT.\Hash$ takes time ${(N{+}1)\poly(\lambda,\log(N{+}1))}$, and
+$\LOT.\Hash$ takes time ${(N+1)\poly(\lambda,\log(N+1))}$, and
 ${|\hk|,|h|=\poly(\lambda,\log(N+1))}$.
 As we shall see later, it suffices to pad $C_\GC$ to size ${\poly(\lambda,\log(N+1))}$ for the security proofs to go through.
 Putting these together,
