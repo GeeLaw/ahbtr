@@ -12,7 +12,6 @@
 *.pdf
 *.synctex.gz
 *.toc
-*.meta
 
 # ansi2html.sh is LGPLv2-licensed on which I am not an expert.
 # Also, it is just a developer tool, not needed to typeset the document.
