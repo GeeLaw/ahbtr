@@ -68,7 +68,8 @@ z_\Enc:\textup{randomness for }&\Enc\\
 \rule[1em]{0pt}{0pt}
 F(z,R)
 \hspace*{-5em}&\hspace*{5em}
-{}=0^{S-|\ct|-1}\concat 1\concat\ct\textup{,\quad where }
+{}=0^{S-|\ct|-1}\concat 1\concat\ct,\qquad
+\textup{where}\quad
 \ct\gets\Enc(\mpk,R,\mu;z_\Enc).
 \end{align*}
 Let $G$ be the function guaranteed by Lemma~\ref{lem:ai-rom} and make
@@ -117,7 +118,8 @@ From Lemma~\ref{lem:ai-rom},
 \end{align*}
 Here, the second inequality is obtained by applying the lemma to
 \begin{align*}
-\scriptC^Y(z,f)=\scriptB^{Y'}(z,f;i^\ast)\textup{,\qquad where }
+\scriptC^Y(z,f)=\scriptB^{Y'}(z,f;i^\ast),\qquad
+\textup{where}\quad
 i^\ast\draws[N],\quad
 Y'[j]\begin{cases}
 =Y[j],&\textup{if }j\neq i^\ast;\\
