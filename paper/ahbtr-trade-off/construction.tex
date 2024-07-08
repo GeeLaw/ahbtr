@@ -21,8 +21,10 @@ The algorithm outputs ${\ct=\{\OLD.\ct_{j_1}\}_{j_1\in[N_1]}}$.
 ${N_1=\lceil N^\gamma\rceil}$\WideNarrow{,}{ and}
 ${N_2=\lceil N/N_1\rceil}$.
 It parses $\ct$ as $\{\OLD.\ct_{j_1}\}_{j_1\in[N_1]}$,
-finds ${i_1\in[N_1]}$ such that ${(i_1-1)N_2<i\leq i_1N_2}$, and
-sets ${N_2'=\min{\{N_2,N-(i_1-1)N_2\}}}$.
+% The parentheses around "-" are intentional
+% for reducing the space to avoid overfull \hbox.
+finds ${i_1\in[N_1]}$ such that ${(i_1{-}1)N_2<i\leq i_1N_2}$, and
+sets ${N_2'=\min{\{N_2,N-(i_1{-}1)N_2\}}}$.
 The algorithm runs and outputs
 \begin{align*}
 \OLD.\Dec^{\{\pk_j\}_{(i_1-1)N_2<j\leq i_1N_2},\OLD.\ct_{i_1}}

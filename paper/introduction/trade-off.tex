@@ -9,7 +9,7 @@ We can trade ciphertext size for decryption time by using the na{\"i}ve PLBE on 
 By grouping the recipients into $\bigTheta(N^{1-\gamma})$ sets of size~$\bigTheta(N^\gamma)$ and using our basic construction over each set, we obtain a scheme with ciphertext size~$\bigTheta(N^{1-\gamma})$ and decryption time~$\bigTheta(N^\gamma)$.
 The core idea of this transformation was formalized as the user expansion compiler~\cite{C:Zhandry20} in the context of traditional traitor tracing.
 
-All the constructions we now know have ${|\ct|\cdot T_\Dec=\bigOmega(N)}$,
+All the constructions we now know suffer from ${|\ct|\cdot T_\Dec=\bigOmega(N)}$,
 where $|\ct|$ is the ciphertext length and $T_\Dec$ is the decryption time.
 It turns out that this bound necessarily holds for all secure AH-BTR, and
 the blame is on the functionality of broadcast encryption (not traitor tracing).
