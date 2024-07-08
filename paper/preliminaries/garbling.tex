@@ -2,7 +2,7 @@
 The following version of partially hiding garbling~\cite{ICALP:IshWee14} suffices for the purpose of this work.
 
 \begin{definition}[garbled circuit~\cite{FOCS:Yao86,JC:LinPin09,CCS:BelHoaRog12,ICALP:IshWee14}]\label{def:gc}
-A \emph{circuit garbling scheme} consists of 2 efficient algorithms:
+A \emph{circuit garbling scheme} consists of 2 efficient algorithms.
 \begin{itemize}
 \item $\Garble(1^\lambda,C,w)$
 takes as input a circuit ${C:\bit^{n+M_0}\to\bit^{n'}}$ and some hardwired input ${w\in\bit^n}$.
@@ -41,7 +41,7 @@ A \emph{simulator} is an efficient algorithm
 \end{align*}
 taking as input a circuit, a non-hardwired input, and a circuit output,
 and producing a simulated garbled circuit and $M_0$~simulated labels.
-The scheme is \emph{$w$-hiding} (or \emph{secure} for the purpose of this work) if there exists a simulator $\SimGarble$ such that ${\ExpGC{0}\approx\ExpGC{1}}$, where $\ExpGC{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
+The scheme is \emph{$w$-hiding} (or \emph{secure} for the purpose of this work) if there exists a simulator $\SimGarble$ such that ${\ExpGC{0}\approx\ExpGC{1}}$, where $\ExpGC{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows.
 \begin{itemize}\upshape
 \item\textbf{Challenge.}
 Launch $\scriptA(1^\lambda)$ and receive

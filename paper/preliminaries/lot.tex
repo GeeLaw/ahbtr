@@ -2,7 +2,7 @@
 We rely on laconic oblivious transfer~\cite{C:CDGGMP17}.
 
 \begin{definition}[laconic OT~\cite{C:CDGGMP17}]\label{def:lot}
-A \emph{laconic oblivious transfer (OT) scheme} (with message space~$\bit^\lambda$) consists of 4 efficient algorithms:
+A \emph{laconic oblivious transfer (OT) scheme} (with message space~$\bit^\lambda$) consists of 4 efficient algorithms.
 \begin{itemize}
 \item $\Gen(1^\lambda,{M\in\doubleN})$ takes the database length as input and outputs a hash key~$\hk$.
 \item $\Hash(1^\lambda,\hk,{D\in\bit^M})$ takes as input a hash key and a database.
@@ -40,7 +40,7 @@ We only need database-selective security~\cite{TCC:AnaLom18}.
 The following indistinguishability-based definition is equivalent to the usual simulation-based formulation.
 
 \begin{definition}[laconic OT security~\cite{C:CDGGMP17,TCC:AnaLom18,C:KNTY19}]\label{def:lot-security}
-A laconic OT scheme $(\Gen,\allowbreak\Hash,\allowbreak\Send,\allowbreak\Recv)$ per Definition~\ref{def:lot} is \emph{database-selectively sender-private} (or \emph{secure} for the purpose of this work) if ${\ExpLOT{0}\approx\ExpLOT{1}}$, where $\ExpLOT{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
+A laconic OT scheme $(\Gen,\allowbreak\Hash,\allowbreak\Send,\allowbreak\Recv)$ per Definition~\ref{def:lot} is \emph{database-selectively sender-private} (or \emph{secure} for the purpose of this work) if ${\ExpLOT{0}\approx\ExpLOT{1}}$, where $\ExpLOT{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows.
 \begin{itemize}\upshape
 \item\textbf{Setup.}
 Launch $\scriptA(1^\lambda)$ and

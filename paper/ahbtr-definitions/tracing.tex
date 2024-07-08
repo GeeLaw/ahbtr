@@ -1,14 +1,14 @@
 \begin{definition}[traceability]\label{def:tracing-security}
 An AH-BTR scheme $(\Gen,\Enc,\Dec,\Trace)$ per Definition~\ref{def:ahbtr} is \emph{traceable}
 if all efficient adversaries win $\ExpTrace$ only with negligible probability,
-where $\ExpTrace(1^\lambda)$ with adversary~$\scriptB$ proceeds as follows:
+where $\ExpTrace(1^\lambda)$ with adversary~$\scriptB$ proceeds as follows.
 \begin{itemize}\upshape
 \item\textbf{Setup.}
 Launch $\scriptB(1^\lambda)$.
 Initialize the set $S$ to $\varnothing$ and let ${Q\gets 0}$.
 \item\textbf{Query.}
 Repeat the following for arbitrarily many rounds determined by~$\scriptB$.
-In each round, $\scriptB$ has two options:
+In each round, $\scriptB$ has two options.
 \begin{itemize}
 \item $\scriptB$ can request that a new user be initialized
 and obtain the newly \WideNarrow{generated}{created} public key.

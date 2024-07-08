@@ -2,7 +2,7 @@
 We rely on PPRF~\cite{AC:BonWat13,CCS:KPTZ13,PKC:BoyGolIva14,STOC:SahWat14}.
 
 \begin{definition}[PPRF~\cite{AC:BonWat13,CCS:KPTZ13,PKC:BoyGolIva14,STOC:SahWat14}]\label{def:pprf}
-A \emph{puncturable pseudorandom function (PPRF) family} (with key space, domain, and codomain~$\bit^\lambda$) consists of 2 efficient algorithms:
+A \emph{puncturable pseudorandom function (PPRF) family} (with key space, domain, and codomain~$\bit^\lambda$) consists of 2 efficient algorithms.
 \begin{itemize}
 \item ${\Puncture(1^\lambda,k\in\bit^\lambda,x)}$
 takes as input a non-punctured key and a point.
@@ -32,7 +32,7 @@ k&{}\draws\bit^\lambda\\
 % The definition is made interactive to accommodate uniform security.
 A PPRF $(\Puncture,\Eval)$ per Definition~\ref{def:pprf} is \emph{pseudorandom at the punctured point} (or \emph{secure} for the purpose of this work)
 if ${\ExpPPRF{0}\approx\ExpPPRF{1}}$,
-where $\ExpPPRF{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows:
+where $\ExpPPRF{b}(1^\lambda)$ with adversary~$\scriptA$ proceeds as follows.
 \begin{itemize}\upshape
 \item\textbf{Challenge.}
 Launch $\scriptA(1^\lambda)$ and receive from it a point~${x\in\bit^\lambda}$.
