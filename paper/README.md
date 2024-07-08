@@ -24,6 +24,25 @@ Two constructions are presented.  The first is based on functional encryption fo
 
 This section is anti-chronological. Reviews are kept in OneNote.
 
+### IACR CiC 2024 Quarter 2
+
+- Submission #42
+  - [Version 1](../paper.pdf/cic2024-qtr2-ver1.pdf): SHA-256, `0b2cf4ce`, 8 Apr 2024 3:49:12am UTC
+  - [Version 2](../paper.pdf/cic2024-qtr2-ver2.pdf): SHA-256 `2787da46`, 8 Apr 2024 7:41:28am UTC
+  - [Camera-Ready Candidate 1](../paper.pdf/cic2024-qtr2-cr1.zip): PDF stored elsewhere with SHA-256 `62df6ef3`, 10 June 2024.
+  - [Camera-Ready Candidate 2](../paper.pdf/cic2024-qtr2-cr2.zip): PDF stored elsewhere with SHA-256 `18124f88`, 10 June 2024.
+  - [Camera-Ready Candidate 3](../paper.pdf/cic2024-qtr2-cr3.zip): PDF stored elsewhere with SHA-256 `acbfd85f`, 16 June 2024.
+- Title: `Ad Hoc Broadcast, Trace, and Revoke --- Plus Time-Space Trade-Offs for Attribute-Based Encryption`
+- Type: original research paper
+- Long paper: yes
+- Primary area: `ADV` (advanced primitives)
+- Secondary area: `TF` (theoretical foundations)
+- Topics:
+  - FE, ABE and (H)IBE
+  - Lower Bounds, Separations and Impossibility Results
+  - Modelling and Design of Advanced Public-Key Primitives
+- Conflicts: None found, none suggested.
+
 ### Crypto 2024
 
 - Submission #206
