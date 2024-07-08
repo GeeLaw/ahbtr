@@ -1,4 +1,4 @@
-# *Ad Hoc* Broadcast, Trace, and Revoke
+# *Ad Hoc* Broadcast, Trace, and Revoke --- Plus Time-Space Trade-Offs for Attribute-Based Encryption
 
 **Authors.**
 
@@ -9,7 +9,7 @@
     University of Washington, Seattle, USA
     - [https://ror.org/00cvxb145](https://ror.org/00cvxb145)
 
-**Keywords.** `ad hoc,decentralized,distributed,traitor tracing,broadcast encryption,attribute-based encryption,functional encryption,obfuscation`
+**Keywords.** `ad hoc,decentralized,distributed,flexible,traitor tracing,broadcast encryption,attribute-based encryption,functional encryption,obfuscation`
 
 ## Abstract (no manual line-breaks)
 
