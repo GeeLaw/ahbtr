@@ -1,6 +1,6 @@
 # Ad Hoc Broadcast, Trace, and Revoke
 
-Copyright (c) 2022 to 2023 by Ji Luo, all rights reserved. This applies to all files not explicitly mentioned below.
+Copyright (c) 2022 to 2024 by Ji Luo, all rights reserved. This applies to all files not explicitly mentioned below.
 
 ## [CryptoBib](https://github.com/cryptobib/export)
 

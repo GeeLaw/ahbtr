@@ -1,5 +1,6 @@
 # *Ad Hoc* Broadcast, Trace, and Revoke
 
+- [IACR CiC, volume 1 issue 2, DOI `10.62056/a39qxrxqi`](https://doi.org/10.62056/a39qxrxqi)
 - [ePrint 2022/925](https://eprint.iacr.org/2022/925)
   - [8 July 2024](https://eprint.iacr.org/archive/2022/925/20240708:192119)
   - [12 March 2023](https://eprint.iacr.org/archive/2022/925/20230312:134230)
