@@ -42,7 +42,7 @@ S=1+\max{|\ct|},\qquad
 T=1+\max{\{\textup{number of bits in $R$ probed by $\Dec$}\}}.
 \end{align*}
 For ${\lambda,N\geq 1}$, it is necessary
-that ${|\ct|\geq 1}$ because $\ct$ can encode any string $\mu$ of length~$\lambda$, and
+that ${\max{|\ct|}\geq 1}$ because $\ct$ can encode any string $\mu$ of length~$\lambda$, and
 that ${\max{T_\Dec}\geq T}$ because $\Dec$ performs all the probes and, in addition, produces at least $1$~bit of output.
 Therefore,
 \begin{align*}
@@ -66,9 +66,7 @@ z_\Enc:\textup{randomness for }&\Enc\\
 (\mpk,\{\sk_{j,s}\}_{j\in[N],s\in\bit})\draws{}&\Gen(1^N)
 \end{aligned}\right\},\\
 \rule[1em]{0pt}{0pt}
-F(z,R)
-\hspace*{-5em}&\hspace*{5em}
-{}=0^{S-|\ct|-1}\concat 1\concat\ct,\qquad
+f&{}=F(z,R)=0^{S-|\ct|-1}\concat 1\concat\ct,\qquad
 \textup{where}\quad
 \ct\gets\Enc(\mpk,R,\mu;z_\Enc).
 \end{align*}
@@ -86,23 +84,28 @@ the first to obtain~$r^\ast$ and the rest to run~$\Dec$.
 For ${w\in\{1,2,3,4,5\}}$,
 write $p_w$ for ${\Pr[\scriptB^{Y_w}(z,f;i^\ast)\to 1]}$, where
 \begin{align*}
-i^\ast&{}\draws[N],
-\qquad\qquad\qquad\qquad\qquad\qquad
+&\hspace*{-2em}
+R\draws\bit^N,\qquad
+z\draws D,\qquad
+f=F(z,R),\qquad
+i^\ast\draws[N],\qquad
 Y_1=R,\\
 Y_2[j]&\begin{cases}
-=G(z,F(z,R))[j],&\textup{if }G(z,F(z,R))[j]\neq\bot;\\
-\draws\bit,&\textup{if }G(z,F(z,R))[j]=\bot;
+=G(z,R)[j],&\textup{if }G(z,R)[j]\neq\bot;\\
+\draws\bit,&\textup{if }G(z,R)[j]=\bot;
 \end{cases}\\
 Y_3[j]&\begin{cases}
-=G(z,F(z,R))[j],&\textup{if }j\neq i^\ast\textup{ and }G(z,F(z,R))[j]\neq\bot;\\
-\draws\bit,&\textup{if }j\neq i^\ast\textup{ and }G(z,F(z,R))[j]=\bot;\\
+=G(z,R)[j],&\textup{if }j\neq i^\ast\textup{ and }G(z,R)[j]\neq\bot;\\
+\draws\bit,&\textup{if }j\neq i^\ast\textup{ and }G(z,R)[j]=\bot;\\
 \draws\bit,&\textup{if }j=i^\ast;
 \end{cases}\\
 Y_4[j]&\begin{cases}
-=R[j],&\textup{if }j\neq i^\ast;\\
+\mathrlap{=R[j],}
+\hphantom{=G(z,R)[j],}
+&\textup{if }j\neq i^\ast;\\
 \draws\bit,&\textup{if }j=i^\ast;
 \end{cases}
-\qquad\qquad
+\qquad\qquad\quad
 Y_5[j]\begin{cases}
 =R[j],&\textup{if }j\neq i^\ast;\\
 =\neg R[i^\ast],&\textup{if }j=i^\ast.
